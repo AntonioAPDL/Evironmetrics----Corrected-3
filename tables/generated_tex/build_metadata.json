@@ -1,0 +1,28 @@
+{
+  "manifest_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/MANUSCRIPT_ASSET_MANIFEST.json",
+  "display_precision_digits": 5,
+  "outputs": {
+    "tab:benchmark_crps_models": "tables/generated_tex/benchmark_crps_raw_rows.tex",
+    "tab:benchmark_crps_models_bayesian": "tables/generated_tex/benchmark_crps_bayesian_rows.tex",
+    "tab:benchmark_crps_models_body": "tables/generated_tex/benchmark_crps_body.tex",
+    "tab:benchmark_crps_models_block": "tables/generated_tex/benchmark_crps_main_table.tex",
+    "tab:benchmark_crps_models_nws_horizon": "tables/generated_tex/benchmark_crps_nws_horizon_raw_rows.tex",
+    "tab:benchmark_crps_models_nws_horizon_bayesian": "tables/generated_tex/benchmark_crps_nws_horizon_bayesian_rows.tex",
+    "tab:benchmark_crps_models_nws_horizon_body": "tables/generated_tex/benchmark_crps_nws_horizon_body.tex",
+    "tab:benchmark_crps_models_nws_horizon_block": "tables/generated_tex/benchmark_crps_nws_horizon_table.tex",
+    "tab:benchmark_crps_horizon_summary": "tables/generated_tex/benchmark_crps_horizon_summary.csv",
+    "tab:he4_quantile_check_loss": "tables/generated_tex/he4_quantile_check_loss_rows.tex",
+    "tab:he4_quantile_check_loss_block": "tables/generated_tex/he4_quantile_check_loss_main_table.tex",
+    "tab:components_23_31": "tables/generated_tex/representative_covariate_effects_rows.tex",
+    "tab:components_23_31_block": "tables/generated_tex/representative_covariate_effects_table.tex",
+    "tab:gamma_sigma_intervals1": "tables/generated_tex/appendix_gamma_rows.tex",
+    "tab:gamma_sigma_intervals1_block": "tables/generated_tex/appendix_gamma_summary_table.tex",
+    "tab:gamma_sigma_intervals2": "tables/generated_tex/appendix_sigma_rows.tex",
+    "tab:gamma_sigma_intervals2_block": "tables/generated_tex/appendix_sigma_summary_table.tex",
+    "tab:he3_ablation_crps_body": "tables/generated_tex/he3_ablation_crps_body.tex",
+    "tab:he3_ablation_crps_block": "tables/generated_tex/he3_ablation_crps_main_table.tex",
+    "tab:he3_ablation_crps_nws_horizon_body": "tables/generated_tex/he3_ablation_crps_nws_horizon_body.tex",
+    "tab:he3_ablation_crps_nws_horizon_block": "tables/generated_tex/he3_ablation_crps_nws_horizon_table.tex",
+    "tab:he3_ablation_crps_horizon_summary": "tables/generated_tex/he3_ablation_crps_horizon_summary.csv"
+  }
+}

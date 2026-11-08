@@ -1,0 +1,31 @@
+\begin{table*}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.08}
+\begin{threeparttable}
+\caption{Mean CRPS over the common eight-day NWS forecast horizon. Lower values are better; bold indicates the lowest CRPS within each cutoff column.}
+\label{tab:benchmark_crps_models_nws_horizon}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} >{\ttfamily}l r r r r r}
+\toprule
+Model label & 01/23/2021 & 11/12/2021 & 12/21/2021 & 05/11/2022 & 12/25/2022 \\
+\midrule
+\multicolumn{6}{l}{\textit{Raw forecast products}} \\
+RAW-GLOFAS & 0.57251 & 0.20670 & 1.29127 & 0.32274 & 1.48188 \\
+RAW-NWS & 0.83037 & 1.37192 & \textbf{0.28118} & 0.28366 & \textbf{0.55680} \\
+\midrule
+\multicolumn{6}{l}{\textit{Bayesian benchmark variants}} \\
+N-U-T1 & 0.76838 & 0.13732 & 2.04040 & 0.12611 & 1.87805 \\
+N-M-T0 & 1.31032 & 0.25581 & 0.41461 & 0.63732 & 1.00096 \\
+N-M-T1 & 4.72798 & 0.71930 & 5.13027 & 0.79737 & 4.53177 \\
+AL-U-T1 & \textbf{0.18835} & 0.10367 & 0.75625 & 0.03599 & 0.62002 \\
+AL-M-T0 & 0.63929 & 0.16893 & 1.15588 & 0.09506 & 1.00922 \\
+AL-M-T1 & 0.23740 & 0.07170 & 0.56351 & 0.05867 & 0.61593 \\
+exAL-U-T1 & 0.18999 & 0.11312 & 0.77939 & 0.04489 & 0.62982 \\
+exAL-M-T0 & 0.94687 & 1.69464 & 0.69022 & 1.02364 & 1.31568 \\
+exAL-M-T1 & 0.22691 & \textbf{0.05858} & 0.59445 & \textbf{0.02567} & 0.59070 \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}
+\item \textit{Note:} This table restricts every row to forecast leads 1--8, the common daily horizon available for NWS, GloFAS, and the Bayesian predictive distributions. It is therefore the appropriate direct comparison to \texttt{RAW-NWS}; Table~\ref{tab:benchmark_crps_models} gives the complementary 28-day comparison and omits NWS.
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}

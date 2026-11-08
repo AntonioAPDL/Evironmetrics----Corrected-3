@@ -1,0 +1,15 @@
+{
+  "slug": "20211112_exal_m_t1",
+  "cutoff": "2021-11-12",
+  "cutoff_code": "20211112",
+  "multivar_run_id": "multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep",
+  "grid_spec_id": "exdqlm_multivar_keep_canonical_grid_20260524:authoritative_winner",
+  "univar_run_id": "multimodel_20211112_v8_he2pubgdpc1r1_exdqlm_univar",
+  "source_lineage": "exdqlm_multivar_keep_canonical_grid_20260524:authoritative_winner",
+  "authoritative_manifest": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/he2_publication_freeze/he2_bayesian_publication_manifest.csv",
+  "runtime_run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep",
+  "runtime_output_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep",
+  "run_id": "multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep",
+  "univar_runtime_run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20211112_v8_he2pubgdpc1r1_exdqlm_univar",
+  "univar_runtime_output_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20211112_v8_he2pubgdpc1r1_exdqlm_univar/post/outputs/multimodel_20211112_v8_he2pubgdpc1r1_exdqlm_univar"
+}

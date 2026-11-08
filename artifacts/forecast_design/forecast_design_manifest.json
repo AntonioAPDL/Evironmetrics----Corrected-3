@@ -1,0 +1,78 @@
+{
+  "schema_version": "he6_forecast_design_v1",
+  "rolling_origin_design": {
+    "cutoffs": [
+      "20210123",
+      "20211112",
+      "20211221",
+      "20220511",
+      "20221225"
+    ],
+    "held_out_target": "post_cutoff_usgs_only",
+    "fit_inputs": [
+      "usgs_through_cutoff",
+      "retrospective_products_through_cutoff"
+    ],
+    "selection_basis": "archive_feasible_version_consistent_cutoff_bundles",
+    "fair_assessment": {
+      "cross_validation_analogue": "time_ordered_rolling_origin_folds",
+      "fold_unit": "forecast_origin_cutoff",
+      "dense_overlapping_origins_claimed": false,
+      "dense_origin_policy": "not_used_because_archive_version_constraints_and_overlapping_windows_can_overrepresent_the_same_hydrological_episode",
+      "fold_construction_note": "each retained origin requires reconstructing a version-consistent bundle of observations, retrospective products, issued forecast products, and forecast-window covariates from evolving operational archives",
+      "computational_resource_note": "a denser origin grid would require substantially more data recovery, version matching, spatial extraction, covariate staging, model fitting, and posterior predictive synthesis",
+      "origin_selection_rationale": "archive-feasible version-consistent origins spanning contrasting hydrological settings without repeatedly evaluating similar forecast windows",
+      "source_complexity_note": "forecast-validation inputs differ by release history, product version, update frequency, forecast horizon, ensemble-member structure, spatial support, and access interface"
+    }
+  },
+  "forecast_origin_inputs": {
+    "forecast_products": {
+      "sources": [
+        "GloFAS",
+        "NWS"
+      ],
+      "timing": "latest_issued_at_or_before_cutoff",
+      "role": "forecast_window_source_channels",
+      "issue_selection_manifest": "artifacts/latest_forecast_issue/latest_forecast_issue_manifest.json"
+    },
+    "local_covariates": {
+      "names": [
+        "precipitation",
+        "soil_moisture"
+      ],
+      "role": "forecast_window_transfer_covariates",
+      "source_policy": "staged_version_consistent_cutoff_specific_support_bundle",
+      "forecast_window_source": "GEFS ensemble-based precipitation and shallow soil-water covariates",
+      "forecast_window_summary_policy": "reduced_to_deterministic_forecast_window_summaries_before_model_entry",
+      "precipitation_handling": {
+        "censoring_model": false,
+        "zero_inflation_model": false,
+        "occurrence_intensity_model": false,
+        "zero_precipitation_policy": "retained_as_zero_in_supplied_covariate_path",
+        "model_role": "external_transfer_covariate_and_deterministic_engineered_terms"
+      }
+    },
+    "gdpc_pca": {
+      "workflow_slot": "PCA",
+      "canonical_name": "GDPC1",
+      "role": "deterministic_climate_index_covariate",
+      "operational_forecast_product": false,
+      "verification_target": false,
+      "source_policy": "canonical_master_factor_sliced_to_cutoff_specific_bundle"
+    }
+  },
+  "claims_policy": {
+    "post_cutoff_usgs_used_for_fit_or_update": false,
+    "gdpc_pca_described_as_forecast_product": false,
+    "forecast_validation_target": "held_out_usgs_observations",
+    "continuous_daily_post_2022_hindcast_claimed": false
+  },
+  "evidence": {
+    "workflow_contract": "docs/he6_out_of_sample_forecast_design_contract_20260615.md",
+    "article_contract": "docs/forecast_design_contract.md",
+    "article_text": "wileyNJD-APA.tex",
+    "corrections_text": "/data/muscat_data/jaguir26/Corrections---Project-1/main.tex",
+    "covariate_builder": "R/disc_w/03_covariates_standardize.R",
+    "setup_support_renderer": "scripts/render_exal_m_t1_setup_support_by_cutoff_v2.py"
+  }
+}

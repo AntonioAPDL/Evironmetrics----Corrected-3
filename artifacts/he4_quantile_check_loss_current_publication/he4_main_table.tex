@@ -1,0 +1,46 @@
+\begin{table*}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.08}
+\begin{threeparttable}
+\caption{Mean forecast-window quantile check loss by synthesis model, cutoff, and target quantile. Lower values are better; bold indicates the lowest check loss within each cutoff and quantile column.}
+\label{tab:he4_quantile_check_loss}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} >{\ttfamily}l r r r r r r r}
+\toprule
+Model & q0.05 & q0.20 & q0.35 & q0.50 & q0.65 & q0.80 & q0.95 \\
+\midrule
+\multicolumn{8}{l}{\textit{Cutoff 01/23/2021}} \\
+exAL-M-T1 & \textbf{0.02529} & \textbf{0.07061} & \textbf{0.09149} & \textbf{0.09407} & \textbf{0.08697} & 0.07165 & \textbf{0.03093} \\
+AL-M-T1 & 0.02894 & 0.07178 & 0.09341 & 0.09700 & 0.08931 & \textbf{0.06937} & 0.04116 \\
+exAL-U-T1 & 0.03314 & 0.09434 & 0.12252 & 0.13140 & 0.13265 & 0.12867 & 0.10144 \\
+AL-U-T1 & 0.03150 & 0.08874 & 0.12511 & 0.13534 & 0.14456 & 0.14617 & 0.12576 \\
+\addlinespace[1pt]
+\multicolumn{8}{l}{\textit{Cutoff 11/12/2021}} \\
+exAL-M-T1 & \textbf{0.00943} & 0.02226 & \textbf{0.02164} & \textbf{0.03224} & \textbf{0.03659} & \textbf{0.02737} & 0.01267 \\
+AL-M-T1 & 0.01114 & 0.02242 & 0.02264 & 0.03547 & 0.03937 & 0.03394 & 0.02369 \\
+exAL-U-T1 & 0.01110 & 0.02586 & 0.08966 & 0.09603 & 0.06947 & 0.04183 & 0.01279 \\
+AL-U-T1 & 0.01843 & \textbf{0.02075} & 0.07354 & 0.06746 & 0.04860 & 0.02874 & \textbf{0.01018} \\
+\addlinespace[1pt]
+\multicolumn{8}{l}{\textit{Cutoff 12/21/2021}} \\
+exAL-M-T1 & \textbf{0.02204} & \textbf{0.08243} & \textbf{0.13306} & \textbf{0.17423} & \textbf{0.21136} & 0.17833 & 0.08278 \\
+AL-M-T1 & 0.05594 & 0.10246 & 0.14994 & 0.17786 & 0.22531 & \textbf{0.17118} & \textbf{0.05205} \\
+exAL-U-T1 & 0.06544 & 0.22311 & 0.33019 & 0.42750 & 0.54414 & 0.64406 & 0.67338 \\
+AL-U-T1 & 0.06384 & 0.23665 & 0.33938 & 0.45254 & 0.57593 & 0.67517 & 0.68584 \\
+\addlinespace[1pt]
+\multicolumn{8}{l}{\textit{Cutoff 05/11/2022}} \\
+exAL-M-T1 & \textbf{0.00754} & \textbf{0.00818} & \textbf{0.00784} & \textbf{0.01526} & \textbf{0.01387} & \textbf{0.01399} & \textbf{0.00904} \\
+AL-M-T1 & 0.01095 & 0.03552 & 0.03957 & 0.03433 & 0.02135 & 0.02730 & 0.01661 \\
+exAL-U-T1 & 0.01852 & 0.04289 & 0.10852 & 0.10902 & 0.07885 & 0.04803 & 0.01501 \\
+AL-U-T1 & 0.03186 & 0.03619 & 0.09686 & 0.08487 & 0.06068 & 0.03675 & 0.01363 \\
+\addlinespace[1pt]
+\multicolumn{8}{l}{\textit{Cutoff 12/25/2022}} \\
+exAL-M-T1 & \textbf{0.08853} & \textbf{0.21289} & \textbf{0.30922} & \textbf{0.41184} & 0.41426 & 0.25746 & 0.14369 \\
+AL-M-T1 & 0.10685 & 0.33826 & 0.49367 & 0.55801 & \textbf{0.28439} & \textbf{0.22049} & \textbf{0.13795} \\
+exAL-U-T1 & 0.12106 & 0.41104 & 0.63858 & 0.86423 & 1.10845 & 1.33342 & 1.47893 \\
+AL-U-T1 & 0.12012 & 0.43475 & 0.64594 & 0.88340 & 1.13232 & 1.35815 & 1.46909 \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}
+\item \textit{Note:} Check loss is computed on forecast-window rows only, using the held-out USGS observation as the verification target on the same $\log(1+Q)$ scale used for CRPS. The four synthesis competitors are resolved directly from the frozen HE-2 publication manifest.
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}

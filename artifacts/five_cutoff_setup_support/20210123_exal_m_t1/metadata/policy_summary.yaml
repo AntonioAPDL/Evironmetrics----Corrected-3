@@ -1,0 +1,7 @@
+bundle_class: histfix_long_history_bundle
+nws_policy_summary: nws_retro_v21 with nws_retro_v30 tail fill after natural coverage
+  end
+glofas_policy_summary: glofas_hist_v21_htessel_cons
+notes: histfix lineage should show nws_retro_v21 early support and nws_retro_v30 tail
+  fill near cutoff
+bundle_run_id: 20260510_publication_shared_r01

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/home/jaguir26/python39/bin/python3",
+    "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/scripts/refresh_current_model_output_support_figures.py",
+    "--article-root",
+    "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2",
+    "--workflow-root",
+    "/data/muscat_data/jaguir26/project1_ucsc_phd",
+    "--multivar-runtime-root",
+    "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524",
+    "--multivar-support-run-root",
+    "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_historical_support_replay_20260517/runs/multimodel_20220511_v8_he2pubgdpc1r1_exdqlm_multivar_keep_historical_support_replay",
+    "--univar-runtime-root",
+    "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_univar_all_cutoffs_sharedspec_20260516"
+  ],
+  "returncode": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/scripts/refresh_current_model_output_support_figures.py\", line 329, in <module>\n    main()\n  File \"/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/scripts/refresh_current_model_output_support_figures.py\", line 288, in main\n    raise FileNotFoundError(\nFileNotFoundError: Missing both canonical multivariate fit artifacts and the retained support replay/state-summary contract: canonical=/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20220511_v8_he2grid_c02_eps060_exdqlm_multivar_keep support=/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_historical_support_replay_20260517/runs/multimodel_20220511_v8_he2pubgdpc1r1_exdqlm_multivar_keep_historical_support_replay state_summary=/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/historical_support_from_current_models/figures/cache/historical_support_state_summaries.rds\n",
+  "status": "skipped"
+}

@@ -1,0 +1,26 @@
+cutoff,cutoff_display,variant,run_id,status,config_ok,execution_ok,runtime_hashes_ok,runtime_input_contract,target_model_ok,overall_ok,mean_crps,delta_vs_full,he2_drop_best_crps,delta_vs_he2_drop,notes
+20210123,01/23/2021,noH1,multimodel_20210123_v8_c04_eps365_exdqlm_multivar_keep_he3_noH1,pass,True,True,True,ok; canonical_csv=1,True,True,1.2786086911429622,1.1388998362950988,0.7568212048469477,,ok
+20210123,01/23/2021,noH2,multimodel_20210123_v8_c04_eps365_exdqlm_multivar_keep_he3_noH2,pass,True,True,True,ok; canonical_csv=1,True,True,0.7268957470858982,0.5871868922380348,0.7568212048469477,,ok
+20210123,01/23/2021,noH3,multimodel_20210123_v8_c04_eps365_exdqlm_multivar_keep_he3_noH3,pass,True,True,True,ok; canonical_csv=1,True,True,1.0828143384638242,0.9431054836159608,0.7568212048469477,,ok
+20210123,01/23/2021,noTF,multimodel_20210123_v8_c04_eps365_exdqlm_multivar_keep_he3_noTF,pass,True,True,True,ok; canonical_csv=1,True,True,1.7360957277723663,1.596386872924503,0.7568212048469477,0.9792745229254186,ok
+20210123,01/23/2021,noTrend,multimodel_20210123_v8_c04_eps365_exdqlm_multivar_keep_he3_noTrend,pass,True,True,True,ok; canonical_csv=1,True,True,1.0515922245361908,0.9118833696883274,0.7568212048469477,,ok
+20211112,11/12/2021,noH1,multimodel_20211112_v8_c04_eps365_exdqlm_multivar_keep_he3_noH1,pass,True,True,True,ok; canonical_csv=1,True,True,1.601420047530022,1.5541836973890413,1.721353407149969,,ok
+20211112,11/12/2021,noH2,multimodel_20211112_v8_c04_eps365_exdqlm_multivar_keep_he3_noH2,pass,True,True,True,ok; canonical_csv=1,True,True,1.046992391360837,0.9997560412198562,1.721353407149969,,ok
+20211112,11/12/2021,noH3,multimodel_20211112_v8_c04_eps365_exdqlm_multivar_keep_he3_noH3,pass,True,True,True,ok; canonical_csv=1,True,True,1.0356247764306286,0.9883884262896477,1.721353407149969,,ok
+20211112,11/12/2021,noTF,multimodel_20211112_v8_c04_eps365_exdqlm_multivar_keep_he3_noTF,pass,True,True,True,ok; canonical_csv=1,True,True,1.7140899592218874,1.6668536090809067,1.721353407149969,-0.0072634479280815345,ok
+20211112,11/12/2021,noTrend,multimodel_20211112_v8_c04_eps365_exdqlm_multivar_keep_he3_noTrend,pass,True,True,True,ok; canonical_csv=1,True,True,0.7234272298091396,0.6761908796681588,1.721353407149969,,ok
+20211221,12/21/2021,noH1,multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep_he3_noH1,pass,True,True,True,ok,True,True,2.8301725629702927,2.5697259620748625,0.9776190703422162,,ok
+20211221,12/21/2021,noH2,multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep_he3_noH2,pass,True,True,True,ok,True,True,2.9651285847201554,2.7046819838247247,0.9776190703422162,,ok
+20211221,12/21/2021,noH3,multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep_he3_noH3,pass,True,True,True,ok,True,True,2.5833284975705157,2.322881896675085,0.9776190703422162,,ok
+20211221,12/21/2021,noTF,multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep_he3_noTF,pass,True,True,True,ok,True,True,2.3286287601077307,2.0681821592123004,0.9776190703422162,1.3510096897655144,ok
+20211221,12/21/2021,noTrend,multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep_he3_noTrend,pass,True,True,True,ok,True,True,2.517482779589605,2.2570361786941744,0.9776190703422162,,ok
+20220511,05/11/2022,noH1,multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep_he3_noH1,pass,True,True,True,ok,True,True,1.0995628278823844,1.076834649562083,1.0208652762665102,,ok
+20220511,05/11/2022,noH2,multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep_he3_noH2,pass,True,True,True,ok,True,True,0.9119294552158368,0.8892012768955355,1.0208652762665102,,ok
+20220511,05/11/2022,noH3,multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep_he3_noH3,pass,True,True,True,ok,True,True,0.6864168874285019,0.6636887091082007,1.0208652762665102,,ok
+20220511,05/11/2022,noTF,multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep_he3_noTF,pass,True,True,True,ok,True,True,2.4770299350386957,2.4543017567183942,1.0208652762665102,1.4561646587721855,ok
+20220511,05/11/2022,noTrend,multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep_he3_noTrend,pass,True,True,True,ok,True,True,0.532566307871066,0.5098381295507647,1.0208652762665102,,ok
+20221225,12/25/2022,noH1,multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_he3_noH1,pass,True,True,True,ok,True,True,4.458873044706468,3.920817559960623,1.2113191493945392,,ok
+20221225,12/25/2022,noH2,multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_he3_noH2,pass,True,True,True,ok,True,True,4.647085049293147,4.109029564547302,1.2113191493945392,,ok
+20221225,12/25/2022,noH3,multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_he3_noH3,pass,True,True,True,ok,True,True,4.438785209617708,3.900729724871863,1.2113191493945392,,ok
+20221225,12/25/2022,noTF,multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_he3_noTF,pass,True,True,True,ok,True,True,2.172796766136764,1.634741281390919,1.2113191493945392,0.961477616742225,ok
+20221225,12/25/2022,noTrend,multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_he3_noTrend,pass,True,True,True,ok,True,True,4.058806917025602,3.5207514322797566,1.2113191493945392,,ok

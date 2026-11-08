@@ -1,0 +1,341 @@
+{
+  "run_id": "multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623",
+  "run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623",
+  "git_commit": "bbabbb873a46b8055816f6a7cf7265e3dc4c71a9",
+  "repro_mode": "strict",
+  "seed": 20211112,
+  "stages_enabled": ["data_prep_shared", "fit", "post", "validate", "report"],
+  "input_hashes": [
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/supporting_inputs/parameters/parameters.txt",
+      "sha256": "053751db21f49dc031ad655d23dc66fe54d0ceb90d83fb80cecd7d0c6ef4fb95",
+      "storage_scale": "parameters_text"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2021-11-12/run_id=20260510_publication_shared_r01/retros.csv",
+      "sha256": "4a83dfdb9484e0f79862d7a6eab53cae8044ca8810f47df3573171b4b68b6e52",
+      "storage_scale": "log1p_cms"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2021-11-12/run_id=20260510_publication_shared_r01/nws_forecast.csv",
+      "sha256": "65caecc51ffeda06124c790397020ec8bf9ae4dfd441432d064e699be149c235",
+      "storage_scale": "raw_cms"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2021-11-12/run_id=20260510_publication_shared_r01/glofas_forecast.csv",
+      "sha256": "66c1a91a95283e4626eeaa9ca822e91c7a50c8a26ce4186d39e0f01d8012ebb4",
+      "storage_scale": "raw_cms"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/parameters/parameters.txt",
+      "sha256": "053751db21f49dc031ad655d23dc66fe54d0ceb90d83fb80cecd7d0c6ef4fb95",
+      "storage_scale": "parameters_text"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/retros/retros.csv",
+      "sha256": "4a83dfdb9484e0f79862d7a6eab53cae8044ca8810f47df3573171b4b68b6e52",
+      "storage_scale": "log1p_cms"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/forecasts/nws_forecast.csv",
+      "sha256": "65caecc51ffeda06124c790397020ec8bf9ae4dfd441432d064e699be149c235",
+      "storage_scale": "raw_cms"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/forecasts/glofas_forecast.csv",
+      "sha256": "66c1a91a95283e4626eeaa9ca822e91c7a50c8a26ce4186d39e0f01d8012ebb4",
+      "storage_scale": "raw_cms"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/usgs/usgs_daily.csv",
+      "sha256": "46c554b7cd0d70da547824a0f36e3e2afd8395c753117a50aaf1ce7dd802111b",
+      "storage_scale": "raw_cms"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/cov_01_PPT.csv",
+      "sha256": "d708f7b8aa3549ba986157613a4605106d2cdd3ac8d0f3583dd36676c9d9aef4",
+      "storage_scale": "table_csv"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/cov_02_SOIL.csv",
+      "sha256": "da5b8285f6149b70747aefce02d6cf773e26c1113dad1ee5ec7e3f15639c34d0",
+      "storage_scale": "table_csv"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/cov_03_PCA.csv",
+      "sha256": "f67b2db6410eefb60df12e868ab216579c085e2b8fd2ccd694b86a24e9b7a2e2",
+      "storage_scale": "table_csv"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/cov_01_PPT.csv",
+      "sha256": "a2b087362630e0e7c943cb391c22b87082e8cde6b9316f2532f16b3b207797dd",
+      "storage_scale": "table_csv"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/cov_02_SOIL.csv",
+      "sha256": "e0a94c36c5b90d294e6ad155b36ca407251dd3d1057a4c12673d0d206e6363fa",
+      "storage_scale": "table_csv"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/covariate_features.csv",
+      "sha256": "ddb1d258544d3ba5c18e7fcae940855166ef02e12d9f5be86fab25a56ba12311",
+      "storage_scale": "table_csv"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/retros/retros.csv",
+      "sha256": "7ed09f7a9bb2e3e4e83eeba9453409f5b2d3d12d10782f95eca2f36424ecf766",
+      "storage_scale": "log1p_cms"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/usgs/usgs_daily.csv",
+      "sha256": "26203af07e94bc9637d0517894128bb7449b3b9ff8d5f8b55dfe4a5d9fbc32c9",
+      "storage_scale": "raw_cms"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/forecasts/nws_forecast.csv",
+      "sha256": "65caecc51ffeda06124c790397020ec8bf9ae4dfd441432d064e699be149c235",
+      "storage_scale": "raw_cms"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/forecasts/glofas_forecast.csv",
+      "sha256": "66c1a91a95283e4626eeaa9ca822e91c7a50c8a26ce4186d39e0f01d8012ebb4",
+      "storage_scale": "raw_cms"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/cov_01_PPT.csv",
+      "sha256": "f05095d0fbf2f05cad251c3b73523c8bf71dd0029f87fc6b3c813dc7f0fd16f7",
+      "storage_scale": "table_csv"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/cov_02_SOIL.csv",
+      "sha256": "02f975535cfeeb117de3bdc23c0ef3eccb27d20c09cac6efeb5d928d15eba270",
+      "storage_scale": "table_csv"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/cov_03_PCA.csv",
+      "sha256": "bf77eb613a082b03bc2279c5d7c101875ceee52bc1b173134e5d2b1c1e78f904",
+      "storage_scale": "table_csv"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/covariate_features.csv",
+      "sha256": "63bc75ae398ed1431131b6a05b675e4e378e876c4481bd7d38a5a22b1054b642",
+      "storage_scale": "table_csv"
+    }
+  ],
+  "drift_metrics": {
+    "matched": "NA",
+    "missing": "NA",
+    "extra": "NA",
+    "mismatched": "NA"
+  },
+  "env_drift_status": "pass",
+  "validation_status": "pass",
+  "change_approval_status": "pending",
+  "write_audit_clean": true,
+  "compare_report_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/validate/compare_report.json",
+  "profile_summary_path": null,
+  "artifacts_recorded": 213,
+  "deterministic_climate": {
+    "enabled": true,
+    "status": "pass",
+    "handoff_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/data_recovery/site=11160500/recovery_run=site11160500_recovery_20260406T185022Z/family=gefs_forecasts/full_runs/source_native_tranche1_20260406T194500Z/gefs_nwm_forecast_manifest_source_native_tranche1_20260406T194500Z/handoff_forecasts/site=11160500/run_id=gefs_nwm_forecast_manifest_source_native_tranche1_20260406T194500Z",
+    "horizon_days": 28,
+    "require_full_horizon": true,
+    "cutoff_date": "2021-11-12",
+    "summary_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/deterministic_climate/deterministic_climate_summary.txt",
+    "summary_sha256": "c3eb4ded236664e722acee5ea1ade64b785b40dd7a9af79b978cbf4ce571f2c2",
+    "precip": {
+      "enabled": true,
+      "source": "gefs_apcp",
+      "reduction": "q85",
+      "blend": {
+        "enabled": true,
+        "source": "gefs_apcp",
+        "reduction": "q85",
+        "dry_day_threshold_mm": 0,
+        "noisy_blend": {
+          "enabled": true,
+          "noise_sd": 30,
+          "noise_seed": 20260415,
+          "noise_distribution": "normal",
+          "floor_at_zero": true,
+          "lambda_mode": "constant",
+          "lambda": 0.5,
+          "lambda_start": 0.8,
+          "lambda_end": 0.2,
+          "noise_sd_multiplier": 0.5,
+          "zero_zero_force_prob": 0
+        },
+        "observed_blend": {
+          "enabled": true,
+          "observed_weight": 0.5,
+          "observed_zero_stay_prob": 0.9,
+          "observed_zero_stay_seed": 20260415
+        },
+        "tail_blend": {
+          "enabled": false,
+          "target": "climatology_median",
+          "start_day": 7,
+          "end_day": 14
+        }
+      },
+      "output_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/cov_01_PPT.csv",
+      "history_rows": 12587,
+      "future_rows": 28
+    },
+    "soil": {
+      "enabled": true,
+      "source": "gefs_soilw_0_0.1m",
+      "reduction": "q85",
+      "blend": {
+        "enabled": true,
+        "source": "gefs_soilw_0_0.1m",
+        "reduction": "q85",
+        "dry_day_threshold_mm": {},
+        "noisy_blend": {
+          "enabled": true,
+          "noise_sd": 0.05,
+          "noise_seed": 20260415,
+          "noise_distribution": "abs_normal",
+          "floor_at_zero": false,
+          "lambda_mode": "constant",
+          "lambda": 0.5,
+          "lambda_start": 0.8,
+          "lambda_end": 0.2,
+          "noise_sd_multiplier": 0.5
+        },
+        "observed_blend": {
+          "enabled": true,
+          "observed_weight": 0.5,
+          "observed_zero_stay_prob": "NA",
+          "observed_zero_stay_seed": 20260415
+        }
+      },
+      "output_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/cov_02_SOIL.csv",
+      "history_rows": 12587,
+      "future_rows": 28,
+      "porosity": "NA",
+      "porosity_q10": "NA",
+      "porosity_q90": "NA",
+      "porosity_sample_count": "NA"
+    },
+    "pca": {
+      "mode": "passthrough",
+      "output_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/cov_03_PCA.csv"
+    },
+    "validation": {
+      "enabled": true,
+      "status": "pass",
+      "errors": [],
+      "handoff_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/data_recovery/site=11160500/recovery_run=site11160500_recovery_20260406T185022Z/family=gefs_forecasts/full_runs/source_native_tranche1_20260406T194500Z/gefs_nwm_forecast_manifest_source_native_tranche1_20260406T194500Z/handoff_forecasts/site=11160500/run_id=gefs_nwm_forecast_manifest_source_native_tranche1_20260406T194500Z",
+      "horizon_days": 28,
+      "require_full_horizon": true,
+      "cutoff_date": "2021-11-12",
+      "manifest_summary_sha256": "c3eb4ded236664e722acee5ea1ade64b785b40dd7a9af79b978cbf4ce571f2c2",
+      "manifest_summary_sha_match": true,
+      "current": {
+        "summary": {
+          "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/deterministic_climate/deterministic_climate_summary.txt",
+          "exists": true,
+          "sha256": "c3eb4ded236664e722acee5ea1ade64b785b40dd7a9af79b978cbf4ce571f2c2",
+          "bytes": 2416
+        },
+        "precip_future": {
+          "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/deterministic_climate/deterministic_precip_future.csv",
+          "exists": true,
+          "sha256": "bbde298e2642cf77dab96eeb961764368994b97e56e13a72970cb0dd357c4228",
+          "bytes": 17960
+        },
+        "soil_future": {
+          "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/deterministic_climate/deterministic_soil_future.csv",
+          "exists": true,
+          "sha256": "e754c0951e2b153549716c527d7db00415a58312a1ae2b47651496d49f8dc437",
+          "bytes": 20164
+        },
+        "soil_family_support": {
+          "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/deterministic_climate/deterministic_soil_family_support.csv",
+          "exists": true,
+          "sha256": "b7aa2b5f778a9707cba42d167675369cc191a20237e8367df1537b5aa5222836",
+          "bytes": 14715
+        }
+      },
+      "summary": {
+        "enabled": "TRUE",
+        "handoff_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/data_recovery/site=11160500/recovery_run=site11160500_recovery_20260406T185022Z/family=gefs_forecasts/full_runs/source_native_tranche1_20260406T194500Z/gefs_nwm_forecast_manifest_source_native_tranche1_20260406T194500Z/handoff_forecasts/site=11160500/run_id=gefs_nwm_forecast_manifest_source_native_tranche1_20260406T194500Z",
+        "cutoff_date": "2021-11-12",
+        "forecast_start_date": "2021-11-13",
+        "horizon_days": "28",
+        "require_full_horizon": "TRUE",
+        "precip_source": "gefs_apcp",
+        "precip_reduction": "q85",
+        "precip_noisy_blend.enabled": "TRUE",
+        "precip_noisy_blend.noise_sd": "30",
+        "precip_noisy_blend.noise_distribution": "normal",
+        "precip_noisy_blend.noise_seed_effective": "1696977332",
+        "precip_observed_blend.enabled": "TRUE",
+        "precip_observed_blend.observed_weight": "0.5",
+        "precip_observed_blend.observed_zero_stay_prob": "0.9",
+        "precip_observed_blend.observed_zero_stay_seed_effective": "105789891",
+        "precip_output": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/cov_01_PPT.csv",
+        "soil_source": "gefs_soilw_0_0.1m",
+        "soil_reduction": "q85",
+        "soil_noisy_blend.enabled": "TRUE",
+        "soil_noisy_blend.noise_sd": "0.05",
+        "soil_noisy_blend.noise_distribution": "abs_normal",
+        "soil_noisy_blend.noise_seed_effective": "1588450163",
+        "soil_observed_blend.enabled": "TRUE",
+        "soil_observed_blend.observed_weight": "0.5",
+        "soil_observed_blend.observed_zero_stay_prob": "NA",
+        "soil_observed_blend.observed_zero_stay_seed_effective": "NA",
+        "soil_output": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/cov_02_SOIL.csv",
+        "nwm_soilsat_top_porosity": "NA",
+        "nwm_soilsat_top_porosity_q10": "NA",
+        "nwm_soilsat_top_porosity_q90": "NA",
+        "nwm_soilsat_top_porosity_samples": "NA",
+        "ppt_history_rows": "12587",
+        "ppt_future_rows": "28",
+        "soil_history_rows": "12587",
+        "soil_future_rows": "28",
+        "pca_passthrough": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/covariates/cov_03_PCA.csv"
+      },
+      "canonical": {
+        "run_id": "multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623",
+        "summary_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/inputs/shared/deterministic_climate/deterministic_climate_summary.txt",
+        "summary_exists": true,
+        "summary_sha256": "c3eb4ded236664e722acee5ea1ade64b785b40dd7a9af79b978cbf4ce571f2c2",
+        "summary_sha_match": true
+      }
+    }
+  },
+  "rdata_cleanup": {},
+  "report": {
+    "families": {
+      "exdqlm_multivar": {
+        "enabled": true,
+        "transfer_modes": "keep",
+        "primary_transfer_mode": "keep",
+        "quantiles_expected_by_mode": {
+          "keep": [5, 20, 35, 50, 65, 80, 95]
+        },
+        "quantiles_found_by_mode": {
+          "keep": [5, 20, 35, 50, 65, 80, 95]
+        },
+        "quantiles_expected": [5, 20, 35, 50, 65, 80, 95],
+        "quantiles_found": [5, 20, 35, 50, 65, 80, 95]
+      },
+      "exdqlm_univar": {
+        "enabled": false,
+        "quantiles_expected": [],
+        "quantiles_found": []
+      },
+      "ndlm_main": {
+        "enabled": false,
+        "output_present": false
+      },
+      "ndlm_univar": {
+        "enabled": false,
+        "output_present": false
+      }
+    }
+  }
+}

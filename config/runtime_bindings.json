@@ -1,0 +1,12 @@
+{
+  "workflow_root": "/data/muscat_data/jaguir26/project1_ucsc_phd",
+  "corrections_root": "/data/muscat_data/jaguir26/Corrections---Project-1",
+  "exal_m_t1": {
+    "keep_runtime_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524",
+    "authoritative_keep_manifest": "/data/muscat_data/jaguir26/project1_ucsc_phd/docs/exdqlm_multivar_keep_authoritative_specs_20260601.yaml",
+    "selected_support_output_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_selected_output_support_20260625_seasonal_only_current_components/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625",
+    "univar_runtime_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629",
+    "setup_support_runtime_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/exal_m_t1_setup_support_by_cutoff_v2_20260516",
+    "historical_support_replay_run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_historical_support_replay_20260517/runs/multimodel_20220511_v8_he2pubgdpc1r1_exdqlm_multivar_keep_historical_support_replay"
+  }
+}

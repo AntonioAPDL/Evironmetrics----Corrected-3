@@ -1,0 +1,51 @@
+{
+  "schema_version": "he7_latest_forecast_issue_v1",
+  "rolling_origin_cutoffs": [
+    "20210123",
+    "20211112",
+    "20211221",
+    "20220511",
+    "20221225"
+  ],
+  "protocol": {
+    "name": "latest_forecast_only",
+    "publication_weighting_scheme": "latest",
+    "forecast_window_policy": "forecast_products_issued_at_or_before_cutoff_only",
+    "cross_issue_weighting_used": false,
+    "legacy_weighted_daily_filenames_are_aliases": true
+  },
+  "sources": {
+    "glofas": {
+      "issue_frequency": "daily",
+      "selection_rule": "issue_date_equals_cutoff",
+      "cache_pattern": "forecast_cache/glofas/issue_date=<cutoff>/glofas_members.csv",
+      "member_count": 51
+    },
+    "nws": {
+      "issue_frequency": "hourly",
+      "availability_rule": "issue_datetime_at_or_before_cutoff_day",
+      "selection_rule": "latest_issue_datetime_per_target_hour_member_then_daily_mean",
+      "cache_pattern": "forecast_cache/nws/cutoff_date=<cutoff>/nws_members.csv",
+      "member_count": 7
+    }
+  },
+  "claims_policy": {
+    "no_lagged_forecast_averaging": true,
+    "no_cross_issue_weighting": true,
+    "legacy_weighted_daily_names_do_not_imply_weighting": true
+  },
+  "code_evidence": {
+    "nws_extractor": "scripts/forecats_extract_nws_batch.py",
+    "glofas_extractor": "scripts/forecats_extract_glofas_batch.py",
+    "batch_driver": "scripts/forecats_batch.R",
+    "batch_config": "config/forecats_batch.site=11160500.single_retro_policy_pre1080.yaml",
+    "snapshot_stage": "R/unified/stages/stage_forecats.R",
+    "histfix_bundle_builder": "scripts/build_multimodel_v8_histfix_bundles.py"
+  },
+  "evidence": {
+    "workflow_contract": "docs/he7_latest_forecast_issue_contract_20260615.md",
+    "article_contract": "docs/latest_forecast_issue_contract.md",
+    "article_text": "wileyNJD-APA.tex",
+    "corrections_text": "/data/muscat_data/jaguir26/Corrections---Project-1/main.tex"
+  }
+}

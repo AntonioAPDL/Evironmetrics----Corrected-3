@@ -1,0 +1,8 @@
+{
+  "cutoff": "2022-12-25",
+  "run_id": "multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623",
+  "runtime_run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623",
+  "runtime_output_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623",
+  "published_crps": "0.6655",
+  "replay_mean_crps": "0.53805548474584530"
+}

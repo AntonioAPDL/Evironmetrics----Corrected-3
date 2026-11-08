@@ -1,0 +1,71 @@
+{
+  "schema_version": "revision_software_availability_v1",
+  "last_updated": "2026-08-12",
+  "purpose": "HE-5 software availability and reproducibility contract for the revised article.",
+  "public_estimation_package": {
+    "name": "exdqlm",
+    "description": "Reusable estimation routines for extended dynamic quantile linear models and related asymmetric Laplace paths.",
+    "cran_package_url": "https://CRAN.R-project.org/package=exdqlm",
+    "cran_version_verified_for_contract": "1.1.0",
+    "cran_publication_date_verified_for_contract": "2026-07-09",
+    "package_doi": "https://doi.org/10.32614/CRAN.package.exdqlm",
+    "software_paper_arxiv_url": "https://arxiv.org/abs/2607.22760",
+    "software_paper_arxiv_doi": "https://doi.org/10.48550/arXiv.2607.22760",
+    "software_paper_bibtex_key": "deleon2026exdqlm",
+    "source_repository": "https://github.com/AntonioAPDL/exdqlm"
+  },
+  "study_workflow_repository": {
+    "name": "san-lorenzo-exdqlm-reproducibility",
+    "public_url": "https://github.com/AntonioAPDL/san-lorenzo-exdqlm-reproducibility",
+    "local_path_at_validation": "/data/muscat_data/jaguir26/san-lorenzo-exdqlm-reproducibility",
+    "canonical_runbook": "README.md",
+    "software_reproducibility_contract": "provenance/reproducibility_levels.md",
+    "environment_strategy": "README.md#software",
+    "release_readiness_files": {
+      "readme": "README.md",
+      "citation": "CITATION.cff",
+      "license_notice": "LICENSE",
+      "validation_script": "scripts/validate_public_repository.py"
+    }
+  },
+  "revised_article_repository": {
+    "name": "Evironmetrics---REVISED-DOC-Corrected-2",
+    "public_url": "https://github.com/AntonioAPDL/Evironmetrics---REVISED-DOC-Corrected-2",
+    "local_path_at_validation": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2",
+    "asset_manifest": "MANUSCRIPT_ASSET_MANIFEST.json",
+    "provenance_doc": "docs/figure_table_provenance.md"
+  },
+  "corrections_repository": {
+    "name": "Corrections---Project-1",
+    "public_url": "https://github.com/AntonioAPDL/Corrections---Project-1",
+    "local_path_at_validation": "/data/muscat_data/jaguir26/Corrections---Project-1",
+    "he5_response_anchor": "main.tex"
+  },
+  "archive_status": {
+    "workflow_archive_status": "pending_final_release",
+    "workflow_archive_doi": "pending",
+    "workflow_archive_service": "pending",
+    "workflow_archive_release_tag": "pending",
+    "policy": "Create and cite the permanent workflow archive only after the revised article, corrections response, generated assets, and validators are final."
+  },
+  "validation_policy": {
+    "static_manifest_records": [
+      "public package URL",
+      "public package version",
+      "package DOI",
+      "software paper URL",
+      "software paper DOI",
+      "public reproducibility repository URL",
+      "article repository URL",
+      "corrections repository URL",
+      "archive DOI status"
+    ],
+    "validation_reports_record": [
+      "current workflow commit",
+      "current article commit",
+      "current corrections commit",
+      "current dirty status"
+    ],
+    "reason_static_commits_are_not_recorded": "A tracked manifest cannot reliably store its own current commit SHA because that SHA changes when the manifest is committed."
+  }
+}

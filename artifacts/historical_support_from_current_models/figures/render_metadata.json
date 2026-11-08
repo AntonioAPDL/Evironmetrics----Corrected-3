@@ -1,0 +1,14 @@
+{
+  "workflow_root": "/data/muscat_data/jaguir26/project1_ucsc_phd",
+  "multivar_run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20220511_v8_he2grid_c02_eps060_exdqlm_multivar_keep",
+  "cutoff_date": "2022-05-11",
+  "forecast_start_date": "2022-05-12",
+  "rendered_files": ["All_exal_2012-2016_DISC.png", "All_exal_2017-2019_DISC.png", "All_exal_2017-2019_DISC_fullrange.png", "80_component_1991_2022.png"],
+  "display_flow_scale": "log1p_cms",
+  "internal_flow_scale": "log1p_cms",
+  "component_display_contract": "80-month component shifted by posterior mean trend level",
+  "component_summary_probs": [0.975, 0.5, 0.025],
+  "time_cuts": [9197, 10566, 10703, 11753],
+  "time_cut_dates": ["2012-08-01", "2016-05-01", "2016-09-15", "2019-08-01"],
+  "rendered_at_utc": "2026-06-09 21:46:40 UTC"
+}

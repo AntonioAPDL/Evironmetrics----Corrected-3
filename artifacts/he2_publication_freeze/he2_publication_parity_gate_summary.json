@@ -1,0 +1,29 @@
+{
+  "generated_at_utc": "2026-06-30T14:20:38Z",
+  "rows": 45,
+  "cutoffs": 5,
+  "promoted_rows": 45,
+  "pending_rows": 0,
+  "blocked_rows": 0,
+  "promoted_labels": [
+    "AL-M-T0",
+    "AL-M-T1",
+    "AL-U-T1",
+    "N-M-T0",
+    "N-M-T1",
+    "N-U-T1",
+    "exAL-M-T0",
+    "exAL-M-T1",
+    "exAL-U-T1"
+  ],
+  "pending_labels": [],
+  "remaining_model_families_pending": 0,
+  "remaining_submodels_pending": 0,
+  "canonical_bundle_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510",
+  "canonical_bundle_run_id": "20260510_publication_shared_r01",
+  "canonical_data_start": "1987-05-29",
+  "within_cutoff_alignment_passes": 50,
+  "within_cutoff_alignment_checks": 50,
+  "final_9_model_benchmark_ready": true,
+  "gate_reason": "All nine HE2 Bayesian benchmark families are promoted onto the same canonical 20260510 input bundle."
+}

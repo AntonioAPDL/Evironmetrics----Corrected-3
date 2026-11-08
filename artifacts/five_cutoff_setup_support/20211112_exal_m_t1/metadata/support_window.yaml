@@ -1,0 +1,10 @@
+support_start: '1987-05-29'
+support_end: '2021-11-12'
+history_start_requested: '1987-05-29'
+retrospective_available_start: '1987-05-29'
+retrospective_available_end: '2021-11-12'
+plot_start: '2021-10-15'
+plot_end: '2021-12-10'
+forecast_start_date: '2021-11-13'
+forecast_plot_pre_days: 28
+forecast_plot_post_days: 28

@@ -1,0 +1,210 @@
+# HE3 runtime input audit detail
+
+The launch-row audit uses strict SHA-256 equality for copied runtime inputs.
+Generated numeric adapter CSVs are first compared by SHA-256; when writer
+precision differs, they may pass by canonical parsed-CSV equality only if
+schema, row count, missingness, dates/text fields, and numeric values agree
+within absolute tolerance `1e-12`.
+
+| Cutoff | Variant | Path | Mode | Raw hash match | Contract ok | Max abs diff | Reason |
+|---|---|---|---|---:|---:|---:|---|
+| 01/23/2021 | `noH1` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH1` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH1` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH1` | `fit/inputs/retros_fit_adapter.csv` | `canonical_numeric_csv` | `False` | `True` | 0 | ok |
+| 01/23/2021 | `noH1` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH1` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH1` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH1` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH2` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH2` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH2` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH2` | `fit/inputs/retros_fit_adapter.csv` | `canonical_numeric_csv` | `False` | `True` | 0 | ok |
+| 01/23/2021 | `noH2` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH2` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH2` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH2` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH3` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH3` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH3` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH3` | `fit/inputs/retros_fit_adapter.csv` | `canonical_numeric_csv` | `False` | `True` | 0 | ok |
+| 01/23/2021 | `noH3` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH3` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH3` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noH3` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noTF` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noTF` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noTF` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noTF` | `fit/inputs/retros_fit_adapter.csv` | `canonical_numeric_csv` | `False` | `True` | 0 | ok |
+| 01/23/2021 | `noTF` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noTF` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noTF` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noTF` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noTrend` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noTrend` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noTrend` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noTrend` | `fit/inputs/retros_fit_adapter.csv` | `canonical_numeric_csv` | `False` | `True` | 0 | ok |
+| 01/23/2021 | `noTrend` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noTrend` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noTrend` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 01/23/2021 | `noTrend` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH1` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH1` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH1` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH1` | `fit/inputs/retros_fit_adapter.csv` | `canonical_numeric_csv` | `False` | `True` | 0 | ok |
+| 11/12/2021 | `noH1` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH1` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH1` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH1` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH2` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH2` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH2` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH2` | `fit/inputs/retros_fit_adapter.csv` | `canonical_numeric_csv` | `False` | `True` | 0 | ok |
+| 11/12/2021 | `noH2` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH2` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH2` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH2` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH3` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH3` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH3` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH3` | `fit/inputs/retros_fit_adapter.csv` | `canonical_numeric_csv` | `False` | `True` | 0 | ok |
+| 11/12/2021 | `noH3` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH3` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH3` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noH3` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noTF` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noTF` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noTF` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noTF` | `fit/inputs/retros_fit_adapter.csv` | `canonical_numeric_csv` | `False` | `True` | 0 | ok |
+| 11/12/2021 | `noTF` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noTF` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noTF` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noTF` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noTrend` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noTrend` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noTrend` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noTrend` | `fit/inputs/retros_fit_adapter.csv` | `canonical_numeric_csv` | `False` | `True` | 0 | ok |
+| 11/12/2021 | `noTrend` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noTrend` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noTrend` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 11/12/2021 | `noTrend` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH1` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH1` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH1` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH1` | `fit/inputs/retros_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH1` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH1` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH1` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH1` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH2` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH2` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH2` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH2` | `fit/inputs/retros_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH2` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH2` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH2` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH2` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH3` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH3` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH3` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH3` | `fit/inputs/retros_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH3` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH3` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH3` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noH3` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTF` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTF` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTF` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTF` | `fit/inputs/retros_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTF` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTF` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTF` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTF` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTrend` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTrend` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTrend` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTrend` | `fit/inputs/retros_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTrend` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTrend` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTrend` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 12/21/2021 | `noTrend` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH1` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH1` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH1` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH1` | `fit/inputs/retros_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH1` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH1` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH1` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH1` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH2` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH2` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH2` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH2` | `fit/inputs/retros_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH2` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH2` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH2` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH2` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH3` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH3` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH3` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH3` | `fit/inputs/retros_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH3` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH3` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH3` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noH3` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTF` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTF` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTF` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTF` | `fit/inputs/retros_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTF` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTF` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTF` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTF` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTrend` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTrend` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTrend` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTrend` | `fit/inputs/retros_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTrend` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTrend` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTrend` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 05/11/2022 | `noTrend` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH1` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH1` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH1` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH1` | `fit/inputs/retros_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH1` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH1` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH1` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH1` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH2` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH2` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH2` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH2` | `fit/inputs/retros_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH2` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH2` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH2` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH2` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH3` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH3` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH3` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH3` | `fit/inputs/retros_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH3` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH3` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH3` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noH3` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTF` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTF` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTF` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTF` | `fit/inputs/retros_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTF` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTF` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTF` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTF` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTrend` | `fit/inputs/glofas_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTrend` | `fit/inputs/nws_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTrend` | `fit/inputs/parameters.txt` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTrend` | `fit/inputs/retros_fit_adapter.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTrend` | `inputs/shared/covariates/cov_01_PPT.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTrend` | `inputs/shared/covariates/cov_02_SOIL.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTrend` | `inputs/shared/covariates/cov_03_PCA.csv` | `sha256` | `True` | `True` |  |  |
+| 12/25/2022 | `noTrend` | `inputs/shared/covariates/covariate_features.csv` | `sha256` | `True` | `True` |  |  |

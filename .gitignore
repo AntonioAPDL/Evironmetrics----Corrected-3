@@ -1,0 +1,43 @@
+__pycache__/
+scripts/__pycache__/
+*.aux
+*.log
+*.pag
+*.out
+*.toc
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+wileyNJD-APA.pdf
+output.pdf
+main.pdf
+empty-eps-converted-to.pdf
+isba2026_poster/palette_previews/
+
+# Local-only poster and audit workspaces. The article submission repository
+# should stay focused on the manuscript source, figures, tables, artifacts, and
+# provenance needed by Overleaf/journal review.
+isba2026_poster/
+reports/
+
+# Local lower-case figure mirrors created during packaging/export work.
+# The canonical article figure tree in this repository is `Figures/`.
+figures/
+
+# Local planning/audit notes. These are working documents for advisor-facing
+# revision strategy and should not be sent to Overleaf, arXiv, or the journal.
+local_notes/
+
+# Large workflow-side posterior support data should stay out of the
+# Overleaf-facing article repository. Regenerate figures from the workflow
+# runtime source via scripts/refresh_authoritative_selected_model_support_figures.py.
+artifacts/representative_selected_model_2022_12_25/authoritative_support/authoritative_*_summary.csv
+artifacts/representative_selected_model_2022_12_25/authoritative_support/authoritative_*_summary.rds
+artifacts/representative_selected_model_2022_12_25/authoritative_support/authoritative_selected_support_manifest.json
+artifacts/representative_selected_model_2022_12_25/authoritative_support/authoritative_selected_support_lineage.csv
+*.RData
+*.rda
+*.rdata
+*.Rdata

@@ -1,0 +1,23 @@
+{
+  "multivar_source": {
+    "slug": "20220511_exal_m_t1",
+    "cutoff": "2022-05-11",
+    "run_id": "multimodel_20220511_v8_he2grid_c02_eps060_exdqlm_multivar_keep",
+    "canonical_runtime_run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20220511_v8_he2grid_c02_eps060_exdqlm_multivar_keep",
+    "historical_support_render_run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20220511_v8_he2grid_c02_eps060_exdqlm_multivar_keep",
+    "historical_support_render_generation_mode": "rendered_from_retained_state_summary",
+    "retained_state_summary_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/historical_support_from_current_models/figures/cache/historical_support_state_summaries.rds",
+    "render_scale_contract": {
+      "display_flow_scale": "log1p_cms",
+      "internal_flow_scale": "log1p_cms",
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20220511_v8_he2grid_c02_eps060_exdqlm_multivar_keep/resolved_config.yaml"
+    }
+  },
+  "univar_source": {
+    "cutoff": "2022-12-25",
+    "run_id": "multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar",
+    "output_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/outputs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar",
+    "copied_png": "exdqlm_univar_synth_cutoff_window_posterior_samples.png"
+  },
+  "univar_reference_refresh_mode": "univar_reference_only"
+}

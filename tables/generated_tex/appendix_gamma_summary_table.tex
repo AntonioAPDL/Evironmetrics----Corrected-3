@@ -1,0 +1,29 @@
+\begin{table*}[htbp]
+\centering
+\begin{threeparttable}
+\caption{Posterior Medians and 95\% Credible Intervals for the Source-Specific Skewness Parameters $\gamma_j(\tau)$ at the Representative December 25, 2022 Cutoff}
+\label{tab:gamma_sigma_intervals1}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l
+ S[table-format=-1.5] l
+ S[table-format=-1.5] l
+ S[table-format=-1.5] l
+@{}}
+\toprule
+ & \multicolumn{2}{c}{\textbf{USGS}} & \multicolumn{2}{c}{\textbf{GLOFAS}} & \multicolumn{2}{c}{\textbf{NWS}} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+\textbf{Quantile} & \textbf{Median} & \textbf{95\% CI} & \textbf{Median} & \textbf{95\% CI} & \textbf{Median} & \textbf{95\% CI} \\
+\midrule
+05th & 0.84518 & $[0.83064,\ 0.85881]$ & 0.97496 & $[0.96029,\ 0.98916]$ & 0.48124 & $[0.47043,\ 0.49255]$ \\
+20th & 0.09424 & $[0.08194,\ 0.10702]$ & 0.33544 & $[0.32203,\ 0.34881]$ & -0.00668 & $[-0.00924,\ -0.00413]$ \\
+35th & -0.02763 & $[-0.03298,\ -0.02234]$ & 0.16221 & $[0.15243,\ 0.17236]$ & -0.04280 & $[-0.04707,\ -0.03841]$ \\
+50th & -0.13196 & $[-0.14005,\ -0.12322]$ & 0.06336 & $[0.05671,\ 0.07050]$ & -0.13248 & $[-0.13938,\ -0.12523]$ \\
+65th & -0.31071 & $[-0.32244,\ -0.29846]$ & 0.01977 & $[0.01512,\ 0.02466]$ & -0.27078 & $[-0.28067,\ -0.26029]$ \\
+80th & -0.68543 & $[-0.70270,\ -0.66835]$ & -0.05100 & $[-0.06204,\ -0.04053]$ & -0.49724 & $[-0.51116,\ -0.48282]$ \\
+95th & -2.13801 & $[-2.16788,\ -2.10810]$ & -0.72784 & $[-0.73970,\ -0.71634]$ & -1.49200 & $[-1.51264,\ -1.47052]$ \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}
+\item \textit{Note:} Posterior medians and 95\% credible intervals $[{\rm Q2.5}, {\rm Q97.5}]$ for the source-specific skewness parameters $\gamma_j(\tau)$ in the exAL observation model at the representative December 25, 2022 cutoff. The quantile labels 05th through 95th correspond to the seven fitted quantile models. These summaries are included as supplementary appendix support rather than as primary forecast-validation evidence.
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}

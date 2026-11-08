@@ -1,0 +1,52 @@
+history_start_requested: '1987-05-29'
+cutoff_date: '2022-05-11'
+usgs:
+  requested_start: '1987-05-29'
+  requested_end: '2022-05-11'
+  available_start: '1987-05-29'
+  available_end: '2022-05-11'
+  requested_window_days: 12767
+  available_window_days: 12767
+  missing_days_requested_window: 0
+  missing_days_available_window: 0
+  full_history_available: true
+ppt:
+  requested_start: '1987-05-29'
+  requested_end: '2022-05-11'
+  available_start: '1987-05-29'
+  available_end: '2022-05-11'
+  requested_window_days: 12767
+  available_window_days: 12767
+  missing_days_requested_window: 0
+  missing_days_available_window: 0
+  full_history_available: true
+soil:
+  requested_start: '1987-05-29'
+  requested_end: '2022-05-11'
+  available_start: '1987-05-29'
+  available_end: '2022-05-11'
+  requested_window_days: 12767
+  available_window_days: 12767
+  missing_days_requested_window: 0
+  missing_days_available_window: 0
+  full_history_available: true
+gdpc:
+  requested_start: '1987-05-29'
+  requested_end: '2022-05-11'
+  available_start: '1987-05-29'
+  available_end: '2022-05-11'
+  requested_window_days: 12767
+  available_window_days: 12767
+  missing_days_requested_window: 0
+  missing_days_available_window: 0
+  full_history_available: true
+retrospective:
+  requested_start: '1987-05-29'
+  requested_end: '2022-05-11'
+  available_start: '1987-05-29'
+  available_end: '2022-05-11'
+  requested_window_days: 12767
+  available_window_days: 12767
+  missing_days_requested_window: 0
+  missing_days_available_window: 0
+  full_history_available: true

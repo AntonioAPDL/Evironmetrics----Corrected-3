@@ -1,0 +1,11 @@
+{
+  "slug": "20221225_exal_m_t1",
+  "cutoff_date": "2022-12-25",
+  "published_crps": "0.4375",
+  "selected_run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_all_cutoffs_20260512/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_multivar_keep",
+  "figure_bundle_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2022-12-25/run_id=20260510_publication_shared_r01",
+  "bundle_class": "histfix_long_history_bundle",
+  "nws_policy_summary": "nws_retro_v21 with nws_retro_v30 tail fill after natural coverage end",
+  "glofas_policy_summary": "glofas_hist_v31_lisflood_cons",
+  "support_start": "1987-05-29"
+}

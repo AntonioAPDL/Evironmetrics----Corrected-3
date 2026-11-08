@@ -1,0 +1,62 @@
+{
+  "schema_version": "he1_runtime_benchmark_v1",
+  "created_for": "HE-1 computational cost and operational feasibility response",
+  "created_date": "2026-06-15",
+  "source": {
+    "source_root": "/data/jaguir26/local/src/exdqlm__wt__shared_fitforecast_v2_1p0p0/validation/fitforecast_v2/runs/20260515_exdqlm_dqlm_dynamic_fitforecast_v2_orchestrated_3500202605200353075941",
+    "interface_csv_relative_path": "interfaces/exdqlm_dqlm_dynamic_fitforecast_v2_shared_interface.csv",
+    "reported_last_modified": "2026-05-20 03:53:15 EDT",
+    "source_role": "latest substantial shared exDQLM/DQLM validation runtime located for the revision audit",
+    "raw_runtime_tree_in_article_repo": false
+  },
+  "local_access_note": {
+    "available_in_current_local_environment": false,
+    "reason": "The runtime worktree is external to the revised article repository and was not mounted under the accessible project paths during the HE-1 writing pass.",
+    "validation_implication": "The article stores a compact provenance manifest and validates wording against this manifest; raw CSV re-summarization should be rerun from the source worktree when it is mounted."
+  },
+  "interface_table": {
+    "row_count": 1620,
+    "column_count": 127,
+    "status_summary": "all 1620 interface rows are done",
+    "runtime_columns_present": [
+      "runtime_sec_fit",
+      "runtime_sec_forecast",
+      "fit_runtime_seconds",
+      "forecast_runtime_seconds",
+      "runtime_sec_total",
+      "runtime_sec"
+    ],
+    "practical_total_runtime_columns": [
+      "runtime_sec_total",
+      "runtime_sec"
+    ],
+    "mostly_missing_decomposition_columns": [
+      "runtime_sec_fit",
+      "runtime_sec_forecast"
+    ]
+  },
+  "planned_run_manifest": {
+    "row_manifest_status_source": "manifests/status_counts.csv",
+    "planned_run_units": 72,
+    "done": 54,
+    "pending": 18,
+    "interpretation": "The shared interface records completed measured output rows; the manifest preserves the broader planned orchestration state, including pending rows."
+  },
+  "benchmark": {
+    "representative_end_to_end_runtime_hours_approx": 2.0,
+    "timing_basis": "end-to-end wall-clock runtime from runtime_sec_total/runtime_sec",
+    "hardware": {
+      "machine_class": "production Linux server",
+      "core_count": 64,
+      "memory_gib_approx": 503
+    },
+    "parallelization": "Seven quantile-specific fits are independent and can be dispatched in parallel for a single-site issuance cycle.",
+    "scope": "single-site San Lorenzo validation workflow"
+  },
+  "claims_policy": {
+    "report_total_runtime": true,
+    "report_fit_forecast_decomposition": false,
+    "valid_scope": "representative end-to-end timing for completed measured validation outputs",
+    "limitation": "Do not claim a separate fitting, forecasting, or post-processing breakdown unless a future runtime source provides populated component timing columns."
+  }
+}

@@ -1,0 +1,208 @@
+{
+  "figures": [
+    {
+      "label": "fig:sanlorenzo",
+      "manuscript_path": "Figures/manuscript/site_context_usgs.png",
+      "category": "Setup / Inputs",
+      "role": "Study-setting figure",
+      "source_path": "artifacts/five_cutoff_setup_support/20221225_exal_m_t1/figures/usgs.png",
+      "source_class": "setup_support_v2_representative",
+      "current_model_output_wired": true,
+      "note": "Representative 2022-12-25 setup/support figure from the canonical five-cutoff support bundle"
+    },
+    {
+      "label": "fig:covariates",
+      "manuscript_path": "Figures/manuscript/covariate_context_precip_soil_gdpc.png",
+      "category": "Setup / Inputs",
+      "role": "Covariate setup figure",
+      "source_path": "artifacts/five_cutoff_setup_support/20221225_exal_m_t1/figures/precip_soilmoisture_climatePC1_faceted_labeled.png",
+      "source_class": "setup_support_v2_representative",
+      "current_model_output_wired": true,
+      "note": "Representative 2022-12-25 setup/support figure from the canonical five-cutoff support bundle"
+    },
+    {
+      "label": "fig:retrospectives",
+      "manuscript_path": "Figures/manuscript/retrospective_products_context.png",
+      "category": "Setup / Inputs",
+      "role": "Retrospective-product setup figure",
+      "source_path": "artifacts/five_cutoff_setup_support/20221225_exal_m_t1/figures/retrospective_log_discharge_plot_faceted.png",
+      "source_class": "setup_support_v2_representative",
+      "current_model_output_wired": true,
+      "note": "Representative 2022-12-25 setup/support figure from the canonical five-cutoff support bundle"
+    },
+    {
+      "label": "fig:ensembles",
+      "manuscript_path": "Figures/manuscript/forecast_products_context.png",
+      "category": "Setup / Inputs",
+      "role": "Forecast-product setup figure",
+      "source_path": "artifacts/five_cutoff_setup_support/20221225_exal_m_t1/figures/forecats.png",
+      "source_class": "setup_support_v2_representative",
+      "current_model_output_wired": true,
+      "note": "Representative 2022-12-25 setup/support figure from the canonical five-cutoff support bundle"
+    },
+    {
+      "label": "fig:dry_quantile",
+      "manuscript_path": "Figures/manuscript/historical_summary_dry_period.png",
+      "category": "Selected Model",
+      "role": "Selected-model quantile dynamics, 2012-2016 window",
+      "source_path": "artifacts/representative_selected_model_2022_12_25/authoritative_support/figures/selected_model_quantile_dry_period.png",
+      "source_class": "current_selected_model_representative",
+      "current_model_output_wired": true,
+      "note": "Rendered from the same 2022-12-25 selected exAL-M-T1 output authority as the synthesis figure."
+    },
+    {
+      "label": "fig:rainy_quantile",
+      "manuscript_path": "Figures/manuscript/historical_summary_wet_period.png",
+      "category": "Selected Model",
+      "role": "Selected-model quantile dynamics, 2017-2019 window",
+      "source_path": "artifacts/representative_selected_model_2022_12_25/authoritative_support/figures/selected_model_quantile_wet_period.png",
+      "source_class": "current_selected_model_representative",
+      "current_model_output_wired": true,
+      "note": "Rendered from the same 2022-12-25 selected exAL-M-T1 output authority as the synthesis figure."
+    },
+    {
+      "label": "fig:synth1",
+      "manuscript_path": "Figures/multivariate_synthesis_by_cutoff/cutoff_2022_12_25_multivariate_synthesis_with_reference_ensembles.png",
+      "category": "Selected Model",
+      "role": "Representative selected-model synthesis with reference-product overlays for the 2022-12-25 cutoff",
+      "source_path": "artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_posterior_samples_with_raw_ensembles.png",
+      "source_class": "current_selected_model_representative",
+      "current_model_output_wired": true,
+      "note": "Authoritative 2022-12-25 exAL-M-T1 clean HE2 publication replay from the five-cutoff main-model synthesis family, with retrospective and forecast-product reference overlays."
+    },
+    {
+      "label": "fig:80_components",
+      "manuscript_path": "Figures/manuscript/historical_component_80month.png",
+      "category": "Selected Model",
+      "role": "Selected-model long-cycle seasonal component summary with dry/wet period overlays",
+      "source_path": "artifacts/representative_selected_model_2022_12_25/authoritative_support/figures/selected_model_component_80month.png",
+      "source_class": "current_selected_model_representative",
+      "current_model_output_wired": true,
+      "note": "Rendered from the same 2022-12-25 selected exAL-M-T1 output authority using raw state component 6 only; plus/minus-trend variants are analysis-only diagnostics."
+    },
+    {
+      "label": "fig:synth2",
+      "manuscript_path": "Figures/manuscript/reference_synthesis_univariate.png",
+      "category": "Appendix Support",
+      "role": "Univariate transfer-active reference synthesis",
+      "source_path": "artifacts/historical_support_from_current_models/figures/reference_synthesis_univariate.png",
+      "source_class": "current_model_output_support",
+      "current_model_output_wired": true,
+      "note": "Copied from the current 2022-12-25 exdqlm_univar publication-style output bundle; uses the USGS observation channel and transfer covariates while excluding retrospective-product and forecast-product source channels."
+    }
+  ],
+  "tables": {
+    "tab:benchmark_crps_models": {
+      "label": "tab:benchmark_crps_models",
+      "role": "Five-cutoff 28-day benchmark table",
+      "table_tex_path": "tables/generated_tex/benchmark_crps_main_table.tex",
+      "source_class": "publication_manifest_plus_representative_raw_baselines",
+      "sources": {
+        "bayesian_manifest_csv": "artifacts/he2_publication_freeze/he2_bayesian_publication_manifest.csv",
+        "five_run_source_root": "artifacts/five_cutoff_crps_validation_sources"
+      },
+      "note": "Generated from the frozen HE2 publication manifest plus the 28-day raw GloFAS row in the five authoritative exAL-M-T1 per-time CRPS summaries. NWS is intentionally excluded from this table because the archived NWS forecasts provide only eight valid daily leads for these origins."
+    },
+    "tab:benchmark_crps_models_nws_horizon": {
+      "label": "tab:benchmark_crps_models_nws_horizon",
+      "role": "Five-cutoff common eight-day NWS-horizon benchmark table",
+      "table_tex_path": "tables/generated_tex/benchmark_crps_nws_horizon_table.tex",
+      "source_class": "publication_manifest_plus_representative_raw_baselines",
+      "sources": {
+        "bayesian_manifest_csv": "artifacts/he2_publication_freeze/he2_bayesian_publication_manifest.csv",
+        "five_run_source_root": "artifacts/five_cutoff_crps_validation_sources"
+      },
+      "note": "Generated from the same frozen HE2 publication manifest and authoritative exAL-M-T1 per-time CRPS sources as Table 1, but every row is restricted to leads 1--8 so RAW-NWS, RAW-GLOFAS, and the Bayesian predictive distributions are compared on a common horizon."
+    },
+    "tab:he4_quantile_check_loss": {
+      "label": "tab:he4_quantile_check_loss",
+      "role": "Forecast-window quantile check-loss table for the four principal synthesis competitors",
+      "table_tex_path": "tables/generated_tex/he4_quantile_check_loss_main_table.tex",
+      "source_class": "he4_current_he2_publication_manifest",
+      "sources": {
+        "he4_quantile_check_loss_wide_csv": "artifacts/he4_quantile_check_loss_current_publication/he4_quantile_check_loss_wide.csv",
+        "he4_selection_audit_csv": "artifacts/he4_quantile_check_loss_current_publication/he4_selection_audit.csv",
+        "he2_publication_manifest_csv": "artifacts/he2_publication_freeze/he2_bayesian_publication_manifest.csv"
+      },
+      "note": "Generated from the current HE2 publication manifest rows for exAL-M-T1, AL-M-T1, exAL-U-T1, and AL-U-T1. Quantile artifacts are resolved from the manifest run_root/run_id pairs, and CRPS is cross-checked against the frozen HE2 manifest before check losses are summarized."
+    },
+    "tab:components_23_31": {
+      "label": "tab:components_23_31",
+      "role": "Representative covariate-effects table",
+      "table_tex_path": "tables/generated_tex/representative_covariate_effects_table.tex",
+      "source_class": "current_selected_model_representative",
+      "sources": {
+        "covariate_effects_csv": "artifacts/representative_selected_model_2022_12_25/covariate_effects_summary.csv"
+      },
+      "note": "Generated from the representative 2022-12-25 exAL-M-T1 covariate-effects export"
+    },
+    "tab:gamma_sigma_intervals1": {
+      "label": "tab:gamma_sigma_intervals1",
+      "role": "Appendix gamma summary",
+      "table_tex_path": "tables/generated_tex/appendix_gamma_summary_table.tex",
+      "source_class": "current_selected_model_representative",
+      "sources": {
+        "gamma_summary_csv": "artifacts/representative_selected_model_2022_12_25/gamma_summary.csv"
+      },
+      "note": "Generated from the representative 2022-12-25 exAL-M-T1 gamma export"
+    },
+    "tab:gamma_sigma_intervals2": {
+      "label": "tab:gamma_sigma_intervals2",
+      "role": "Appendix sigma summary",
+      "table_tex_path": "tables/generated_tex/appendix_sigma_summary_table.tex",
+      "source_class": "current_selected_model_representative",
+      "sources": {
+        "sigma_summary_csv": "artifacts/representative_selected_model_2022_12_25/sigma_summary.csv"
+      },
+      "note": "Generated from the representative 2022-12-25 exAL-M-T1 sigma export"
+    },
+    "tab:he3_ablation_crps": {
+      "label": "tab:he3_ablation_crps",
+      "role": "Selected-model 28-day component-removal sensitivity CRPS table",
+      "table_tex_path": "tables/generated_tex/he3_ablation_crps_main_table.tex",
+      "source_class": "he3_authoritative_ablation",
+      "sources": {
+        "he3_ablation_long_csv": "artifacts/he3_exdqlm_ablation_authoritative/he3_ablation_long.csv",
+        "he3_ablation_audit_csv": "artifacts/he3_exdqlm_ablation_authoritative/audit__he3_ablation_audit.csv",
+        "he3_runtime_input_detail_csv": "artifacts/he3_exdqlm_ablation_authoritative/audit__he3_ablation_runtime_input_detail.csv",
+        "five_run_source_root": "artifacts/five_cutoff_crps_validation_sources",
+        "he3_ablation_horizon_summary_csv": "tables/generated_tex/he3_ablation_crps_horizon_summary.csv"
+      },
+      "note": "Generated from the authoritative HE3 exDQLM multivariate component-removal sensitivity matrix anchored to the 20260601 exAL-M-T1 winner manifest. This 28-day table includes RAW-GLOFAS as the horizon-compatible raw reference and omits RAW-NWS because NWS has eight valid daily leads for these origins."
+    },
+    "tab:he3_ablation_crps_nws_horizon": {
+      "label": "tab:he3_ablation_crps_nws_horizon",
+      "role": "Selected-model common eight-day NWS-horizon component-removal sensitivity CRPS table",
+      "table_tex_path": "tables/generated_tex/he3_ablation_crps_nws_horizon_table.tex",
+      "source_class": "he3_authoritative_ablation",
+      "sources": {
+        "he3_ablation_long_csv": "artifacts/he3_exdqlm_ablation_authoritative/he3_ablation_long.csv",
+        "he3_ablation_audit_csv": "artifacts/he3_exdqlm_ablation_authoritative/audit__he3_ablation_audit.csv",
+        "he3_runtime_input_detail_csv": "artifacts/he3_exdqlm_ablation_authoritative/audit__he3_ablation_runtime_input_detail.csv",
+        "five_run_source_root": "artifacts/five_cutoff_crps_validation_sources",
+        "he3_ablation_horizon_summary_csv": "tables/generated_tex/he3_ablation_crps_horizon_summary.csv"
+      },
+      "note": "Generated from the same authoritative HE3 component-removal sensitivity sources as the 28-day table, but every row is restricted to leads 1--8 so RAW-NWS, RAW-GLOFAS, the full model, and the reduced variants are compared on a common horizon."
+    }
+  },
+  "runtime_benchmarks": {
+    "he1_runtime_benchmark": {
+      "label": "he1_runtime_benchmark",
+      "role": "Representative end-to-end runtime benchmark for the HE-1 computational-cost response",
+      "manifest_path": "artifacts/runtime_benchmark/runtime_manifest.json",
+      "doc_path": "docs/runtime_benchmark_contract.md",
+      "source_class": "compact_runtime_manifest",
+      "note": "Records the latest shared exDQLM/DQLM validation runtime metadata used for manuscript wording. The article reports total end-to-end runtime from runtime_sec_total/runtime_sec and intentionally does not claim a fit/forecast/post-processing decomposition."
+    }
+  },
+  "forecast_protocols": {
+    "he7_latest_forecast_issue": {
+      "label": "he7_latest_forecast_issue",
+      "role": "Latest-forecast-only issue-selection contract for the rolling-origin forecast evaluation",
+      "manifest_path": "artifacts/latest_forecast_issue/latest_forecast_issue_manifest.json",
+      "doc_path": "docs/latest_forecast_issue_contract.md",
+      "source_class": "compact_forecast_issue_manifest",
+      "note": "Records that publication forecast matrices use the latest forecast issue available at each cutoff and that legacy weighted_daily file names are compatibility aliases rather than active cross-issue weighting."
+    }
+  }
+}

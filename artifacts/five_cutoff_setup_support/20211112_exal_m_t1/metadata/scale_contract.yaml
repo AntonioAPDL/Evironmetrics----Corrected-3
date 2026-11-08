@@ -1,0 +1,50 @@
+display_scale: log1p_cms
+display_axis_label: River flow [log(1 + x); x in m^3 s^-1]
+display_scale_basis: workflow_support_display_contract
+selected_run_internal_analysis_scale: log1p_cms
+figure_inputs:
+  usgs_daily:
+    path: /data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_all_cutoffs_20260512/runs/multimodel_20211112_v8_he2pubgdpc1r1_exdqlm_multivar_keep/inputs/shared/usgs/usgs_daily.csv
+    storage_scale: raw_cms
+  covariate_ppt:
+    path: /data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_all_cutoffs_20260512/runs/multimodel_20211112_v8_he2pubgdpc1r1_exdqlm_multivar_keep/inputs/shared/covariates/cov_01_PPT.csv
+    storage_scale: native_covariate_scale
+  covariate_soil:
+    path: /data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_all_cutoffs_20260512/runs/multimodel_20211112_v8_he2pubgdpc1r1_exdqlm_multivar_keep/inputs/shared/covariates/cov_02_SOIL.csv
+    storage_scale: native_covariate_scale
+  covariate_gdpc:
+    path: /data/muscat_data/jaguir26/project1_ucsc_phd/data/canonical_gdpc_master/v20260509/outputs/gdpc_master_component_01_19870529_20230122.csv
+    storage_scale: dimensionless_canonical_gdpc_score
+    note: Rendered from the canonical GDPC1 master factor and sliced to the cutoff-specific
+      support window; workflow-facing cov_03_PCA.csv remains a compatibility alias
+      for downstream fit consumers.
+  forecast_glofas_weighted:
+    path: /data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2021-11-12/run_id=20260510_publication_shared_r01/inputs/glofas_weighted_daily.csv
+    storage_scale: raw_cms
+  forecast_nws_weighted:
+    path: /data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2021-11-12/run_id=20260510_publication_shared_r01/inputs/nws_weighted_daily.csv
+    storage_scale: raw_cms
+  retrospective_history:
+    path: /data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2021-11-12/run_id=20260510_publication_shared_r01/inputs/retros_source_lineage.csv
+    storage_scale: raw_cms
+    note: inputs/retros_daily.csv remains a legacy log1p bundle artifact and is not
+      used directly for the rendered retrospective or staged forecast-context plots.
+current_rating_stage_references:
+  interpretation: Approximate current-rating discharge equivalents of current NWS
+    BTEC1 stage categories, computed from USGS 11160500 rating 40.0. These are operational
+    magnitude references, not historical flood-stage classifications of daily-mean
+    observations.
+  rating_url: https://waterdata.usgs.gov/nwisweb/get_ratings?file_type=exsa&site_no=11160500
+  nws_stage_url: https://www.cnrfc.noaa.gov/obsRiver_hc.php?id=BTEC1
+  rating_id: '40.0'
+  rating_effective_begin: 2025-11-13 13:15 PST
+  cfs_to_cms: 0.028316846592
+  plotted_levels:
+  - label: Minor reference
+    stage_ft: 16.5
+    discharge_cfs: 7402.38
+    log1p_cms: 5.350017858
+  - label: Major reference
+    stage_ft: 21.76
+    discharge_cfs: 14895.73
+    log1p_cms: 6.046899494

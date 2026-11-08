@@ -1,0 +1,27 @@
+\begin{table*}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.08}
+\begin{threeparttable}
+\caption{Mean 28-day forecast-window CRPS by model family and cutoff across the five rolling-origin evaluation folds, including normal dynamic linear model baselines. Lower values are better; bold indicates the lowest CRPS within each cutoff column.}
+\label{tab:benchmark_crps_models}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} >{\ttfamily}l r r r r r}
+\toprule
+Model label & 01/23/2021 & 11/12/2021 & 12/21/2021 & 05/11/2022 & 12/25/2022 \\
+\midrule
+\multicolumn{6}{l}{\textit{Raw forecast products}} \\
+RAW-GLOFAS & 0.40366 & 0.16957 & 0.68246 & 0.27227 & 1.56006 \\
+\midrule
+\multicolumn{6}{l}{\textit{Bayesian benchmark variants}} \\
+N-U-T1 & 0.33592 & 0.17059 & 1.19344 & 0.15077 & 2.49968 \\
+N-M-T0 & 1.84333 & 0.38023 & 0.65964 & 0.67014 & 0.64404 \\
+N-M-T1 & 3.21490 & 0.89096 & 3.04362 & 0.86820 & 3.88863 \\
+AL-U-T1 & 0.23107 & 0.07795 & 0.87049 & 0.10506 & 1.73376 \\
+AL-M-T0 & 0.46798 & 0.19990 & 0.58668 & 0.09940 & 1.33703 \\
+AL-M-T1 & 0.14592 & 0.05551 & 0.27775 & 0.05467 & 0.62764 \\
+exAL-U-T1 & 0.21622 & 0.10194 & 0.83337 & 0.12452 & 1.70548 \\
+exAL-M-T0 & 0.75682 & 1.72135 & 0.97762 & 1.02087 & 1.21132 \\
+exAL-M-T1 & \textbf{0.13971} & \textbf{0.04724} & \textbf{0.26045} & \textbf{0.02273} & \textbf{0.53806} \\
+\bottomrule
+\end{tabular*}
+\end{threeparttable}
+\end{table*}

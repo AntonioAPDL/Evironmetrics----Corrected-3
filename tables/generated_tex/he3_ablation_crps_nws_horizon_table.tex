@@ -1,0 +1,27 @@
+\begin{table*}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.08}
+\begin{threeparttable}
+\caption{Component-removal sensitivity analysis over the common eight-day NWS forecast horizon. Lower values are better, and bold marks the best value among the full reference and reduced models within each cutoff.}
+\label{tab:he3_ablation_crps_nws_horizon}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} >{\ttfamily}l r r r r r}
+\toprule
+Model & 01/23/2021 & 11/12/2021 & 12/21/2021 & 05/11/2022 & 12/25/2022 \\
+\midrule
+exAL-M-T1 (full) & \textbf{0.22691} & \textbf{0.05858} & \textbf{0.59445} & \textbf{0.02567} & \textbf{0.59070} \\
+exAL-M-T1-noTrend & 1.49490 & 0.77464 & 3.38697 & 0.64627 & 3.40333 \\
+exAL-M-noTF & 1.79777 & 1.69066 & 2.18697 & 2.45857 & 2.30863 \\
+exAL-M-T1-noH1 & 1.66963 & 1.69424 & 3.70227 & 1.14270 & 3.79228 \\
+exAL-M-T1-noH2 & 1.11122 & 1.14286 & 3.80753 & 0.99851 & 3.92807 \\
+exAL-M-T1-noH3 & 1.53419 & 1.09181 & 3.45450 & 0.78219 & 3.75262 \\
+\addlinespace[2pt]
+\multicolumn{6}{l}{\textit{Raw forecast products (reference only)}} \\
+RAW-GLOFAS & 0.57251 & 0.20670 & 1.29127 & 0.32274 & 1.48188 \\
+RAW-NWS & 0.83037 & 1.37192 & 0.28118 & 0.28366 & 0.55680 \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}
+\item \textit{Note:} This table restricts every row to forecast leads 1--8, the common daily horizon available for the NWS comparison.
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}

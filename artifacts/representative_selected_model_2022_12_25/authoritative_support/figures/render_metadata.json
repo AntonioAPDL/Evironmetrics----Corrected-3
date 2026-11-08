@@ -1,0 +1,31 @@
+{
+  "support_dir": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_selected_output_support_20260625_seasonal_only_current_components/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625",
+  "output_dir": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/representative_selected_model_2022_12_25/authoritative_support/figures",
+  "display_flow_scale": "log1p_cms",
+  "render_contract_version": "authoritative_selected_model_support_figures_v2",
+  "source_support_generated_at_utc": "2026-06-26T00:18:27Z",
+  "figure_a1_component": 6,
+  "figure_a1_component_contract": "raw_state_component",
+  "figure_a1_article_display_label": "long-cycle seasonal component only (about 82 months)",
+  "hydrologic_regime_periods": [
+    {
+      "period": "Dry",
+      "start": "2012-01-01",
+      "end": "2016-12-31",
+      "fill": "#fff0b3"
+    },
+    {
+      "period": "Wet",
+      "start": "2017-01-01",
+      "end": "2019-12-31",
+      "fill": "#cfe8f7"
+    }
+  ],
+  "rendered_files": ["selected_model_quantile_dry_period.png", "selected_model_quantile_wet_period.png", "selected_model_component_80month.png"],
+  "component_analysis": {
+    "directory": "analysis_figures/component_evolution",
+    "manifest": "analysis_figures/component_evolution/component_analysis_manifest.csv",
+    "figure_count": 9,
+    "files": ["component_01_raw_state_component.png", "component_02_raw_state_component.png", "component_03_raw_state_component.png", "component_04_raw_state_component.png", "component_05_raw_state_component.png", "component_06_raw_state_component.png", "component_07_raw_state_component.png", "component_06_component_6_plus_trend_component_1_samplewise.png", "component_06_component_6_minus_trend_component_1_samplewise.png"]
+  }
+}
