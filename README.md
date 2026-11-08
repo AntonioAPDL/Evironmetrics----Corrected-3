@@ -5,10 +5,12 @@ This repository is the submission-facing freeze of the revised manuscript, its m
 ## Where to look first
 
 - `wileyNJD-APA.tex`: manuscript source used by Overleaf
+- `wileyNJD-APA.pdf`: current locally built review PDF
+- `docs/comment1_revision.txt`: implemented comment-1 changes and review/build entrypoints
 - `Figures/manuscript/`: the exact figure files used by the manuscript
-- `Figures/forecast_context_by_cutoff/`: cutoff-wide copies of the Figure 4 forecast-context view for all five cutoffs
+- `Figures/forecast_context_by_cutoff/`: cutoff-wide copies of the forecast-context view for all five cutoffs
 - `Figures/multivariate_synthesis_by_cutoff/`: cutoff-wide selected-model synthesis family, including the supplementary overlay panels
-- `Figures/reference_synthesis_by_cutoff/`: Figure A2-style reference-synthesis family for all five cutoffs
+- `Figures/reference_synthesis_by_cutoff/`: univariate reference-synthesis family for all five cutoffs
 - `tables/generated_tex/`: the exact generated table blocks included by the manuscript
 - `docs/figure_table_provenance.md`: figure/table provenance summary
 - `artifacts/software_availability/software_availability_manifest.json`: compact HE-5 software availability and archive-status manifest
@@ -39,10 +41,12 @@ validators pass.
 python3 scripts/refresh_all_generated_assets.py
 ```
 
-The refresh path now includes a figure-path validation step. The manuscript keeps
-the lowercase `figures/` tree as canonical, while `wileyNJD-APA.tex` also
-accepts the legacy uppercase `Figures/` tree as a compile-time fallback for
-Overleaf Git-sync compatibility.
+The refresh path includes a figure-path validation step. The canonical manuscript
+assets are in uppercase `Figures/`, matching `MANUSCRIPT_ASSET_MANIFEST.json`.
+Lowercase `figures/` is an optional compatibility copy. The historically named
+`scripts/sync_legacy_uppercase_figures.py` copies only from `Figures/` to
+`figures/`, preserves unmanaged files, and supports bounded `--relative-path`
+updates. It never writes to the canonical tree.
 
 For a benchmark-only authority refresh, prefer the narrower sequence in the
 workflow runbook: refresh the HE2 manifest snapshot, selected-model bundles,
@@ -79,8 +83,16 @@ deliberately regenerating them.
 ## Standard compile command
 
 ```bash
-pdflatex -interaction=nonstopmode -halt-on-error -jobname=output wileyNJD-APA.tex
-bibtex output
-pdflatex -interaction=nonstopmode -halt-on-error -jobname=output wileyNJD-APA.tex
-pdflatex -interaction=nonstopmode -halt-on-error -jobname=output wileyNJD-APA.tex
+python3 -B scripts/build_manuscript_review.py \
+  --output-dir /tmp/NEW_article_review --jobname manuscript_review
 ```
+
+Choose a new output directory for each build. The helper records source, table
+and included-image hashes, LaTeX/BibTeX commands, label stability and PDF checks.
+It builds from the article directory and keeps temporary files in the requested
+output directory. `main.tex` is a wrapper for the same manuscript source.
+
+The reviewed presentation assets are preserved by the checksummed registry in
+`artifacts/comment1_figure_revision/`. Check it with
+`python3 -B scripts/comment1_figure_revision.py --check`. A new numerical source
+or selected-run identity requires a new inspected presentation revision.

@@ -1,0 +1,52 @@
+{
+  "slug": "20211112_exal_m_t1",
+  "cutoff": "2021-11-12",
+  "cutoff_code": "20211112",
+  "multivar_run_id": "multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep",
+  "grid_spec_id": "exdqlm_multivar_keep_canonical_grid_20260524:authoritative_winner",
+  "univar_run_id": "multimodel_20211112_v8_he2pubgdpc1r1_exdqlm_univar",
+  "source_lineage": "exdqlm_multivar_keep_canonical_grid_20260524:authoritative_winner",
+  "authoritative_manifest": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/he2_publication_freeze/he2_bayesian_publication_manifest.csv",
+  "runtime_run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep",
+  "runtime_output_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep",
+  "run_id": "multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep",
+  "univar_runtime_run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20211112_v8_he2pubgdpc1r1_exdqlm_univar",
+  "univar_runtime_output_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20211112_v8_he2pubgdpc1r1_exdqlm_univar/post/outputs/multimodel_20211112_v8_he2pubgdpc1r1_exdqlm_univar",
+  "presentation_revision": {
+    "id": "publication_comment1_v3",
+    "registry": "artifacts/comment1_figure_revision/registry.json",
+    "render_manifest": "artifacts/comment1_figure_revision/render_manifest.json",
+    "mean": "E[log(1 + discharge_cms)] from complete retained predictive matrices",
+    "interval_probabilities": [
+      0.025,
+      0.975
+    ],
+    "sample_path_cap": 10,
+    "origin_line": "T; first forecast T+1",
+    "reference_guides": {
+      "synthesis": {
+        "log1p_cms": [
+          5.20948615,
+          6.06378521
+        ],
+        "source": "existing focus renderer fixed reference levels"
+      },
+      "context": {
+        "log1p_cms": [
+          5.350017857679262,
+          6.04689949355578
+        ],
+        "discharge_cfs": [
+          7402.38,
+          14895.73
+        ],
+        "source": "USGS rating40.0 discharge equivalents in existing figure_style_contract.R"
+      },
+      "labels": [
+        "Lower flow reference",
+        "Upper flow reference"
+      ],
+      "interpretation": "Existing display-specific reference discharges are retained; labels do not assert equal thresholds across displays."
+    }
+  }
+}

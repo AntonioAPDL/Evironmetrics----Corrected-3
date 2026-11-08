@@ -1,0 +1,33 @@
+{
+  "scope": "Narrow additional period-title consistency repair; no model execution.",
+  "input_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_selected_output_support_20260625_seasonal_only_current_components/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625",
+  "source_period_days": 2474.871,
+  "source_period_calendar_years": 6.776,
+  "outputs": [
+    {
+      "article_relative_path": "artifacts/representative_selected_model_2022_12_25/authoritative_support/figures/selected_model_component_80month.png",
+      "sha256": "276821de7836c9c4fe6b29dab781420fa24f02fdc1c11da33bf78360ba5d9774"
+    },
+    {
+      "article_relative_path": "Figures/manuscript/historical_component_80month.png",
+      "sha256": "276821de7836c9c4fe6b29dab781420fa24f02fdc1c11da33bf78360ba5d9774"
+    }
+  ],
+  "input_hashes": [
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_selected_output_support_20260625_seasonal_only_current_components/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625/authoritative_component_summary.csv",
+      "sha256": "bbd3ebd81d7fda00fe32911d7cb9106a4d2a2f291db1630f59d3d8c445cf637f",
+      "bytes": 58174894
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_selected_output_support_20260625_seasonal_only_current_components/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625/authoritative_usgs_quantile_dynamics_summary.csv",
+      "sha256": "75fe11018b03dccb2390d0c936e6872e19290425cfcc56c28802db7a2aa011aa",
+      "bytes": 6600040
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_selected_output_support_20260625_seasonal_only_current_components/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625/authoritative_selected_support_manifest.json",
+      "sha256": "32e0da2c6d3bf981222f97c55a67cc46ae3313593df11c1c480af816d98621a4",
+      "bytes": 3682
+    }
+  ]
+}

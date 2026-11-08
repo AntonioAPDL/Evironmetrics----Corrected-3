@@ -112,7 +112,7 @@
         "bayesian_manifest_csv": "artifacts/he2_publication_freeze/he2_bayesian_publication_manifest.csv",
         "five_run_source_root": "artifacts/five_cutoff_crps_validation_sources"
       },
-      "note": "Generated from the same frozen HE2 publication manifest and authoritative exAL-M-T1 per-time CRPS sources as Table 1, but every row is restricted to leads 1--8 so RAW-NWS, RAW-GLOFAS, and the Bayesian predictive distributions are compared on a common horizon."
+      "note": "Generated from the same frozen HE2 publication manifest and authoritative exAL-M-T1 per-time CRPS sources as tab:benchmark_crps_models, but every row is restricted to leads 1--8 so RAW-NWS, RAW-GLOFAS, and the Bayesian predictive distributions are compared on a common horizon."
     },
     "tab:he4_quantile_check_loss": {
       "label": "tab:he4_quantile_check_loss",

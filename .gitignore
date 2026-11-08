@@ -24,7 +24,7 @@ reports/
 
 # Local lower-case figure mirrors created during packaging/export work.
 # The canonical article figure tree in this repository is `Figures/`.
-figures/
+/figures/
 
 # Local planning/audit notes. These are working documents for advisor-facing
 # revision strategy and should not be sent to Overleaf, arXiv, or the journal.

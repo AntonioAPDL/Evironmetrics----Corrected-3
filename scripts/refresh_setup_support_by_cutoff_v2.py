@@ -6,6 +6,7 @@ import shutil
 from pathlib import Path
 
 from article_runtime_bindings import binding_as_path, load_runtime_bindings
+from comment1_figure_revision import reapply_comment1_figure_revision, verify_comment1_figure_revision
 from article_repo_layout import build_layout
 
 
@@ -22,6 +23,7 @@ def main() -> None:
     args = parser.parse_args()
 
     article_root = args.article_root.resolve()
+    verify_comment1_figure_revision(article_root)
     bindings = load_runtime_bindings(article_root)
     runtime_root = (
         args.workflow_runtime_root.resolve()
@@ -35,6 +37,7 @@ def main() -> None:
     layout.ensure_base_dirs()
     dest_root = layout.five_cutoff_setup_support_dir
     copy_tree(runtime_root, dest_root)
+    reapply_comment1_figure_revision(article_root)
     print(f'Refreshed five-cutoff setup/support bundle into {dest_root}')
 
 

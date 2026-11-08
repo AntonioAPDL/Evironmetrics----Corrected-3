@@ -103,6 +103,10 @@ class ArticleRepoLayout:
         return self.root / 'Figures'
 
     @property
+    def compatibility_figures_dir(self) -> Path:
+        return self.root / 'figures'
+
+    @property
     def publication_figures_dir(self) -> Path:
         return self.root / 'Figures'
 

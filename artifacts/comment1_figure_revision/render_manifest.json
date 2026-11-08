@@ -1,0 +1,714 @@
+{
+  "schema": "comment1-figure-render-v1",
+  "snapshot": "/data/muscat_data/jaguir26/project1_ucsc_phd/docs/environmetrics_comment1_plan_20261107/readiness/baseline_snapshot.json",
+  "snapshot_sha256": "19f3f2fa54e4a6fe9a94990c12818d96d1d2c886dce04f701321c6d36a05252e",
+  "project_root": "/tmp/environmetrics_comment1_implementation_20261107/workflow",
+  "style": "/tmp/environmetrics_comment1_implementation_20261107/workflow/config/post_publication_figures.yaml",
+  "style_sha256": "710e8ab5f27feec17ab590aeacd1414f5d95538c6e73fbde658717cc6f589021",
+  "renderer_sha256": {
+    "R/unified/post_publication_figures.R": "e6c45ef094aabe8cb4cdd996a2ce849b968da5a25b588d5a97c9c5820ae1e155",
+    "scripts/render_focus_publication_posterior_plot.R": "01cc9b53a74f72023ef9e11067ac90de6c4f6d9c6c1643e6eca6c1458b6c99dd",
+    "scripts/forecats_plot_bundle.R": "943751071ed1669887b04703fa1fd67ffdbe7aa2dbb11103e7dd2f7121038a44",
+    "scripts/render_setup_support_bundle_v2.R": "2a830d5bc31ee8a73b4f137baad99783a5b4f3beb177b86afe6bcc2413bf22f2",
+    "scripts/render_exal_m_t1_setup_support_by_cutoff_v2.py": "82318a337446066acb7667bc67a866ea422778747632e534bb06086c11d6fb4b",
+    "scripts/render_comment1_publication_figures.py": "92e16a8043bf0da7b40073e4fb4e9c7eeb6f7b5efcdf682583df45232ff55349"
+  },
+  "reference_guides": {
+    "synthesis": {
+      "log1p_cms": [
+        5.20948615,
+        6.06378521
+      ],
+      "source": "existing focus renderer fixed reference levels"
+    },
+    "context": {
+      "log1p_cms": [
+        5.350017857679262,
+        6.04689949355578
+      ],
+      "discharge_cfs": [
+        7402.38,
+        14895.73
+      ],
+      "source": "USGS rating40.0 discharge equivalents in existing figure_style_contract.R"
+    },
+    "labels": [
+      "Lower flow reference",
+      "Upper flow reference"
+    ],
+    "interpretation": "Existing display-specific reference discharges are retained; labels do not assert equal thresholds across displays."
+  },
+  "inputs_unchanged": true,
+  "inputs": [
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+      "sha256": "405ffd9b07f52dc4dc307790c8f8b9f709804cc7dacba10d5f24cb33f2f37690",
+      "bytes": 10012
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv",
+      "sha256": "502a2809bfa6913a945bea6e84a3019d6e1cfed297bf61fc4c8c47ae2f1fb9a5",
+      "bytes": 528312
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_hist_log1p.rds",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_hist_log1p.rds",
+      "sha256": "c5a60313d974fbc66b67dd24f32f6b898a58fd1123d5ac84202b09b812284cc5",
+      "bytes": 279877
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "sha256": "28815518e02d539775da10e1367c7c280cadd8b422b05f6ae6dc863a808b8e2e",
+      "bytes": 409174
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/nws_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/nws_post_adapter.csv",
+      "sha256": "8baca2c08a8eb1ee1450a524a769cbeb02061b7930a23bec90f6a11ca0d81f65",
+      "bytes": 1213
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/glofas_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/glofas_post_adapter.csv",
+      "sha256": "37bee46c61daad9b8fc7d3e81c4974cbf4daf93d189a51840c2093ad209ead34",
+      "bytes": 25566
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/retros_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/retros_post_adapter.csv",
+      "sha256": "b2c4ab07b6ed8c69043123da2453996b9b21a03ee3bfb72af7b3c175738147ec",
+      "bytes": 817911
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+      "sha256": "4a4f99e6aa664c22875267faf0900dcc9e99a6ab732166257a01ff0bcfe1d837",
+      "bytes": 10042
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv",
+      "sha256": "72c8fa99745e77396ba3b0063408ebd813e53312770457ddfbefd63b04b4cc18",
+      "bytes": 528455
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_hist_log1p.rds",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_hist_log1p.rds",
+      "sha256": "ca6a42eaa945a14e755c7b098e074111f376f666d6abfa900eb3bc1244658fe8",
+      "bytes": 272795
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "sha256": "9b6ea2a5d7f014184165e8b273b739a70f84ae1e8b866252f0e05e09f4fd544a",
+      "bytes": 403627
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/nws_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/nws_post_adapter.csv",
+      "sha256": "0011e7f9a5e7c071925e9dc7a4459c94a7001f87db76701b69964c317dcaa37c",
+      "bytes": 1149
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/glofas_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/glofas_post_adapter.csv",
+      "sha256": "6334fde5595c42afbbd8e437e94b2ba4a8f011d7ca77cef4b5024b3575fa284f",
+      "bytes": 26594
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/retros_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/retros_post_adapter.csv",
+      "sha256": "66fafe750849e850822d119e96946024ea7e642e0c257bc0b2ab5f57e3d22527",
+      "bytes": 832095
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+      "sha256": "d5d87e3141dcf81f0d6acc3dcc90a20905618e2ec4fc64ffca373c748f0390c1",
+      "bytes": 9779
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv",
+      "sha256": "4cd69defcf6d3217aa287f2d3e3ad3e00b0e322caf78b5c7f55ad0fee460e434",
+      "bytes": 524366
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_hist_log1p.rds",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_hist_log1p.rds",
+      "sha256": "a915a06be19a96511dad7980a8b091fc0a69f7eac372425f295b1ab176bb4abb",
+      "bytes": 271990
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "sha256": "f2c7a55ad651a6d1241440002c04777af8f36f9446056b958037387243d2a1a3",
+      "bytes": 390271
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/nws_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/nws_post_adapter.csv",
+      "sha256": "c9aaffb44fff1c0746302b8e3537d3e413feb6dc9de9009f6b750de0bb61978e",
+      "bytes": 1146
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/glofas_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/glofas_post_adapter.csv",
+      "sha256": "872e6696c22365c134a25963f93ce1e8daa6f9005d17020cca62d1a444a433fe",
+      "bytes": 25424
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/retros_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/retros_post_adapter.csv",
+      "sha256": "5eb973ed4ab71d6cce3b27eea3dddeaafb0731f2f39171b1929289072a735215",
+      "bytes": 827429
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+      "sha256": "cbdd4df28df0d2b9cb962ca7be80d3d1c492d014c0141673df7e3f28db4ca0d0",
+      "bytes": 10072
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv",
+      "sha256": "f4c4ffa858c975970370e5b1047a93d5d82a25ed2e486e448e13e1a231105317",
+      "bytes": 528997
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_hist_log1p.rds",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_hist_log1p.rds",
+      "sha256": "6fcc8d98574952a69ff045811559b2b62d1f00722285ca240d83bb729e664fba",
+      "bytes": 271505
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "sha256": "725f5e783c651217eda36ee6be6ff1c6c6302cf94fdd2c2be15e65c84c8986aa",
+      "bytes": 396665
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/nws_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/nws_post_adapter.csv",
+      "sha256": "4650ae190f1dc4691d464fbe272ee86e3b1c1c4d7b873ffed2c33b0fbcecc0c9",
+      "bytes": 1197
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/glofas_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/glofas_post_adapter.csv",
+      "sha256": "c6dc89b02792eeb84b1049a3e3c3f743ca555d038fabeb2f99040f1b07ebc51b",
+      "bytes": 25311
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/retros_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/retros_post_adapter.csv",
+      "sha256": "a40ea8c4ab8a9dd3ab7a5a1b5d0f466fe9ab9077e72b5b28c5aaec52e11cf417",
+      "bytes": 836700
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/outputs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/exdqlm_univar_synth_cutoff_window_quantiles.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/outputs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/exdqlm_univar_synth_cutoff_window_quantiles.csv",
+      "sha256": "b85de2d808be703bdb7aa16fcc66f9ec5a3204577aa0125afb4047b5ce253aef",
+      "bytes": 9446
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/outputs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/exdqlm_univar_synth_cutoff_window_sample_subset.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/outputs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/exdqlm_univar_synth_cutoff_window_sample_subset.csv",
+      "sha256": "6265e269fcfa2225618e9e198d77167ad4b60b77d8129a3627ae3ab1852b3e38",
+      "bytes": 482560
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/cache/synth_univar_hist_log1p.rds",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/cache/synth_univar_hist_log1p.rds",
+      "sha256": "9fa1ccb34a7d13adb8daf6a029ca0efef01d9b025b372be76485dbcc554ef935",
+      "bytes": 284161
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/cache/synth_univar_forecast_log1p.rds",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/cache/synth_univar_forecast_log1p.rds",
+      "sha256": "2c60deb8b6e02addb9a7fcad35cc7d119369041968b96039a73693116849d4ce",
+      "bytes": 415440
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/inputs/nws_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/inputs/nws_post_adapter.csv",
+      "sha256": "368aec1eacb777e289f61bead46c2058a808bf12ceaeaa947695d37de47ced6e",
+      "bytes": 1150
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/inputs/glofas_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/inputs/glofas_post_adapter.csv",
+      "sha256": "55e8313e256a26940328d0c99faf15f13ad254dc362460cfc7b2ce66bc46063f",
+      "bytes": 25298
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/inputs/retros_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/inputs/retros_post_adapter.csv",
+      "sha256": "6b9a415b3029021a609621cded2af62c34d03e662761f72674f797e7c312b6ca",
+      "bytes": 858576
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+      "sha256": "d9085dcb972fc5d486f10f0867ca0b682e56336051c2b52f104a65e6924fc010",
+      "bytes": 9728
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv",
+      "sha256": "037756589cd486a09015df2c857ddc02fc19bb9a0cf73cce8c173f6e1b6ddc20",
+      "bytes": 523309
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_hist_log1p.rds",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_hist_log1p.rds",
+      "sha256": "5156855c154350e1413d61beb5fce61bbaa9d79e1e6551263ac4deeb1c52ca77",
+      "bytes": 272044
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "sha256": "747b508cf7531fd2553bc874393f6b990f88f8ea9e3272d6ec59b879377bf15c",
+      "bytes": 387060
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/nws_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/nws_post_adapter.csv",
+      "sha256": "368aec1eacb777e289f61bead46c2058a808bf12ceaeaa947695d37de47ced6e",
+      "bytes": 1150
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/glofas_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/glofas_post_adapter.csv",
+      "sha256": "55e8313e256a26940328d0c99faf15f13ad254dc362460cfc7b2ce66bc46063f",
+      "bytes": 25298
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/retros_post_adapter.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/retros_post_adapter.csv",
+      "sha256": "6b9a415b3029021a609621cded2af62c34d03e662761f72674f797e7c312b6ca",
+      "bytes": 858576
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_all_cutoffs_20260512/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_multivar_keep/inputs/shared/covariates/cov_01_PPT.csv",
+      "sha256": "3588c5e441a091c530e2717c5420376e5d63573475a69cdcc264f9a5d031b581",
+      "bytes": 238333,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_all_cutoffs_20260512/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_multivar_keep/inputs/shared/covariates/cov_02_SOIL.csv",
+      "sha256": "0b2512cb0170d77ebebae05f5918bdb05575960f3568c29d575cf5eb51432515",
+      "bytes": 382790,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_all_cutoffs_20260512/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_multivar_keep/inputs/shared/covariates/cov_03_PCA.csv",
+      "sha256": "bf77eb613a082b03bc2279c5d7c101875ceee52bc1b173134e5d2b1c1e78f904",
+      "bytes": 405813,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_all_cutoffs_20260512/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_multivar_keep/inputs/shared/covariates/covariate_features.csv",
+      "sha256": "e19d87df15f434cc333b8cce562ec2428b545ae2706c035ff22bacc4636bacf2",
+      "bytes": 1917144,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_all_cutoffs_20260512/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_multivar_keep/inputs/shared/deterministic_climate/deterministic_precip_future.csv",
+      "sha256": "981590803f1b25b548fcc66656b9dacd884a70adaf342900dbcdf7f39e77b674",
+      "bytes": 18957,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_all_cutoffs_20260512/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_multivar_keep/inputs/shared/deterministic_climate/deterministic_soil_family_support.csv",
+      "sha256": "a3ccd165a4c17be6000f6a788d597c6f0bc10bec196a9f1a2177128db145c2e0",
+      "bytes": 14714,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_all_cutoffs_20260512/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_multivar_keep/inputs/shared/deterministic_climate/deterministic_soil_future.csv",
+      "sha256": "96d7b3535d6b1c435a7593a40928d1c8bfe79cd88a615ad71212e671634d53fd",
+      "bytes": 20188,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_all_cutoffs_20260512/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_multivar_keep/inputs/shared/forecasts/glofas_forecast.csv",
+      "sha256": "81791f49d1b71a29938c88990bd44a954b48868805d88ea2e76a04702bf4bc54",
+      "bytes": 13243,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_all_cutoffs_20260512/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_multivar_keep/inputs/shared/forecasts/nws_forecast.csv",
+      "sha256": "0ec35552647bf53f71dd198a24553343f81c59eb4fc5aafe17de3e117fff56f2",
+      "bytes": 1147,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_all_cutoffs_20260512/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_multivar_keep/inputs/shared/retros/retros.csv",
+      "sha256": "5e1a903c38adace116a06886327c16b52ade917e63a43cc03965d5772807eb1f",
+      "bytes": 859058,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_all_cutoffs_20260512/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_multivar_keep/inputs/shared/usgs/usgs_daily.csv",
+      "sha256": "46c554b7cd0d70da547824a0f36e3e2afd8395c753117a50aaf1ce7dd802111b",
+      "bytes": 557511,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2022-12-25/run_id=20260510_publication_shared_r01/glofas_forecast.csv",
+      "sha256": "81791f49d1b71a29938c88990bd44a954b48868805d88ea2e76a04702bf4bc54",
+      "bytes": 13243,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2022-12-25/run_id=20260510_publication_shared_r01/inputs/glofas_members.csv",
+      "sha256": "81791f49d1b71a29938c88990bd44a954b48868805d88ea2e76a04702bf4bc54",
+      "bytes": 13243,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2022-12-25/run_id=20260510_publication_shared_r01/inputs/glofas_weighted_daily.csv",
+      "sha256": "81791f49d1b71a29938c88990bd44a954b48868805d88ea2e76a04702bf4bc54",
+      "bytes": 13243,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2022-12-25/run_id=20260510_publication_shared_r01/inputs/nws_members.csv",
+      "sha256": "0ec35552647bf53f71dd198a24553343f81c59eb4fc5aafe17de3e117fff56f2",
+      "bytes": 1147,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2022-12-25/run_id=20260510_publication_shared_r01/inputs/nws_weighted_daily.csv",
+      "sha256": "0ec35552647bf53f71dd198a24553343f81c59eb4fc5aafe17de3e117fff56f2",
+      "bytes": 1147,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2022-12-25/run_id=20260510_publication_shared_r01/inputs/retros.csv",
+      "sha256": "850d2f25266754a4a914ea751a654a68ba818fce3ecb90074f57d2d967d9176e",
+      "bytes": 835616,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2022-12-25/run_id=20260510_publication_shared_r01/inputs/retros_daily.csv",
+      "sha256": "850d2f25266754a4a914ea751a654a68ba818fce3ecb90074f57d2d967d9176e",
+      "bytes": 835616,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2022-12-25/run_id=20260510_publication_shared_r01/inputs/retros_source_lineage.csv",
+      "sha256": "9745a0eab2cdf4f5f4100bc47ee76752dd86087d6b2139157d1100989c418509",
+      "bytes": 1821111,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2022-12-25/run_id=20260510_publication_shared_r01/meta.yaml",
+      "sha256": "5a00126638d7e1c4f6e464d01ec8ccc1179b9e847fc0acaeff064ca3c5018d58",
+      "bytes": 5233,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2022-12-25/run_id=20260510_publication_shared_r01/nws_forecast.csv",
+      "sha256": "0ec35552647bf53f71dd198a24553343f81c59eb4fc5aafe17de3e117fff56f2",
+      "bytes": 1147,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_publication_shared_inputs_20260510/stable_inputs/site=11160500/cutoff_date=2022-12-25/run_id=20260510_publication_shared_r01/retros.csv",
+      "sha256": "850d2f25266754a4a914ea751a654a68ba818fce3ecb90074f57d2d967d9176e",
+      "bytes": 835616,
+      "read_only": true
+    },
+    {
+      "source": "/tmp/environmetrics_comment1_implementation_20261107/workflow/config/exal_m_t1_setup_support_by_cutoff_v2_20260516.json",
+      "sha256": "36fa65929e0ad2e8494dc8d1f636afca17d831ee03251349505ca281023875dc",
+      "bytes": 4377,
+      "read_only": true
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd/data/canonical_gdpc_master/v20260509/outputs/gdpc_master_component_01_19870529_20230122.csv",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/context_inputs/gdpc_component.csv",
+      "sha256": "9ed9003752233fce9c07195664b60eb30de64a6b50015c17ab6b4d85fbd95d72",
+      "bytes": 405904
+    },
+    {
+      "source": "/data/muscat_data/jaguir26/project1_ucsc_phd/data/canonical_gdpc_master/v20260509/metadata/gdpc_build_metadata.json",
+      "copy": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/context_inputs/gdpc_metadata.json",
+      "sha256": "d85db10eebf9bdfd11a6bda2dcfa8d22673ede4566e27fd0963a8fd485fae81d",
+      "bytes": 2572
+    }
+  ],
+  "commands": [
+    [
+      "Rscript",
+      "--vanilla",
+      "/tmp/environmetrics_comment1_implementation_20261107/workflow/scripts/render_focus_publication_posterior_plot.R",
+      "--outputs-dir",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep",
+      "--model-id",
+      "exdqlm_multivar_synth_keep",
+      "--hist-cache",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_hist_log1p.rds",
+      "--forecast-cache",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "--nws-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/nws_post_adapter.csv",
+      "--glofas-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/glofas_post_adapter.csv",
+      "--retros-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/retros_post_adapter.csv"
+    ],
+    [
+      "Rscript",
+      "--vanilla",
+      "/tmp/environmetrics_comment1_implementation_20261107/workflow/scripts/render_focus_publication_posterior_plot.R",
+      "--outputs-dir",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep",
+      "--model-id",
+      "exdqlm_multivar_synth_keep",
+      "--hist-cache",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_hist_log1p.rds",
+      "--forecast-cache",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "--nws-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/nws_post_adapter.csv",
+      "--glofas-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/glofas_post_adapter.csv",
+      "--retros-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/inputs/retros_post_adapter.csv"
+    ],
+    [
+      "Rscript",
+      "--vanilla",
+      "/tmp/environmetrics_comment1_implementation_20261107/workflow/scripts/render_focus_publication_posterior_plot.R",
+      "--outputs-dir",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep",
+      "--model-id",
+      "exdqlm_multivar_synth_keep",
+      "--hist-cache",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_hist_log1p.rds",
+      "--forecast-cache",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "--nws-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/nws_post_adapter.csv",
+      "--glofas-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/glofas_post_adapter.csv",
+      "--retros-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/retros_post_adapter.csv"
+    ],
+    [
+      "Rscript",
+      "--vanilla",
+      "/tmp/environmetrics_comment1_implementation_20261107/workflow/scripts/render_focus_publication_posterior_plot.R",
+      "--outputs-dir",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep",
+      "--model-id",
+      "exdqlm_multivar_synth_keep",
+      "--hist-cache",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_hist_log1p.rds",
+      "--forecast-cache",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "--nws-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/nws_post_adapter.csv",
+      "--glofas-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/glofas_post_adapter.csv",
+      "--retros-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/retros_post_adapter.csv"
+    ],
+    [
+      "Rscript",
+      "--vanilla",
+      "/tmp/environmetrics_comment1_implementation_20261107/workflow/scripts/render_focus_publication_posterior_plot.R",
+      "--outputs-dir",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/outputs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar",
+      "--model-id",
+      "exdqlm_univar_synth",
+      "--hist-cache",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/cache/synth_univar_hist_log1p.rds",
+      "--forecast-cache",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/cache/synth_univar_forecast_log1p.rds",
+      "--nws-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/inputs/nws_post_adapter.csv",
+      "--glofas-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/inputs/glofas_post_adapter.csv",
+      "--retros-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/inputs/retros_post_adapter.csv"
+    ],
+    [
+      "Rscript",
+      "--vanilla",
+      "/tmp/environmetrics_comment1_implementation_20261107/workflow/scripts/render_focus_publication_posterior_plot.R",
+      "--outputs-dir",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep",
+      "--model-id",
+      "exdqlm_multivar_synth_keep",
+      "--hist-cache",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_hist_log1p.rds",
+      "--forecast-cache",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "--nws-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/nws_post_adapter.csv",
+      "--glofas-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/glofas_post_adapter.csv",
+      "--retros-path",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/inputs/retros_post_adapter.csv"
+    ],
+    [
+      "python3",
+      "-B",
+      "/tmp/environmetrics_comment1_implementation_20261107/workflow/scripts/render_exal_m_t1_setup_support_by_cutoff_v2.py",
+      "--project-root",
+      "/tmp/environmetrics_comment1_implementation_20261107/workflow",
+      "--config",
+      "/tmp/environmetrics_comment1_implementation_20261107/workflow/config/exal_m_t1_setup_support_by_cutoff_v2_20260516.json",
+      "--output-root",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/context",
+      "--slugs",
+      "20221225_exal_m_t1",
+      "--skip-review",
+      "--canonical-gdpc-factor",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/context_inputs/gdpc_component.csv",
+      "--canonical-gdpc-metadata",
+      "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/context_inputs/gdpc_metadata.json"
+    ]
+  ],
+  "assets": [
+    {
+      "article_path": "Figures/multivariate_synthesis_by_cutoff/cutoff_2021_01_23_multivariate_synthesis_with_reference_ensembles.png",
+      "rendered": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_posterior_samples_with_raw_ensembles.png",
+      "asset": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/article_assets/Figures/multivariate_synthesis_by_cutoff/cutoff_2021_01_23_multivariate_synthesis_with_reference_ensembles.png",
+      "sha256": "e8d0e0973ad7453c205f947d5afa40092cfa6ba55f41c3553625b8b127edbe84",
+      "run_id": "multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep"
+    },
+    {
+      "article_path": "Figures/multivariate_synthesis_by_cutoff/cutoff_2021_01_23_multivariate_synthesis_with_reference_ensembles.pdf",
+      "rendered": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_posterior_samples_with_raw_ensembles.pdf",
+      "asset": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/article_assets/Figures/multivariate_synthesis_by_cutoff/cutoff_2021_01_23_multivariate_synthesis_with_reference_ensembles.pdf",
+      "sha256": "3682c83c51a52d0f36ff055935bfbca04cf32b7c21c9a2c7754a4ffc54f96993",
+      "run_id": "multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep"
+    },
+    {
+      "article_path": "Figures/multivariate_synthesis_by_cutoff/cutoff_2021_11_12_multivariate_synthesis_with_reference_ensembles.png",
+      "rendered": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_posterior_samples_with_raw_ensembles.png",
+      "asset": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/article_assets/Figures/multivariate_synthesis_by_cutoff/cutoff_2021_11_12_multivariate_synthesis_with_reference_ensembles.png",
+      "sha256": "36a99a446c0b61b7d23cbdfc773ea36979f582ed3488181d9d184f3b16044c55",
+      "run_id": "multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep"
+    },
+    {
+      "article_path": "Figures/multivariate_synthesis_by_cutoff/cutoff_2021_11_12_multivariate_synthesis_with_reference_ensembles.pdf",
+      "rendered": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/outputs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_posterior_samples_with_raw_ensembles.pdf",
+      "asset": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/article_assets/Figures/multivariate_synthesis_by_cutoff/cutoff_2021_11_12_multivariate_synthesis_with_reference_ensembles.pdf",
+      "sha256": "a18e99c552bd8c6cc07114bb5bf4df6e558cfdad5d839607de2f136473243c50",
+      "run_id": "multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep"
+    },
+    {
+      "article_path": "Figures/multivariate_synthesis_by_cutoff/cutoff_2021_12_21_multivariate_synthesis_with_reference_ensembles.png",
+      "rendered": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_posterior_samples_with_raw_ensembles.png",
+      "asset": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/article_assets/Figures/multivariate_synthesis_by_cutoff/cutoff_2021_12_21_multivariate_synthesis_with_reference_ensembles.png",
+      "sha256": "64b84b5de118d1584c35a60b0cb401cf0c9afce6d173f91fb2e10aa2ae0aa1f5",
+      "run_id": "multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep"
+    },
+    {
+      "article_path": "Figures/multivariate_synthesis_by_cutoff/cutoff_2021_12_21_multivariate_synthesis_with_reference_ensembles.pdf",
+      "rendered": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_posterior_samples_with_raw_ensembles.pdf",
+      "asset": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/article_assets/Figures/multivariate_synthesis_by_cutoff/cutoff_2021_12_21_multivariate_synthesis_with_reference_ensembles.pdf",
+      "sha256": "9506251e2308875ec9cd0ba3eaeffc78cc7c6223e7eed5144c699ee57c6cc82a",
+      "run_id": "multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep"
+    },
+    {
+      "article_path": "Figures/multivariate_synthesis_by_cutoff/cutoff_2022_05_11_multivariate_synthesis_with_reference_ensembles.png",
+      "rendered": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_posterior_samples_with_raw_ensembles.png",
+      "asset": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/article_assets/Figures/multivariate_synthesis_by_cutoff/cutoff_2022_05_11_multivariate_synthesis_with_reference_ensembles.png",
+      "sha256": "8cbb423612001ded6d3df6a9e7fd99013b0aaedc4fd9940008983bfb8aaba167",
+      "run_id": "multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep"
+    },
+    {
+      "article_path": "Figures/multivariate_synthesis_by_cutoff/cutoff_2022_05_11_multivariate_synthesis_with_reference_ensembles.pdf",
+      "rendered": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_posterior_samples_with_raw_ensembles.pdf",
+      "asset": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/article_assets/Figures/multivariate_synthesis_by_cutoff/cutoff_2022_05_11_multivariate_synthesis_with_reference_ensembles.pdf",
+      "sha256": "1751081f7690e6a0ae191cf2e17d5b154c5e871b1bf7854453e6bc0013f03c63",
+      "run_id": "multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep"
+    },
+    {
+      "article_path": "Figures/manuscript/reference_synthesis_univariate.png",
+      "rendered": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/outputs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/exdqlm_univar_synth_cutoff_window_posterior_samples.png",
+      "asset": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/article_assets/Figures/manuscript/reference_synthesis_univariate.png",
+      "sha256": "ca4661c1ac0c97f8e1ea04e1862d759904c9cb2eefe916e4b79f5727d2af18cd",
+      "run_id": "multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar"
+    },
+    {
+      "article_path": "Figures/manuscript/reference_synthesis_univariate.pdf",
+      "rendered": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/outputs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/exdqlm_univar_synth_cutoff_window_posterior_samples.pdf",
+      "asset": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/article_assets/Figures/manuscript/reference_synthesis_univariate.pdf",
+      "sha256": "84854e4fa7bd0d6fc412150577f344cd6d7e8271ed782707d36c820a97bebbb0",
+      "run_id": "multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar"
+    },
+    {
+      "article_path": "Figures/multivariate_synthesis_by_cutoff/cutoff_2022_12_25_multivariate_synthesis_with_reference_ensembles.png",
+      "rendered": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_posterior_samples_with_raw_ensembles.png",
+      "asset": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/article_assets/Figures/multivariate_synthesis_by_cutoff/cutoff_2022_12_25_multivariate_synthesis_with_reference_ensembles.png",
+      "sha256": "0e7e44311a1a4eb82113cb30bc9383f631f86b7a45af07fa9b54608149ed46bb",
+      "run_id": "multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep"
+    },
+    {
+      "article_path": "Figures/multivariate_synthesis_by_cutoff/cutoff_2022_12_25_multivariate_synthesis_with_reference_ensembles.pdf",
+      "rendered": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_posterior_samples_with_raw_ensembles.pdf",
+      "asset": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/article_assets/Figures/multivariate_synthesis_by_cutoff/cutoff_2022_12_25_multivariate_synthesis_with_reference_ensembles.pdf",
+      "sha256": "8defcc67a3a51f8b021312e525dc92f7bd093c046ffd24a0f6a69ee6c652c30e",
+      "run_id": "multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep"
+    },
+    {
+      "article_path": "Figures/manuscript/forecast_products_context.png",
+      "rendered": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/context/20221225_exal_m_t1/figures/forecats.png",
+      "asset": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/article_assets/Figures/manuscript/forecast_products_context.png",
+      "sha256": "66fe558104bdc7b8a08a9c5085f3470ccdfb900a6d155fb408d912b86f08ead7",
+      "context_config": "/tmp/environmetrics_comment1_implementation_20261107/workflow/config/exal_m_t1_setup_support_by_cutoff_v2_20260516.json"
+    },
+    {
+      "article_path": "Figures/manuscript/forecast_products_context.pdf",
+      "rendered": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/context/20221225_exal_m_t1/figures/forecats.pdf",
+      "asset": "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery/article_assets/Figures/manuscript/forecast_products_context.pdf",
+      "sha256": "2491baa65868599277688398dbe7f1c27cbb140e7f05d573e6a5850fa7794ac7",
+      "context_config": "/tmp/environmetrics_comment1_implementation_20261107/workflow/config/exal_m_t1_setup_support_by_cutoff_v2_20260516.json"
+    }
+  ],
+  "prior_numeric_summary_contracts_unchanged": {
+    "multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep": "9c707a73577066f814bae1e8b609c4198cd0b6cb392f5077be0cddb3178858f6",
+    "multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep": "a9dabe6dfb3f2c49eefa5646841fcd3d9c2adf50f00e30e454839da154cad34a",
+    "multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep": "da0bcbffa03a65173dc79219cc6daf9f2bda21c99d86ee0fb5e40fac54370b91",
+    "multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep": "5ef5b38fe9f001822df72d26568c1e1f2e2ccb5bdb4027ac640591ffe73e6125",
+    "multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar": "5777e821d4d115b071927be95b66b75a005dbc974c243656248dc59f1d6327ed",
+    "multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep": "d19e60cb3f5af7daf8da136bca68a92322059469085bffc8e7c13ce8c1790707"
+  },
+  "last_visual_fix": "Date ticks now lie strictly inside saved data range; all five multivariate PDF proofs inspected without clipped labels.",
+  "promotion_helper_sha256": "cd8fb17f85b966c75bcd388b55757482449c89c4da49e4d8cc4eb18cf1a3947e",
+  "executed_source_archive": "artifacts/comment1_figure_revision/renderer_sources",
+  "promotion_command": [
+    "python3",
+    "-B",
+    "scripts/promote_comment1_figure_assets.py",
+    "--render-root",
+    "/tmp/environmetrics_comment1_implementation_20261107/figure_delivery",
+    "--article-root",
+    "/tmp/environmetrics_comment1_implementation_20261107/workflow/Evironmetrics---REVISED-DOC-Corrected-2",
+    "--additional-provenance",
+    "/tmp/environmetrics_comment1_implementation_20261107/component_proof/revision_provenance.json",
+    "--additional-target",
+    "Figures/manuscript/historical_component_80month.png",
+    "--additional-target",
+    "artifacts/representative_selected_model_2022_12_25/authoritative_support/figures/selected_model_component_80month.png",
+    "--additional-target",
+    "artifacts/representative_selected_model_2022_12_25/authoritative_support/figures/render_metadata.json",
+    "--additional-target",
+    "artifacts/representative_selected_model_2022_12_25/authoritative_support/README.md",
+    "--additional-target",
+    "artifacts/representative_selected_model_2022_12_25/authoritative_support/manifest.csv",
+    "--additional-target",
+    "artifacts/representative_selected_model_2022_12_25/authoritative_support/SHA256SUMS.txt"
+  ]
+}

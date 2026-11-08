@@ -13,6 +13,7 @@ from pathlib import Path
 import yaml
 
 from article_asset_manifest import load_manifest, manifest_path
+from comment1_figure_revision import reapply_comment1_figure_revision, verify_comment1_figure_revision
 from article_repo_layout import build_layout
 from article_runtime_bindings import binding_as_optional_path, load_runtime_bindings
 
@@ -158,7 +159,7 @@ def write_bundle_docs(bundle_root: Path, support_dir: Path, support_rows: list[d
         "This bundle contains compact posterior support artifacts and rendered figures for the representative "
         "`2022-12-25 exAL-M-T1` selected model. These figures are sourced from the same selected-output authority "
         "as the synthesis figure. Figure A1 is article-labeled as the long-cycle seasonal component, with period "
-        "approximately 6.81 years, or about 82 months, and is rendered "
+        "approximately 6.78 calendar years (2474.871 days), and is rendered "
         "from raw state component 6 only with dry/wet period overlays. The `analysis_figures/component_evolution/` subfolder is an analysis-only component "
         "gallery rendered from the same support CSVs; it is checksummed here but intentionally not registered as "
         "a manuscript figure family. It also includes samplewise component-6-plus-trend and component-6-minus-trend diagnostics when "
@@ -189,6 +190,7 @@ def main() -> None:
     args = parser.parse_args()
 
     article_root = args.article_root.resolve()
+    verify_comment1_figure_revision(article_root)
     workflow_root = args.workflow_root.resolve()
     authority_path = (
         args.authority.resolve()
@@ -235,6 +237,7 @@ def main() -> None:
         )
     write_bundle_docs(bundle_root, support_dir, support_rows, authority_payload)
     update_manifest(article_root, figures_dir)
+    reapply_comment1_figure_revision(article_root)
     print("Refreshed authoritative selected-model support figures successfully.")
 
 

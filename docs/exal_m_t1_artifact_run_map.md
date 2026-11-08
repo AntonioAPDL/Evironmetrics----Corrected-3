@@ -2,6 +2,8 @@
 
 Date: 2026-06-23
 
+Editorial organization and label references checked: 2026-11-07.
+
 ## Purpose
 
 This file locks the reproducible `exAL-M-T1` source set used by the revised article and maps each manuscript object to its exact verified run/output source.
@@ -62,7 +64,8 @@ These local copies are derived from the verified workflow replay roots and shoul
 
 ## 3. Representative selected-model bundle
 
-The representative Section 5 cutoff is `2022-12-25`.
+The representative Results illustration (`fig:synth1`) and historical
+interpretation use the `2022-12-25` cutoff.
 
 The revised article now carries a richer local copy of the verified representative output bundle under:
 
@@ -94,7 +97,7 @@ That bundle now includes:
 
 | Manuscript object | Current role | Locked cutoff/run | Exact verified source | Current manuscript target | Current status |
 |---|---|---|---|---|---|
-| `tab:benchmark_crps_models` | five-cutoff validation table | HE2 publication freeze across all five cutoffs | local snapshot in `artifacts/he2_publication_freeze/`, with the `exAL-M-T1` row additionally locked to `artifacts/five_cutoff_crps_validation_sources/<slug>/crps_forecast_summary.csv` | values in `wileyNJD-APA.tex` Table 1 | locked |
+| `tab:benchmark_crps_models` | five-cutoff validation table | HE2 publication freeze across all five cutoffs | local snapshot in `artifacts/he2_publication_freeze/`, with the `exAL-M-T1` row additionally locked to `artifacts/five_cutoff_crps_validation_sources/<slug>/crps_forecast_summary.csv` | `tables/generated_tex/benchmark_crps_main_table.tex` | locked |
 | `fig:synth1` | representative selected-model illustration with retrospective and forecast-product overlays | `2022-12-25 exAL-M-T1 keep` | `artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_posterior_samples_with_raw_ensembles.png` | `Figures/multivariate_synthesis_by_cutoff/cutoff_2022_12_25_multivariate_synthesis_with_reference_ensembles.png` | refreshed from the five-cutoff synthesis family |
 | `tab:components_23_31` | representative transfer-function summary | `2022-12-25 exAL-M-T1 keep` | `artifacts/representative_selected_model_2022_12_25/covariate_effects_summary.csv` | values in `wileyNJD-APA.tex` | refreshed |
 

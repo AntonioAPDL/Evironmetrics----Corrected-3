@@ -124,6 +124,11 @@ source_support_generated_at_utc <- first_nonempty(
   support_manifest[["generated_at_utc"]]
 )
 
+component_only <- identical(tolower(opt[["component-only"]]), "true")
+LONG_CYCLE_PERIOD_DAYS <- 363.5854 * 6.8068493
+LONG_CYCLE_PERIOD_YEARS <- LONG_CYCLE_PERIOD_DAYS / 365.2425
+LONG_CYCLE_DISPLAY_LABEL <- sprintf("long-cycle seasonal component only (about %.2f years)", LONG_CYCLE_PERIOD_YEARS)
+
 FIGURE_A1_COMPONENT <- 6L
 FIGURE_A1_COMPONENT_CONTRACT <- "raw_state_component"
 COMPONENT_6_PLUS_TREND_CONTRACT <- "component_6_plus_trend_component_1_samplewise"
@@ -142,7 +147,7 @@ component_analysis_label <- function(component, contract) {
   component <- as.integer(component)
   contract <- as.character(contract)
   if (component == FIGURE_A1_COMPONENT && identical(contract, FIGURE_A1_COMPONENT_CONTRACT)) {
-    return("Long-cycle seasonal component (about 82 months)")
+    return(sprintf("Long-cycle seasonal component (about %.2f years)", LONG_CYCLE_PERIOD_YEARS))
   }
   if (identical(contract, COMPONENT_6_PLUS_TREND_CONTRACT)) {
     return("Component 6 plus trend component 1 (samplewise)")
@@ -380,7 +385,7 @@ render_component_80month <- function(out_file) {
     coord_cartesian(ylim = ylim) +
     scale_x_date(date_breaks = "24 months", date_labels = "%Y-%m") +
     labs(
-      title = "Long-cycle seasonal component (about 82 months): selected 2022-12-25 model",
+      title = sprintf("Long-cycle seasonal component (about %.2f years)", LONG_CYCLE_PERIOD_YEARS),
       x = NULL,
       y = component_analysis_axis_label(FIGURE_A1_COMPONENT_CONTRACT)
     ) +
@@ -533,33 +538,35 @@ render_component_analysis_gallery <- function(analysis_dir) {
   manifest
 }
 
-render_quantile_window(
-  "2012-01-01",
-  "2016-12-31",
-  "Selected-model Quantile Dynamics: 2012-2016",
-  file.path(out_dir, "selected_model_quantile_dry_period.png"),
-  ylim = c(0, 7)
-)
-render_quantile_window(
-  "2017-01-01",
-  "2019-12-31",
-  "Selected-model Quantile Dynamics: 2017-2019",
-  file.path(out_dir, "selected_model_quantile_wet_period.png"),
-  ylim = c(0, 7)
-)
+if (!component_only) {
+  render_quantile_window(
+    "2012-01-01", "2016-12-31", "Selected-model Quantile Dynamics: 2012-2016",
+    file.path(out_dir, "selected_model_quantile_dry_period.png"), ylim = c(0, 7)
+  )
+  render_quantile_window(
+    "2017-01-01", "2019-12-31", "Selected-model Quantile Dynamics: 2017-2019",
+    file.path(out_dir, "selected_model_quantile_wet_period.png"), ylim = c(0, 7)
+  )
+}
 render_component_80month(file.path(out_dir, "selected_model_component_80month.png"))
-analysis_dir <- file.path(dirname(out_dir), "analysis_figures", "component_evolution")
-component_analysis_manifest <- render_component_analysis_gallery(analysis_dir)
+component_analysis_manifest <- data.frame(filename = character())
+if (!component_only) {
+  analysis_dir <- file.path(dirname(out_dir), "analysis_figures", "component_evolution")
+  component_analysis_manifest <- render_component_analysis_gallery(analysis_dir)
+}
 
 meta <- list(
   support_dir = metadata_support_dir,
   output_dir = out_dir,
   display_flow_scale = display_flow_scale,
-  render_contract_version = "authoritative_selected_model_support_figures_v2",
+  render_contract_version = "authoritative_selected_model_support_figures_v3",
+  component_only = component_only,
+  long_cycle_period_days = LONG_CYCLE_PERIOD_DAYS,
+  long_cycle_period_years = LONG_CYCLE_PERIOD_YEARS,
   source_support_generated_at_utc = source_support_generated_at_utc,
   figure_a1_component = FIGURE_A1_COMPONENT,
   figure_a1_component_contract = FIGURE_A1_COMPONENT_CONTRACT,
-  figure_a1_article_display_label = "long-cycle seasonal component only (about 82 months)",
+  figure_a1_article_display_label = LONG_CYCLE_DISPLAY_LABEL,
   hydrologic_regime_periods = lapply(seq_len(nrow(hydrologic_regime_periods())), function(i) {
     row <- hydrologic_regime_periods()[i, , drop = FALSE]
     list(
@@ -569,7 +576,7 @@ meta <- list(
       fill = row$fill[[1L]]
     )
   }),
-  rendered_files = c(
+  rendered_files = if (component_only) "selected_model_component_80month.png" else c(
     "selected_model_quantile_dry_period.png",
     "selected_model_quantile_wet_period.png",
     "selected_model_component_80month.png"

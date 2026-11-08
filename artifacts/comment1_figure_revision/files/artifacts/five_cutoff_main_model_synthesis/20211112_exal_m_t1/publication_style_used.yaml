@@ -1,0 +1,49 @@
+version: publication_comment1_v3
+png:
+  width_in: 6.23
+  height_in: 4.9
+  dpi: 320
+pdf:
+  width_in: 6.23
+  height_in: 4.9
+labels:
+  'y': River flow [log(1 + x); x in m^3 s^-1]
+  y_scale_id: log1p_cms
+  'TRUE': River flow [log(1 + x); x in m^3 s^-1]
+theme:
+  base_family: sans
+  base_size: 10
+  title_size: 11
+  subtitle_size: 8.5
+  caption_size: 8
+  legend_position: right
+  grid_major: '#DCE3EA'
+  grid_minor: '#EEF2F6'
+  forecast_window_fill: '#F7F1E6'
+  forecast_window_alpha: 0.75
+colors:
+  observed: '#238B45'
+  median: '#8C2D5B'
+  interval_outer: '#F2B6CF'
+  interval_inner: '#D97AA5'
+  sample_paths: '#C79AB2'
+  cutoff: '#6B7280'
+intervals:
+  outer:
+  - 5
+  - 95
+  inner:
+  - 20
+  - 80
+posterior:
+  render_sample_paths: yes
+  sample_path_cap: 10
+  sample_line_alpha: 0.1
+  sample_line_width: 0.25
+  show_inner_interval: no
+predictive:
+  show_inner_interval: no
+y_limits:
+- 0
+- 6.5
+y_limits_by_cutoff: []

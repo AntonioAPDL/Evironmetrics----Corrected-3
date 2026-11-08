@@ -2,7 +2,7 @@
 
 This document describes the current submission-facing structure of the revised
 article repository after the cleanup and reproducibility rewiring pass on
-2026-08-12.
+2026-08-12 and the comment-1 editorial revision on 2026-11-07.
 
 ## Purpose
 
@@ -23,9 +23,9 @@ immediately:
 - `scripts/`: refresh, promotion, and audit scripts used to regenerate the article-side state
 
 The manuscript now resolves figures through a validated `\graphicspath` layer.
-The current Overleaf-facing tracked tree is uppercase `Figures/`. The TeX
-compile path also tolerates lowercase `figures/` paths because several older
-local refresh helpers used that spelling before promotion.
+The current Overleaf-facing tracked tree is uppercase `Figures/`. The manuscript
+searches that canonical tree. Lowercase `figures/` is an optional local
+compatibility mirror and is not needed to compile the article.
 
 ## Manuscript-facing paths
 
@@ -58,7 +58,7 @@ The former setup/support composites remain available as generated support artifa
 - `Figures/forecast_context_by_cutoff/cutoff_2022_05_11_forecast_context.png`
 - `Figures/forecast_context_by_cutoff/cutoff_2022_12_25_forecast_context.png`
 
-These are copies of the Figure 4 forecast-context view for every cutoff. They
+These are cutoff-specific copies of the forecast-context view (`fig:ensembles`). They
 are not all manuscript-facing paths, but they are refreshed automatically and
 support cutoff-by-cutoff review before wider synthesis promotion work.
 

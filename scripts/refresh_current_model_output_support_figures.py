@@ -10,6 +10,7 @@ import subprocess
 from pathlib import Path
 
 from article_runtime_bindings import binding_as_path, load_runtime_bindings
+from comment1_figure_revision import reapply_comment1_figure_revision, verify_comment1_figure_revision
 from article_repo_layout import build_layout
 from exal_m_t1_authoritative import load_authoritative_five_run_specs
 
@@ -344,6 +345,7 @@ def main() -> None:
     args = parser.parse_args()
 
     article_root = args.article_root.resolve()
+    verify_comment1_figure_revision(article_root)
     bindings = load_runtime_bindings(article_root)
     workflow_root = args.workflow_root.resolve() if args.workflow_root is not None else binding_as_path(bindings, "workflow_root")
     multivar_runtime_root = (
@@ -390,6 +392,7 @@ def main() -> None:
                 layout.publication_figures_dir / "manuscript" / filename,
             ],
         )
+        reapply_comment1_figure_revision(article_root)
         print("Refreshed current-model univariate reference synthesis successfully.")
         return
 
@@ -446,6 +449,7 @@ def main() -> None:
             "source": flow_scale_source,
         },
     )
+    reapply_comment1_figure_revision(article_root)
     print("Refreshed current-model output support figures successfully.")
 
 
