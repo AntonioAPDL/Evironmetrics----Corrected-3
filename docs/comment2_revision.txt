@@ -143,3 +143,9 @@ the small font command as 5pt. The table generator and all three new tables
 now specify readable 8.5pt body text and 8pt notes explicitly. Final build,
 table rendering, numerical invariants, and release evidence are recorded in
 the workflow's docs/environmetrics_comment2_revision_20261107 package.
+
+Availability and final replay-command review
+The existing public-repository claim is scoped to the quantile-model analysis.
+The added external-reference inputs/code/results and saved fitting evidence are
+explicitly supplied in the accompanying artifacts/comment2_revision bundle.
+The displayed article-local replay commands point to actual packaged scripts.

@@ -6,6 +6,8 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path
+import re
+import shlex
 import shutil
 import subprocess
 import sys
@@ -127,6 +129,14 @@ class Comment2RevisionTests(unittest.TestCase):
         self.assertIn('scripts/build_manuscript_review.py', generated)
         self.assertIn('docs/comment1_revision.txt', generated)
         self.assertIn('docs/comment2_revision.txt', generated)
+
+    def test_documented_replay_commands_name_packaged_scripts(self):
+        text = (ARTICLE/revision.REVISION/'README.txt').read_text()
+        commands = re.findall(r'^  (?:python3 -B|Rscript --vanilla) .+$', text, re.M)
+        self.assertGreaterEqual(len(commands), 2)
+        for command in commands:
+            arguments = shlex.split(command.rstrip().removesuffix('\\'))
+            self.assertTrue((ARTICLE/arguments[2]).is_file(), command)
 
 
 if __name__ == '__main__':

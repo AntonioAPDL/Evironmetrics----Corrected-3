@@ -52,8 +52,8 @@ sampling completion are separate fields. Reporting-only R-expression comparison
 confirms that the future status-message repair changes no numerical expression.
 
 Checks and regeneration from the article directory
-  python3 -B scripts/comment 2_revision.py --check
-  python3 -B scripts/comment 2_revision.py
+  python3 -B scripts/comment2_revision.py --check
+  python3 -B scripts/comment2_revision.py
 The first command writes nothing and verifies frozen hashes, protected original
 assets, imported scores, score/skill arithmetic, target alignment, training
 eligibility, distribution summaries, exact diagnostic identities and table text.
@@ -61,9 +61,9 @@ The second command regenerates only the three additional TeX tables after the
 same checks. The main asset manifest and refresh entrypoint retain this wiring.
 
 Portable baseline replay from the article directory
-  Rscript --vanilla artifacts/comment 2_revision/reproduce/scripts/build_comment 2_external_baselines.R \
-    --input-bundle artifacts/comment 2_revision/external_baselines/inputs \
-    --output-root /tmp/NEW_comment 2_baseline_replay
+  Rscript --vanilla artifacts/comment2_revision/reproduce/scripts/build_comment2_external_baselines.R \
+    --input-bundle artifacts/comment2_revision/external_baselines/inputs \
+    --output-root /tmp/NEW_comment2_baseline_replay
 Choose a new output directory. It requires R packages jsonlite, digest and
 scoringRules; exact executed versions are in external_baselines/run_manifest.json.
 Curated features, pre-origin USGS history, verification and immutable old score
@@ -80,4 +80,4 @@ verification/ records execution, independent score/formula/date checks, raw-sour
 hash checks, replay agreement and tests. manifest.json covers all bundled files
 and protected original article assets. The full refined plan, departures,
 commands, clause checklist, PDF review and completion record are in the companion
-workflow repository at docs/environmetrics_comment 2_revision_20261107/.
+workflow repository at docs/environmetrics_comment2_revision_20261107/.

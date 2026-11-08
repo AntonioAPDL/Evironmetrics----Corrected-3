@@ -163,7 +163,7 @@
     "tables/generated_tex/representative_covariate_effects_table.tex": "39a85e0b27479cedf3189a95e8ce449b04728b4e6cbe9cf979b410ca9c641c17"
   },
   "files": {
-    "artifacts/comment2_revision/README.txt": "d41b9cc62ad312e08208e24ccd2034c43d0b2624878d230587431fea3c74b605",
+    "artifacts/comment2_revision/README.txt": "ef7790d15286bf46b8104e13c7764626a6571a2f436d1c50ed7fc3507ddbdee0",
     "artifacts/comment2_revision/component_diagnostics/README.txt": "4f0e8835e0c445073214a116388ed4a4a94372fac714218271c86347f34ecb5f",
     "artifacts/comment2_revision/component_diagnostics/fit_ledger.csv": "4e9e637642c6af8de339c1b77ab1bff68e2a0be86b4a423704f64407b9f6ca48",
     "artifacts/comment2_revision/component_diagnostics/fit_ledger.json": "69f6137e9355b0bdce7d01feeb50471217e2cfc40b4b0188d9ad95c9955f6baf",
