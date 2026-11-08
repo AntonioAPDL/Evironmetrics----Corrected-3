@@ -247,16 +247,6 @@
       },
       "note": "Generated only by the dedicated saved-output validator; original tables remain protected."
     },
-    "tab:no_refit_settings": {
-      "label": "tab:no_refit_settings",
-      "role": "Exact reference-fit discount settings",
-      "table_tex_path": "tables/generated_tex/no_refit_reference_settings_table.tex",
-      "source_class": "saved_output_diagnostics",
-      "sources": {
-        "revision_manifest": "artifacts/no_refit_revision/manifest.json"
-      },
-      "note": "Generated only by the dedicated saved-output validator; original tables remain protected."
-    },
     "tab:no_refit_sensitivity": {
       "label": "tab:no_refit_sensitivity",
       "role": "Qualified iid pairwise score sensitivity",

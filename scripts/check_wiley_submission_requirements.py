@@ -3,7 +3,8 @@
 
 This script checks the manuscript source for two classes of issues that can
 cause the Wiley submission system or editorial office to return a manuscript:
-uncited figure/table labels and missing required end-matter statements.
+uncited figure/table labels and missing required end-matter statements. Only
+files included by the manuscript are checked; companion fragments are excluded.
 """
 
 from __future__ import annotations
@@ -15,7 +16,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MAIN_TEX = ROOT / "wileyNJD-APA.tex"
-GENERATED_TABLES = ROOT / "tables" / "generated_tex"
 
 REQUIRED_STATEMENTS = (
     r"\section*{Data Availability Statement}",
@@ -25,18 +25,44 @@ REQUIRED_STATEMENTS = (
 
 LABEL_RE = re.compile(r"\\label\{([^}]+)\}")
 REF_RE = re.compile(r"\\(?:ref|eqref|pageref|autoref)\{([^}]+)\}")
+INPUT_RE = re.compile(r"\\(?:input|include)\s*\{([^}]+)\}")
+COMMENT_RE = re.compile(r"(?<!\\)(?:\\\\)*%")
 
 
 def active_lines(path: Path) -> list[tuple[int, str]]:
-    return [
-        (line_no, line)
-        for line_no, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1)
-        if not line.lstrip().startswith("%")
-    ]
+    lines = []
+    for line_no, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+        comment = COMMENT_RE.search(line)
+        active = line[:comment.start()] if comment else line
+        if active.strip():
+            lines.append((line_no, active))
+    return lines
 
 
 def collect_tex_files() -> list[Path]:
-    return [MAIN_TEX] + sorted(GENERATED_TABLES.glob("*.tex"))
+    files: list[Path] = []
+    seen: set[Path] = set()
+    root = ROOT.resolve()
+
+    def visit(path: Path) -> None:
+        path = path.resolve()
+        if not path.is_relative_to(root):
+            raise ValueError(f"included TeX file is outside the article: {path}")
+        if path in seen:
+            return
+        if not path.is_file():
+            raise ValueError(f"missing included TeX file: {path.relative_to(root)}")
+        seen.add(path)
+        files.append(path)
+        for _, line in active_lines(path):
+            for match in INPUT_RE.finditer(line):
+                child = root / match.group(1)
+                if not child.suffix:
+                    child = child.with_suffix(".tex")
+                visit(child)
+
+    visit(MAIN_TEX)
+    return files
 
 
 def main() -> int:
@@ -49,7 +75,12 @@ def main() -> int:
 
     labels: list[tuple[str, Path, int]] = []
     refs: set[str] = set()
-    for path in collect_tex_files():
+    try:
+        tex_files = collect_tex_files()
+    except (OSError, ValueError) as exc:
+        print(f"Wiley submission preflight failed: {exc}", file=sys.stderr)
+        return 1
+    for path in tex_files:
         for line_no, line in active_lines(path):
             labels.extend((match.group(1), path, line_no) for match in LABEL_RE.finditer(line))
             refs.update(match.group(1) for match in REF_RE.finditer(line))
@@ -65,7 +96,7 @@ def main() -> int:
         return 1
 
     print("Wiley submission preflight passed.")
-    print(f"Checked {len(labels)} labels and {len(refs)} references across {len(collect_tex_files())} TeX files.")
+    print(f"Checked {len(labels)} labels and {len(refs)} references across {len(tex_files)} TeX files.")
     return 0
 
 
