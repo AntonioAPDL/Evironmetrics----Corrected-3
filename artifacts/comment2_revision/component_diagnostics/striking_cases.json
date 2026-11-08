@@ -1,0 +1,1177 @@
+[
+  {
+    "cutoff": "20210123",
+    "family": "ndlm_main_keep",
+    "fit_count": 1,
+    "fit_status_counts": {
+      "converged": 1
+    },
+    "label": "N-M-T1",
+    "manifest_pipeline_status": "publication_selected",
+    "predictive_evidence": {},
+    "run_id": "multimodel_20210123_v8_he2pubgdpc1r1_ndlm_main_keep",
+    "run_key": "benchmark:20210123:N-M-T1",
+    "run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_bayesian_publication_relaunch_wave_a_ndlm_promotion_20260607/runs/multimodel_20210123_v8_he2pubgdpc1r1_ndlm_main_keep",
+    "run_root_exists": true,
+    "study": "benchmark",
+    "variant": "N-M-T1"
+  },
+  {
+    "cutoff": "20211112",
+    "family": "exdqlm_multivar_drop",
+    "fit_count": 7,
+    "fit_status_counts": {
+      "budget_limited": 7
+    },
+    "label": "exAL-M-T0",
+    "manifest_pipeline_status": "publication_selected",
+    "predictive_evidence": {
+      "predictive_quantiles": [
+        {
+          "median_central90_width": 15.733854014910925,
+          "model_ids": [
+            "exdqlm_multivar_synth_drop"
+          ],
+          "observed_range": [
+            0.428653110146072,
+            0.645079778015392
+          ],
+          "ordering_violations": 0,
+          "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_table1_targeted_repair_20260612/runs/multimodel_20211112_v8_he2tbl1fix20260612_exdqlm_multivar_drop/post/outputs/multimodel_20211112_v8_he2tbl1fix20260612_exdqlm_multivar_drop/exdqlm_multivar_synth_drop_cutoff_window_quantiles.csv",
+          "q05_range": [
+            -7.34189670100175,
+            -6.80203507944989
+          ],
+          "q50_range": [
+            3.41438407167691,
+            3.46734837787853
+          ],
+          "q95_range": [
+            7.89104706188182,
+            8.61843483773562
+          ],
+          "rows": 28
+        }
+      ],
+      "synthesis": [
+        {
+          "anchor_curve_crossing_share": "0",
+          "anchor_curve_max_negative_gap": "0",
+          "context": "exdqlm_multivar_synth_drop.multivar.forecast_synthesis",
+          "empirical_curve_crossing_share": "0",
+          "empirical_curve_max_negative_gap": "0",
+          "enforce_isotonic": "TRUE",
+          "grid_M": "1001",
+          "horizon": "28",
+          "method_name": "cdf-spline",
+          "method_tag": "exdqlm_iso1_rearr1_grid1001_v1",
+          "model_id": "exdqlm_multivar_synth_drop",
+          "n_quantiles": "7",
+          "n_samples_input": "2000",
+          "n_samples_output": "2000",
+          "raw_curve_crossing_share": "1.00000000000000",
+          "raw_curve_max_negative_gap": "-9.52631466532550",
+          "raw_sample_max_crossing_rate": "1.00000000000000",
+          "raw_sample_mean_crossing_rate": "1.00000000000000",
+          "rearrange": "TRUE",
+          "segment": "forecast",
+          "sort_draws_by_time": "TRUE",
+          "table_name": "summary"
+        }
+      ]
+    },
+    "run_id": "multimodel_20211112_v8_he2tbl1fix20260612_exdqlm_multivar_drop",
+    "run_key": "benchmark:20211112:exAL-M-T0",
+    "run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_table1_targeted_repair_20260612/runs/multimodel_20211112_v8_he2tbl1fix20260612_exdqlm_multivar_drop",
+    "run_root_exists": true,
+    "study": "benchmark",
+    "variant": "exAL-M-T0"
+  },
+  {
+    "cutoff": "20220511",
+    "family": "exdqlm_multivar_keep",
+    "fit_count": 7,
+    "fit_status_counts": {
+      "budget_limited": 7
+    },
+    "label": "exAL-M-T1",
+    "manifest_pipeline_status": "publication_selected",
+    "predictive_evidence": {
+      "predictive_quantiles": [
+        {
+          "median_central90_width": 0.32759413270359794,
+          "model_ids": [
+            "exdqlm_multivar_synth_keep"
+          ],
+          "observed_range": [
+            0.421247680244083,
+            0.569501925984288
+          ],
+          "ordering_violations": 0,
+          "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+          "q05_range": [
+            0.294819758149093,
+            0.38815743462831
+          ],
+          "q50_range": [
+            0.443762549105192,
+            0.541961415172938
+          ],
+          "q95_range": [
+            0.593419120425475,
+            0.752749803801281
+          ],
+          "rows": 28
+        }
+      ],
+      "q50_location": {
+        "interval_kind": "fitted q50 location uncertainty; not full predictive coverage",
+        "mean_location_error": 0.01628705992374583,
+        "median_location_interval_width": 0.063240742230701,
+        "mu_range": [
+          0.455435707101321,
+          0.543797836414833
+        ],
+        "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/multivar_forecast_window_q50_summary.csv",
+        "rows": 28,
+        "verification_range": [
+          0.421247680244083,
+          0.569501925984288
+        ]
+      },
+      "synthesis": [
+        {
+          "anchor_curve_crossing_share": "0",
+          "anchor_curve_max_negative_gap": "0",
+          "context": "exdqlm_multivar_synth_keep.multivar.forecast_synthesis",
+          "empirical_curve_crossing_share": "0",
+          "empirical_curve_max_negative_gap": "0",
+          "enforce_isotonic": "TRUE",
+          "grid_M": "1001",
+          "horizon": "28",
+          "method_name": "cdf-spline",
+          "method_tag": "exdqlm_iso1_rearr1_grid1001_v1",
+          "model_id": "exdqlm_multivar_synth_keep",
+          "n_quantiles": "7",
+          "n_samples_input": "2000",
+          "n_samples_output": "2000",
+          "raw_curve_crossing_share": "0",
+          "raw_curve_max_negative_gap": "0",
+          "raw_sample_max_crossing_rate": "1.00000000000000",
+          "raw_sample_mean_crossing_rate": "1.00000000000000",
+          "rearrange": "TRUE",
+          "segment": "forecast",
+          "sort_draws_by_time": "TRUE",
+          "table_name": "summary"
+        }
+      ],
+      "vb_component_diagnostic_summary": [
+        {
+          "cutoff": "20220511",
+          "forecast_max_state_rms_norm": "0.185561269314083",
+          "forecast_min_mu_usgs": "0.300946998108451",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "3",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-0.224251769988849",
+          "last_forecast_mu_glofas": "0.0766952281196026",
+          "last_forecast_mu_usgs": "0.300946998108451",
+          "last_forecast_season": "-0.0316867101710214",
+          "last_forecast_trend": "-0.328494599580629",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "0.661128307860102",
+          "max_abs_exps_state_err_glofas": "2.22044604925031e-16",
+          "max_abs_exps_state_err_nws": "2.22044604925031e-16",
+          "max_abs_exps_state_err_usgs": "1.11022302462516e-16",
+          "max_abs_identity_err_glofas": "0",
+          "max_abs_identity_err_nws": "5.55111512312578e-17",
+          "p": "7",
+          "ppx": "13",
+          "q": "5",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20220511",
+          "forecast_max_state_rms_norm": "0.16907750024805",
+          "forecast_min_mu_usgs": "0.398870254681573",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "3",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-0.236048429139449",
+          "last_forecast_mu_glofas": "0.162821825542124",
+          "last_forecast_mu_usgs": "0.398870254681573",
+          "last_forecast_season": "-0.062270862697925",
+          "last_forecast_trend": "-0.17637205733286",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "0.637513174712358",
+          "max_abs_exps_state_err_glofas": "1.66533453693773e-16",
+          "max_abs_exps_state_err_nws": "1.11022302462516e-16",
+          "max_abs_exps_state_err_usgs": "1.11022302462516e-16",
+          "max_abs_identity_err_glofas": "0",
+          "max_abs_identity_err_nws": "5.55111512312578e-17",
+          "p": "7",
+          "ppx": "13",
+          "q": "20",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20220511",
+          "forecast_max_state_rms_norm": "0.157632268224001",
+          "forecast_min_mu_usgs": "0.422800912757312",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "3",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-0.229567084767325",
+          "last_forecast_mu_glofas": "0.193233827989987",
+          "last_forecast_mu_usgs": "0.422800912757312",
+          "last_forecast_season": "-0.0747527130768641",
+          "last_forecast_trend": "-0.0691262641083519",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "0.566679889942528",
+          "max_abs_exps_state_err_glofas": "1.66533453693773e-16",
+          "max_abs_exps_state_err_nws": "2.22044604925031e-16",
+          "max_abs_exps_state_err_usgs": "1.11022302462516e-16",
+          "max_abs_identity_err_glofas": "0",
+          "max_abs_identity_err_nws": "1.11022302462516e-16",
+          "p": "7",
+          "ppx": "13",
+          "q": "35",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20220511",
+          "forecast_max_state_rms_norm": "0.172907753554686",
+          "forecast_min_mu_usgs": "0.455435707101321",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "3",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-0.246033103265554",
+          "last_forecast_mu_glofas": "0.209402603835767",
+          "last_forecast_mu_usgs": "0.455435707101321",
+          "last_forecast_season": "-0.103042174120003",
+          "last_forecast_trend": "-0.0941209950440134",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "0.652598876265337",
+          "max_abs_exps_state_err_glofas": "2.22044604925031e-16",
+          "max_abs_exps_state_err_nws": "2.22044604925031e-16",
+          "max_abs_exps_state_err_usgs": "1.11022302462516e-16",
+          "max_abs_identity_err_glofas": "0",
+          "max_abs_identity_err_nws": "1.11022302462516e-16",
+          "p": "7",
+          "ppx": "13",
+          "q": "50",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20220511",
+          "forecast_max_state_rms_norm": "0.182257645393222",
+          "forecast_min_mu_usgs": "0.471435990265145",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "3",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-0.231083739866591",
+          "last_forecast_mu_glofas": "0.240352250398554",
+          "last_forecast_mu_usgs": "0.471435990265145",
+          "last_forecast_season": "-0.0883514704058486",
+          "last_forecast_trend": "-0.127821907220647",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "0.687609367891641",
+          "max_abs_exps_state_err_glofas": "2.22044604925031e-16",
+          "max_abs_exps_state_err_nws": "2.22044604925031e-16",
+          "max_abs_exps_state_err_usgs": "1.11022302462516e-16",
+          "max_abs_identity_err_glofas": "2.77555756156289e-17",
+          "max_abs_identity_err_nws": "1.11022302462516e-16",
+          "p": "7",
+          "ppx": "13",
+          "q": "65",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20220511",
+          "forecast_max_state_rms_norm": "0.183788865464713",
+          "forecast_min_mu_usgs": "0.486422942491693",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "3",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-0.21974909676854",
+          "last_forecast_mu_glofas": "0.266673845723153",
+          "last_forecast_mu_usgs": "0.486422942491693",
+          "last_forecast_season": "-0.0707921843479614",
+          "last_forecast_trend": "-0.107315957870399",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "0.664531084710054",
+          "max_abs_exps_state_err_glofas": "2.22044604925031e-16",
+          "max_abs_exps_state_err_nws": "2.22044604925031e-16",
+          "max_abs_exps_state_err_usgs": "1.11022302462516e-16",
+          "max_abs_identity_err_glofas": "2.77555756156289e-17",
+          "max_abs_identity_err_nws": "1.11022302462516e-16",
+          "p": "7",
+          "ppx": "13",
+          "q": "80",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20220511",
+          "forecast_max_state_rms_norm": "0.209137961542848",
+          "forecast_min_mu_usgs": "0.594127182186591",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "3",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-0.262449945674951",
+          "last_forecast_mu_glofas": "0.331677236511639",
+          "last_forecast_mu_usgs": "0.594127182186591",
+          "last_forecast_season": "0.0119155202303303",
+          "last_forecast_trend": "-0.110211839753364",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "0.692423501709624",
+          "max_abs_exps_state_err_glofas": "2.22044604925031e-16",
+          "max_abs_exps_state_err_nws": "2.22044604925031e-16",
+          "max_abs_exps_state_err_usgs": "1.11022302462516e-16",
+          "max_abs_identity_err_glofas": "1.11022302462516e-16",
+          "max_abs_identity_err_nws": "1.11022302462516e-16",
+          "p": "7",
+          "ppx": "13",
+          "q": "95",
+          "reason": "ok"
+        }
+      ],
+      "vb_component_quantile_order_summary": [
+        {
+          "checked_days": "91",
+          "cutoff": "20220511",
+          "phase": "history",
+          "quantity": "mu_usgs_state",
+          "total_violations": "0",
+          "violation_days": "0",
+          "worst_diff": "0.00674677827446368"
+        },
+        {
+          "checked_days": "91",
+          "cutoff": "20220511",
+          "phase": "history",
+          "quantity": "theta_exps_usgs",
+          "total_violations": "0",
+          "violation_days": "0",
+          "worst_diff": "0.00674677827446368"
+        },
+        {
+          "checked_days": "91",
+          "cutoff": "20220511",
+          "phase": "history",
+          "quantity": "mu_glofas_state",
+          "total_violations": "7",
+          "violation_days": "7",
+          "worst_diff": "-0.0164643313061086"
+        },
+        {
+          "checked_days": "91",
+          "cutoff": "20220511",
+          "phase": "history",
+          "quantity": "mu_nws_state",
+          "total_violations": "2",
+          "violation_days": "2",
+          "worst_diff": "-0.00224222671876373"
+        },
+        {
+          "checked_days": "28",
+          "cutoff": "20220511",
+          "phase": "forecast",
+          "quantity": "mu_usgs_state",
+          "total_violations": "0",
+          "violation_days": "0",
+          "worst_diff": "0.0111460782744684"
+        },
+        {
+          "checked_days": "28",
+          "cutoff": "20220511",
+          "phase": "forecast",
+          "quantity": "mu_glofas_state",
+          "total_violations": "0",
+          "violation_days": "0",
+          "worst_diff": "0.0107270092680517"
+        },
+        {
+          "checked_days": "8",
+          "cutoff": "20220511",
+          "phase": "forecast",
+          "quantity": "mu_nws_state",
+          "total_violations": "2",
+          "violation_days": "2",
+          "worst_diff": "-0.00557261931882902"
+        }
+      ]
+    },
+    "run_id": "multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep",
+    "run_key": "benchmark:20220511:exAL-M-T1",
+    "run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep",
+    "run_root_exists": true,
+    "study": "benchmark",
+    "variant": "full"
+  },
+  {
+    "cutoff": "20221225",
+    "family": "exdqlm_multivar_keep",
+    "fit_count": 7,
+    "fit_status_counts": {
+      "budget_limited": 7
+    },
+    "label": "exAL-M-T1",
+    "manifest_pipeline_status": "publication_selected",
+    "predictive_evidence": {
+      "predictive_quantiles": [
+        {
+          "median_central90_width": 1.4753723749034249,
+          "model_ids": [
+            "exdqlm_multivar_synth_keep"
+          ],
+          "observed_range": [
+            0.564683774756493,
+            5.36438371043544
+          ],
+          "ordering_violations": 0,
+          "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+          "q05_range": [
+            0.882301162201373,
+            3.19045883473077
+          ],
+          "q50_range": [
+            1.08733264278307,
+            3.23885283699921
+          ],
+          "q95_range": [
+            1.40472389854126,
+            4.66665671128677
+          ],
+          "rows": 28
+        }
+      ],
+      "q50_location": {
+        "interval_kind": "fitted q50 location uncertainty; not full predictive coverage",
+        "mean_location_error": -0.7722211814736483,
+        "median_location_interval_width": 0.06921410269419503,
+        "mu_range": [
+          1.08435928981266,
+          3.17263487864007
+        ],
+        "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/multivar_forecast_window_q50_summary.csv",
+        "rows": 28,
+        "verification_range": [
+          0.564683774756493,
+          5.36438371043544
+        ]
+      },
+      "synthesis": [
+        {
+          "anchor_curve_crossing_share": "0",
+          "anchor_curve_max_negative_gap": "0",
+          "context": "exdqlm_multivar_synth_keep.multivar.forecast_synthesis",
+          "empirical_curve_crossing_share": "0",
+          "empirical_curve_max_negative_gap": "0",
+          "enforce_isotonic": "TRUE",
+          "grid_M": "1001",
+          "horizon": "28",
+          "method_name": "cdf-spline",
+          "method_tag": "exdqlm_iso1_rearr1_grid1001_v1",
+          "model_id": "exdqlm_multivar_synth_keep",
+          "n_quantiles": "7",
+          "n_samples_input": "2000",
+          "n_samples_output": "2000",
+          "raw_curve_crossing_share": "1.00000000000000",
+          "raw_curve_max_negative_gap": "-0.580351650350750",
+          "raw_sample_max_crossing_rate": "1.00000000000000",
+          "raw_sample_mean_crossing_rate": "1.00000000000000",
+          "rearrange": "TRUE",
+          "segment": "forecast",
+          "sort_draws_by_time": "TRUE",
+          "table_name": "summary"
+        }
+      ],
+      "vb_component_diagnostic_summary": [
+        {
+          "cutoff": "20221225",
+          "forecast_max_state_rms_norm": "0.706620166697972",
+          "forecast_min_mu_usgs": "0.874012921585945",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "3",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-1.76956017763151",
+          "last_forecast_mu_glofas": "0.814672440744583",
+          "last_forecast_mu_usgs": "2.5842326183761",
+          "last_forecast_season": "-0.102854386348304",
+          "last_forecast_trend": "-0.0380154651233811",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "2.72510246984778",
+          "max_abs_exps_state_err_glofas": "6.66133814775094e-16",
+          "max_abs_exps_state_err_nws": "2.22044604925031e-16",
+          "max_abs_exps_state_err_usgs": "5.55111512312578e-17",
+          "max_abs_identity_err_glofas": "1.11022302462516e-16",
+          "max_abs_identity_err_nws": "1.94289029309402e-16",
+          "p": "7",
+          "ppx": "13",
+          "q": "5",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20221225",
+          "forecast_max_state_rms_norm": "0.613465663896133",
+          "forecast_min_mu_usgs": "1.01525417541611",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "3",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-1.08369573332779",
+          "last_forecast_mu_glofas": "1.06621452883003",
+          "last_forecast_mu_usgs": "2.14991026215782",
+          "last_forecast_season": "-0.0756133010558876",
+          "last_forecast_trend": "0.0241553513713731",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "2.20136821184233",
+          "max_abs_exps_state_err_glofas": "2.22044604925031e-16",
+          "max_abs_exps_state_err_nws": "4.44089209850063e-16",
+          "max_abs_exps_state_err_usgs": "5.55111512312578e-17",
+          "max_abs_identity_err_glofas": "5.55111512312578e-17",
+          "max_abs_identity_err_nws": "2.22044604925031e-16",
+          "p": "7",
+          "ppx": "13",
+          "q": "20",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20221225",
+          "forecast_max_state_rms_norm": "0.675698224102013",
+          "forecast_min_mu_usgs": "1.08682048470981",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "3",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-1.18269326137502",
+          "last_forecast_mu_glofas": "1.29963066700928",
+          "last_forecast_mu_usgs": "2.48232392838431",
+          "last_forecast_season": "-0.147019339101953",
+          "last_forecast_trend": "0.089968079671485",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "2.53937518781478",
+          "max_abs_exps_state_err_glofas": "4.44089209850063e-16",
+          "max_abs_exps_state_err_nws": "4.44089209850063e-16",
+          "max_abs_exps_state_err_usgs": "0",
+          "max_abs_identity_err_glofas": "2.22044604925031e-16",
+          "max_abs_identity_err_nws": "2.22044604925031e-16",
+          "p": "7",
+          "ppx": "13",
+          "q": "35",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20221225",
+          "forecast_max_state_rms_norm": "0.627556736857875",
+          "forecast_min_mu_usgs": "1.08435928981266",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "3",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-0.909194012490613",
+          "last_forecast_mu_glofas": "1.53817767887593",
+          "last_forecast_mu_usgs": "2.44737169136654",
+          "last_forecast_season": "-0.120083831793006",
+          "last_forecast_trend": "0.136372239911504",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "2.43108328324805",
+          "max_abs_exps_state_err_glofas": "4.44089209850063e-16",
+          "max_abs_exps_state_err_nws": "4.44089209850063e-16",
+          "max_abs_exps_state_err_usgs": "5.55111512312578e-17",
+          "max_abs_identity_err_glofas": "2.22044604925031e-16",
+          "max_abs_identity_err_nws": "2.22044604925031e-16",
+          "p": "7",
+          "ppx": "13",
+          "q": "50",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20221225",
+          "forecast_max_state_rms_norm": "0.696859143676018",
+          "forecast_min_mu_usgs": "1.11937507215407",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "3",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-1.07082133371114",
+          "last_forecast_mu_glofas": "1.81470437587824",
+          "last_forecast_mu_usgs": "2.88552570958938",
+          "last_forecast_season": "-0.139480693579512",
+          "last_forecast_trend": "0.10050879947353",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "2.92449760369537",
+          "max_abs_exps_state_err_glofas": "4.44089209850063e-16",
+          "max_abs_exps_state_err_nws": "2.22044604925031e-16",
+          "max_abs_exps_state_err_usgs": "0",
+          "max_abs_identity_err_glofas": "2.22044604925031e-16",
+          "max_abs_identity_err_nws": "2.22044604925031e-16",
+          "p": "7",
+          "ppx": "13",
+          "q": "65",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20221225",
+          "forecast_max_state_rms_norm": "0.862482331370104",
+          "forecast_min_mu_usgs": "1.20588151681488",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "3",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-1.54883966271974",
+          "last_forecast_mu_glofas": "1.90373265936467",
+          "last_forecast_mu_usgs": "3.45257232208441",
+          "last_forecast_season": "-0.217387880886378",
+          "last_forecast_trend": "0.0601770115402451",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "3.60978319143054",
+          "max_abs_exps_state_err_glofas": "8.88178419700125e-16",
+          "max_abs_exps_state_err_nws": "4.44089209850063e-16",
+          "max_abs_exps_state_err_usgs": "1.11022302462516e-16",
+          "max_abs_identity_err_glofas": "2.22044604925031e-16",
+          "max_abs_identity_err_nws": "4.44089209850063e-16",
+          "p": "7",
+          "ppx": "13",
+          "q": "80",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20221225",
+          "forecast_max_state_rms_norm": "0.947657859047615",
+          "forecast_min_mu_usgs": "1.40559677487084",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "3",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-1.86532307495226",
+          "last_forecast_mu_glofas": "2.13795871934852",
+          "last_forecast_mu_usgs": "4.00328179430078",
+          "last_forecast_season": "-0.180642029139669",
+          "last_forecast_trend": "0.0752507293669224",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "4.10867309407352",
+          "max_abs_exps_state_err_glofas": "8.88178419700125e-16",
+          "max_abs_exps_state_err_nws": "8.88178419700125e-16",
+          "max_abs_exps_state_err_usgs": "2.22044604925031e-16",
+          "max_abs_identity_err_glofas": "2.22044604925031e-16",
+          "max_abs_identity_err_nws": "4.44089209850063e-16",
+          "p": "7",
+          "ppx": "13",
+          "q": "95",
+          "reason": "ok"
+        }
+      ],
+      "vb_component_quantile_order_summary": [
+        {
+          "checked_days": "91",
+          "cutoff": "20221225",
+          "phase": "history",
+          "quantity": "mu_usgs_state",
+          "total_violations": "0",
+          "violation_days": "0",
+          "worst_diff": "0.000823891119652032"
+        },
+        {
+          "checked_days": "91",
+          "cutoff": "20221225",
+          "phase": "history",
+          "quantity": "theta_exps_usgs",
+          "total_violations": "0",
+          "violation_days": "0",
+          "worst_diff": "0.000823891119652032"
+        },
+        {
+          "checked_days": "91",
+          "cutoff": "20221225",
+          "phase": "history",
+          "quantity": "mu_glofas_state",
+          "total_violations": "0",
+          "violation_days": "0",
+          "worst_diff": "0.008553824537049"
+        },
+        {
+          "checked_days": "91",
+          "cutoff": "20221225",
+          "phase": "history",
+          "quantity": "mu_nws_state",
+          "total_violations": "0",
+          "violation_days": "0",
+          "worst_diff": "0.0125840802971882"
+        },
+        {
+          "checked_days": "28",
+          "cutoff": "20221225",
+          "phase": "forecast",
+          "quantity": "mu_usgs_state",
+          "total_violations": "57",
+          "violation_days": "28",
+          "worst_diff": "-0.576496479990753"
+        },
+        {
+          "checked_days": "28",
+          "cutoff": "20221225",
+          "phase": "forecast",
+          "quantity": "mu_glofas_state",
+          "total_violations": "2",
+          "violation_days": "2",
+          "worst_diff": "-0.128605843324897"
+        },
+        {
+          "checked_days": "8",
+          "cutoff": "20221225",
+          "phase": "forecast",
+          "quantity": "mu_nws_state",
+          "total_violations": "5",
+          "violation_days": "4",
+          "worst_diff": "-0.290624355373634"
+        }
+      ]
+    },
+    "run_id": "multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep",
+    "run_key": "benchmark:20221225:exAL-M-T1",
+    "run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep",
+    "run_root_exists": true,
+    "study": "benchmark",
+    "variant": "full"
+  },
+  {
+    "cutoff": "20220511",
+    "family": "exdqlm_multivar",
+    "fit_count": 7,
+    "fit_status_counts": {
+      "budget_limited": 7
+    },
+    "label": "exAL-M-noTF",
+    "manifest_pipeline_status": "pass",
+    "predictive_evidence": {
+      "predictive_quantiles": [
+        {
+          "median_central90_width": 40.5777317528392,
+          "model_ids": [
+            "exdqlm_multivar_synth_drop"
+          ],
+          "observed_range": [
+            0.421247680244083,
+            0.569501925984288
+          ],
+          "ordering_violations": 0,
+          "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he3_exdqlm_ablation_current_authority_20260625/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep_he3_noTF/post/outputs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep_he3_noTF/exdqlm_multivar_synth_drop_cutoff_window_quantiles.csv",
+          "q05_range": [
+            -20.2282727114343,
+            -18.1138467118333
+          ],
+          "q50_range": [
+            4.55711419736786,
+            5.66767594306862
+          ],
+          "q95_range": [
+            19.7921230440719,
+            21.1834267480627
+          ],
+          "rows": 28
+        }
+      ],
+      "q50_location": {
+        "interval_kind": "fitted q50 location uncertainty; not full predictive coverage",
+        "mean_location_error": 10.17124022520708,
+        "median_location_interval_width": 0.31563195198765026,
+        "mu_range": [
+          10.5281385169197,
+          10.808187549083
+        ],
+        "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he3_exdqlm_ablation_current_authority_20260625/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep_he3_noTF/post/outputs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep_he3_noTF/multivar_forecast_window_q50_summary.csv",
+        "rows": 28,
+        "verification_range": [
+          0.421247680244083,
+          0.569501925984288
+        ]
+      },
+      "synthesis": [
+        {
+          "anchor_curve_crossing_share": "0",
+          "anchor_curve_max_negative_gap": "0",
+          "context": "exdqlm_multivar_synth_drop.multivar.forecast_synthesis",
+          "empirical_curve_crossing_share": "0",
+          "empirical_curve_max_negative_gap": "0",
+          "enforce_isotonic": "TRUE",
+          "grid_M": "1001",
+          "horizon": "28",
+          "method_name": "cdf-spline",
+          "method_tag": "exdqlm_iso1_rearr1_grid1001_v1",
+          "model_id": "exdqlm_multivar_synth_drop",
+          "n_quantiles": "7",
+          "n_samples_input": "2000",
+          "n_samples_output": "2000",
+          "raw_curve_crossing_share": "1.00000000000000",
+          "raw_curve_max_negative_gap": "-8.07023420028067",
+          "raw_sample_max_crossing_rate": "1.00000000000000",
+          "raw_sample_mean_crossing_rate": "1.00000000000000",
+          "rearrange": "TRUE",
+          "segment": "forecast",
+          "sort_draws_by_time": "TRUE",
+          "table_name": "summary"
+        }
+      ],
+      "vb_component_diagnostic_summary": [
+        {
+          "cutoff": "20220511",
+          "q": "5",
+          "reason": "no_transfer_block_detected"
+        },
+        {
+          "cutoff": "20220511",
+          "q": "20",
+          "reason": "no_transfer_block_detected"
+        },
+        {
+          "cutoff": "20220511",
+          "q": "35",
+          "reason": "no_transfer_block_detected"
+        },
+        {
+          "cutoff": "20220511",
+          "q": "50",
+          "reason": "no_transfer_block_detected"
+        },
+        {
+          "cutoff": "20220511",
+          "q": "65",
+          "reason": "no_transfer_block_detected"
+        },
+        {
+          "cutoff": "20220511",
+          "q": "80",
+          "reason": "no_transfer_block_detected"
+        },
+        {
+          "cutoff": "20220511",
+          "q": "95",
+          "reason": "no_transfer_block_detected"
+        }
+      ],
+      "vb_component_quantile_order_summary": []
+    },
+    "run_id": "multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep_he3_noTF",
+    "run_key": "component_removal:20220511:exAL-M-noTF",
+    "run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he3_exdqlm_ablation_current_authority_20260625/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep_he3_noTF",
+    "run_root_exists": true,
+    "study": "component_removal",
+    "variant": "noTF"
+  },
+  {
+    "cutoff": "20221225",
+    "family": "exdqlm_multivar",
+    "fit_count": 7,
+    "fit_status_counts": {
+      "budget_limited": 7
+    },
+    "label": "exAL-M-T1-noH2",
+    "manifest_pipeline_status": "pass",
+    "predictive_evidence": {
+      "predictive_quantiles": [
+        {
+          "median_central90_width": 0.32645017733677506,
+          "model_ids": [
+            "exdqlm_multivar_synth_keep"
+          ],
+          "observed_range": [
+            0.564683774756493,
+            5.36438371043544
+          ],
+          "ordering_violations": 0,
+          "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he3_exdqlm_ablation_current_authority_20260625/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_he3_noH2/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_he3_noH2/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+          "q05_range": [
+            -1.52171172198778,
+            -0.791438662222937
+          ],
+          "q50_range": [
+            -1.32397392571244,
+            -0.75386678623095
+          ],
+          "q95_range": [
+            -1.29939042176081,
+            -0.750634588174012
+          ],
+          "rows": 28
+        }
+      ],
+      "q50_location": {
+        "interval_kind": "fitted q50 location uncertainty; not full predictive coverage",
+        "mean_location_error": -4.260517557866834,
+        "median_location_interval_width": 0.09906351892137999,
+        "mu_range": [
+          -0.817790099067325,
+          -0.491331169574422
+        ],
+        "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he3_exdqlm_ablation_current_authority_20260625/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_he3_noH2/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_he3_noH2/multivar_forecast_window_q50_summary.csv",
+        "rows": 28,
+        "verification_range": [
+          0.564683774756493,
+          5.36438371043544
+        ]
+      },
+      "synthesis": [
+        {
+          "anchor_curve_crossing_share": "0",
+          "anchor_curve_max_negative_gap": "0",
+          "context": "exdqlm_multivar_synth_keep.multivar.forecast_synthesis",
+          "empirical_curve_crossing_share": "0",
+          "empirical_curve_max_negative_gap": "0",
+          "enforce_isotonic": "TRUE",
+          "grid_M": "1001",
+          "horizon": "28",
+          "method_name": "cdf-spline",
+          "method_tag": "exdqlm_iso1_rearr1_grid1001_v1",
+          "model_id": "exdqlm_multivar_synth_keep",
+          "n_quantiles": "7",
+          "n_samples_input": "2000",
+          "n_samples_output": "2000",
+          "raw_curve_crossing_share": "1.00000000000000",
+          "raw_curve_max_negative_gap": "-1.20740040285150",
+          "raw_sample_max_crossing_rate": "1.00000000000000",
+          "raw_sample_mean_crossing_rate": "1.00000000000000",
+          "rearrange": "TRUE",
+          "segment": "forecast",
+          "sort_draws_by_time": "TRUE",
+          "table_name": "summary"
+        }
+      ],
+      "vb_component_diagnostic_summary": [
+        {
+          "cutoff": "20221225",
+          "forecast_max_state_rms_norm": "0.785217834935958",
+          "forecast_min_mu_usgs": "0.900281967258081",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "2",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-1.83280387174333",
+          "last_forecast_mu_glofas": "0.751187099599019",
+          "last_forecast_mu_usgs": "2.58399097134235",
+          "last_forecast_season": "-0.105432398895495",
+          "last_forecast_trend": "-0.0842457143103804",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "2.77366908454822",
+          "max_abs_exps_state_err_glofas": "2.22044604925031e-16",
+          "max_abs_exps_state_err_nws": "4.44089209850063e-16",
+          "max_abs_exps_state_err_usgs": "1.11022302462516e-16",
+          "max_abs_identity_err_glofas": "1.11022302462516e-16",
+          "max_abs_identity_err_nws": "1.94289029309402e-16",
+          "p": "5",
+          "ppx": "13",
+          "q": "5",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20221225",
+          "forecast_max_state_rms_norm": "0.661311986332605",
+          "forecast_min_mu_usgs": "1.0548653291342",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "2",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-1.18116959544526",
+          "last_forecast_mu_glofas": "1.08255631428748",
+          "last_forecast_mu_usgs": "2.26372590973274",
+          "last_forecast_season": "-0.0616704069855748",
+          "last_forecast_trend": "0.134747467823116",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "2.1906488488952",
+          "max_abs_exps_state_err_glofas": "4.44089209850063e-16",
+          "max_abs_exps_state_err_nws": "4.44089209850063e-16",
+          "max_abs_exps_state_err_usgs": "5.55111512312578e-17",
+          "max_abs_identity_err_glofas": "5.55111512312578e-17",
+          "max_abs_identity_err_nws": "1.66533453693773e-16",
+          "p": "5",
+          "ppx": "13",
+          "q": "20",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20221225",
+          "forecast_max_state_rms_norm": "0.669668753352724",
+          "forecast_min_mu_usgs": "1.1361568703115",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "2",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-1.14537563983637",
+          "last_forecast_mu_glofas": "1.31937284934608",
+          "last_forecast_mu_usgs": "2.46474848918245",
+          "last_forecast_season": "-0.057584048134408",
+          "last_forecast_trend": "0.22196526518193",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "2.30036727213493",
+          "max_abs_exps_state_err_glofas": "4.44089209850063e-16",
+          "max_abs_exps_state_err_nws": "4.44089209850063e-16",
+          "max_abs_exps_state_err_usgs": "2.22044604925031e-16",
+          "max_abs_identity_err_glofas": "2.22044604925031e-16",
+          "max_abs_identity_err_nws": "1.66533453693773e-16",
+          "p": "5",
+          "ppx": "13",
+          "q": "35",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20221225",
+          "forecast_max_state_rms_norm": "0.668949364385953",
+          "forecast_min_mu_usgs": "1.13030041863673",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "2",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-0.902704077589992",
+          "last_forecast_mu_glofas": "1.54474202170816",
+          "last_forecast_mu_usgs": "2.44744609929816",
+          "last_forecast_season": "-0.123253567652874",
+          "last_forecast_trend": "0.181485709005048",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "2.38921395794598",
+          "max_abs_exps_state_err_glofas": "4.44089209850063e-16",
+          "max_abs_exps_state_err_nws": "4.44089209850063e-16",
+          "max_abs_exps_state_err_usgs": "1.11022302462516e-16",
+          "max_abs_identity_err_glofas": "2.22044604925031e-16",
+          "max_abs_identity_err_nws": "2.22044604925031e-16",
+          "p": "5",
+          "ppx": "13",
+          "q": "50",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20221225",
+          "forecast_max_state_rms_norm": "0.733843157073806",
+          "forecast_min_mu_usgs": "1.17879062049543",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "2",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-1.08721097933677",
+          "last_forecast_mu_glofas": "1.81577123021717",
+          "last_forecast_mu_usgs": "2.90298220955393",
+          "last_forecast_season": "-0.0960790180780653",
+          "last_forecast_trend": "0.180437705170512",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "2.81862352246149",
+          "max_abs_exps_state_err_glofas": "4.44089209850063e-16",
+          "max_abs_exps_state_err_nws": "4.44089209850063e-16",
+          "max_abs_exps_state_err_usgs": "0",
+          "max_abs_identity_err_glofas": "2.22044604925031e-16",
+          "max_abs_identity_err_nws": "2.22044604925031e-16",
+          "p": "5",
+          "ppx": "13",
+          "q": "65",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20221225",
+          "forecast_max_state_rms_norm": "0.925011615956959",
+          "forecast_min_mu_usgs": "1.26012516075119",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "2",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-1.60106283001984",
+          "last_forecast_mu_glofas": "1.90228883833905",
+          "last_forecast_mu_usgs": "3.50335166835889",
+          "last_forecast_season": "-0.163346066057198",
+          "last_forecast_trend": "0.0848680191951641",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "3.58182971522092",
+          "max_abs_exps_state_err_glofas": "8.88178419700125e-16",
+          "max_abs_exps_state_err_nws": "4.44089209850063e-16",
+          "max_abs_exps_state_err_usgs": "0",
+          "max_abs_identity_err_glofas": "2.22044604925031e-16",
+          "max_abs_identity_err_nws": "2.22044604925031e-16",
+          "p": "5",
+          "ppx": "13",
+          "q": "80",
+          "reason": "ok"
+        },
+        {
+          "cutoff": "20221225",
+          "forecast_max_state_rms_norm": "1.410135739731",
+          "forecast_min_mu_usgs": "1.45084144534243",
+          "forecast_negative_mu_usgs_n": "0",
+          "harmonic_count": "2",
+          "last_forecast_day_rel": "28",
+          "last_forecast_disc_glofas": "-3.70926094828641",
+          "last_forecast_mu_glofas": "2.14241822302004",
+          "last_forecast_mu_usgs": "5.85167917130645",
+          "last_forecast_season": "-0.127124564731651",
+          "last_forecast_trend": "0.233581300371628",
+          "last_forecast_usgs_observed": "NA",
+          "last_forecast_zeta": "5.74522243566647",
+          "max_abs_exps_state_err_glofas": "8.88178419700125e-16",
+          "max_abs_exps_state_err_nws": "8.88178419700125e-16",
+          "max_abs_exps_state_err_usgs": "2.22044604925031e-16",
+          "max_abs_identity_err_glofas": "2.22044604925031e-16",
+          "max_abs_identity_err_nws": "4.44089209850063e-16",
+          "p": "5",
+          "ppx": "13",
+          "q": "95",
+          "reason": "ok"
+        }
+      ],
+      "vb_component_quantile_order_summary": [
+        {
+          "checked_days": "91",
+          "cutoff": "20221225",
+          "phase": "history",
+          "quantity": "mu_usgs_state",
+          "total_violations": "0",
+          "violation_days": "0",
+          "worst_diff": "0.00235614976688098"
+        },
+        {
+          "checked_days": "91",
+          "cutoff": "20221225",
+          "phase": "history",
+          "quantity": "theta_exps_usgs",
+          "total_violations": "0",
+          "violation_days": "0",
+          "worst_diff": "0.00235614976688098"
+        },
+        {
+          "checked_days": "91",
+          "cutoff": "20221225",
+          "phase": "history",
+          "quantity": "mu_glofas_state",
+          "total_violations": "0",
+          "violation_days": "0",
+          "worst_diff": "0.00696425099773063"
+        },
+        {
+          "checked_days": "91",
+          "cutoff": "20221225",
+          "phase": "history",
+          "quantity": "mu_nws_state",
+          "total_violations": "0",
+          "violation_days": "0",
+          "worst_diff": "0.0180426486164633"
+        },
+        {
+          "checked_days": "28",
+          "cutoff": "20221225",
+          "phase": "forecast",
+          "quantity": "mu_usgs_state",
+          "total_violations": "53",
+          "violation_days": "28",
+          "worst_diff": "-0.434946542787593"
+        },
+        {
+          "checked_days": "28",
+          "cutoff": "20221225",
+          "phase": "forecast",
+          "quantity": "mu_glofas_state",
+          "total_violations": "1",
+          "violation_days": "1",
+          "worst_diff": "-0.00100844849890214"
+        },
+        {
+          "checked_days": "8",
+          "cutoff": "20221225",
+          "phase": "forecast",
+          "quantity": "mu_nws_state",
+          "total_violations": "2",
+          "violation_days": "2",
+          "worst_diff": "-0.222053720480214"
+        }
+      ]
+    },
+    "run_id": "multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_he3_noH2",
+    "run_key": "component_removal:20221225:exAL-M-T1-noH2",
+    "run_root": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he3_exdqlm_ablation_current_authority_20260625/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_he3_noH2",
+    "run_root_exists": true,
+    "study": "component_removal",
+    "variant": "noH2"
+  }
+]

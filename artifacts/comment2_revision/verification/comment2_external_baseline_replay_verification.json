@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "release_root": "/tmp/comment2_external_baselines_20261107_release",
+  "release_process_exit_code": 0,
+  "checksum_files_verified": 25,
+  "checksum_mismatches": [],
+  "verification_json_in_checksum_index": true,
+  "final_vs_prior_curated_replay_byte_identical": {
+    "per_time.csv": true,
+    "by_origin_horizon.csv": true,
+    "aggregate.csv": true,
+    "predictive_summary.csv": true,
+    "training_pairs.csv.gz": true,
+    "parameters.csv": true,
+    "optimizer_attempts.csv": true,
+    "training_diagnostics.csv": true,
+    "prediction_checks.csv": true,
+    "predictions/20210123.rds": true,
+    "predictions/20211112.rds": true,
+    "predictions/20211221.rds": true,
+    "predictions/20220511.rds": true,
+    "predictions/20221225.rds": true
+  },
+  "builder_sha256": "b8630dd9e553db17795bb5cb95655b593dfce2287a668476678f0ab2555cb483",
+  "run_manifest_builder_hash_matches": true,
+  "configuration_sha256": "879a6c6147882079fb9ee21d018bb4dc6fb6359893914b5fd34e9a9095a48950",
+  "run_manifest_config_hash_matches": true,
+  "test_script_sha256": "6456be155c7b07b8af3e603da323f7fc5e45dd20ad96d729237641a5f5d00699",
+  "tests": {
+    "blocks": 9,
+    "assertions": 39,
+    "failed": 0
+  },
+  "raw_provenance_reference": "/tmp/comment2_external_baselines_20261107_r2/verification.json",
+  "original_source_recheck": "/tmp/comment2_external_baseline_source_recheck.json",
+  "bundle_bytes": 6081423
+}

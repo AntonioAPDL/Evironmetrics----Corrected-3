@@ -1,0 +1,3 @@
+# Frozen inputs, source snapshots and execution evidence retain captured bytes.
+# Authored manuscript and live helper code use the standard whitespace checks.
+artifacts/comment2_revision/** -whitespace

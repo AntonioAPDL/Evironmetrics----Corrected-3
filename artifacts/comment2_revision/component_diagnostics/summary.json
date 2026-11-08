@@ -1,0 +1,30 @@
+{
+  "article_root": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2",
+  "benchmark_runs": 45,
+  "component_removal_runs": 25,
+  "created_utc": "2026-11-08T07:13:33.431189+00:00",
+  "fit_count": 400,
+  "fit_status_counts": {
+    "budget_limited": 314,
+    "converged": 16,
+    "unknown": 70
+  },
+  "interpretation": "Recorded fit stopping and safeguards are evidence, not proof of model validity or a causal decomposition of component value.",
+  "invocation": [
+    "/home/jaguir26/python39/bin/python3",
+    "-B",
+    "/data/muscat_data/jaguir26/project1_ucsc_phd/scripts/audit_comment2_component_diagnostics.py",
+    "--output-dir",
+    "/tmp/comment2_component_diagnostics_20261107/release"
+  ],
+  "missing_evidence": [],
+  "model_comparison_rows": 140,
+  "numerical_outputs_modified": false,
+  "rdata_or_rds_read": false,
+  "run_count": 70,
+  "scope": "saved publication component/fitting evidence only",
+  "source_bytes": 157099221,
+  "source_file_count": 897,
+  "source_files_unchanged": true,
+  "tail_iterations": 20
+}

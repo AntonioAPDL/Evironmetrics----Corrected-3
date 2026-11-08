@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "existing_scores_imported_verbatim": 1440,
+  "baseline_scores": 420,
+  "origins": 5,
+  "predictions_finite_nonnegative_nondecreasing": true,
+  "persistence_point_mass_equals_mae": true,
+  "all_emos_fits_converged": true,
+  "original_source_hashes_unchanged": null
+}

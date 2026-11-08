@@ -1,0 +1,152 @@
+Independent baseline review for major referee comment 2
+Reviewed on November 7, 2026, America/Los_Angeles.
+
+Scope: read-only inspection of scripts/build_comment2_external_baselines.R,
+config/comment2_external_baselines.json, the R tests, and the completed r2 draft
+bundle at /tmp/comment2_external_baselines_20261107_r2. No source or research
+output was edited. The final release/replay will be separately sealed by root.
+
+Conclusion: no scientific or numerical blocker found in the accepted r2 results.
+
+Published mathematics and source verification
+
+The left-truncated-normal CRPS formula in c2_tn_crps is algebraically equivalent
+to the expression in Thorarinsdottir and Gneiting (2010): with Z=Phi(mu/sigma),
+the published z*(2*Phi(z)+Z-2)/Z term equals z*(1-2*survival(z)/Z).
+The density and final Phi(sqrt(2)*mu/sigma)/Z^2 terms agree. Quantiles use the
+equivalent survival-probability inverse to avoid subtracting nearly equal CDFs.
+The location/variance regression is an EMOS family adapted to log1p discharge;
+the application window, bounds and training choices are explicitly documented.
+
+Primary sources inspected:
+https://academic.oup.com/jrsssa/article/173/2/371/7077664
+https://citeseerx.ist.psu.edu/document?doi=15cba53362a378e6bb74a63c73b16504c9f49493&repid=rep1&type=pdf
+https://confluence.ecmwf.int/spaces/CEMS/pages/265028625/GloFAS%2Bv3.1
+https://confluence.ecmwf.int/spaces/CEMS/pages/265028624/GloFAS%2Bversioning%2Bsystem
+https://global-flood.emergency.copernicus.eu/news/93-glofas-v31-launch-and-webinar/
+
+The official GloFAS documentation confirms May 26, 2021 as the major v3.1
+operational switch. The code explicitly groups 2.x versus 3.x families; it does
+not claim that every minor software version is separately fitted.
+
+Independent accepted-fit numerical comparison
+
+Executed from /data/muscat_data/jaguir26/project1_ucsc_phd:
+
+Rscript --vanilla -e 'source("scripts/build_comment2_external_baselines.R"); p<-read.csv("/tmp/comment2_external_baselines_20261107_r2/parameters.csv"); x<-read.csv("/tmp/comment2_external_baselines_20261107_r2/training_pairs.csv.gz"); z<-merge(x,p,by=c("cutoff_date","lead_day")); mu<-z$a+z$b*z$ensemble_mean; sigma<-sqrt(z$c+z$d*z$ensemble_variance); sc<-c2_tn_crps(z$observed,mu,sigma); cat("actual training eta",range(mu/sigma),"minimum score",min(sc),"negative",sum(sc<0),"observation range",range(z$observed),"\n"); print(summary(p$a)); cat("expected closedform maxdiff",max(abs(sc-scoringRules::crps_tnorm(z$observed,location=mu,scale=sigma,lower=0)),na.rm=TRUE),"\n")'
+
+Output:
+actual training eta 0.1469426 41.53762 minimum score 0.001849437 negative 0 observation range 0.1949153 4.437162
+       Min. 1st Qu.  Median    Mean 3rd Qu.    Max.
+     0.2033  0.2217  0.2337  0.2618  0.2792  0.4023
+expected closedform maxdiff 2.220446e-15
+
+All 140 accepted forecast location/scale ratios were also positive, ranging
+0.2181968 to 21.13342. Maximum accepted scaled projected gradient: 5.988944e-06.
+Accepted d range: 0.04136649 to 290.4195, below the artificial upper bound.
+
+Independent direct score calculation (does not call the publication scorer)
+
+Rscript --vanilla - <<'RS'
+source('scripts/build_comment2_external_baselines.R')
+path <- '/tmp/comment2_external_baselines_20261107_r2'
+s <- read.csv(file.path(path,'per_time.csv'))
+worst <- 0
+for(o in c('20210123','20211112','20211221','20220511','20221225')) {
+  prediction <- readRDS(file.path(path,'predictions',paste0(o,'.rds')))
+  y <- read.csv(file.path(path,'inputs/usgs_verification.csv'))
+  observed <- y$Y[match(prediction$dates,y$date)]
+  for(model in names(prediction$predictions)) {
+    q <- prediction$predictions[[model]]
+    error <- matrix(observed,nrow=nrow(q),ncol=ncol(q),byrow=TRUE)-q
+    probabilities <- matrix(prediction$probabilities,nrow=nrow(q),ncol=ncol(q))
+    direct <- 2*colMeans((probabilities-(error<0))*error)
+    got <- s$crps[s$model==model & gsub('-','',s$cutoff_date)==o]
+    worst <- max(worst,max(abs(got-direct)))
+  }
+}
+cat('independent grid-score maximum discrepancy',worst,'\n')
+RS
+
+Output:
+independent grid-score maximum discrepancy 2.775558e-17
+
+Independent training/optimization checks
+
+python3 -B - <<'PY'
+from pathlib import Path
+import csv,gzip,datetime,collections,math
+p=Path('/tmp/comment2_external_baselines_20261107_r2')
+rows=list(csv.DictReader(gzip.open(p/'training_pairs.csv.gz','rt')))
+bad=[]
+for r in rows:
+ t=datetime.date.fromisoformat(r['cutoff_date']);issue=datetime.date.fromisoformat(r['issue_date']);target=datetime.date.fromisoformat(r['target_date'])
+ if not(issue<t and issue>=t-datetime.timedelta(days=365) and target<=t and (target-issue).days==int(r['lead_day'])):bad.append(r)
+print('independent_training_pair_checks',len(rows),'violations',len(bad),'origins',len({r['cutoff_date'] for r in rows}))
+counts=collections.Counter((r['cutoff_date'],r['lead_day']) for r in rows)
+print('training_case_range',min(counts.values()),max(counts.values()))
+attempts=list(csv.DictReader((p/'optimizer_attempts.csv').open()));groups=collections.defaultdict(list)
+for r in attempts:groups[r['cutoff_date'],r['lead_day']].append(r)
+bad=[]
+for key,rs in groups.items():
+ chosen=[r for r in rs if r['selected']=='TRUE'];eligible=[r for r in rs if r['converged']=='TRUE' and math.isfinite(float(r['objective']))]
+ if len(chosen)!=1 or int(chosen[0]['convergence_code'])!=0 or float(chosen[0]['objective'])!=min(float(r['objective']) for r in eligible):bad.append(key)
+print('multistart_groups',len(groups),'attempt_rows',len(attempts),'selection_violations',bad)
+history={r['date']:float(r['Y']) for r in csv.DictReader(gzip.open(p/'inputs/usgs_history.csv.gz','rt'))}
+print('matured_pair_observation_max_error',max(abs(float(r['observed'])-history[r['target_date']]) for r in rows))
+PY
+
+Executed constituent commands produced:
+independent_training_pair_checks 38738 violations 0 origins 5
+training_case_range 143 364
+multistart_groups 140 attempt_rows 560 selection_violations []
+matured_pair_observation_max_error 0.0
+
+Independent archived-ensemble identity check
+
+For each of the five exAL-M-T1 publication-manifest rows, compared every member
+and target date in the configured issue_date=YYYY-MM-DD/glofas_members.csv to
+that selected run's post/inputs/glofas_post_adapter.csv after applying log1p.
+All 28 target dates and all 51 members matched at every origin. Maximum absolute
+differences from CSV printed precision:
+2021-01-23 5.329070518200751e-15
+2021-11-12 4.884981308350689e-15
+2021-12-21 5.107025913275720e-15
+2022-05-11 4.996003610813204e-16
+2022-12-25 4.884981308350689e-15
+
+Hardening observation communicated to the baseline owner
+
+The initial log-tail algebra can suffer residual cancellation at extremely
+negative standardized locations within artificial trial bounds:
+c2_tn_crps(y=0,mu=-20,sigma=exp(-9)) returned -9.197433e-05;
+y=1e-6 returned -1.304765e-04. These are not valid CRPS values. None of the
+accepted training or forecast parameters is in that region: all accepted a
+coefficients and all accepted standardized locations are positive, and the full
+accepted-training formula comparison above is accurate to roundoff. The baseline
+owner was asked to reject materially negative objective values and add a
+regression, without silently changing accepted results. This is a robustness
+issue outside the observed accepted-fit domain, not an accepted-result blocker.
+
+Integration observations
+
+Prediction receives only pre-origin history and matured paired forecasts.
+Verification is matched after predictions are generated. Deterministic 2000-point
+representations match the recorded scorer convention. Persistence has the
+point-mass/absolute-error identity. CRPSS is computed as a ratio of matching
+aggregate scores. Curated replay reads saved features/history/scorer and does not
+need the original raw archive. Original scores are imported and checked unchanged.
+
+Final-release follow-up independently verified
+
+The baseline owner added a guard rejecting materially negative objective scores
+and a regression for the extreme-tail case; the final release is at
+/tmp/comment2_external_baselines_20261107_release.
+Independent SHA-256 comparison of 14 numerical CSV/gzip/RDS files
+against the reviewed r2 bundle found one byte difference: parameters.csv adds
+two diagnostic fields (projected_gradient_raw and optimizer scaling), and ten
+projected-gradient entries change slightly under scaled reporting. All fitted
+coefficients, training objectives and forecast parameters are exactly unchanged;
+the other thirteen files (including all scores and predictive RDS) are byte-identical.
+Independently verified all 25 final bundle checksum entries; verification.json
+is covered. Final safety changes did not alter accepted numerical outputs.

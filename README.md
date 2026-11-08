@@ -7,6 +7,7 @@ This repository is the submission-facing freeze of the revised manuscript, its m
 - `wileyNJD-APA.tex`: manuscript source used by Overleaf
 - `wileyNJD-APA.pdf`: current locally built review PDF
 - `docs/comment1_revision.txt`: implemented comment-1 changes and review/build entrypoints
+- `docs/comment2_revision.txt`: external comparisons, fitting evidence and portable replay
 - `Figures/manuscript/`: the exact figure files used by the manuscript
 - `Figures/forecast_context_by_cutoff/`: cutoff-wide copies of the forecast-context view for all five cutoffs
 - `Figures/multivariate_synthesis_by_cutoff/`: cutoff-wide selected-model synthesis family, including the supplementary overlay panels
@@ -96,3 +97,19 @@ The reviewed presentation assets are preserved by the checksummed registry in
 `artifacts/comment1_figure_revision/`. Check it with
 `python3 -B scripts/comment1_figure_revision.py --check`. A new numerical source
 or selected-run identity requires a new inspected presentation revision.
+
+## Point-2 evidence and table regeneration
+
+The additive external comparisons and saved-fit diagnostics are in
+`artifacts/comment2_revision/`. Validate them without writing:
+
+```bash
+python3 -B scripts/comment2_revision.py --check
+```
+
+Regenerate only the three new tables with `python3 -B scripts/comment2_revision.py`.
+The validation preserves original article assets and checks imported scores,
+climatological skill, training eligibility and diagnostic run identities.
+`docs/comment2_revision.txt` and the artifact README describe portable baseline
+replay. `docs/article_readme_template.txt` is the source of this README for the
+asset-index builder.

@@ -167,6 +167,9 @@ def main() -> None:
     run([py, str(article_root / 'scripts' / 'promote_cutoff_forecast_context_figures.py'), '--article-root', str(article_root)])
     run([py, str(article_root / 'scripts' / 'promote_setup_support_v2_to_disc.py'), '--article-root', str(article_root)])
     run([py, str(article_root / 'scripts' / 'build_generated_table_includes.py'), '--article-root', str(article_root)])
+    # Point-2 evidence is frozen separately; validate current imported scores
+    # before regenerating only its additional comparison/diagnostic tables.
+    run([py, str(article_root / 'scripts' / 'comment2_revision.py'), '--article-root', str(article_root)])
     run([py, str(article_root / 'scripts' / 'promote_generated_figures_to_disc.py'), '--article-root', str(article_root)])
     run([py, str(article_root / 'scripts' / 'sync_legacy_uppercase_figures.py'), '--article-root', str(article_root)])
     reapply_comment1_figure_revision(article_root)

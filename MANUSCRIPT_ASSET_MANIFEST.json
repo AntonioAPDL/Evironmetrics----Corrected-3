@@ -183,6 +183,39 @@
         "he3_ablation_horizon_summary_csv": "tables/generated_tex/he3_ablation_crps_horizon_summary.csv"
       },
       "note": "Generated from the same authoritative HE3 component-removal sensitivity sources as the 28-day table, but every row is restricted to leads 1--8 so RAW-NWS, RAW-GLOFAS, the full model, and the reduced variants are compared on a common horizon."
+    },
+    "tab:comment2_external_comparison": {
+      "label": "tab:comment2_external_comparison",
+      "role": "Five-origin external-reference scores and climatology-relative skill",
+      "table_tex_path": "tables/generated_tex/comment2_external_comparison_table.tex",
+      "source_class": "comment2_frozen_additive_evidence",
+      "sources": {
+        "revision_manifest_json": "artifacts/comment2_revision/manifest.json",
+        "aggregate_csv": "artifacts/comment2_revision/external_baselines/aggregate.csv"
+      },
+      "note": "Generated and checked by scripts/comment2_revision.py; existing publication assets and scores remain fixed."
+    },
+    "tab:comment2_external_by_origin": {
+      "label": "tab:comment2_external_by_origin",
+      "role": "Origin-specific external-reference scores and skill",
+      "table_tex_path": "tables/generated_tex/comment2_external_by_origin_table.tex",
+      "source_class": "comment2_frozen_additive_evidence",
+      "sources": {
+        "revision_manifest_json": "artifacts/comment2_revision/manifest.json",
+        "origin_csv": "artifacts/comment2_revision/external_baselines/by_origin_horizon.csv"
+      },
+      "note": "Generated and checked by scripts/comment2_revision.py; existing publication assets and scores remain fixed."
+    },
+    "tab:comment2_fit_diagnostics": {
+      "label": "tab:comment2_fit_diagnostics",
+      "role": "Recorded stopping evidence for the existing benchmark and structural-removal fits",
+      "table_tex_path": "tables/generated_tex/comment2_fit_diagnostic_table.tex",
+      "source_class": "comment2_frozen_additive_evidence",
+      "sources": {
+        "revision_manifest_json": "artifacts/comment2_revision/manifest.json",
+        "fit_ledger_json": "artifacts/comment2_revision/component_diagnostics/fit_ledger.json"
+      },
+      "note": "Generated and checked by scripts/comment2_revision.py; existing publication assets and scores remain fixed."
     }
   },
   "runtime_benchmarks": {
@@ -204,5 +237,11 @@
       "source_class": "compact_forecast_issue_manifest",
       "note": "Records that publication forecast matrices use the latest forecast issue available at each cutoff and that legacy weighted_daily file names are compatibility aliases rather than active cross-issue weighting."
     }
+  },
+  "comment2_revision": {
+    "manifest_path": "artifacts/comment2_revision/manifest.json",
+    "doc_path": "docs/comment2_revision.txt",
+    "builder": "scripts/comment2_revision.py",
+    "preserves_existing_publication_results": true
   }
 }

@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "process_exit_code": 0,
+  "isolated_root": "/tmp/comment2_portable_execution_20261107",
+  "code_archive_sha256": "b8630dd9e553db17795bb5cb95655b593dfce2287a668476678f0ab2555cb483",
+  "raw_usgs_path": "/nonexistent/comment2-portable/usgs.csv",
+  "raw_glofas_path": "/nonexistent/comment2-portable/glofas",
+  "article_checkout_path": "absent_article_checkout",
+  "source_data_unavailable_by_design": true,
+  "numerical_output_byte_identity": {
+    "per_time.csv": true,
+    "by_origin_horizon.csv": true,
+    "aggregate.csv": true,
+    "parameters.csv": true,
+    "optimizer_attempts.csv": true,
+    "training_diagnostics.csv": true,
+    "training_pairs.csv.gz": true,
+    "prediction_checks.csv": true,
+    "predictive_summary.csv": true,
+    "predictions/20210123.rds": true,
+    "predictions/20211112.rds": true,
+    "predictions/20211221.rds": true,
+    "predictions/20220511.rds": true,
+    "predictions/20221225.rds": true
+  },
+  "command": "Rscript --vanilla source/scripts/build_comment2_external_baselines.R --config source/config/comment2_external_baselines.json --input-bundle inputs --output-root output"
+}

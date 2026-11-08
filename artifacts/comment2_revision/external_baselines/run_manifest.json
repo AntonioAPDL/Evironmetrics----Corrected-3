@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "configuration_sha256": "879a6c6147882079fb9ee21d018bb4dc6fb6359893914b5fd34e9a9095a48950",
+  "builder_sha256": "b8630dd9e553db17795bb5cb95655b593dfce2287a668476678f0ab2555cb483",
+  "build_mode": "curated_input_replay",
+  "settings": {
+    "origins": ["2021-01-23", "2021-11-12", "2021-12-21", "2022-05-11", "2022-12-25"],
+    "historical_start": "1987-05-29",
+    "horizon_days": 28,
+    "report_horizons": [8, 28],
+    "evaluation_points": 2000,
+    "score_scale": "log_cms_plus1",
+    "score_method": "quantile_check_loss_sum",
+    "climatology_half_window_days": 15,
+    "climatology_calendar_year": 2000,
+    "climatology_quantile_type": 1,
+    "emos_training_issue_days": 365,
+    "emos_minimum_cases_per_lead": 100,
+    "ensemble_variance_ddof": 1,
+    "product_family_switch": "2021-05-26",
+    "emos_parameter_names": ["a", "b", "log_c", "d"],
+    "emos_lower_bounds": [-20, 0, -18, 0],
+    "emos_upper_bounds": [20, 5, 8, 100000000],
+    "emos_optimizer_maxit": 1500,
+    "emos_projected_gradient_tolerance": 0.01,
+    "emos_training_objective": "mean_analytic_left_truncated_normal_crps",
+    "emos_distribution": "Normal(mu=a+b*mean_Y, variance=c+d*sample_variance_Y), truncated below 0",
+    "emos_reference": "Gneiting et al. (2005), nonhomogeneous Gaussian regression; Thorarinsdottir and Gneiting (2010), truncated-normal EMOS. Application here uses log1p discharge."
+  },
+  "score_contract": {
+    "evaluation": "Unchanged current post_crps_quantile_approx; sorted grid with tau=k/(2001)",
+    "training": "Analytic truncated-normal CRPS, averaged across pre-origin mature forecast pairs",
+    "predictive_grid": "2000 deterministic quantiles p=k/2001; climatology type-1 empirical quantiles; persistence repeats last observation",
+    "skill": "1 - sum(model scores)/sum(matched seasonal climatology scores); no daily-ratio average",
+    "calendar": "Circular 366-slot reference year 2000; February 29 retained as its own slot; +/-15 slots"
+  },
+  "training_isolation": "Each fit receives only USGS dates <=T, issues<T, matured targets<=T, current product family; verification is matched only after prediction",
+  "optimizer": {
+    "method": "L-BFGS-B",
+    "starts": 4,
+    "selection": "lowest analytic training CRPS among converged starts",
+    "variance": "unbiased within-ensemble sample variance of log1p members (ddof=1)",
+    "parameters": "mu=a+b*m; sigma2=exp(log_c)+d*v; monotone b>=0, d>=0; numeric safety bounds audited",
+    "gradient": "Projected gradient infinity norm in scaled optimizer coordinates; raw norm also retained"
+  },
+  "r_version": "R version 4.5.3 (2026-03-11)",
+  "packages": {
+    "jsonlite": "2.0.0",
+    "digest": "0.6.39",
+    "scoringRules": "1.1.3"
+  },
+  "rows": [1860, 135, 27, 140, 140, 560, 5, 420],
+  "input_bundle_sha256": "f6c3edf557f2bc4658a9357557cb5c78afe32da6b6fd00b92e428723c969bbd4",
+  "external_raw_sources_required_for_replay": false,
+  "existing_publication_scores_unchanged": true
+}

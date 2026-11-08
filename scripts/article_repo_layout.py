@@ -67,6 +67,9 @@ CUTOFF_REFERENCE_SYNTHESIS_OVERLAY_FILENAMES = {
 }
 
 TABLE_TEX_FILENAMES = {
+    'comment2_external_comparison': 'comment2_external_comparison_table.tex',
+    'comment2_external_by_origin': 'comment2_external_by_origin_table.tex',
+    'comment2_fit_diagnostics': 'comment2_fit_diagnostic_table.tex',
     'benchmark_rows': 'benchmark_crps_raw_rows.tex',
     'benchmark_bayesian_rows': 'benchmark_crps_bayesian_rows.tex',
     'benchmark_body': 'benchmark_crps_body.tex',

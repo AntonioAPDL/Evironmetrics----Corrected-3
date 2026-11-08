@@ -1,0 +1,8 @@
+"file","sha256","bytes"
+"current_scorer.R","3d9ecb0328f4f87b0edc3491464014f3c7b8ec37770bac5668ffc9bdbbaf783b","114197"
+"forecast_features.csv.gz","c6d191a4dbda71ce920075eb78adf69855e0da11829c14fb72aef82129d07649","735190"
+"legacy_per_time.csv","1afb8e29e768c40e5aa324ba2fc24ed9ae4527197631ece16d65f1560db64f68","634880"
+"settings.json","4a026d0a29198acab05ceaf34ea33f7a7680f0f73362d826e46bd48d94f17b97","1108"
+"source_manifest.csv","073cc9bae1f06dc4471850f97b3556b22222839654be8a0af10fdbfa765fbc98","486878"
+"usgs_history.csv.gz","eeca4251bcb85f00b09675dd48a9e7fbe6398d9dfccfcec71ca496ed571d05ee","140672"
+"usgs_verification.csv","acab96303293f2e6b396fcb49270b549df07b8290134de8bec55ff687612465c","7789"

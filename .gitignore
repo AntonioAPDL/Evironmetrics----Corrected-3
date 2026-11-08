@@ -41,3 +41,7 @@ artifacts/representative_selected_model_2022_12_25/authoritative_support/authori
 *.rda
 *.rdata
 *.Rdata
+
+# Keep the bounded, checksummed point-2 evidence bundle complete, including logs.
+!/artifacts/comment2_revision/
+!/artifacts/comment2_revision/**
