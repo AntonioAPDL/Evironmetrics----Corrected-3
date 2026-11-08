@@ -8,6 +8,7 @@ from pathlib import Path
 from article_repo_layout import build_layout
 
 ARTIFACT_DESCRIPTIONS = {
+    'no_refit_revision': 'Saved-output distribution scores, calibration, discharge-scale verification, exact settings and inference scope, with portable replay inputs.',
     'comment2_revision': 'External baselines, climatological skill, saved-fit diagnostics and compact replay inputs for major comment 2.',
     'five_cutoff_crps_validation_sources': 'Five-cutoff CRPS validation freeze used by the benchmark table.',
     'representative_selected_model_2022_12_25': 'Representative selected-model bundle for the verified 2022-12-25 exAL-M-T1 run, including synthesis, posterior tables, and authoritative q05/q50/q95 support figures.',
@@ -115,7 +116,9 @@ def main() -> None:
             f"| `{row['name']}` | {row['description']} | {row['file_count']} | {row['png_count']} | {row['has_readme']} | `{row['review_targets']}` |\n"
             for row in artifact_rows
         ) +
-        '\nPreferred refresh entrypoint:\n- `scripts/refresh_all_generated_assets.py`\n'
+        '\nSaved-output revision refresh: `scripts/refresh_no_refit_revision.py`. '
+        'This bounded entrypoint preserves the original numerical assets.\n\n'
+        'For an intentional full authority/asset rebuild, see `scripts/refresh_all_generated_assets.py`.\n'
     )
 
     (layout.reports_dir / 'README.md').write_text(

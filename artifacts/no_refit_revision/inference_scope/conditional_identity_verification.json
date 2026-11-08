@@ -1,0 +1,24 @@
+{
+  "article_data_used": false,
+  "checks": {
+    "augmentation_s_kernel_max_constant_difference_error": 4.440892098500626e-16,
+    "augmentation_v_kernel_max_constant_difference_error": 4.440892098500626e-16,
+    "ffbs_backward_conditional_covariance_error": 1.1102230246251565e-16,
+    "ffbs_backward_conditional_mean_error": 1.1102230246251565e-16,
+    "ffbs_terminal_covariance_error": 5.551115123125783e-17,
+    "ffbs_terminal_mean_error": 2.220446049250313e-16,
+    "gamma_kernel_max_constant_difference_error": 4.440892098500626e-16,
+    "scale_kernel_max_constant_difference_error": 8.881784197001252e-15,
+    "scale_zero_quadratic_coefficient_limit_max_constant_difference_error": 5.329070518200751e-15
+  },
+  "checks_count": 9,
+  "fitted_objects_read": 0,
+  "historical_or_forecast_results_modified": false,
+  "mcmc_accuracy_assessed": false,
+  "numpy_version": "2.0.2",
+  "random_values_drawn": 0,
+  "sampler_implemented": false,
+  "scope": "deterministic conditional identities for a historical submodel with specified covariance",
+  "script_sha256": "70cc9fa5c79fffa872e6df76846ef384cab31fd2ff0687af5e200c66377c3ec8",
+  "status": "PASS"
+}

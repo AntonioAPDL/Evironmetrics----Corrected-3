@@ -1,0 +1,25 @@
+{
+  "extraction": "thirty frozen raw cubes and selected final matrices read once; no fitted state objects",
+  "replay": "compact anchors, definitions, observations and source hashes only; original cubes not required",
+  "original_scale_rule": "expm1 of declared log-scale quantiles and observed values; no clipping",
+  "source_files": [
+    {
+      "path": "R/environmetrics/02_helpers_core.R",
+      "sha256": "3d9ecb0328f4f87b0edc3491464014f3c7b8ec37770bac5668ffc9bdbbaf783b"
+    },
+    {
+      "path": "R/environmetrics/30_univariate_and_misc.R",
+      "sha256": "97f568a7a17e05bbd602895b8450b5c9ecc3cca7b1695f9507e877ed9e4fa4a1"
+    },
+    {
+      "path": "R/environmetrics/40_figures_smoke_fast.R",
+      "sha256": "c856998ade95d32fb15d66d62f467abd8d31aca0be59a0f0ece2531c532a9ec0"
+    },
+    {
+      "path": "R/environmetrics/utils_data.R",
+      "sha256": "37a6ca8895ba01046d3bce14dfe3bbaba237ba74e145a01375622de47c7140e5"
+    }
+  ],
+  "core_quantile_sha256": "89cd970b95e77280ef1e96622c8298f1fe484a43d043970f8f314a7b27b4413b",
+  "published_manifest_sha256": "c2f7cfe3dbfd030a814308e280749093c92d39c9a33c299b3c8d802d82cedeb4"
+}

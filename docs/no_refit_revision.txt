@@ -1,0 +1,121 @@
+Saved-output verification and reporting revision, November 8, 2026
+
+Scope and authority
+
+This additive revision uses the selected results at article commit
+2583ee41c1367e65d4d71ed36cf280a4f555a513 and workflow commit
+f69d4c8ac144f405b3535c4d8c8015cc8af9e2db. It does not fit a model, retrain a
+reference, generate a posterior draw or replace a selected run. Original tables,
+score values and figures remain protected by the point-2 manifest. Existing
+point-1 presentation structure and the point-2 external comparisons remain.
+
+The required additions are exact settings; correct coefficient estimands and
+feature identities; approximate-uncertainty wording; explicit member-likelihood
+and algorithm scope; and saved-output score, calibration and discharge-scale
+verification. The workflow planning package retains stable N00-N16 task IDs.
+The workflow execution record distinguishes delivered work from conditional
+diagnostics that cannot be justified from current exports and experiments that
+require new inference. No empty result placeholder is inserted in the paper.
+
+Article entrypoints (run from a clean article checkout)
+
+Read-only release check:
+  python3 -B scripts/no_refit_revision.py --check
+Bounded table and guide refresh:
+  python3 -B scripts/refresh_no_refit_revision.py
+Manuscript proof, using a fresh output directory:
+  python3 -B scripts/build_manuscript_review.py --output-dir /tmp/NEW_no_refit_proof --jobname manuscript_review
+
+The dedicated refresh calls no fitting or legacy full-asset refresh. The five
+new table files are bound by artifacts/no_refit_revision/manifest.json; the
+original tables/generated_tex/manifest.csv is deliberately unchanged. --seal is
+a maintainer operation after reviewing a changed input/source bundle; it does
+not bypass protected-file or mathematical validation.
+
+Portable numerical replay
+
+  Rscript --vanilla artifacts/no_refit_revision/reproduce/scripts/build_no_refit_review_diagnostics.R --inputs-manifest artifacts/no_refit_revision/inputs/manifest.json --output-dir /tmp/NEW_no_refit_replay
+
+The replay uses only bundled inputs, R and the versions recorded in
+verification/session_info.txt. The R entrypoint lives with its helper and
+configuration in reproduce/; absolute original paths in registries are
+provenance only. Inputs are checksummed before use, executed sources are
+checksummed before and after derivation, and output must be a fresh directory.
+Compare result CSVs and the PNG with the bound release copies. Elapsed time and
+the path-specific invocation record are expected to differ in a fresh run.
+
+Reporting metadata has its own portable Python replay in reporting/README.txt.
+Historical conditional identities have a separate deterministic verification
+script and report in inference_scope/. That verification uses synthetic fixed
+numbers and establishes conditional algebra, not MCMC convergence or VB accuracy.
+
+The synthesis_diagnostics/ README gives a separate compact replay from the
+snapshotted own-fit anchors and final delivered quantiles. The initial extraction
+reads and hashes 30 existing predictive cubes; compact replay does not require
+those full cubes. It reports role-specific check loss, hit counts, displacement
+and crossings. It does not compute a pre-synthesis CRPS from seven anchors.
+
+Case and score contracts
+
+There are 14 methods, 70 method-origin representations, 140 observation cases
+and 1,860 available forecast cases. Raw NWS contributes eight leads per origin;
+the other methods contribute 28. Both scales are retained: 3,720 score rows,
+26,040 targeted-quantile rows and 3,720 interval rows. Unique keys, dates,
+finite member counts and complete denominators fail closed if inconsistent.
+No member is silently discarded, duplicated or clipped.
+
+The primary new score is exact CRPS of each saved equally weighted empirical
+distribution, including deterministic baseline grids. Its skill denominator is
+the same frozen climatology representation on matching cases and scale. The
+old quantile-grid score is preserved separately and replayed, never renamed.
+The iid pairwise correction is a sensitivity for stochastic samples, with an
+explicit additional assumption for physical ensemble members. Deterministic
+grids and point masses have a named not-applicable status; there is no adjusted
+skill column. AL/exAL matrices have 2,000 draws, Gaussian matrices 64 or 48,
+and raw products 51 or seven members. Repeating or thinning members is avoided.
+
+The four HE4 principal competitors retain their delivered targeted quantiles.
+Other new sample quantiles use type 8, raw/deterministic quantiles type 1, and
+persistence its point value. Selected multivariate type-8 limits reproduce
+their displayed exports. Original-scale means and CRPS transform every stored
+value, whereas declared quantiles and limits are inverse-transformed from log.
+Exact strict/weak/tie and closed-interval events are evaluated on the declared
+log event scale and inherited by the inverse-scale records. This preserves a
+true discrete tie even when separate floating-point exponentiation differs at
+the last bit. No tolerance creates a tie.
+
+Coverage includes lower, inside and upper counts, width and proper interval
+score. Lead-specific raw-product errors/spreads are descriptive, with only five
+origins per lead. No independent-day significance claim is made. Stored support
+is reported in support_audit.csv, including negative transformed values and
+extreme tails; no unrecorded support correction is applied.
+
+Important verified findings
+
+Selected exAL-M-T1 exact-ECDF log CRPS is 0.2015622217 over 28 days and
+0.2991900353 over eight days, with skill 0.6860234114 and 0.5896529510.
+Its central 95% intervals cover 123/140 and 29/40 cases. The two December
+origins account for the short-horizon misses. On the discharge scale, selected
+28-day CRPS is 6.2688515943; at eight days raw NWS scores 6.63303 versus selected
+7.49362. These are separate criteria and the reversal is retained explicitly.
+
+Coefficient metadata preserves all 27 available endpoint-summary strings,
+identifies all 12 states/features, and does not invent unexported states 32-34.
+The main base-feature rows are unchanged; displayed loadings are conditional
+terminal state coefficients, not physical causal effects or historical averages.
+All parameter and historical-state bands are described as approximate VB
+uncertainty, separately from observation predictive intervals.
+
+Limits retained in the evidence
+
+The diagnostic-only historical covariance-index extraction is repaired in the
+workflow with a time-varying covariance regression case. Optional regeneration
+of late-window coefficient bands is skipped because the required covariances
+are absent in the listed selected exports. Optional precision-share reporting
+is skipped because the source/phase contract is incomplete. No numerical
+precision shares or unsupported band replacements enter the manuscript.
+
+Historical conditional-sampling displays are explicitly bounded and their
+identities checked; they are not advertised as a tested full-model sampler.
+A full VB/MCMC posterior comparison, alternative member-dependence/lead-scale
+models and further fitting/convergence experiments require later inference.

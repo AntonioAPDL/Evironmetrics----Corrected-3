@@ -89,6 +89,16 @@
       "source_class": "current_model_output_support",
       "current_model_output_wired": true,
       "note": "Copied from the current 2022-12-25 exdqlm_univar publication-style output bundle; uses the USGS observation channel and transfer covariates while excluding retrospective-product and forecast-product source channels."
+    },
+    {
+      "label": "fig:no_refit_reliability",
+      "manuscript_path": "Figures/manuscript/no_refit_quantile_reliability.png",
+      "category": "Forecast Verification",
+      "role": "Target-quantile reliability across five origins and two horizons",
+      "source_path": "artifacts/no_refit_revision/results/no_refit_quantile_reliability.png",
+      "source_class": "saved_output_diagnostics",
+      "current_model_output_wired": true,
+      "note": "Derived from frozen delivered quantiles; weak hit frequencies with separate strict/tie counts in the accompanying bundle."
     }
   ],
   "tables": {
@@ -216,6 +226,66 @@
         "fit_ledger_json": "artifacts/comment2_revision/component_diagnostics/fit_ledger.json"
       },
       "note": "Generated and checked by scripts/comment2_revision.py; existing publication assets and scores remain fixed."
+    },
+    "tab:no_refit_scores": {
+      "label": "tab:no_refit_scores",
+      "role": "Exact empirical-distribution CRPS and matching skill",
+      "table_tex_path": "tables/generated_tex/no_refit_score_comparison_table.tex",
+      "source_class": "saved_output_diagnostics",
+      "sources": {
+        "revision_manifest": "artifacts/no_refit_revision/manifest.json"
+      },
+      "note": "Generated only by the dedicated saved-output validator; original tables remain protected."
+    },
+    "tab:no_refit_calibration": {
+      "label": "tab:no_refit_calibration",
+      "role": "Predictive interval coverage, width and interval score",
+      "table_tex_path": "tables/generated_tex/no_refit_calibration_summary_table.tex",
+      "source_class": "saved_output_diagnostics",
+      "sources": {
+        "revision_manifest": "artifacts/no_refit_revision/manifest.json"
+      },
+      "note": "Generated only by the dedicated saved-output validator; original tables remain protected."
+    },
+    "tab:no_refit_settings": {
+      "label": "tab:no_refit_settings",
+      "role": "Exact reference-fit discount settings",
+      "table_tex_path": "tables/generated_tex/no_refit_reference_settings_table.tex",
+      "source_class": "saved_output_diagnostics",
+      "sources": {
+        "revision_manifest": "artifacts/no_refit_revision/manifest.json"
+      },
+      "note": "Generated only by the dedicated saved-output validator; original tables remain protected."
+    },
+    "tab:no_refit_sensitivity": {
+      "label": "tab:no_refit_sensitivity",
+      "role": "Qualified iid pairwise score sensitivity",
+      "table_tex_path": "tables/generated_tex/no_refit_score_sensitivity_table.tex",
+      "source_class": "saved_output_diagnostics",
+      "sources": {
+        "revision_manifest": "artifacts/no_refit_revision/manifest.json"
+      },
+      "note": "Generated only by the dedicated saved-output validator; original tables remain protected."
+    },
+    "tab:no_refit_original_scale": {
+      "label": "tab:no_refit_original_scale",
+      "role": "Original discharge-scale distribution scores",
+      "table_tex_path": "tables/generated_tex/no_refit_origin_diagnostics_table.tex",
+      "source_class": "saved_output_diagnostics",
+      "sources": {
+        "revision_manifest": "artifacts/no_refit_revision/manifest.json"
+      },
+      "note": "Generated only by the dedicated saved-output validator; original tables remain protected."
+    },
+    "tab:no_refit_origin_coverage": {
+      "label": "tab:no_refit_origin_coverage",
+      "role": "Predictive coverage by origin",
+      "table_tex_path": "tables/generated_tex/no_refit_origin_diagnostics_table.tex",
+      "source_class": "saved_output_diagnostics",
+      "sources": {
+        "revision_manifest": "artifacts/no_refit_revision/manifest.json"
+      },
+      "note": "Generated only by the dedicated saved-output validator; original tables remain protected."
     }
   },
   "runtime_benchmarks": {
@@ -243,5 +313,11 @@
     "doc_path": "docs/comment2_revision.txt",
     "builder": "scripts/comment2_revision.py",
     "preserves_existing_publication_results": true
+  },
+  "no_refit_revision": {
+    "manifest": "artifacts/no_refit_revision/manifest.json",
+    "check_command": "python3 -B scripts/no_refit_revision.py --check",
+    "refresh_command": "python3 -B scripts/refresh_no_refit_revision.py",
+    "documentation": "docs/no_refit_revision.txt"
   }
 }

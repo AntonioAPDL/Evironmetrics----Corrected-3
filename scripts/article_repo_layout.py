@@ -67,6 +67,11 @@ CUTOFF_REFERENCE_SYNTHESIS_OVERLAY_FILENAMES = {
 }
 
 TABLE_TEX_FILENAMES = {
+    'no_refit_score_comparison': 'no_refit_score_comparison_table.tex',
+    'no_refit_calibration_summary': 'no_refit_calibration_summary_table.tex',
+    'no_refit_reference_settings': 'no_refit_reference_settings_table.tex',
+    'no_refit_score_sensitivity': 'no_refit_score_sensitivity_table.tex',
+    'no_refit_origin_diagnostics': 'no_refit_origin_diagnostics_table.tex',
     'comment2_external_comparison': 'comment2_external_comparison_table.tex',
     'comment2_external_by_origin': 'comment2_external_by_origin_table.tex',
     'comment2_fit_diagnostics': 'comment2_fit_diagnostic_table.tex',

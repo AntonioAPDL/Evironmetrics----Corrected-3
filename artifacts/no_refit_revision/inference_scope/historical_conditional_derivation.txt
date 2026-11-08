@@ -1,0 +1,124 @@
+Conditional identities for the historical observation model
+
+Scope
+
+Fix the target quantile, the historical observations, the state-transition and
+evolution covariance sequence, the initial-state prior, and the hyperparameters.
+The identities below condition on that covariance sequence. They do not supply
+a transition for uncertain evolution covariances or a complete Markov chain for
+the joint historical and forecast target. No posterior samples are produced by
+this derivation or its deterministic checks.
+
+Use the augmentation in the manuscript, for one channel j and historical time t:
+
+  y_t = mu_t + A*v_t + C*sigma*abs(gamma)*s_t + e_t,
+  e_t | v_t,sigma,gamma ~ Normal(0, B*sigma*v_t),
+  v_t | sigma ~ Exponential(mean=sigma),
+  s_t ~ Normal(0,1) truncated to s_t > 0.
+
+Here mu_t = h_t' eta_t; A,B,C are functions of the current gamma and target
+quantile. The scale prior is IG(a_sigma,b_sigma), with density proportional to
+sigma^(-a_sigma-1)*exp(-b_sigma/sigma). The gamma prior is the stated truncated
+Student-t density over the admissible target-quantile bounds.
+
+GIG convention
+
+  GIG(p,a,b) has density proportional to
+  x^(p-1)*exp[-(a*x + b/x)/2], x > 0.
+
+The v conditional
+
+Keeping the other quantities fixed and writing r_t = y_t - mu_t, its log kernel
+is the sum of -log(v_t)/2, the Gaussian squared residual term, and -v_t/sigma.
+Collecting terms gives:
+
+  p_v = 1/2,
+  a_v = (A^2/B + 2)/sigma,
+  b_v = [r_t - C*sigma*abs(gamma)*s_t]^2/(B*sigma).
+
+The s conditional
+
+The positive-truncated normal prior supplies -s_t^2/2. Combining it with the
+Gaussian residual gives the underlying normal variance and mean:
+
+  ell_t = [1 + C^2*gamma^2*sigma/(B*v_t)]^(-1),
+  m_t = ell_t*C*abs(gamma)*(r_t-A*v_t)/(B*v_t).
+
+The second parameter is variance, not standard deviation. The truncation remains
+s_t > 0; its normalizing constant is fixed when deriving this full conditional.
+
+The sigma conditional
+
+Let n_j be the number of observations in the channel's stated target and define
+d_t = y_t - mu_t - A*v_t. The Gaussian likelihood and exponential augmentation
+density jointly contribute sigma^(-3*n_j/2). After including its prior, the
+conditional is GIG(p_sigma,a_sigma_star,b_sigma_star), where:
+
+  p_sigma = -a_sigma - 3*n_j/2,
+  a_sigma_star = sum_t [C*abs(gamma)*s_t]^2/(B*v_t),
+  b_sigma_star = sum_t d_t^2/(B*v_t) + 2*sum_t v_t + 2*b_sigma.
+
+For the historical-only construction, n_j = T under complete channel support.
+If a_sigma_star=0, the proper inverse-gamma limit has shape -p_sigma and scale
+b_sigma_star/2. In particular this limit applies when gamma=0.
+
+For the full external-source likelihood, the same algebra sums over every
+included historical observation and every issued member/lead. With complete
+historical support, the count becomes T + I_j*K_j. This algebra identifies the
+required multiplicity; it does not implement the other steps of a full sampler.
+
+The gamma conditional target
+
+At every proposed gamma, A(gamma), B(gamma), and C(gamma) must be recomputed.
+Ignoring constants independent of gamma, the historical log conditional is:
+
+  log prior_gamma(gamma) - T*log(B(gamma))/2
+  - sum_t [y_t-mu_t-A(gamma)*v_t
+           -C(gamma)*sigma*abs(gamma)*s_t]^2/v_t
+      /[2*B(gamma)*sigma].
+
+If a symmetric random walk is made on xi with
+gamma = L + (U-L)*logistic(xi), the transformed target adds the Jacobian
+log(U-L) + log(logistic(xi)) + log(1-logistic(xi)). A generic instruction to use
+MH leaves proposal tuning, initialization, finite-run diagnostics, and empirical
+accuracy unspecified. This bundle establishes no sampler implementation.
+
+The historical state conditional
+
+Conditioned on the augmentation, channel parameters and specified evolution
+covariances, the historical state trajectory is Gaussian. The filter uses
+b_t = C*sigma*abs(gamma)*s_t + A*v_t componentwise and diagonal observation
+covariance O_t = Diag(B*sigma*v_t). Initialize m_0,C_0 at their specified prior.
+Use the manuscript's forward moments a_t,R_t,m_t,C_t. The backward draw is:
+
+  eta_T | historical data, remaining quantities ~ Normal(m_T,C_T),
+  eta_t | eta_(t+1), historical data, remaining quantities
+    ~ Normal(m_t + C_t*D_(t+1)'*R_(t+1)^(-1)*(eta_(t+1)-a_(t+1)),
+             C_t-C_t*D_(t+1)'*R_(t+1)^(-1)*D_(t+1)*C_t).
+
+This is the conditional distribution given the sampled next state. Its covariance
+differs from the marginal backward-smoothing covariance used by VB. Explicitly
+stating this conditioning corrects the meaning of the display without changing
+the numerical formula.
+
+Limits of the historical identities
+
+The original historical FFBS display ends at T, and its scale sums count T
+observations. An isolated forecast-v augmentation loop supplies neither the
+forecast s updates nor the stacked forecast state/parameter updates. Scoping the
+display to the historical model and removing that isolated loop yields a coherent
+set of conditional identities. It does not claim a full-model MCMC algorithm.
+The treatment of uncertain evolution covariances, all member-specific forecast
+augmentations, dynamic active-state dimensions, proposal implementation, and
+chain diagnostics remain requirements for a later matching-target experiment.
+
+Deterministic verification
+
+Run verify_conditional_identities.py to check the v, s, sigma and gamma log-kernel
+identities over fixed legal inputs, including the gamma=0 scale limit. It also
+compares the FFBS terminal and backward conditional moments with direct Gaussian
+conditioning in a three-time, two-state example. These are algebra checks using
+synthetic fixed numbers; no random values, article observations, fitted objects,
+or Markov chain are used. conditional_identity_verification.json records the
+actual checks and numerical errors. Passing them does not assess VB accuracy,
+convergence of any empirical fit, or correctness of an executable full sampler.

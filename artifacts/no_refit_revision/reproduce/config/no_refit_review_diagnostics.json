@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "authority_article_commit": "2583ee41c1367e65d4d71ed36cf280a4f555a513",
+  "authority_workflow_commit": "f69d4c8ac144f405b3535c4d8c8015cc8af9e2db",
+  "article_directory": "Evironmetrics---REVISED-DOC-Corrected-2",
+  "authority_inventory": "docs/environmetrics_no_refit_plan_20261107/evidence/replay_scoring_artifact_inventory.json",
+  "publication_manifest": "artifacts/he2_publication_freeze/he2_bayesian_publication_manifest.csv",
+  "legacy_scores": "artifacts/comment2_revision/external_baselines/per_time.csv",
+  "verification_observations": "artifacts/comment2_revision/external_baselines/inputs/usgs_verification.csv",
+  "existing_quantiles": "artifacts/he4_quantile_check_loss_current_publication/he4_quantile_check_loss_per_day.csv",
+  "external_prediction_directory": "artifacts/comment2_revision/external_baselines/predictions",
+  "site_id": "11160500",
+  "origins": ["2021-01-23", "2021-11-12", "2021-12-21", "2022-05-11", "2022-12-25"],
+  "target_probabilities": [0.05, 0.20, 0.35, 0.50, 0.65, 0.80, 0.95],
+  "horizons": [8, 28],
+  "scales": ["log1p_cms", "discharge_cms"],
+  "methods": ["N-U-T1", "N-M-T0", "N-M-T1", "AL-U-T1", "AL-M-T0", "AL-M-T1", "exAL-U-T1", "exAL-M-T0", "exAL-M-T1", "RAW-GLOFAS", "RAW-NWS", "CLIM-SEASONAL", "PERSISTENCE", "EMOS-GLOFAS"],
+  "existing_quantile_methods": ["AL-M-T1", "AL-U-T1", "exAL-M-T1", "exAL-U-T1"],
+  "plot_methods": ["exAL-M-T1", "RAW-GLOFAS", "RAW-NWS", "EMOS-GLOFAS", "CLIM-SEASONAL"],
+  "expected_rows": {
+    "observations": 140, "representations": 70, "forecast_cases": 1860,
+    "scores_per_case": 3720, "quantiles_per_case": 26040, "intervals_per_case": 3720,
+    "summary_by_origin_horizon": 270, "summary_pooled": 54,
+    "calibration_summary": 2268, "interval_summary": 324,
+    "source_lead_diagnostics": 360, "source_lead_summary": 72
+  },
+  "policies": {
+    "primary_score": "ecdf_crps_saved_representation",
+    "sensitivity": "iid_adjusted_pairwise_crps_with_applicability_status",
+    "skill": "exact_ecdf_against_frozen_climatology_grid",
+    "adjusted_skill": false,
+    "unexpected_missing_values": "error",
+    "partial_members": false,
+    "draw_regeneration": false,
+    "clipping": false,
+    "quantile_events": "strict_and_weak_with_exact_ties",
+    "interval_event": "closed",
+    "original_scale_quantiles": "inverse_of_declared_log_quantiles",
+    "workers": 1,
+    "threads": 1
+  },
+  "tolerance": {
+    "legacy_absolute": 1e-12,
+    "quantile_parity_absolute": 1e-12,
+    "log_absolute": 1e-12,
+    "discharge_absolute": 1e-10,
+    "relative": 1e-12
+  }
+}

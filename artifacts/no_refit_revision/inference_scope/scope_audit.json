@@ -1,0 +1,110 @@
+{
+  "N12b": "Complete joint-target sampler formulation or implementation is not supplied by this bounded scope audit.",
+  "algorithm_scope": [
+    {
+      "baseline_caption": "MCMC Algorithm",
+      "label": "alg1",
+      "not_established": [
+        "Complete member-indexed forecast augmentations and pooled parameter updates.",
+        "A transition for all uncertain evolution covariances.",
+        "Implemented gamma proposal, chain convergence or empirical posterior accuracy."
+      ],
+      "required_scope_corrections": [
+        "Remove the isolated forecast-v loop when describing historical-only updates.",
+        "Use historical channel/selector notation only in this display.",
+        "Explain that gamma MH must reevaluate A,B,C and use its augmented conditional target."
+      ],
+      "source_lines": "baseline tex:740-789",
+      "verified_scope": "Historical augmentation and scale conditional identities, conditional on the specified state-evolution covariance target."
+    },
+    {
+      "baseline_caption": "MCMC - Forward Filtering Backward Sampling (FFBS)",
+      "label": "alg:Alg2",
+      "not_established": [
+        "Full historical-and-forecast state path target with changing active dimensions.",
+        "MCMC posterior comparison."
+      ],
+      "required_scope_corrections": [
+        "Initialize m0,C0 from their stated prior.",
+        "State explicit conditioning on the next sampled state in each backward draw."
+      ],
+      "source_lines": "baseline tex:792-840",
+      "verified_scope": "Historical Gaussian filtering and path conditionals with augmentations, channel parameters and evolution covariances conditioned upon."
+    },
+    {
+      "baseline_caption": "Variational Bayes (VB) Algorithm",
+      "label": "alg:Alg3",
+      "not_established": [
+        "Numerical convergence or accuracy from algebra.",
+        "A full forecast implementation proof."
+      ],
+      "required_scope_corrections": [
+        "Delimit historical-window display and describe member-indexed forecast extensions separately.",
+        "Retain the joint channel scale/skewness Laplace factor rather than claiming every scalar factor is independent."
+      ],
+      "source_lines": "baseline tex:845-887",
+      "verified_scope": "Historical-window coordinate-update structure. v/s conditional expectation formulas follow the stated augmentation; remaining nonconjugate update is an approximation."
+    },
+    {
+      "baseline_caption": "VB-Filtering and VB-Smoothing",
+      "label": "alg:Alg4",
+      "not_established": [
+        "A validation of the executed fit or its posterior variance."
+      ],
+      "required_scope_corrections": [
+        "Distinguish marginal VB smoothing covariance from FFBS covariance conditional on the next sampled state.",
+        "Describe forecast member stacking and active state propagation separately."
+      ],
+      "source_lines": "baseline tex:892-959",
+      "verified_scope": "Historical expected-precision Gaussian filtering and marginal smoothing recursions."
+    }
+  ],
+  "article_baseline_commit": "2583ee41c1367e65d4d71ed36cf280a4f555a513",
+  "article_empirical_results_unchanged": true,
+  "derivation": "historical_conditional_derivation.txt",
+  "existing_fit_objects_read": 0,
+  "full_external_channel_count_with_complete_history": "T + I_j*K_j",
+  "historical_channel_count": "T",
+  "inference_object_dictionary": [
+    {
+      "meaning": "VB optimization iterates and stopping/safeguard evidence",
+      "not": "MCMC chains or approximation-accuracy measurements",
+      "object": "seq.gamma,seq.sigma,seq.elbo and iteration health"
+    },
+    {
+      "center_in_article": "median",
+      "interval": "existing empirical 2.5th/97.5th percentiles",
+      "meaning": "Draws from the transformed channel Laplace approximation",
+      "object": "samp.gamma,samp.sigma"
+    },
+    {
+      "center_in_coefficient_table": "mean after recorded export scaling",
+      "interval": "existing empirical 2.5th/97.5th percentiles",
+      "meaning": "Draws from fitted Gaussian state marginals",
+      "object": "samp.theta at a historical date",
+      "time": "historical endpoint T; representative index12995 =2022-12-25"
+    },
+    {
+      "meaning": "Predictive distribution including observation-level and synthesis variation",
+      "not": "parameter credible interval or MCMC posterior chain",
+      "object": "synthesized forecast observation draws"
+    }
+  ],
+  "mathematical_verification": "conditional_identity_verification.json",
+  "new_parameter_or_predictive_draws": 0,
+  "numerical_C7_comparison": "DEFERRED_NEW_INFERENCE",
+  "outcome": "FORMULATION_SCOPED_WITH_OPEN_STEPS",
+  "prohibited_claims": [
+    "A full-model MCMC accuracy comparison was performed.",
+    "Gaussian benchmark convergence validates exAL posterior uncertainty.",
+    "More draws from fitted VB factors correct mean-field approximation bias.",
+    "Observed-flow predictive coverage validates parameter posterior intervals.",
+    "Historical conditional identity tests validate an executable full-model sampler."
+  ],
+  "representative_full_state_dimension": 34,
+  "scale_GIG_shape": "-a_sigma - 3*n_j/2",
+  "schema_version": 1,
+  "state_dimension_basis": "p=7,ppx=13; shared and two discrepancy blocks plus transfer block",
+  "task": "N12a",
+  "workflow_baseline_commit": "f69d4c8ac144f405b3535c4d8c8015cc8af9e2db"
+}

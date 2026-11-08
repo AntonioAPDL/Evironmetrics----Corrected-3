@@ -1,0 +1,13 @@
+"mode","feature_index","feature_name","history_n","forecast_n"
+"engineered_feature_table_sd",1,"PPT",12995,28
+"engineered_feature_table_sd",2,"SOIL",12995,28
+"engineered_feature_table_sd",3,"PCA",12995,28
+"engineered_feature_table_sd",4,"PPT_sq",12995,28
+"engineered_feature_table_sd",5,"SOIL_sq",12995,28
+"engineered_feature_table_sd",6,"PPT_x_SOIL",12995,28
+"engineered_feature_table_sd",7,"PPT_lag1",12995,28
+"engineered_feature_table_sd",8,"PPT_lag2",12995,28
+"engineered_feature_table_sd",9,"PPT_lag3",12995,28
+"engineered_feature_table_sd",10,"SOIL_lag1",12995,28
+"engineered_feature_table_sd",11,"SOIL_lag2",12995,28
+"engineered_feature_table_sd",12,"SOIL_lag3",12995,28

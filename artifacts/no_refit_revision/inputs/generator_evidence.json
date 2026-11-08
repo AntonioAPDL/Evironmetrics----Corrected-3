@@ -1,0 +1,22 @@
+{
+  "workflow_source_commit": "f69d4c8ac144f405b3535c4d8c8015cc8af9e2db",
+  "scope": "recorded generator source basis; sampled forecast matrices themselves are immutable authority",
+  "files": [
+    {
+      "path": "R/environmetrics/02_helpers_core.R",
+      "sha256": "3d9ecb0328f4f87b0edc3491464014f3c7b8ec37770bac5668ffc9bdbbaf783b"
+    },
+    {
+      "path": "R/environmetrics/40_figures_ndlm_only.R",
+      "sha256": "dad9a769c3b651636cbe4544affbe4d70a8256734f214d1aba6877eb429b400b"
+    },
+    {
+      "path": "R/unified/families/ndlm_main/08_vb_cavi_exact.R",
+      "sha256": "1860993d4a828794d3e7384c24312ce0e8692f60788e80f9a5a0dca4365b0369"
+    },
+    {
+      "path": "R/unified/families/ndlm_univar/03_filter_forecast_fit.R",
+      "sha256": "b5054418a6c1b14f961a2e6b92b2d4516e65d96d6749dc6110984fdf67e27a63"
+    }
+  ]
+}

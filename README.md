@@ -38,6 +38,18 @@ validators pass.
 
 ## Standard refresh command
 
+For the additive saved-output revision, use the dedicated commands:
+
+```bash
+python3 -B scripts/no_refit_revision.py --check
+python3 -B scripts/refresh_no_refit_revision.py
+```
+
+These validate the frozen evidence and generate only the five new table files
+and inventory guides. They do not fit models or call the broad legacy refresh.
+See `docs/no_refit_revision.txt` for portable numerical replay and scope.
+Use the full refresh below only for an intentional authority/asset rebuild.
+
 ```bash
 python3 scripts/refresh_all_generated_assets.py
 ```

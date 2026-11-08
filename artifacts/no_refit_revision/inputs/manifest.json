@@ -1,0 +1,617 @@
+{
+  "schema_version": 1,
+  "article_commit": "2583ee41c1367e65d4d71ed36cf280a4f555a513",
+  "workflow_commit": "f69d4c8ac144f405b3535c4d8c8015cc8af9e2db",
+  "selected_publication_manifest_sha256": "c2f7cfe3dbfd030a814308e280749093c92d39c9a33c299b3c8d802d82cedeb4",
+  "original_scorer_source_sha256": "3d9ecb0328f4f87b0edc3491464014f3c7b8ec37770bac5668ffc9bdbbaf783b",
+  "verification_sha256": "acab96303293f2e6b396fcb49270b549df07b8290134de8bec55ff687612465c",
+  "representations": "inputs/representations.csv",
+  "observations": "inputs/usgs_verification.csv",
+  "legacy_scores": "inputs/legacy_scores.csv",
+  "existing_quantiles": "inputs/existing_HE4_quantiles.csv",
+  "original_score_functions": "inputs/original_score_functions.R",
+  "files": [
+    {
+      "input_snapshot_relpath": "inputs/usgs_verification.csv",
+      "role": "verification_observations",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/comment2_revision/external_baselines/inputs/usgs_verification.csv",
+      "sha256": "acab96303293f2e6b396fcb49270b549df07b8290134de8bec55ff687612465c",
+      "bytes": 7789,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/legacy_scores.csv",
+      "role": "all_existing_daily_scores",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/comment2_revision/external_baselines/per_time.csv",
+      "sha256": "b4b35a72fa26c18e36a737e12c5f98c39e385ff0a35ce9d892aa71cd541b0d87",
+      "bytes": 754923,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/existing_HE4_quantiles.csv",
+      "role": "existing_target_quantiles",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/he4_quantile_check_loss_current_publication/he4_quantile_check_loss_per_day.csv",
+      "sha256": "a95f224ecd77fe25b48d05d601fa4f271b6eacac39403a8dd8e135b2ee79fab8",
+      "bytes": 1567957,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/original_cache_authority.json",
+      "role": "original_cache_inventory",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/docs/environmetrics_no_refit_plan_20261107/evidence/replay_scoring_artifact_inventory.json",
+      "sha256": "642b80d56557797f279c1092267ef71fc2b619401eec5c2f69761aaf79a6e567",
+      "bytes": 64635,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20210123__N-U-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_bayesian_publication_relaunch_wave_a_ndlm_promotion_20260607/runs/multimodel_20210123_v8_he2pubgdpc1r1_ndlm_univar_keep/post/cache/y_reps_ndlm_log1p.rds",
+      "sha256": "94cf9ab848bea39b50a871a8dfd95d029eab328ef893fcba6faee41395b848e1",
+      "bytes": 13636,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20210123__N-M-T0.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_table1_targeted_repair_20260612/runs/multimodel_20210123_v8_he2tbl1fix20260612_ndlm_main_drop/post/cache/y_reps_ndlm_log1p.rds",
+      "sha256": "176bf07a8055618228f17da0318f5765ba89635625980c10e0827ea4fbf4a32b",
+      "bytes": 10167,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20210123__N-M-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_bayesian_publication_relaunch_wave_a_ndlm_promotion_20260607/runs/multimodel_20210123_v8_he2pubgdpc1r1_ndlm_main_keep/post/cache/y_reps_ndlm_log1p.rds",
+      "sha256": "dba3c75d43aa9cad9b3e0c19bdcb01be6b3fb2436b2ddef9a49e6fb0e22d7594",
+      "bytes": 10282,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20210123__AL-U-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20210123_v8_he2pubgdpc1r1_dqlm_univar_al/post/cache/synth_univar_forecast_log1p.rds",
+      "sha256": "17df09c9d7202b22b3728cd008edf6e0189337b100d34ab6020ea04a8545e8af",
+      "bytes": 411279,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20210123__AL-M-T0.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_dqlm_multivar_al_drop_p5_production_20260606/runs/multimodel_20210123_v8_he2pubgdpc1r1_dqlm_multivar_al_drop/post/cache/dqlm_multivar_al_synth_drop__mode-drop__synth_multivar_forecast_log1p.rds",
+      "sha256": "4f2c0a0a249ce139e96eb143497cf4f4605277eb9aed12686e213f81a40e36f5",
+      "bytes": 400905,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20210123__AL-M-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_dqlm_multivar_al_keep_from_exal_winners_20260602/runs/multimodel_20210123_v8_he2grid_c04_eps365_dqlm_multivar_al_keep/post/cache/dqlm_multivar_al_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "sha256": "f3274e97aea2f0fa8397e4e89fd8d60252b0938909736325e08e8f0ce516881d",
+      "bytes": 410245,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20210123__exAL-U-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20210123_v8_he2pubgdpc1r1_exdqlm_univar/post/cache/synth_univar_forecast_log1p.rds",
+      "sha256": "f5e514ce42742f28ded357a6af8cb2eb2dcb5ca9293edd7df7f7fb4cd2562c6c",
+      "bytes": 415739,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20210123__exAL-M-T0.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_table1_targeted_repair_20260612/runs/multimodel_20210123_v8_he2tbl1fix20260612_exdqlm_multivar_drop/post/cache/exdqlm_multivar_synth_drop__mode-drop__synth_multivar_forecast_log1p.rds",
+      "sha256": "054321e3f6f6a90ea1811be65726eb216263cbb901b0b0933099eccdb19b94a0",
+      "bytes": 427278,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20210123__exAL-M-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "sha256": "28815518e02d539775da10e1367c7c280cadd8b422b05f6ae6dc863a808b8e2e",
+      "bytes": 409174,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211112__N-U-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_bayesian_publication_relaunch_wave_a_ndlm_promotion_20260607/runs/multimodel_20211112_v8_he2pubgdpc1r1_ndlm_univar_keep/post/cache/y_reps_ndlm_log1p.rds",
+      "sha256": "3dc2ef0f48b8c404242fecb435f77cd93da6c81e273e0865e73131fc141737c4",
+      "bytes": 13633,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211112__N-M-T0.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_bayesian_publication_relaunch_wave_a_ndlm_promotion_20260607/runs/multimodel_20211112_v8_he2pubgdpc1r1_ndlm_main_drop/post/cache/y_reps_ndlm_log1p.rds",
+      "sha256": "092ecf74d2226eb6fbe05cc7e0d8258de1f70a453a6641f3edaa7232b6f41b61",
+      "bytes": 10188,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211112__N-M-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_bayesian_publication_relaunch_wave_a_ndlm_promotion_20260607/runs/multimodel_20211112_v8_he2pubgdpc1r1_ndlm_main_keep/post/cache/y_reps_ndlm_log1p.rds",
+      "sha256": "977ba966a332b95e4142110ac3e5d94e4aa9d0d79b923345b89664cafeb5952b",
+      "bytes": 10292,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211112__AL-U-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20211112_v8_he2pubgdpc1r1_dqlm_univar_al/post/cache/synth_univar_forecast_log1p.rds",
+      "sha256": "e3c757bc334729c6c51d018c09190671f69c82fa74f0ffedb5ff439ea9b2d2c8",
+      "bytes": 408163,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211112__AL-M-T0.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_dqlm_multivar_al_drop_p5_production_20260606/runs/multimodel_20211112_v8_he2pubgdpc1r1_dqlm_multivar_al_drop/post/cache/dqlm_multivar_al_synth_drop__mode-drop__synth_multivar_forecast_log1p.rds",
+      "sha256": "80082fc092fdd2483c3e338d5914c292f63730f8e34b2cf3ac43b52d05a0d100",
+      "bytes": 405175,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211112__AL-M-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_dqlm_multivar_al_keep_from_exal_winners_20260602/runs/multimodel_20211112_v8_he2grid_c04_eps365_dqlm_multivar_al_keep/post/cache/dqlm_multivar_al_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "sha256": "43372bdf2305f31e13e5d16da03df1ef723e69757d300cf76231acc23808c2e9",
+      "bytes": 406973,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211112__exAL-U-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20211112_v8_he2pubgdpc1r1_exdqlm_univar/post/cache/synth_univar_forecast_log1p.rds",
+      "sha256": "fcd1181d87b95552243d303ddad1d1ed2c002adbfa2600d328b5f5c0d548ce00",
+      "bytes": 413625,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211112__exAL-M-T0.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_table1_targeted_repair_20260612/runs/multimodel_20211112_v8_he2tbl1fix20260612_exdqlm_multivar_drop/post/cache/exdqlm_multivar_synth_drop__mode-drop__synth_multivar_forecast_log1p.rds",
+      "sha256": "57ec5769714df63104951d2047c12b685f5ccd95787c0308e3de131d819d5e75",
+      "bytes": 408223,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211112__exAL-M-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "sha256": "9b6ea2a5d7f014184165e8b273b739a70f84ae1e8b866252f0e05e09f4fd544a",
+      "bytes": 403627,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211221__N-U-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_table1_targeted_repair_20260612/runs/multimodel_20211221_v8_he2tbl1fix20260612_ndlm_univar_keep/post/cache/y_reps_ndlm_log1p.rds",
+      "sha256": "bea20bbf1d55fc37f5e1acca4b0b451dfe670a6b5ff02c8dc3460f5204731c44",
+      "bytes": 13624,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211221__N-M-T0.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_bayesian_publication_relaunch_wave_a_ndlm_promotion_20260607/runs/multimodel_20211221_v8_he2pubgdpc1r1_ndlm_main_drop/post/cache/y_reps_ndlm_log1p.rds",
+      "sha256": "bfa68c6451e71581abf3fc03cf82dd55dbedc220b7f2c844fe7c0ac212bb1460",
+      "bytes": 10204,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211221__N-M-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_table1_targeted_repair_20260612/runs/multimodel_20211221_v8_he2tbl1fix20260612_ndlm_main_keep/post/cache/y_reps_ndlm_log1p.rds",
+      "sha256": "db75b13265a91163c4322904949845dfd617e2d7fa07d83d920c4df1890ed891",
+      "bytes": 10210,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211221__AL-U-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20211221_v8_he2pubgdpc1r1_dqlm_univar_al/post/cache/synth_univar_forecast_log1p.rds",
+      "sha256": "91f330711b1aa5f1d76e2134801f8ba9325e26e4384a74b9fbf678a98b9f2989",
+      "bytes": 411742,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211221__AL-M-T0.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_dqlm_multivar_al_drop_p5_production_20260606/runs/multimodel_20211221_v8_he2pubgdpc1r1_dqlm_multivar_al_drop/post/cache/dqlm_multivar_al_synth_drop__mode-drop__synth_multivar_forecast_log1p.rds",
+      "sha256": "11ff6e97827578a6be91814dc77aaf735632d00f2c83bd7bb2333e253919d2e2",
+      "bytes": 397613,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211221__AL-M-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_dqlm_multivar_al_keep_from_exal_winners_20260602/runs/multimodel_20211221_v8_he2grid_c03_eps030_dqlm_multivar_al_keep/post/cache/dqlm_multivar_al_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "sha256": "b660fb71714d07c41b2f1e0f3f848b6f7ff76aa2be99f8a1e1e20ee4e403a7db",
+      "bytes": 403851,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211221__exAL-U-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20211221_v8_he2pubgdpc1r1_exdqlm_univar/post/cache/synth_univar_forecast_log1p.rds",
+      "sha256": "7bdb125381255505bcd2b057106bad8bf8b5bf31d73ec35bc79bf8f774a2a328",
+      "bytes": 414850,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211221__exAL-M-T0.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_table1_targeted_repair_20260612/runs/multimodel_20211221_v8_he2tbl1fix20260612_exdqlm_multivar_drop/post/cache/exdqlm_multivar_synth_drop__mode-drop__synth_multivar_forecast_log1p.rds",
+      "sha256": "42f793d730d9923e48da05cc690641a6e0fac1531d9bacc38f56207c0495892e",
+      "bytes": 406521,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20211221__exAL-M-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "sha256": "f2c7a55ad651a6d1241440002c04777af8f36f9446056b958037387243d2a1a3",
+      "bytes": 390271,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20220511__N-U-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_bayesian_publication_relaunch_wave_a_ndlm_promotion_20260607/runs/multimodel_20220511_v8_he2pubgdpc1r1_ndlm_univar_keep/post/cache/y_reps_ndlm_log1p.rds",
+      "sha256": "73259f11a3f0226c71359abddfdb33eec694a1ed740250163e6e1c1275be954e",
+      "bytes": 13637,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20220511__N-M-T0.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_bayesian_publication_relaunch_wave_a_ndlm_promotion_20260607/runs/multimodel_20220511_v8_he2pubgdpc1r1_ndlm_main_drop/post/cache/y_reps_ndlm_log1p.rds",
+      "sha256": "e26cbb2da00b532b8fb6c737e9a7cda761396df521e5447e8a9633707df43b4a",
+      "bytes": 10255,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20220511__N-M-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_bayesian_publication_relaunch_wave_a_ndlm_promotion_20260607/runs/multimodel_20220511_v8_he2pubgdpc1r1_ndlm_main_keep/post/cache/y_reps_ndlm_log1p.rds",
+      "sha256": "d1fbab895c03c8ef27bdfda91218db0be2411b39234e863f2fde61e4ecaffd4e",
+      "bytes": 10300,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20220511__AL-U-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20220511_v8_he2pubgdpc1r1_dqlm_univar_al/post/cache/synth_univar_forecast_log1p.rds",
+      "sha256": "cf9f976d71c8ac7b63d22bb90aa04579a5c09e99fb60ebee2506e73c2a9f27f8",
+      "bytes": 409168,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20220511__AL-M-T0.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_table1_targeted_repair_20260612/runs/multimodel_20220511_v8_he2tbl1fix20260612_dqlm_multivar_al_drop/post/cache/dqlm_multivar_al_synth_drop__mode-drop__synth_multivar_forecast_log1p.rds",
+      "sha256": "221ef2f8431a696c3f236261f1ec19fb1dea9dfdff9edbae345cf9b21393018d",
+      "bytes": 407540,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20220511__AL-M-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_table1_targeted_repair_20260612/runs/multimodel_20220511_v8_he2tbl1fix20260612_dqlm_multivar_al_keep/post/cache/dqlm_multivar_al_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "sha256": "4a6d2f9f7e90aec92f564d815f3a6df02b8cc646902ae1fe10843d0f7fa1805f",
+      "bytes": 404248,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20220511__exAL-U-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20220511_v8_he2pubgdpc1r1_exdqlm_univar/post/cache/synth_univar_forecast_log1p.rds",
+      "sha256": "9966193f4ee3505055c8998d043d37a60fef87baf3511c8593ae0058ec45d1eb",
+      "bytes": 414898,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20220511__exAL-M-T0.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_table1_targeted_repair_20260612/runs/multimodel_20220511_v8_he2tbl1fix20260612_exdqlm_multivar_drop/post/cache/exdqlm_multivar_synth_drop__mode-drop__synth_multivar_forecast_log1p.rds",
+      "sha256": "efda2f1dea5d730ae16bb77ea4858e6ecddd4286ed795aab88dc941a9f1bae05",
+      "bytes": 422514,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20220511__exAL-M-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "sha256": "725f5e783c651217eda36ee6be6ff1c6c6302cf94fdd2c2be15e65c84c8986aa",
+      "bytes": 396665,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20221225__N-U-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_table1_targeted_repair_20260612/runs/multimodel_20221225_v8_he2tbl1fix20260612_ndlm_univar_keep/post/cache/y_reps_ndlm_log1p.rds",
+      "sha256": "e008e24d11b9fa07af5808a3b6b81d1d452adc6e50ea2daba32a8a0dd77804b9",
+      "bytes": 13625,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20221225__N-M-T0.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_bayesian_publication_relaunch_wave_a_ndlm_promotion_20260607/runs/multimodel_20221225_v8_he2pubgdpc1r1_ndlm_main_drop/post/cache/y_reps_ndlm_log1p.rds",
+      "sha256": "491ad2d23f431b0adfe60c3e2a65d93cb448c0f00ac4be725fb036286aa5ee3f",
+      "bytes": 10150,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20221225__N-M-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_bayesian_publication_relaunch_wave_a_ndlm_promotion_20260607/runs/multimodel_20221225_v8_he2pubgdpc1r1_ndlm_main_keep/post/cache/y_reps_ndlm_log1p.rds",
+      "sha256": "5a6872f592073a8cd061cbbe073aca425a6a7d820abe9c71fcc359828086911b",
+      "bytes": 10251,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20221225__AL-U-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20221225_v8_he2pubgdpc1r1_dqlm_univar_al/post/cache/synth_univar_forecast_log1p.rds",
+      "sha256": "b7de58f982ad73ec8efeeb006b311d33d17db8b940ce72f32c32821246d12798",
+      "bytes": 413809,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20221225__AL-M-T0.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_table1_targeted_repair_20260612/runs/multimodel_20221225_v8_he2tbl1fix20260612_dqlm_multivar_al_drop/post/cache/dqlm_multivar_al_synth_drop__mode-drop__synth_multivar_forecast_log1p.rds",
+      "sha256": "4af336ad07cf07ca4da0bd07c6fcb4c86d7eb620ceb783b6b43a3818684a334d",
+      "bytes": 401582,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20221225__AL-M-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_dqlm_multivar_al_keep_from_exal_winners_20260602/runs/multimodel_20221225_v8_he2grid_c05_eps030_dqlm_multivar_al_keep/post/cache/dqlm_multivar_al_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "sha256": "e0dab6e2041f2f245a941142c1e49aba9d0cbca86938e48c85a44a8e278913cb",
+      "bytes": 406567,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20221225__exAL-U-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_univar_al_exal_scale_repair_20260629/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_univar/post/cache/synth_univar_forecast_log1p.rds",
+      "sha256": "2c60deb8b6e02addb9a7fcad35cc7d119369041968b96039a73693116849d4ce",
+      "bytes": 415440,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20221225__exAL-M-T0.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_drop_current_relaunch_q50repair_20260602/runs/multimodel_20221225_v8_he2pubgdpc1r1_exdqlm_multivar_drop/post/cache/exdqlm_multivar_synth_drop__mode-drop__synth_multivar_forecast_log1p.rds",
+      "sha256": "f852458c864d386770c60b3645901b131ac379b1bb5e28acded9574b1a2cae25",
+      "bytes": 409227,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/predictions/20221225__exAL-M-T1.rds",
+      "role": "selected_model_prediction",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/post/cache/exdqlm_multivar_synth_keep__mode-keep__synth_multivar_forecast_log1p.rds",
+      "sha256": "747b508cf7531fd2553bc874393f6b990f88f8ea9e3272d6ec59b879377bf15c",
+      "bytes": 387060,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/raw/20210123__glofas.csv",
+      "role": "raw_product_members",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/inputs/shared/forecasts/glofas_forecast.csv",
+      "sha256": "cdcc54f3fd6e2a4c677301c8fd0e2e6985ec4b5b8748192e9698632b6d9ea7ca",
+      "bytes": 13017,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/raw/20210123__nws.csv",
+      "role": "raw_product_members",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20210123_v8_he2grid_c04_eps365_exdqlm_multivar_keep/inputs/shared/forecasts/nws_forecast.csv",
+      "sha256": "1439a5d9753a61466228e2481b2c8bd8ba95716295cf7df8ac330039cb5401e7",
+      "bytes": 1214,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/external/20210123.rds",
+      "role": "existing_external_predictions",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/comment2_revision/external_baselines/predictions/20210123.rds",
+      "sha256": "ea6dcec9c4a637e416bca30ee2a82766badf0c3a791e3011cec88f36e8a3d316",
+      "bytes": 388892,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/figure_quantiles/20210123.csv",
+      "role": "selected_figure_quantile_export",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/five_cutoff_main_model_synthesis/20210123_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+      "sha256": "405ffd9b07f52dc4dc307790c8f8b9f709804cc7dacba10d5f24cb33f2f37690",
+      "bytes": 10012,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/raw/20211112__glofas.csv",
+      "role": "raw_product_members",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/inputs/shared/forecasts/glofas_forecast.csv",
+      "sha256": "66c1a91a95283e4626eeaa9ca822e91c7a50c8a26ce4186d39e0f01d8012ebb4",
+      "bytes": 13911,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/raw/20211112__nws.csv",
+      "role": "raw_product_members",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_epsilon_discount_grid_20260524/runs/multimodel_20211112_v8_he2grid_c04_eps365_exdqlm_multivar_keep/inputs/shared/forecasts/nws_forecast.csv",
+      "sha256": "65caecc51ffeda06124c790397020ec8bf9ae4dfd441432d064e699be149c235",
+      "bytes": 1147,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/external/20211112.rds",
+      "role": "existing_external_predictions",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/comment2_revision/external_baselines/predictions/20211112.rds",
+      "sha256": "d9ad339ce364b3d996543c41696fb276623192db9972032a46c45985d0471b68",
+      "bytes": 340256,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/figure_quantiles/20211112.csv",
+      "role": "selected_figure_quantile_export",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/five_cutoff_main_model_synthesis/20211112_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+      "sha256": "4a4f99e6aa664c22875267faf0900dcc9e99a6ab732166257a01ff0bcfe1d837",
+      "bytes": 10042,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/raw/20211221__glofas.csv",
+      "role": "raw_product_members",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/inputs/shared/forecasts/glofas_forecast.csv",
+      "sha256": "4e559d3a1bbaef2c8433f92275d6a49cf82f6905404716f0fca8e0f705ab9d91",
+      "bytes": 12307,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/raw/20211221__nws.csv",
+      "role": "raw_product_members",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20211221_v8_he2partial20260623_exdqlm_multivar_keep/inputs/shared/forecasts/nws_forecast.csv",
+      "sha256": "9ddcbb8301abcbef9631ce8a9184c9b81f48cc0e3d0eacbf8da8edc3ca20ffa1",
+      "bytes": 1149,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/external/20211221.rds",
+      "role": "existing_external_predictions",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/comment2_revision/external_baselines/predictions/20211221.rds",
+      "sha256": "6494b6d66b99826fe3d5b63e26cf1684e91a7e5799288fe5f80cfcebef035652",
+      "bytes": 375636,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/figure_quantiles/20211221.csv",
+      "role": "selected_figure_quantile_export",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/five_cutoff_main_model_synthesis/20211221_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+      "sha256": "d5d87e3141dcf81f0d6acc3dcc90a20905618e2ec4fc64ffca373c748f0390c1",
+      "bytes": 9779,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/raw/20220511__glofas.csv",
+      "role": "raw_product_members",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/inputs/shared/forecasts/glofas_forecast.csv",
+      "sha256": "cc4e74831bb8fb6c52adc085c2d85cf8f75d06ab07f7bdce1e6ac070d09ccda3",
+      "bytes": 10278,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/raw/20220511__nws.csv",
+      "role": "raw_product_members",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20220511_v8_he2partial20260623_exdqlm_multivar_keep/inputs/shared/forecasts/nws_forecast.csv",
+      "sha256": "6a1433bec730384112a4b6ae03f082cee0c2093d0bdfc332e38da1539c01bfa8",
+      "bytes": 1145,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/external/20220511.rds",
+      "role": "existing_external_predictions",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/comment2_revision/external_baselines/predictions/20220511.rds",
+      "sha256": "2ecbfba89eac79df4ba75c4eeedfe0a64d16f3edb56aacc77e0e08bb779bc475",
+      "bytes": 348868,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/figure_quantiles/20220511.csv",
+      "role": "selected_figure_quantile_export",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/five_cutoff_main_model_synthesis/20220511_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+      "sha256": "cbdd4df28df0d2b9cb962ca7be80d3d1c492d014c0141673df7e3f28db4ca0d0",
+      "bytes": 10072,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/raw/20221225__glofas.csv",
+      "role": "raw_product_members",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/inputs/shared/forecasts/glofas_forecast.csv",
+      "sha256": "81791f49d1b71a29938c88990bd44a954b48868805d88ea2e76a04702bf4bc54",
+      "bytes": 13243,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/raw/20221225__nws.csv",
+      "role": "raw_product_members",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_partial_authority_refresh_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep/inputs/shared/forecasts/nws_forecast.csv",
+      "sha256": "0ec35552647bf53f71dd198a24553343f81c59eb4fc5aafe17de3e117fff56f2",
+      "bytes": 1147,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/external/20221225.rds",
+      "role": "existing_external_predictions",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/comment2_revision/external_baselines/predictions/20221225.rds",
+      "sha256": "cb0c4c4a8a178430d8abde16a654a311aee31e02d2f7a3ee16734f0e03d601ad",
+      "bytes": 356164,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/figure_quantiles/20221225.csv",
+      "role": "selected_figure_quantile_export",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2/artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_quantiles.csv",
+      "sha256": "d9085dcb972fc5d486f10f0867ca0b682e56336051c2b52f104a65e6924fc010",
+      "bytes": 9728,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "inputs/representations.csv",
+      "role": "derived_representation_registry",
+      "original_source_path": "derived_from_selected_authority",
+      "sha256": "948d46e27c40ca00ab19e5bfdabbb15cab75d6987d336455675c7aef56a73e31",
+      "bytes": 43439,
+      "derived": true
+    },
+    {
+      "input_snapshot_relpath": "inputs/original_score_functions.R",
+      "role": "extracted_original_pure_score_functions",
+      "original_source_path": "/data/muscat_data/jaguir26/project1_ucsc_phd/R/environmetrics/02_helpers_core.R",
+      "sha256": "4ec7707c94c2ae1085147e9868c3a311f1c547884a00e2aed58624fe283e6d4c",
+      "bytes": 1875,
+      "derived": true
+    },
+    {
+      "input_snapshot_relpath": "inputs/generator_evidence.json",
+      "role": "generator_source_evidence",
+      "original_source_path": "selected_source_basis",
+      "sha256": "c6cd0ca89c4610c8eef0f835c7483e65ff52158684fe12fd5300cdcc3fda8996",
+      "bytes": 831,
+      "derived": true
+    },
+    {
+      "input_snapshot_relpath": "reproduce/scripts/build_no_refit_review_diagnostics.R",
+      "role": "executed_source_snapshot",
+      "original_source_path": "/tmp/no_refit_diagnostics_release_20261108/reproduce/scripts/build_no_refit_review_diagnostics.R",
+      "sha256": "c624319b667200ce3060327369eb496451f49e223bf023c058384364c63cae16",
+      "bytes": 31914,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "reproduce/R/environmetrics/no_refit_review_helpers.R",
+      "role": "executed_source_snapshot",
+      "original_source_path": "/tmp/no_refit_diagnostics_release_20261108/reproduce/R/environmetrics/no_refit_review_helpers.R",
+      "sha256": "cea8250b537127692a05f9d79cb992e486396bc44e5aafc40581f4952441a900",
+      "bytes": 7893,
+      "derived": false
+    },
+    {
+      "input_snapshot_relpath": "reproduce/config/no_refit_review_diagnostics.json",
+      "role": "executed_source_snapshot",
+      "original_source_path": "/tmp/no_refit_diagnostics_release_20261108/reproduce/config/no_refit_review_diagnostics.json",
+      "sha256": "25546503a67b9e188df6cf6c20b52429fe3a08c83d4d36ae654409c69436a109",
+      "bytes": 2570,
+      "derived": false
+    }
+  ],
+  "no_model_fits": true,
+  "no_forecast_regeneration": true
+}

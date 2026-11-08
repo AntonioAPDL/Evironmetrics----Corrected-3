@@ -1,0 +1,17 @@
+{
+  "all_other_source_text_identical": true,
+  "new_fits": false,
+  "numerical_band_regeneration": false,
+  "only_changes": [
+    "safe_diag_sd adds optional explicit time indices",
+    "historical coefficient caller supplies hist_idx"
+  ],
+  "original_source": {
+    "path": "/data/muscat_data/jaguir26/project1_ucsc_phd/R/environmetrics/40_figures_multivar_only.R",
+    "sha256": "042205f0638cbeb78153888c4a576020f80cca37b65f3d10ac581b74c2acdda2"
+  },
+  "repaired_source": {
+    "path": "/tmp/no_refit_revision_20261108/workflow/R/environmetrics/40_figures_multivar_only.R",
+    "sha256": "25c4e51cf1ba60b175e8b216b413e85cf942cdc01c4fbe95e751ba1b1fede3fc"
+  }
+}

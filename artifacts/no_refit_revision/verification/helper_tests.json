@@ -1,0 +1,23 @@
+{
+  "status": "PASSED",
+  "test_blocks": 11,
+  "expectations": 121,
+  "failures": 0,
+  "skips": 0,
+  "test_source_sha256": "744ef8e1f858c1ee5377b1b80367d69b91fbe7fd05f0c6816c1a80f8e3f4e657",
+  "executed_source": "tests/testthat/test_no_refit_review_diagnostics.R",
+  "portable_test_source": "reproduce/tests/testthat/test_no_refit_review_diagnostics.R",
+  "results_path": "results",
+  "checks": [
+    "independent pairwise identities",
+    "scoringRules exact EDF agreement",
+    "point masses and unequal counts",
+    "large-scale numeric invariances",
+    "exact ties and interval partitions",
+    "deterministic grid applicability",
+    "missingness/date/member integrity",
+    "snapshot path and hash checks",
+    "CSV full precision",
+    "canonical real-data aggregate checks"
+  ]
+}

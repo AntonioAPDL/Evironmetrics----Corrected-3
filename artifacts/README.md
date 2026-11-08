@@ -9,7 +9,7 @@ These folders are the article-side frozen artifact bundles that feed the manuscr
 | `five_cutoff_crps_validation_sources` | Five-cutoff CRPS validation freeze used by the benchmark table. | 23 | 0 | yes | `README.md` |
 | `five_cutoff_main_model_synthesis` | Corrected cutoff-wide Figure 7 family copied from the five-cutoff he2pubgdpc1r1 exAL main-model reruns. | 61 | 10 | yes | `README.md` |
 | `five_cutoff_reference_synthesis` | Cutoff-wide Figure A2-style reference synthesis family copied from the current exdqlm_univar output bundles. | 57 | 10 | yes | `README.md` |
-| `five_cutoff_setup_support` | Canonical five-cutoff setup/support figure family mirrored from the validated workflow runtime bundle. | 86 | 20 | yes | `review/gallery.html | README.md` |
+| `five_cutoff_setup_support` | Canonical five-cutoff setup/support figure family mirrored from the validated workflow runtime bundle. | 81 | 20 | yes | `review/gallery.html | README.md` |
 | `forecast_design` | Artifact bundle. | 2 | 0 | yes | `README.md` |
 | `he2_historical_support_audit` | Workflow-side audit snapshot showing which publication rows use full historical support versus short-window support. | 5 | 0 | yes | `README.md` |
 | `he2_publication_freeze` | Frozen local snapshot of the current HE2 Bayesian publication manifest and alignment tables. | 10 | 0 | yes | `README.md` |
@@ -17,9 +17,11 @@ These folders are the article-side frozen artifact bundles that feed the manuscr
 | `he4_quantile_check_loss_current_publication` | Artifact bundle. | 7 | 0 | no | `` |
 | `historical_support_from_current_models` | Legacy/archive current-model support bundle. It must not feed the representative selected-model posterior-output figures. | 13 | 5 | yes | `README.md` |
 | `latest_forecast_issue` | Artifact bundle. | 2 | 0 | yes | `README.md` |
+| `no_refit_revision` | Saved-output distribution scores, calibration, discharge-scale verification, exact settings and inference scope, with portable replay inputs. | 138 | 1 | yes | `README.txt | inference_scope/README.txt | reporting/README.txt | synthesis_diagnostics/README.txt` |
 | `representative_selected_model_2022_12_25` | Representative selected-model bundle for the verified 2022-12-25 exAL-M-T1 run, including synthesis, posterior tables, and authoritative q05/q50/q95 support figures. | 45 | 16 | yes | `README.md | authoritative_support/README.md | authoritative_support/analysis_figures/component_evolution/README.md` |
 | `runtime_benchmark` | Artifact bundle. | 2 | 0 | yes | `README.md` |
 | `software_availability` | Compact HE-5 software availability and archive-status manifest for the revised article. | 2 | 0 | yes | `README.md` |
 
-Preferred refresh entrypoint:
-- `scripts/refresh_all_generated_assets.py`
+Saved-output revision refresh: `scripts/refresh_no_refit_revision.py`. This bounded entrypoint preserves the original numerical assets.
+
+For an intentional full authority/asset rebuild, see `scripts/refresh_all_generated_assets.py`.

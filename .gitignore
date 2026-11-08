@@ -45,3 +45,7 @@ artifacts/representative_selected_model_2022_12_25/authoritative_support/authori
 # Keep the bounded, checksummed point-2 evidence bundle complete, including logs.
 !/artifacts/comment2_revision/
 !/artifacts/comment2_revision/**
+
+# Complete bounded saved-output revision, including frozen portable evidence.
+!/artifacts/no_refit_revision/
+!/artifacts/no_refit_revision/**

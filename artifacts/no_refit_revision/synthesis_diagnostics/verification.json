@@ -1,0 +1,12 @@
+{
+  "status": "COMPLETE",
+  "new_fits": false,
+  "new_draws": false,
+  "source_objects": "predictive cubes only",
+  "anchor_rows": 5880,
+  "per_case_rows": 35280,
+  "raw_cube_bytes_hashed": 86588044,
+  "negative_final_log_representations": 10,
+  "negative_values_clipped": 0,
+  "pre_synthesis_CRPS": "not_defined_or_computed; own-fit anchors do not define a single predictive distribution"
+}

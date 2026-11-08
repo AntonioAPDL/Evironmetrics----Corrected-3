@@ -1,0 +1,21 @@
+{
+  "N11a": "SOURCE_ONLY_REPAIR_WITH_DEDICATED_REGRESSION",
+  "N11b": "OPTIONAL_SKIPPED_MISSING_COVARIANCE",
+  "N11b_scope": "Listed selected exports lack recoverable late-time coefficient covariance/draw arrays; no numerical band reconstruction performed.",
+  "approximation_accuracy_experiment": "DEFERRED_NEW_INFERENCE",
+  "displayed_base_rows_unchanged": true,
+  "metadata_counts": {
+    "existing_endpoint_summaries": 27,
+    "feature_dictionary": 12,
+    "selected_settings": 45
+  },
+  "missing_endpoint_states": [
+    32,
+    33,
+    34
+  ],
+  "new_fits": false,
+  "new_simulations": false,
+  "original_numeric_strings_preserved": true,
+  "status": "VALIDATED_REPORTING_ONLY"
+}

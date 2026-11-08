@@ -1,0 +1,53 @@
+{
+  "external_source_inventory": "source_provenance.json",
+  "files": [
+    {
+      "bytes": 2285,
+      "path": "artifacts/no_refit_revision/inference_scope/README.txt",
+      "sha256": "ff2ccada65885baade60ecaa2b3e2686f638b6d180a11c0e51c54f46535e6206"
+    },
+    {
+      "bytes": 1152,
+      "path": "artifacts/no_refit_revision/inference_scope/conditional_identity_verification.json",
+      "sha256": "b86ea46dd9cc411c9beaec4b9e4b5b431dd449d02eb0704849f17cf1586f294d"
+    },
+    {
+      "bytes": 5852,
+      "path": "artifacts/no_refit_revision/inference_scope/historical_conditional_derivation.txt",
+      "sha256": "e3706729594be20af74a749724981c78bc455e627aa17c089c2c487c1c4f0795"
+    },
+    {
+      "bytes": 3921,
+      "path": "artifacts/no_refit_revision/inference_scope/precision_gate_ledger.json",
+      "sha256": "d6ffc88f1ee23a2b1a0cd22f62c878e352127e2e49b8e55d4cf0bb287f396c77"
+    },
+    {
+      "bytes": 2737,
+      "path": "artifacts/no_refit_revision/inference_scope/saved_output_independent_review.json",
+      "sha256": "043356cfa31e82cf9199954a7d4ca64944109e8474dda272f298a5d76baa36e2"
+    },
+    {
+      "bytes": 5374,
+      "path": "artifacts/no_refit_revision/inference_scope/scope_audit.json",
+      "sha256": "38416f8e2dddfa33e46a32a5fdd25854fdc766220a174162c878913b95a7dfe4"
+    },
+    {
+      "bytes": 10569,
+      "path": "artifacts/no_refit_revision/inference_scope/source_provenance.json",
+      "sha256": "e7fe780b0e41a16a56e831257628b31b58db63cbe7bbffa67d369076ff6139d5"
+    },
+    {
+      "bytes": 9875,
+      "path": "artifacts/no_refit_revision/inference_scope/verify_conditional_identities.py",
+      "sha256": "70cc9fa5c79fffa872e6df76846ef384cab31fd2ff0687af5e200c66377c3ec8"
+    },
+    {
+      "bytes": 3044,
+      "path": "docs/no_refit_inference_scope.txt",
+      "sha256": "a86efe675cbc4c15d86452c85f3fa97af23ea606bad506d978400f5429a678b6"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "bounded C5/C7 inference exposition and optional precision skip evidence",
+  "verification_status": "PASS_SCOPED_CONDITIONAL_IDENTITIES; OPTIONAL_PRECISION_SKIPPED"
+}

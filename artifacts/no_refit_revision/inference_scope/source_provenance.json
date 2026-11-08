@@ -1,0 +1,325 @@
+{
+  "article_baseline_commit": "2583ee41c1367e65d4d71ed36cf280a4f555a513",
+  "baseline_sources": [
+    {
+      "basis": "immutable_git_blob",
+      "commit": "f69d4c8ac144f405b3535c4d8c8015cc8af9e2db",
+      "line_ranges": [
+        {
+          "first": 1946,
+          "last": 1965
+        },
+        {
+          "first": 2601,
+          "last": 2613
+        },
+        {
+          "first": 5210,
+          "last": 5216
+        },
+        {
+          "first": 5427,
+          "last": 5434
+        },
+        {
+          "first": 5453,
+          "last": 5457
+        },
+        {
+          "first": 5905,
+          "last": 5934
+        },
+        {
+          "first": 5972,
+          "last": 6000
+        },
+        {
+          "first": 7014,
+          "last": 7024
+        }
+      ],
+      "path": "DISC_Optimal_Synth_Ranges_W_transfer_forecast.r",
+      "repository": "workflow",
+      "sha256": "7aab638d631419c80f3e18a66138128555ac23659e66c9239cd58fb5fa56f9e1"
+    },
+    {
+      "basis": "immutable_git_blob",
+      "commit": "f69d4c8ac144f405b3535c4d8c8015cc8af9e2db",
+      "line_ranges": [
+        {
+          "first": 18,
+          "last": 29
+        }
+      ],
+      "path": "R/disc_w/04_ensemble_bookkeeping.R",
+      "repository": "workflow",
+      "sha256": "61e9758d3ea4d93890752ff218a713314c3a692c343658f1ccebcd6fba1aa58a"
+    },
+    {
+      "basis": "immutable_git_blob",
+      "commit": "f69d4c8ac144f405b3535c4d8c8015cc8af9e2db",
+      "line_ranges": [
+        {
+          "first": 88,
+          "last": 94
+        },
+        {
+          "first": 124,
+          "last": 131
+        }
+      ],
+      "path": "R/disc_w/06_ensemble_spec.R",
+      "repository": "workflow",
+      "sha256": "df3972009a666e56c93efc38e1c440782eaa4aad831aaacb4bf6053127dfc14b"
+    },
+    {
+      "basis": "immutable_git_blob",
+      "commit": "f69d4c8ac144f405b3535c4d8c8015cc8af9e2db",
+      "line_ranges": [
+        {
+          "first": 145,
+          "last": 149
+        }
+      ],
+      "path": "R/disc_w/03_covariates_standardize.R",
+      "repository": "workflow",
+      "sha256": "3921887a783a99614401518e27f512914d8dff472557185800d7d679b2276fe2"
+    },
+    {
+      "basis": "immutable_git_blob",
+      "commit": "f69d4c8ac144f405b3535c4d8c8015cc8af9e2db",
+      "line_ranges": [
+        {
+          "first": 79,
+          "last": 95
+        }
+      ],
+      "path": "R/disc_w/05_save_state.R",
+      "repository": "workflow",
+      "sha256": "4d5e7919dfc6768231648bdc69f182ee9548fb318f8e8c19bf35da5c638f3821"
+    },
+    {
+      "basis": "immutable_git_blob",
+      "commit": "f69d4c8ac144f405b3535c4d8c8015cc8af9e2db",
+      "line_ranges": [
+        {
+          "first": 455,
+          "last": 484
+        }
+      ],
+      "path": "sampling_exal.cpp",
+      "repository": "workflow",
+      "sha256": "5b65577c4aca559458c052e84c9078fce7b81bc2b14b7741f4d553da88526984"
+    },
+    {
+      "basis": "immutable_git_blob",
+      "commit": "f69d4c8ac144f405b3535c4d8c8015cc8af9e2db",
+      "line_ranges": [
+        {
+          "first": 1265,
+          "last": 1285
+        }
+      ],
+      "path": "DISC_kalman_synth_transfer_forecast.cpp",
+      "repository": "workflow",
+      "sha256": "5e978aee68a5eb39ffd628a115403e920e060d48c5fb6687f3d7a7d35e1db984"
+    },
+    {
+      "basis": "immutable_git_blob",
+      "commit": "f69d4c8ac144f405b3535c4d8c8015cc8af9e2db",
+      "line_ranges": [
+        {
+          "first": 1560,
+          "last": 1605
+        }
+      ],
+      "path": "R/environmetrics/40_figures_smoke_fast.R",
+      "repository": "workflow",
+      "sha256": "c856998ade95d32fb15d66d62f467abd8d31aca0be59a0f0ece2531c532a9ec0"
+    },
+    {
+      "basis": "immutable_git_blob",
+      "commit": "2583ee41c1367e65d4d71ed36cf280a4f555a513",
+      "line_ranges": [
+        {
+          "first": 243,
+          "last": 247
+        },
+        {
+          "first": 737,
+          "last": 844
+        },
+        {
+          "first": 851,
+          "last": 960
+        }
+      ],
+      "path": "wileyNJD-APA.tex",
+      "repository": "article",
+      "sha256": "773cba47f950d1e8fa3013cec9c73b0bcd17a577738fb68ad3f6e2ed84365969"
+    }
+  ],
+  "existing_evidence": [
+    {
+      "bytes": 909,
+      "path": "/tmp/no_refit_revision_20261108/article/artifacts/representative_selected_model_2022_12_25/bundle_metadata.json",
+      "role": "article_reference_bundle_metadata",
+      "sha256": "1f7e5871bc85cbb01069d236bde90231f758520401e9aa74544680c4384c359b"
+    },
+    {
+      "bytes": 134091,
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/run_manifest.yaml",
+      "role": "recorded_run_provenance",
+      "sha256": "aebf186078151f2f494de99b6475b194251f8f2c6efdc00578829369e0fe36eb"
+    },
+    {
+      "bytes": 49545444,
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/vb_latent_component_audit/vb_forecast_latent_pseudodata_window.csv",
+      "role": "optional_member_pseudodata_csv",
+      "sha256": "41c9c07071cec05d07fa2fd75170a59d2526b83ae5dc8593101af47a1f3ab8b8"
+    },
+    {
+      "bytes": 7464,
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/vb_latent_component_audit/vb_component_diagnostic_summary.csv",
+      "role": "representative_state_dimensions",
+      "sha256": "cf9adf4579897e53df63d0c5f1a5723361727d900b03c651223cee2e0872545e"
+    },
+    {
+      "bytes": 248750,
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/vb_latent_component_audit/vb_gamsig_final_values.csv",
+      "role": "terminal_moments_phase_context",
+      "sha256": "e3967b9769cbd3c7c4bca6d53cca159c62bfcae2956a2cffbecbd20a40772b6a"
+    },
+    {
+      "bytes": 97341,
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_exdqlm_multivar_keep_authoritative_rdata_retention_current_20260623/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_rdata_retained_current_20260623/fit/exdqlm_multivar/keep/q=50/outputs/diagnostics/vb_iteration/gamsig_source_iteration_summary.csv",
+      "role": "source_update_phase_context",
+      "sha256": "0a82da170ad8d5eebae6513a8a6874785e264612d98842b622b186f9396ee5e1"
+    }
+  ],
+  "fitted_objects_read": 0,
+  "forecast_list_elements": {
+    "1": "GloFAS",
+    "2": "NWS3.0"
+  },
+  "forecasts_or_parameter_summaries_changed": false,
+  "historical_rows": {
+    "1": "USGS",
+    "2": "GloFAS",
+    "3": "NWS3.0"
+  },
+  "model_fits_executed": 0,
+  "posterior_simulations_executed": 0,
+  "recorded_entrypoint_sha256": "f4b5536a77a6e96448d000a1c3870428d60fa6232137f2cf1fa1879411486103",
+  "recorded_representative_git": {
+    "branch": "main",
+    "commit": "bbabbb873a46b8055816f6a7cf7265e3dc4c71a9",
+    "dirty": false
+  },
+  "recorded_source_excerpts_for_private_mapping_gate": [
+    {
+      "line": 5213,
+      "text": "FFF_list_seed[[j]] <- (new.gamsig.out$E.c.invb.absgam[j,] * new.sts.out_f$E.sts[[j]] +"
+    },
+    {
+      "line": 5214,
+      "text": "new.gamsig.out$E.a.invb.inv.sigma[j,] / new.uts.out_f$E.inv.uts[[j]]) /"
+    },
+    {
+      "line": 5215,
+      "text": "new.gamsig.out$E.invb.inv.sigma[j,]"
+    },
+    {
+      "line": 5216,
+      "text": "QQQ_list_seed[[j]] <- 1/(new.gamsig.out$E.invb.inv.sigma[j,] * new.uts.out_f$E.inv.uts[[j]])"
+    },
+    {
+      "line": 5430,
+      "text": "FFF_j <- (new.gamsig.out$E.c.invb.absgam[j,] * new.sts.out_f$E.sts[[j]] + new.gamsig.out$E.a.invb.inv.sigma[j,] / new.uts.out_f$E.inv.uts[[j]]) / new.gamsig.out$E.invb.inv.sigma[j,]"
+    },
+    {
+      "line": 5433,
+      "text": "QQQ_j <- 1/(new.gamsig.out$E.invb.inv.sigma[j,] * new.uts.out_f$E.inv.uts[[j]])"
+    },
+    {
+      "line": 5905,
+      "text": "k_forecast <- ranges[j-1]"
+    },
+    {
+      "line": 5909,
+      "text": "y = matrix(ensembles[[j-1]][,i], ncol=1),"
+    },
+    {
+      "line": 5911,
+      "text": "inv.uts = matrix(cur.uts.out_f$E.inv.uts[[j-1]][,i], ncol=1),"
+    },
+    {
+      "line": 5912,
+      "text": "c2.invb.absgam2.sigma = cur.gamsig.out$E.c2.invb.absgam2.sigma[j,],"
+    },
+    {
+      "line": 5929,
+      "text": "cur.gamsig.out$E.invb.inv.sigma[j,],"
+    },
+    {
+      "line": 5934,
+      "text": "new.uts.out_f$E.inv.uts[[j-1]][,i] <- uts.dummy$E.inv.uts"
+    },
+    {
+      "line": 5972,
+      "text": "for (j in 2:(J+1)) {"
+    },
+    {
+      "line": 5993,
+      "text": "ensembles[[j-1]],"
+    }
+  ],
+  "representative_dimensions": [
+    {
+      "full_state_dimension": 34,
+      "p": 7,
+      "ppx": 13,
+      "quantile": 5
+    },
+    {
+      "full_state_dimension": 34,
+      "p": 7,
+      "ppx": 13,
+      "quantile": 20
+    },
+    {
+      "full_state_dimension": 34,
+      "p": 7,
+      "ppx": 13,
+      "quantile": 35
+    },
+    {
+      "full_state_dimension": 34,
+      "p": 7,
+      "ppx": 13,
+      "quantile": 50
+    },
+    {
+      "full_state_dimension": 34,
+      "p": 7,
+      "ppx": 13,
+      "quantile": 65
+    },
+    {
+      "full_state_dimension": 34,
+      "p": 7,
+      "ppx": 13,
+      "quantile": 80
+    },
+    {
+      "full_state_dimension": 34,
+      "p": 7,
+      "ppx": 13,
+      "quantile": 95
+    }
+  ],
+  "schema_version": 1,
+  "scope": "read-only bounded inference exposition and optional source-precision gate",
+  "source_mapping_conclusion": "Different row/list indexing conventions require source-contract verification; no numerical impact or historical-error conclusion is established here.",
+  "workflow_baseline_commit": "f69d4c8ac144f405b3535c4d8c8015cc8af9e2db"
+}

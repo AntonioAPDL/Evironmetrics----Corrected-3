@@ -1,0 +1,85 @@
+{
+  "action": "Omit the optional precision-share table; retain the source and phase question in companion evidence. Continue required likelihood/count and raw-product descriptive summaries independently.",
+  "gates": [
+    {
+      "evidence": "Run identity, clean recorded git commit, source blob and CSV hash are known; correspondence to the exact Gaussian-update phase is not established by this metadata.",
+      "id": "G13.1",
+      "name": "provenance",
+      "source_evidence": [
+        "source_provenance.json:recorded_representative_git",
+        "source_provenance.json:recorded_entrypoint_sha256"
+      ],
+      "status": "UNRESOLVED"
+    },
+    {
+      "evidence": "Historical rows and forecast-list order are explicit. Pseudo-observation construction and later member updates use different row/list conventions; a coherent correspondence across construction, updates and exporter has not been proved.",
+      "id": "G13.2",
+      "name": "source_mapping",
+      "source_evidence": [
+        "DISC_Optimal_Synth_Ranges_W_transfer_forecast.r:5213-5216",
+        "DISC_Optimal_Synth_Ranges_W_transfer_forecast.r:5430-5433",
+        "DISC_Optimal_Synth_Ranges_W_transfer_forecast.r:5905-5934",
+        "R/disc_w/05_save_state.R:79-95"
+      ],
+      "status": "UNRESOLVED"
+    },
+    {
+      "evidence": "Saved QQQ is the Gaussian pseudo-observation construction, while augmentation/channel factors are updated later and can be refreshed in sampling. No phase-matched equality test has been established. Comparing a terminal moment to an earlier QQQ does not diagnose a computation error.",
+      "id": "G13.3",
+      "name": "update_phase",
+      "source_evidence": [
+        "DISC_Optimal_Synth_Ranges_W_transfer_forecast.r:5427-5434",
+        "DISC_Optimal_Synth_Ranges_W_transfer_forecast.r:5905-5934",
+        "DISC_Optimal_Synth_Ranges_W_transfer_forecast.r:5972-6000",
+        "DISC_Optimal_Synth_Ranges_W_transfer_forecast.r:7014-7024",
+        "R/disc_w/05_save_state.R:79-95"
+      ],
+      "status": "UNRESOLVED"
+    },
+    {
+      "evidence": "All expected declared source/member/lead/quantile/quantity keys occur exactly once; dates match leads; values are finite; included QQQ variances are positive. This does not establish source-update correspondence.",
+      "expected_row_count": 62328,
+      "id": "G13.4",
+      "name": "array_semantics",
+      "positive_finite_variance_rows": 10388,
+      "precision_values_disclosed": false,
+      "quantities": {
+        "E_inv_u": 10388,
+        "E_s": 10388,
+        "E_s2": 10388,
+        "E_u": 10388,
+        "FFF": 10388,
+        "QQQ_diag": 10388
+      },
+      "row_count": 62328,
+      "source_row_counts": {
+        "GloFAS": 59976,
+        "NWS3.0": 2352
+      },
+      "status": "PASS_METADATA_ONLY",
+      "unique_key_count": 62328
+    },
+    {
+      "evidence": "If prior gates pass, sum_i 1/QQQ_i is conditional observation precision in the recorded working Gaussian update; it is not a posterior mixture weight, marginal influence, independent-member count or estimated source reliability. No numerical summary is calculated here.",
+      "id": "G13.5",
+      "name": "meaning",
+      "status": "DEFINED_NOT_INTERPRETED"
+    },
+    {
+      "evidence": "This gate refers only to the declared representative export and makes no five-origin or other-model precision claim.",
+      "id": "G13.6",
+      "name": "scope",
+      "status": "PASS_REPRESENTATIVE_ONLY"
+    }
+  ],
+  "historical_result_error_claim": false,
+  "likelihood_or_inference_code_changed": false,
+  "precision_shares_published": false,
+  "private_evidence_only": true,
+  "required_tasks_blocked": false,
+  "schema_version": 1,
+  "scope": "Representative December 25, 2022 existing compact source/member export only",
+  "source_csv_sha256": "41c9c07071cec05d07fa2fd75170a59d2526b83ae5dc8593101af47a1f3ab8b8",
+  "status": "OPTIONAL_SKIPPED_SOURCE_CONTRACT",
+  "task": "N13"
+}
