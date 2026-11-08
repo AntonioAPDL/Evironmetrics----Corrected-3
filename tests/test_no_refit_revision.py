@@ -1,5 +1,6 @@
 """Release checks exercise independent arithmetic and fail-closed mutations."""
 import csv
+import errno
 import importlib.util
 import io
 import json
@@ -27,7 +28,12 @@ class RevisionTests(unittest.TestCase):
         for rel in paths:
             dest=cls.root/rel
             dest.parent.mkdir(parents=True,exist_ok=True)
-            os.link(ROOT/rel,dest)
+            try:
+                os.link(ROOT/rel,dest)
+            except OSError as exc:
+                if exc.errno != errno.EXDEV:
+                    raise
+                shutil.copy2(ROOT/rel,dest)
 
     @classmethod
     def tearDownClass(cls):
