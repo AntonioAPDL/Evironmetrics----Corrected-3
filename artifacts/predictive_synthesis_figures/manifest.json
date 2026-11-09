@@ -1,0 +1,426 @@
+{
+  "environment": {
+    "R": "4.5.3",
+    "device": "grDevices::cairo_pdf",
+    "font_family": "DejaVu Sans",
+    "ggplot2": "4.0.3",
+    "graphics_libraries": {
+      "cairo": "1.15.12",
+      "cairoFT": "",
+      "jpeg": "6.2",
+      "libpng": "1.6.34",
+      "libtiff": "LIBTIFF, Version 4.0.9",
+      "pango": "1.42.3"
+    },
+    "jsonlite": "2.0.0",
+    "locale": "LC_CTYPE=C.UTF-8;LC_NUMERIC=C;LC_TIME=C.UTF-8;LC_COLLATE=C.UTF-8;LC_MONETARY=C.UTF-8;LC_MESSAGES=C.UTF-8;LC_PAPER=C.UTF-8;LC_NAME=C;LC_ADDRESS=C;LC_TELEPHONE=C;LC_MEASUREMENT=C.UTF-8;LC_IDENTIFICATION=C",
+    "patchwork": "1.3.2",
+    "yaml": "2.3.12"
+  },
+  "generator": "scripts/predictive_synthesis_figures.py",
+  "interval_probabilities": [
+    0.025,
+    0.975
+  ],
+  "layers": {
+    "20210123": {
+      "built_mean_and_exact_interval_verified": true,
+      "built_sample_groups": 20,
+      "built_sample_rows": 470,
+      "forecast_rows": 28,
+      "glofas_rows": 1428,
+      "history_rows": 19,
+      "interval_probabilities": [
+        0.025,
+        0.975
+      ],
+      "lower_source": "interval_low",
+      "mean_source": "model_mean",
+      "nws_rows": 56,
+      "retrospective_rows": 38,
+      "sample_groups": 20,
+      "sample_rows": 470,
+      "scale": "log1p_cms",
+      "selected_sample_indices": [
+        1,
+        221,
+        442,
+        662,
+        882,
+        1119,
+        1339,
+        1559,
+        1780,
+        2000
+      ],
+      "summary_rows": 47,
+      "upper_source": "interval_high"
+    },
+    "20211112": {
+      "built_mean_and_exact_interval_verified": true,
+      "built_sample_groups": 20,
+      "built_sample_rows": 470,
+      "forecast_rows": 28,
+      "glofas_rows": 1428,
+      "history_rows": 19,
+      "interval_probabilities": [
+        0.025,
+        0.975
+      ],
+      "lower_source": "interval_low",
+      "mean_source": "model_mean",
+      "nws_rows": 56,
+      "retrospective_rows": 38,
+      "sample_groups": 20,
+      "sample_rows": 470,
+      "scale": "log1p_cms",
+      "selected_sample_indices": [
+        1,
+        221,
+        442,
+        662,
+        882,
+        1119,
+        1339,
+        1559,
+        1780,
+        2000
+      ],
+      "summary_rows": 47,
+      "upper_source": "interval_high"
+    },
+    "20211221": {
+      "built_mean_and_exact_interval_verified": true,
+      "built_sample_groups": 20,
+      "built_sample_rows": 470,
+      "forecast_rows": 28,
+      "glofas_rows": 1428,
+      "history_rows": 19,
+      "interval_probabilities": [
+        0.025,
+        0.975
+      ],
+      "lower_source": "interval_low",
+      "mean_source": "model_mean",
+      "nws_rows": 56,
+      "retrospective_rows": 38,
+      "sample_groups": 20,
+      "sample_rows": 470,
+      "scale": "log1p_cms",
+      "selected_sample_indices": [
+        1,
+        221,
+        442,
+        662,
+        882,
+        1119,
+        1339,
+        1559,
+        1780,
+        2000
+      ],
+      "summary_rows": 47,
+      "upper_source": "interval_high"
+    },
+    "20220511": {
+      "built_mean_and_exact_interval_verified": true,
+      "built_sample_groups": 20,
+      "built_sample_rows": 470,
+      "forecast_rows": 28,
+      "glofas_rows": 1428,
+      "history_rows": 19,
+      "interval_probabilities": [
+        0.025,
+        0.975
+      ],
+      "lower_source": "interval_low",
+      "mean_source": "model_mean",
+      "nws_rows": 56,
+      "retrospective_rows": 38,
+      "sample_groups": 20,
+      "sample_rows": 470,
+      "scale": "log1p_cms",
+      "selected_sample_indices": [
+        1,
+        221,
+        442,
+        662,
+        882,
+        1119,
+        1339,
+        1559,
+        1780,
+        2000
+      ],
+      "summary_rows": 47,
+      "upper_source": "interval_high"
+    },
+    "20221225": {
+      "built_mean_and_exact_interval_verified": true,
+      "built_sample_groups": 20,
+      "built_sample_rows": 470,
+      "forecast_rows": 28,
+      "glofas_rows": 1428,
+      "history_rows": 19,
+      "interval_probabilities": [
+        0.025,
+        0.975
+      ],
+      "lower_source": "interval_low",
+      "mean_source": "model_mean",
+      "nws_rows": 56,
+      "retrospective_rows": 38,
+      "sample_groups": 20,
+      "sample_rows": 470,
+      "scale": "log1p_cms",
+      "selected_sample_indices": [
+        1,
+        221,
+        442,
+        662,
+        882,
+        1119,
+        1339,
+        1559,
+        1780,
+        2000
+      ],
+      "summary_rows": 47,
+      "upper_source": "interval_high"
+    }
+  },
+  "may_detail_y_limits": [
+    0,
+    1.3
+  ],
+  "outputs": {
+    "Figures/manuscript/compact_forecasts_2021_2022.pdf": {
+      "bytes": 70134,
+      "sha256": "cd67a050c647cb204d59fc10a25214430d6befe801491fe7932fdb5dd54e870d"
+    },
+    "Figures/manuscript/compact_forecasts_2021_early.pdf": {
+      "bytes": 66290,
+      "sha256": "e3b3794865990125124be1b5b84a80a6d0ba3b52c0ac97672e653a172429bb29"
+    },
+    "Figures/manuscript/predictive_synthesis_2022_12_25.pdf": {
+      "bytes": 55803,
+      "sha256": "48fc5c19a82454783826f1750676c4461ec6e648f1d11fd44774dd8a76dba9eb"
+    }
+  },
+  "pdf_export": {
+    "device": "grDevices::cairo_pdf",
+    "font_family": "DejaVu Sans",
+    "fonts": "All PDF fonts embedded; verified with pdffonts",
+    "normalization": "Replace only the fixed-width Cairo CreationDate value with D:20000101000000Z; leave every other byte unchanged.",
+    "repeatability": "Two independent fresh renders have byte-identical normalized final PDFs"
+  },
+  "pdf_fonts": {
+    "Figures/manuscript/compact_forecasts_2021_2022.pdf": [
+      "QMNJXM+NimbusSans-Italic Type 1C WinAnsi yes yes yes 6 0",
+      "QTPNBL+NimbusSans-Italic CID Type 0C Identity-H yes yes yes 7 0",
+      "WTKLEJ+DejaVuSans TrueType WinAnsi yes yes yes 8 0",
+      "MTUJTR+DejaVuSans-Bold TrueType WinAnsi yes yes yes 9 0",
+      "KRNPAX+StandardSymbolsPS Type 1 WinAnsi yes yes yes 10 0",
+      "MRELTC+StandardSymbolsPS Type 1 Builtin yes yes yes 11 0",
+      "HBJFRU+DejaVuSans CID TrueType Identity-H yes yes yes 12 0"
+    ],
+    "Figures/manuscript/compact_forecasts_2021_early.pdf": [
+      "QMNJXM+NimbusSans-Italic Type 1C WinAnsi yes yes yes 6 0",
+      "QTPNBL+NimbusSans-Italic CID Type 0C Identity-H yes yes yes 7 0",
+      "KKHDKH+DejaVuSans TrueType WinAnsi yes yes yes 8 0",
+      "JRIPUD+DejaVuSans-Bold TrueType WinAnsi yes yes yes 9 0",
+      "KRNPAX+StandardSymbolsPS Type 1 WinAnsi yes yes yes 10 0",
+      "MRELTC+StandardSymbolsPS Type 1 Builtin yes yes yes 11 0",
+      "HBJFRU+DejaVuSans CID TrueType Identity-H yes yes yes 12 0"
+    ],
+    "Figures/manuscript/predictive_synthesis_2022_12_25.pdf": [
+      "QMNJXM+NimbusSans-Italic Type 1C WinAnsi yes yes yes 6 0",
+      "QTPNBL+NimbusSans-Italic CID Type 0C Identity-H yes yes yes 7 0",
+      "WMJBKQ+DejaVuSans TrueType WinAnsi yes yes yes 8 0",
+      "MIUQWN+DejaVuSans-Bold TrueType WinAnsi yes yes yes 9 0",
+      "KRNPAX+StandardSymbolsPS Type 1 WinAnsi yes yes yes 10 0",
+      "MRELTC+StandardSymbolsPS Type 1 Builtin yes yes yes 11 0",
+      "HBJFRU+DejaVuSans CID TrueType Identity-H yes yes yes 12 0"
+    ]
+  },
+  "primary_y_limits": [
+    -0.1,
+    6.5
+  ],
+  "reference_guides": [
+    5.20948615,
+    6.06378521
+  ],
+  "sample_grouping": [
+    "segment",
+    "sample_index"
+  ],
+  "scale": "log1p_cms; saved adapter values are used directly",
+  "schema": "predictive_synthesis_figures_v1",
+  "source_files": {
+    "artifacts/comment1_figure_revision/registry.json": {
+      "bytes": 65056,
+      "sha256": "7269c121df3a2d786df46155b4fcf022c72f25a12a5d8839a187ba7b1f9bcfab"
+    },
+    "artifacts/comment1_figure_revision/renderer_sources/R/unified/post_publication_figures.R": {
+      "bytes": 65369,
+      "sha256": "e6c45ef094aabe8cb4cdd996a2ce849b968da5a25b588d5a97c9c5820ae1e155"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20210123_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv": {
+      "bytes": 528312,
+      "sha256": "502a2809bfa6913a945bea6e84a3019d6e1cfed297bf61fc4c8c47ae2f1fb9a5"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20210123_exal_m_t1/exdqlm_multivar_synth_keep_focus_render_numeric_contract.csv": {
+      "bytes": 11697,
+      "sha256": "9c707a73577066f814bae1e8b609c4198cd0b6cb392f5077be0cddb3178858f6"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20210123_exal_m_t1/publication_style_used.yaml": {
+      "bytes": 911,
+      "sha256": "357e6f191e9a4e479a10cc7d53629fb6e1a93afc768ca32ada21bb215aa8208b"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20210123_exal_m_t1/source_metadata.json": {
+      "bytes": 2827,
+      "sha256": "813fcf93df561badc7d9897814457f6209f8512ac02f3729d53e9f93fdd136e7"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20211112_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv": {
+      "bytes": 528455,
+      "sha256": "72c8fa99745e77396ba3b0063408ebd813e53312770457ddfbefd63b04b4cc18"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20211112_exal_m_t1/exdqlm_multivar_synth_keep_focus_render_numeric_contract.csv": {
+      "bytes": 11687,
+      "sha256": "a9dabe6dfb3f2c49eefa5646841fcd3d9c2adf50f00e30e454839da154cad34a"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20211112_exal_m_t1/publication_style_used.yaml": {
+      "bytes": 911,
+      "sha256": "357e6f191e9a4e479a10cc7d53629fb6e1a93afc768ca32ada21bb215aa8208b"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20211112_exal_m_t1/source_metadata.json": {
+      "bytes": 2827,
+      "sha256": "c8744705d32d394ee37c4ed19c2162f6bd662062f30a5d2c02ac60140396b997"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20211221_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv": {
+      "bytes": 524366,
+      "sha256": "4cd69defcf6d3217aa287f2d3e3ad3e00b0e322caf78b5c7f55ad0fee460e434"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20211221_exal_m_t1/exdqlm_multivar_synth_keep_focus_render_numeric_contract.csv": {
+      "bytes": 11349,
+      "sha256": "da0bcbffa03a65173dc79219cc6daf9f2bda21c99d86ee0fb5e40fac54370b91"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20211221_exal_m_t1/publication_style_used.yaml": {
+      "bytes": 911,
+      "sha256": "357e6f191e9a4e479a10cc7d53629fb6e1a93afc768ca32ada21bb215aa8208b"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20211221_exal_m_t1/source_metadata.json": {
+      "bytes": 2804,
+      "sha256": "8172c15dab98353eee40cef54579e6748d5709f078248703cd5f70d98fe817da"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20220511_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv": {
+      "bytes": 528997,
+      "sha256": "f4c4ffa858c975970370e5b1047a93d5d82a25ed2e486e448e13e1a231105317"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20220511_exal_m_t1/exdqlm_multivar_synth_keep_focus_render_numeric_contract.csv": {
+      "bytes": 11741,
+      "sha256": "5ef5b38fe9f001822df72d26568c1e1f2e2ccb5bdb4027ac640591ffe73e6125"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20220511_exal_m_t1/publication_style_used.yaml": {
+      "bytes": 911,
+      "sha256": "357e6f191e9a4e479a10cc7d53629fb6e1a93afc768ca32ada21bb215aa8208b"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20220511_exal_m_t1/source_metadata.json": {
+      "bytes": 2804,
+      "sha256": "66c85e838b68ed4b9c031ce97ee570d50034da8c680ba4ae0051d232ae5c1e23"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv": {
+      "bytes": 523309,
+      "sha256": "037756589cd486a09015df2c857ddc02fc19bb9a0cf73cce8c173f6e1b6ddc20"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/exdqlm_multivar_synth_keep_focus_render_numeric_contract.csv": {
+      "bytes": 11286,
+      "sha256": "d19e60cb3f5af7daf8da136bca68a92322059469085bffc8e7c13ce8c1790707"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/publication_style_used.yaml": {
+      "bytes": 911,
+      "sha256": "357e6f191e9a4e479a10cc7d53629fb6e1a93afc768ca32ada21bb215aa8208b"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/source_metadata.json": {
+      "bytes": 2804,
+      "sha256": "9c58abb763f4d264ec9fa3402e1fb94d7bc2430d8a6a16548295cb4fd18d544b"
+    },
+    "artifacts/predictive_synthesis_figures/inputs/20210123/glofas_post_adapter.csv": {
+      "bytes": 25566,
+      "sha256": "37bee46c61daad9b8fc7d3e81c4974cbf4daf93d189a51840c2093ad209ead34"
+    },
+    "artifacts/predictive_synthesis_figures/inputs/20210123/nws_post_adapter.csv": {
+      "bytes": 1213,
+      "sha256": "8baca2c08a8eb1ee1450a524a769cbeb02061b7930a23bec90f6a11ca0d81f65"
+    },
+    "artifacts/predictive_synthesis_figures/inputs/20210123/retros_post_adapter.csv": {
+      "bytes": 1314,
+      "sha256": "8095a06f12e802deb064591cd5f679c1f1105fe584caa372d6d775f15f7dc2f7"
+    },
+    "artifacts/predictive_synthesis_figures/inputs/20211112/glofas_post_adapter.csv": {
+      "bytes": 26594,
+      "sha256": "6334fde5595c42afbbd8e437e94b2ba4a8f011d7ca77cef4b5024b3575fa284f"
+    },
+    "artifacts/predictive_synthesis_figures/inputs/20211112/nws_post_adapter.csv": {
+      "bytes": 1149,
+      "sha256": "0011e7f9a5e7c071925e9dc7a4459c94a7001f87db76701b69964c317dcaa37c"
+    },
+    "artifacts/predictive_synthesis_figures/inputs/20211112/retros_post_adapter.csv": {
+      "bytes": 1268,
+      "sha256": "11961e7e8a8f722c71517ea129a45db3d7ed014e451846aff0caf2751f8dfa56"
+    },
+    "artifacts/predictive_synthesis_figures/inputs/20211221/glofas_post_adapter.csv": {
+      "bytes": 25424,
+      "sha256": "872e6696c22365c134a25963f93ce1e8daa6f9005d17020cca62d1a444a433fe"
+    },
+    "artifacts/predictive_synthesis_figures/inputs/20211221/nws_post_adapter.csv": {
+      "bytes": 1146,
+      "sha256": "c9aaffb44fff1c0746302b8e3537d3e413feb6dc9de9009f6b750de0bb61978e"
+    },
+    "artifacts/predictive_synthesis_figures/inputs/20211221/retros_post_adapter.csv": {
+      "bytes": 1269,
+      "sha256": "882dfd3e954919a9dca12e2acebd8dd53d20b3abafd8b5997b6f39d19915ae2d"
+    },
+    "artifacts/predictive_synthesis_figures/inputs/20220511/glofas_post_adapter.csv": {
+      "bytes": 25311,
+      "sha256": "c6dc89b02792eeb84b1049a3e3c3f743ca555d038fabeb2f99040f1b07ebc51b"
+    },
+    "artifacts/predictive_synthesis_figures/inputs/20220511/nws_post_adapter.csv": {
+      "bytes": 1197,
+      "sha256": "4650ae190f1dc4691d464fbe272ee86e3b1c1c4d7b873ffed2c33b0fbcecc0c9"
+    },
+    "artifacts/predictive_synthesis_figures/inputs/20220511/retros_post_adapter.csv": {
+      "bytes": 1298,
+      "sha256": "e8170ba2f56e236058b6059ebb03df8bb04f76d1887e3b1bdb07d2954fb071c7"
+    },
+    "artifacts/predictive_synthesis_figures/inputs/20221225/glofas_post_adapter.csv": {
+      "bytes": 25298,
+      "sha256": "55e8313e256a26940328d0c99faf15f13ad254dc362460cfc7b2ce66bc46063f"
+    },
+    "artifacts/predictive_synthesis_figures/inputs/20221225/nws_post_adapter.csv": {
+      "bytes": 1150,
+      "sha256": "368aec1eacb777e289f61bead46c2058a808bf12ceaeaa947695d37de47ced6e"
+    },
+    "artifacts/predictive_synthesis_figures/inputs/20221225/retros_post_adapter.csv": {
+      "bytes": 1267,
+      "sha256": "544108dc35b258df2bda49ebfbba4d979cffc1c3941ddcf8f8a0b49300f12d0e"
+    },
+    "artifacts/predictive_synthesis_figures/inputs_manifest.json": {
+      "bytes": 15688,
+      "sha256": "c5e53d0eff66780e958574b2439cde73e6724f29de296477bc96100d1a13b60a"
+    },
+    "config/predictive_synthesis_figures.yaml": {
+      "bytes": 1570,
+      "sha256": "9e1009e7beb2f29a5ecce6cd41e0ba814d4da0a4ff2b3f68bb67eae2256b5ac2"
+    },
+    "scripts/predictive_synthesis_figures.py": {
+      "bytes": 16276,
+      "sha256": "1362ef3880ac70850ad965b7992faafe00407cbf629c8f7a17e4af295d66fa2b"
+    },
+    "scripts/render_predictive_synthesis_figures.R": {
+      "bytes": 7291,
+      "sha256": "cbdddc5c713a373934cb0012d563181cd9767a4c0a74e8346fa439408a9e7b48"
+    }
+  }
+}

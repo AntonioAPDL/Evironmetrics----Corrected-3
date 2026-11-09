@@ -2,7 +2,7 @@
   "check_command": "python3 scripts/compact_publication.py --check",
   "command": "python3 scripts/compact_publication.py",
   "generator": "scripts/compact_publication.py",
-  "generator_sha256": "2569e2c4de30611731e8d7ce512374e4ca54035f9da27317890db37c02a523d7",
+  "generator_sha256": "36c351c71c5a839d3be5a918b66a01498e0149d5f4800ce82b429af6df03d224",
   "key_counts": {
     "aggregate_method_horizon": 27,
     "component_origin_horizon": 75,
@@ -16,18 +16,13 @@
     "pooled_quantile_loss": 28,
     "runs": 70
   },
+  "output_ownership": "Compact tables and scientific_records.json only; no figure outputs.",
   "outputs": {
-    "Figures/manuscript/compact_forecasts_2021_2022.pdf": {
-      "sha256": "d311096bcdfa1bef9c0a51610532099866cb9db027850a6bbd81f19846753064"
-    },
-    "Figures/manuscript/compact_forecasts_2021_early.pdf": {
-      "sha256": "b3935f66399973730b928519528b5eee141e3beffb3e939b960a46a949a44dd6"
-    },
     "artifacts/compact_publication/scientific_records.json": {
       "sha256": "7f6f3755ce076d3a7e8b784dc4c048579efb586dabd3e463c5acb4708e45193c"
     },
     "tables/compact_publication/main_aggregate.tex": {
-      "sha256": "188d865eb984ae240b100a764d194d7f1d1dc063346a7b596bacc0f57ed5b8be"
+      "sha256": "794bd770af9e8628513f70943cd7f991535673f7905edcc793ecacc0a979f991"
     },
     "tables/compact_publication/main_calibration.tex": {
       "sha256": "b1b5b8f83c9fb6a7a306781ad597da95c66c2de13449da5da64f6ca1045b2d27"
@@ -57,31 +52,12 @@
       "sha256": "a9e662b0539cc402247e4ebc07fe52743d3e8bb70a5ec14521dc0076ef163141"
     }
   },
-  "plot_contract": {
-    "forecast_misses": [
-      1,
-      0,
-      7,
-      0
-    ],
-    "forecast_rows": 28,
-    "historical_rows": 19,
-    "independent_panel_y_scales": true,
-    "interval": "2.5th--97.5th percentile, from exact archived focus-render endpoints",
-    "layers": [
-      "observed",
-      "model_mean",
-      "interval_low",
-      "interval_high"
-    ],
-    "supporting_origins": [
-      "20210123",
-      "20211112",
-      "20211221",
-      "20220511"
-    ]
+  "predictive_figure_owner": {
+    "generator": "scripts/predictive_synthesis_figures.py",
+    "manifest": "artifacts/predictive_synthesis_figures/manifest.json",
+    "scope": "Figure 2 and the paired appendix predictive-synthesis figures."
   },
-  "schema_version": 1,
+  "schema_version": 2,
   "scope": "Presentation of archived summaries; no fits, predictive-cache reads, new draws or forecast scoring.",
   "source_files": {
     "artifacts/comment2_revision/component_diagnostics/fit_ledger.csv": {

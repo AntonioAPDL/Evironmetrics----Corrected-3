@@ -18,8 +18,11 @@ main-body/appendix scopes. Main-only obligations cannot be satisfied solely by
 appendix text. Unused retained files cannot count as submitted evidence.
 
 Original results, data, source tables/figures, model code and settings are preserved.
-scripts/compact_publication.py regenerates only compact presentations from saved
-full-precision summaries; --check is read-only. The calibration note now links to
+scripts/compact_publication.py owns compact tables and their scientific record; it
+uses saved full-precision summaries. scripts/predictive_synthesis_figures.py is
+the sole owner of Figures 2, B1 and B2. It reads unchanged saved summaries and
+sample values plus the portable source-product bundle. Both --check commands
+are read-only and use temporary space for any rendering. The calibration note now links to
 the appendix's numerical quantile conventions. Its numerical cells are unchanged.
 All eleven tables, seven figures and both retained algorithms remain submitted.
 
@@ -28,7 +31,8 @@ with detailed evidence and computation in appendices. Optional displays omitted
 in the preceding editorial revision remain in Git. Historical numerical replay
 and the 15-file/1496-number presentation proof remain intact.
 
-The current workflow record is docs/article_appendix_integration_20261109/ in
-AntonioAPDL/Project1. The previous docs/article_compact_revision_20261109/ record
+The current workflow record is docs/article_foundation_revision_20261109/ in
+AntonioAPDL/Project1; see docs/foundation_revision.txt and its release JSON. The
+preceding docs/article_appendix_integration_20261109/ record remains historical. The previous docs/article_compact_revision_20261109/ record
 is historical; its two-document arrangement was superseded by the author's
 preference for integrated appendices.

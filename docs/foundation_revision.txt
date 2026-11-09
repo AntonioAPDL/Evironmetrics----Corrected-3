@@ -1,0 +1,63 @@
+AUTHOR CORRECTIONS AND CONSISTENT PREDICTIVE FIGURES
+
+This revision implements the six author corrections against article baseline
+0f72f3d9ab2c18a55859d2515fc9c0131a67a22c. Numerical results and saved model
+outputs remain authoritative. No fitting, forecasting, predictive sampling or
+rescoring is part of this revision.
+
+The abstract states the synthesis and computational contributions directly.
+Three existing state-dimension expressions now show explicit multiplication.
+The computation paragraph relates the documented approximate two-hour combined
+VB fit/forecast to daily production, without inventing MCMC timing or claiming
+posterior-approximation validation. The preliminary scalar transfer-persistence
+calibration is described as gauge-only, following the author's clarification.
+The numerical-prediction appendix proves the rank-paired interval-score identity
+with even/odd normalizations; the main text cites Bracher et al. (2021). The
+original scorer and all reported scores are unchanged. Table 1 bolds minima of
+CRPS and maxima of CRPSS using source precision before display rounding. The
+discussion emphasizes the measured 28-day gains and retains specific competing
+advantages at eight days, upper quantiles and interval coverage.
+
+Figures 2, B1 and B2 share the original R panel function, an explicit archived
+style, layers and a primary vertical range of -0.1 to 6.5. May 2022 also has a
+clearly labeled 0 to 1.3 detail inset. Ten existing sample indices are used per
+period, grouped by period and index; they do not represent newly simulated
+trajectories. Saved predictive means and exact 2.5th/97.5th-percentile endpoints
+are used directly. Source-product values are already on the log1p discharge
+scale. Fifteen portable input extracts preserve the selected main-model run
+identities and original source hashes. Historical summaries, sample CSVs, PNGs,
+scientific records and prior release records remain unchanged.
+
+GENERATOR OWNERSHIP
+
+scripts/compact_publication.py owns eleven compact table/record outputs only.
+scripts/predictive_synthesis_figures.py owns exactly three current PDFs and its
+own manifest. Legacy PNG writers retain their existing paths. The dedicated
+figure generator validates all inputs, creates two independent fresh exports,
+checks embedded fonts and byte-identical normalized PDFs, then promotes the
+complete set. Only Cairo's CreationDate metadata is normalized; plotted values
+and graphics are unmodified. A check renders in temporary space and compares
+published bytes without changing inputs or published files.
+
+CURRENT COMMANDS
+
+python3 -B scripts/compact_publication.py --check
+python3 -B scripts/predictive_synthesis_figures.py --check
+python3 -B scripts/publication_package.py --check
+python3 -B scripts/publication_package.py --build-dir /tmp/NEW_article_package
+
+For an intentional presentation regeneration, omit --check on the relevant
+bounded generator, then repeat the checks above. The figure renderer requires
+R, ggplot2, patchwork, yaml, jsonlite, Cairo, DejaVu Sans and Poppler pdffonts;
+exact package versions are recorded in its manifest.
+
+RELEASE AND PRESERVATION
+
+The complete article uses wileyNJD-APA.tex with integrated Appendices A--D and
+one bibliography. PUBLICATION_PACKAGE.json identifies the included files and
+main/appendix scopes. docs/foundation_revision_release.json records the reviewed
+proof and source hashes. The workflow execution record, explicit mathematical
+review, preservation baseline and full validation gate are in
+AntonioAPDL/Project1:docs/article_foundation_revision_20261109/. The preceding
+planning record remains in docs/article_foundation_revision_plan_20261109/.
+Historical release records are retained as dated evidence.
