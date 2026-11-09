@@ -1,0 +1,54 @@
+Overleaf and GitHub synchronization
+=================================
+
+Use this workflow for Evironmetrics----Corrected-3 only.
+
+1. Before editing locally, pause Overleaf editing and synchronize the new Overleaf
+   project with GitHub. Fetch origin and inspect any overleaf-* branches. If a sync
+   conflict exists, review its source edits and generated-file differences before
+   merging. Keep both histories; do not force-push or discard source changes.
+2. Make and validate the local changes, then push main normally. The pre-push guard
+   queries the live remote immediately before a main push and blocks it whenever
+   an overleaf-* branch commit is not an ancestor of the proposed main. A stale
+   remote-tracking branch cannot satisfy this check. Missing local objects require
+   fetching and reviewing the live branch; the guard never fetches or merges.
+3. Return to the new Overleaf project and pull/synchronize the GitHub changes before
+   resuming editing there. For the current resolved conflict, click Continue in
+   Overleaf once after the merge has reached GitHub. Check the source and compile.
+4. Before the next local editing session, repeat step 1. Coordinate simultaneous
+   editing of the same source files. GitHub pushes alone cannot update an open
+   Overleaf editor or prevent conflicts caused by concurrent edits.
+
+Manual read-only check, from this repository:
+
+    python3 scripts/check_overleaf_sync.py --remote origin --main-ref HEAD
+
+The guard checks the actual proposed main object supplied by Git, including pushes
+from another local branch. It blocks deleting main and fails closed when the live
+remote cannot be queried. Pushes that do not update main skip the network check.
+It does not alter the repository, remote refs, article files, or fitting results.
+
+Hook installation in each clone
+------------------------------
+
+Hooks are not installed automatically by a clone or pull. First inspect the current
+configuration and every existing non-sample hook; preserve existing integrations:
+
+    git config --show-origin --get-all core.hooksPath
+    git rev-parse --git-path hooks
+
+Inspect the returned hooks directory, including hooks other than pre-push. If
+core.hooksPath is already configured or any non-sample hook is present, review and
+integrate the guard into the existing hook setup rather than replacing the path.
+Switching hooksPath would also disable unrelated hooks in the old directory. When
+there is no custom hooksPath and no existing non-sample hook, install with:
+
+    chmod +x .githooks/pre-push
+    git config --local core.hooksPath .githooks
+
+Then run the manual check above and verify that core.hooksPath is .githooks. Keep
+the hook executable. Other clones need the same installation or integration.
+Git hooks can be bypassed and cannot close the brief race between the remote query
+and the push; coordinated editing and synchronization remain necessary. If a new
+Overleaf branch appears, fetch and review it before the next main update. Never
+use --no-verify merely to bypass an unresolved Overleaf history warning.
