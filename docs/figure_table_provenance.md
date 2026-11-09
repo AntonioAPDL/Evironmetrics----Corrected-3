@@ -15,7 +15,7 @@ comment-1 presentation assets and their source hashes are recorded in
 retain the history of the underlying selected-output authority.
 
 Primary manuscript repo:
-- `/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2`
+- `/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics----Corrected-3`
 
 Primary workflow repo currently linked to figure/table generation:
 - `/data/muscat_data/jaguir26/project1_ucsc_phd`
@@ -85,6 +85,22 @@ Most important results from this audit:
 - the model-derived manuscript tables now consume generated `\\input{}` row includes rebuilt from frozen article-side CSV sources.
 
 That means the current manuscript figures are strongly linked to the current workflow repo, even though the manuscript repo itself does not carry the full generation scripts.
+
+## 2026-11-09 foundation revision
+
+`PUBLICATION_PACKAGE.json` gives the current submitted inventory. Figures 2, B1
+and B2 now share the frozen comment-1 R panel function, explicit archived style,
+colors, layers and a common primary vertical scale. Their current portable inputs,
+source hashes, renderer/configuration hashes, font checks and repeatability record
+are in `artifacts/predictive_synthesis_figures/manifest.json`. The only generator
+for these three PDFs is `scripts/predictive_synthesis_figures.py`; the compact
+presentation generator owns tables only. Original PNGs and numerical sources
+remain unchanged. Legacy PNG refresh helpers keep their original paths.
+
+Table 1 now bolds full-precision column minima for CRPS and maxima for CRPSS,
+including genuine ties. Its numbers and missing-value markers are unchanged.
+`docs/foundation_revision_release.json` records the complete article proof.
+The dated records below describe earlier numerical provenance and are retained.
 
 ## 2026-06-23 HE2 authority refresh
 

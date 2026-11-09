@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-09T06:42:11.673852+00:00",
+  "release_type": "author_corrections_and_consistent_predictive_figures",
+  "baseline_article_commit": "0f72f3d9ab2c18a55859d2515fc9c0131a67a22c",
+  "document": {
+    "entry": "wileyNJD-APA.tex",
+    "pages": 31,
+    "pdf_sha256": "371c8721b6b91eefb225c7900c32849dd446bc6b63c8320c7dc2558a189e0467",
+    "text_sha256": "5ba60ce020189489a767d1607b7517c7de5bc52fd2701b2be79a47ef1b35fc68",
+    "source_hashes": {
+      "Figures/manuscript/compact_forecasts_2021_2022.pdf": "cd67a050c647cb204d59fc10a25214430d6befe801491fe7932fdb5dd54e870d",
+      "Figures/manuscript/compact_forecasts_2021_early.pdf": "e3b3794865990125124be1b5b84a80a6d0ba3b52c0ac97672e653a172429bb29",
+      "Figures/manuscript/covariate_context_precip_soil_gdpc.png": "a450b7fa331403f61ea0af951dc1bdf65fab1e4d471c8f89b26cc72d89b9ad03",
+      "Figures/manuscript/no_refit_quantile_reliability.png": "c0097bd2684b17565c328871d08c3b0ee7117cf2be3d5fb9833906f885e8d4e6",
+      "Figures/manuscript/predictive_synthesis_2022_12_25.pdf": "48fc5c19a82454783826f1750676c4461ec6e648f1d11fd44774dd8a76dba9eb",
+      "Figures/manuscript/retrospective_products_context.png": "a670b1de369c4a576c9d9221eec27f83e78bbdf00db88419a714efa2bf5de16e",
+      "Figures/manuscript/site_context_usgs.png": "eeef68672852e4a5362455147b84212ca5bd28d02f9774bb40bdc2a495dc8d8c",
+      "NJDapacite.sty": "7617cfbb3a1c1fc084c9d4612d9544cff74316d12a452bc42abac6d2df755dde",
+      "WileyNJD-APA.bst": "237c3b81013630af8236b7a4ea8d6c4e22b2c15fba1ccb30c26d3a2f581962c5",
+      "WileyNJD-v2.cls": "5d8faf972becd3cf1d9b0b28397e9f22b23d583673e58a74bb90cc7af1e94f3e",
+      "appendices.tex": "3ee242ca3f9e399134c52a030e9b1f4787af7a76d0a9cf9175a009145754fa2c",
+      "tables/compact_publication/main_aggregate.tex": "794bd770af9e8628513f70943cd7f991535673f7905edcc793ecacc0a979f991",
+      "tables/compact_publication/main_calibration.tex": "b1b5b8f83c9fb6a7a306781ad597da95c66c2de13449da5da64f6ca1045b2d27",
+      "tables/compact_publication/main_quantile_loss.tex": "7c1a3c228a745a4c1770eac7f3aa70b7333395b6ef750b2c4deacfbdd667a5b7",
+      "tables/compact_publication/si_component_comparison.tex": "564aacd5e5f31eed03683ca7c88df29c6aaa35851151ac4dbe165c368f1f293d",
+      "tables/compact_publication/si_discharge_score.tex": "91c68daf25bd2a976116599af2dcdf65299532b872f3177cefb510a8d22d265b",
+      "tables/compact_publication/si_exact_score_sensitivity.tex": "a78056df64a098956d1a16de667c86418718d1cbafd58311b7391cc6f99cd25a",
+      "tables/compact_publication/si_fitting_status.tex": "36b535d4f6d33b6e150bee8a6b3a017d54600df953dd421d0ad30f0602996159",
+      "tables/compact_publication/si_origin_coverage.tex": "c0ccc537cdaf5c76d0acf07111fc96a45b5815115eda5dcfcd868c17b90e2def",
+      "tables/compact_publication/si_origin_crps.tex": "467a5c5f14be487bce2963ce9811950555ca4c8302e37fb15ff89b52310fb112",
+      "tables/compact_publication/si_quantile_loss.tex": "a9e662b0539cc402247e4ebc07fe52743d3e8bb70a5ec14521dc0076ef163141",
+      "tables/editorial_revision/representative_covariate_effects_table.tex": "66e0bc3a113e8df763e7b5eab49f0a9e07d3ae4cc2b526a82380c830849c66e9",
+      "wileyNJD-APA.bib": "4147ba426b68a73ec6908a93963410e16281df8f5684cac182c1664f20b8691f",
+      "wileyNJD-APA.tex": "8651d45c27217c8da118f2afb0b96b9db04695c0825c2ad21352ac8310190d42"
+    },
+    "auxiliary_labels_stable": true,
+    "unresolved_citations_or_references": [],
+    "bibtex_warnings": [],
+    "duplicate_labels": [],
+    "passed": true
+  },
+  "appendix_fragment": "appendices.tex",
+  "submitted_displays": {
+    "tables": 11,
+    "figures": 7,
+    "algorithms": 2
+  },
+  "validation": {
+    "passed": true,
+    "unique_python_test_ids": 288,
+    "r_assertions": {
+      "test_post_publication_figures.R": 48,
+      "test_comment2_external_baselines.R": 39,
+      "test_no_refit_review_diagnostics.R": 121,
+      "test_no_refit_diagnostic_indices.R": 15,
+      "test_no_refit_synthesis_diagnostics.R": 25
+    },
+    "r_assertions_total": 248,
+    "compiled_pdf_checks": 43,
+    "compiled_pdf_checks_passed": true,
+    "scientific_sources_preserved": true,
+    "implementation_unchanged_during_validation": true,
+    "protected_repositories_unchanged": true,
+    "two_complete_proofs_same_sources_and_text": true
+  },
+  "mathematics": {
+    "baseline_commit": "0f72f3d9ab2c18a55859d2515fc9c0131a67a22c",
+    "mathematics": {
+      "main": {
+        "baseline_expressions": 133,
+        "current_expressions": 133,
+        "explicit_reviewed_changes": 2,
+        "expected_sha256": "9c47da9f9f2603e220cba3a77a0d820405dfddff796caf1a280815734e76a138",
+        "actual_sha256": "9c47da9f9f2603e220cba3a77a0d820405dfddff796caf1a280815734e76a138",
+        "passed": true
+      },
+      "appendix": {
+        "baseline_expressions": 215,
+        "current_expressions": 225,
+        "explicit_reviewed_changes": 2,
+        "expected_sha256": "9cb6330782030150fb6f9d7a6d6365b457a31d7a80c378ce715ea660a42c923e",
+        "actual_sha256": "9cb6330782030150fb6f9d7a6d6365b457a31d7a80c378ce715ea660a42c923e",
+        "passed": true
+      }
+    },
+    "aggregate_table_numerical_rows_preserved": true,
+    "passed": true
+  },
+  "predictive_figures": {
+    "generation_manifest": "artifacts/predictive_synthesis_figures/manifest.json",
+    "source_files": 41,
+    "outputs": {
+      "Figures/manuscript/compact_forecasts_2021_2022.pdf": {
+        "bytes": 70134,
+        "sha256": "cd67a050c647cb204d59fc10a25214430d6befe801491fe7932fdb5dd54e870d"
+      },
+      "Figures/manuscript/compact_forecasts_2021_early.pdf": {
+        "bytes": 66290,
+        "sha256": "e3b3794865990125124be1b5b84a80a6d0ba3b52c0ac97672e653a172429bb29"
+      },
+      "Figures/manuscript/predictive_synthesis_2022_12_25.pdf": {
+        "bytes": 55803,
+        "sha256": "48fc5c19a82454783826f1750676c4461ec6e648f1d11fd44774dd8a76dba9eb"
+      }
+    },
+    "environment": {
+      "R": "4.5.3",
+      "device": "grDevices::cairo_pdf",
+      "font_family": "DejaVu Sans",
+      "ggplot2": "4.0.3",
+      "graphics_libraries": {
+        "cairo": "1.15.12",
+        "cairoFT": "",
+        "jpeg": "6.2",
+        "libpng": "1.6.34",
+        "libtiff": "LIBTIFF, Version 4.0.9",
+        "pango": "1.42.3"
+      },
+      "jsonlite": "2.0.0",
+      "locale": "LC_CTYPE=C.UTF-8;LC_NUMERIC=C;LC_TIME=C.UTF-8;LC_COLLATE=C.UTF-8;LC_MONETARY=C.UTF-8;LC_MESSAGES=C.UTF-8;LC_PAPER=C.UTF-8;LC_NAME=C;LC_ADDRESS=C;LC_TELEPHONE=C;LC_MEASUREMENT=C.UTF-8;LC_IDENTIFICATION=C",
+      "patchwork": "1.3.2",
+      "yaml": "2.3.12"
+    },
+    "repeatability": {
+      "device": "grDevices::cairo_pdf",
+      "font_family": "DejaVu Sans",
+      "fonts": "All PDF fonts embedded; verified with pdffonts",
+      "normalization": "Replace only the fixed-width Cairo CreationDate value with D:20000101000000Z; leave every other byte unchanged.",
+      "repeatability": "Two independent fresh renders have byte-identical normalized final PDFs"
+    },
+    "relocated_readonly_replay": "passed; 45 file hashes unchanged"
+  },
+  "scientific_records_sha256": "7f6f3755ce076d3a7e8b784dc4c048579efb586dabd3e463c5acb4708e45193c",
+  "layout_review": {
+    "pages_inspected": [
+      1,
+      5,
+      6,
+      7,
+      8,
+      9,
+      11,
+      22,
+      23,
+      24,
+      25
+    ],
+    "passed": true,
+    "overfull_boxes": "One horizontal and one vertical first-page class warning, identical to baseline; no new overfull boxes."
+  },
+  "workflow_record": "AntonioAPDL/Project1:docs/article_foundation_revision_20261109/",
+  "note": "Containing commit identifies this source release. One complete PDF is built locally, not versioned. No fitting, forecasting, predictive sampling or rescoring was performed. Historical release records remain unchanged."
+}

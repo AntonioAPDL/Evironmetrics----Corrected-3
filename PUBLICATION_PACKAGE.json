@@ -142,9 +142,17 @@
       "document": "main",
       "kind": "figure",
       "label": "fig:synth1",
-      "path": "Figures/multivariate_synthesis_by_cutoff/cutoff_2022_12_25_multivariate_synthesis_with_reference_ensembles.png",
+      "path": "Figures/manuscript/predictive_synthesis_2022_12_25.pdf",
       "sources": [
-        "artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_posterior_samples_with_raw_ensembles.png"
+        "artifacts/predictive_synthesis_figures/manifest.json",
+        "artifacts/predictive_synthesis_figures/inputs_manifest.json",
+        "config/predictive_synthesis_figures.yaml",
+        "artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/source_metadata.json",
+        "artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/exdqlm_multivar_synth_keep_focus_render_numeric_contract.csv",
+        "artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv",
+        "artifacts/predictive_synthesis_figures/inputs/20221225/glofas_post_adapter.csv",
+        "artifacts/predictive_synthesis_figures/inputs/20221225/nws_post_adapter.csv",
+        "artifacts/predictive_synthesis_figures/inputs/20221225/retros_post_adapter.csv"
       ],
       "scope": "main"
     },
@@ -187,7 +195,24 @@
       "kind": "figure",
       "label": "fig:forecast_origins_2021_early",
       "path": "Figures/manuscript/compact_forecasts_2021_early.pdf",
-      "scope": "appendix"
+      "scope": "appendix",
+      "sources": [
+        "artifacts/predictive_synthesis_figures/manifest.json",
+        "artifacts/predictive_synthesis_figures/inputs_manifest.json",
+        "config/predictive_synthesis_figures.yaml",
+        "artifacts/five_cutoff_main_model_synthesis/20210123_exal_m_t1/source_metadata.json",
+        "artifacts/five_cutoff_main_model_synthesis/20210123_exal_m_t1/exdqlm_multivar_synth_keep_focus_render_numeric_contract.csv",
+        "artifacts/five_cutoff_main_model_synthesis/20210123_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv",
+        "artifacts/predictive_synthesis_figures/inputs/20210123/glofas_post_adapter.csv",
+        "artifacts/predictive_synthesis_figures/inputs/20210123/nws_post_adapter.csv",
+        "artifacts/predictive_synthesis_figures/inputs/20210123/retros_post_adapter.csv",
+        "artifacts/five_cutoff_main_model_synthesis/20211112_exal_m_t1/source_metadata.json",
+        "artifacts/five_cutoff_main_model_synthesis/20211112_exal_m_t1/exdqlm_multivar_synth_keep_focus_render_numeric_contract.csv",
+        "artifacts/five_cutoff_main_model_synthesis/20211112_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv",
+        "artifacts/predictive_synthesis_figures/inputs/20211112/glofas_post_adapter.csv",
+        "artifacts/predictive_synthesis_figures/inputs/20211112/nws_post_adapter.csv",
+        "artifacts/predictive_synthesis_figures/inputs/20211112/retros_post_adapter.csv"
+      ]
     },
     {
       "id": "si_forecasts_2021_2022",
@@ -195,7 +220,24 @@
       "kind": "figure",
       "label": "fig:forecast_origins_2021_2022",
       "path": "Figures/manuscript/compact_forecasts_2021_2022.pdf",
-      "scope": "appendix"
+      "scope": "appendix",
+      "sources": [
+        "artifacts/predictive_synthesis_figures/manifest.json",
+        "artifacts/predictive_synthesis_figures/inputs_manifest.json",
+        "config/predictive_synthesis_figures.yaml",
+        "artifacts/five_cutoff_main_model_synthesis/20211221_exal_m_t1/source_metadata.json",
+        "artifacts/five_cutoff_main_model_synthesis/20211221_exal_m_t1/exdqlm_multivar_synth_keep_focus_render_numeric_contract.csv",
+        "artifacts/five_cutoff_main_model_synthesis/20211221_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv",
+        "artifacts/predictive_synthesis_figures/inputs/20211221/glofas_post_adapter.csv",
+        "artifacts/predictive_synthesis_figures/inputs/20211221/nws_post_adapter.csv",
+        "artifacts/predictive_synthesis_figures/inputs/20211221/retros_post_adapter.csv",
+        "artifacts/five_cutoff_main_model_synthesis/20220511_exal_m_t1/source_metadata.json",
+        "artifacts/five_cutoff_main_model_synthesis/20220511_exal_m_t1/exdqlm_multivar_synth_keep_focus_render_numeric_contract.csv",
+        "artifacts/five_cutoff_main_model_synthesis/20220511_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_sample_subset.csv",
+        "artifacts/predictive_synthesis_figures/inputs/20220511/glofas_post_adapter.csv",
+        "artifacts/predictive_synthesis_figures/inputs/20220511/nws_post_adapter.csv",
+        "artifacts/predictive_synthesis_figures/inputs/20220511/retros_post_adapter.csv"
+      ]
     }
   ],
   "retained_evidence": [

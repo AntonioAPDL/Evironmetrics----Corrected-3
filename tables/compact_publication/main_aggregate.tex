@@ -17,7 +17,7 @@ AL-M-T0 & 0.53820 & 0.16192 & 0.61368 & 0.15855 \\
 AL-M-T1 & 0.23230 & 0.63826 & 0.30944 & 0.57570 \\
 exAL-U-T1 & 0.59631 & 0.07143 & 0.35144 & 0.51812 \\
 exAL-M-T0 & 1.13760 & -0.77147 & 1.13421 & -0.55518 \\
-exAL-M-T1 & 0.20164 & 0.68601 & 0.29926 & 0.58967 \\
+exAL-M-T1 & \textbf{0.20164} & \textbf{0.68601} & \textbf{0.29926} & \textbf{0.58967} \\
 GloFAS & 0.61761 & 0.03826 & 0.77502 & -0.06267 \\
 NWS & --- & --- & 0.66478 & 0.08848 \\
 Seasonal climatology & 0.64218 & 0.00000 & 0.72931 & 0.00000 \\
@@ -26,7 +26,7 @@ GloFAS EMOS & 0.45734 & 0.28782 & 0.44450 & 0.39052 \\
 \hline
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item \textit{Note:} Scores use $\log(1+x)$ discharge, with $x$ in m$^3$/s. CRPS denotes the continuous ranked probability score; lower values are better. CRPSS is one minus the ratio of pooled mean CRPS to the matching climatology mean; higher values are better. Means use 140 daily cases at leads 1--28 and 40 at leads 1--8. NWS has eight daily leads. Scores use quantile-grid integration. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods; U and M denote one and multiple observation sources. T1 retains the transfer contribution at forecast leads and T0 omits it.
+\item \textit{Note:} Scores use $\log(1+x)$ discharge, with $x$ in m$^3$/s. CRPS denotes the continuous ranked probability score; lower values are better. CRPSS is one minus the ratio of pooled mean CRPS to the matching climatology mean; higher values are better. Bold indicates the lowest CRPS or highest CRPSS in each column. Means use 140 daily cases at leads 1--28 and 40 at leads 1--8. NWS has eight daily leads. Scores use quantile-grid integration. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods; U and M denote one and multiple observation sources. T1 retains the transfer contribution at forecast leads and T0 omits it.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

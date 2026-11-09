@@ -66,18 +66,18 @@ Table~\ref{tab:components_23_31} reports the three base-input coefficient states
 \subsection{Predictions at the Remaining Origins}
 \label{app:cutoffsynthpanels}
 
-Figures~\ref{fig:forecast_origins_2021_early} and \ref{fig:forecast_origins_2021_2022} show all four additional exAL-M-T1 cases. Each shows 19 historical dates and 28 forecast dates, observed values, the predictive mean and the central 95\% interval. The limits are the 2.5th and 97.5th predictive percentiles, rather than the outer 5th and 95th fitted quantile levels. These figures show marginal observation prediction; they do not depict parameter-posterior intervals.
+Figures~\ref{fig:forecast_origins_2021_early} and \ref{fig:forecast_origins_2021_2022} show all four additional exAL-M-T1 cases using the graphical conventions and vertical scale of Figure~\ref{fig:synth1}. Each includes 19 historical and 28 forecast dates, source products and ten predictive sample traces. The bands show marginal observation prediction, with limits at the 2.5th and 97.5th predictive percentiles, rather than the outer fitted quantile levels or parameter-posterior intervals.
 
 \begin{figure}[p]
 \centering
 \includegraphics[width=450pt]{compact_forecasts_2021_early.pdf}
-\caption{Reference exAL-M-T1 predictions at January 23 and November 12, 2021. Each panel shows observed discharge, predictive mean and pointwise central 95\% predictive interval on the $\log(1+x)$ scale, $x$ in m$^3$/s. The vertical line marks the origin $T$ and the first target is $T+1$.}
+\caption{Reference exAL-M-T1 predictions at January 23 and November 12, 2021, on the $\log(1+x)$ scale, $x$ in m$^3$/s. Colors, symbols, sample traces and pointwise central 95\% intervals match Figure~\ref{fig:synth1}, with one shared legend and the common vertical range -0.1 to 6.5. The vertical line marks the origin $T$ and the first target is $T+1$.}
 \label{fig:forecast_origins_2021_early}
 \end{figure}
 \begin{figure}[p]
 \centering
 \includegraphics[width=450pt]{compact_forecasts_2021_2022.pdf}
-\caption{Reference exAL-M-T1 predictions at December 21, 2021 and May 11, 2022. Lines, intervals, units and origin convention match Figure~\ref{fig:forecast_origins_2021_early}.}
+\caption{Reference exAL-M-T1 predictions at December 21, 2021 and May 11, 2022. Graphical conventions and the common vertical scale match Figures~\ref{fig:synth1} and \ref{fig:forecast_origins_2021_early}. The labeled May inset displays the same predictions and source products over the range 0--1.3 to show low-flow variation.}
 \label{fig:forecast_origins_2021_2022}
 \end{figure}
 \section{State-Space Construction and Computational Details}
@@ -86,7 +86,7 @@ Figures~\ref{fig:forecast_origins_2021_early} and \ref{fig:forecast_origins_2021
 \subsection{Computing Time}
 \label{app:computationtime}
 
-AL and exAL fits use mean-field variational Bayes (VB); Gaussian variants use Gaussian filtering and smoothing. For the daily record in this application, fitting and forecasting at the seven target probabilities take approximately two hours on a Linux server with 64 cores and 503 GiB of memory, after preparation of the observation and covariate series. This is combined elapsed time for fitting and forecasting; the two stages were not timed separately. Computing time depends on the hardware, implementation, series length and state dimension.
+AL and exAL fits use mean-field variational Bayes (VB); Gaussian variants use Gaussian filtering and smoothing. For the daily record in this application, seven independent quantile fits run in parallel; their representative combined fitting and forecasting time is approximately two hours on a Linux server with 64 cores and 503 GiB of memory, after preparation of the observation and covariate series. The two stages were not timed separately. Computing time depends on the hardware, implementation, series length and state dimension.
 
 \subsection{Seasonal Rotations}
 \label{app:seasonalconstruction}
@@ -109,6 +109,27 @@ so \(p=7\), \(\mathbf F_t\in\mathbb R^7\), and \(\mathbf G_t\in\mathbb R^{7\time
 The initial synthesized quantile curve in the predictive synthesis is evaluated at 1,001 internal probability-grid points. Its values are sorted for monotone rearrangement, and inverse cumulative distribution function (CDF) sampling produces 2,000 draws per time. Linear interpolation is used between the grid values and constant interpolation beyond the two endpoints. Beyond the lowest and highest fitted probabilities, 0.05 and 0.95, the construction uses the corresponding outer fitted predictive distributions. Consequently, the limits of a central 95\% predictive interval are not separately fitted 0.025 and 0.975 model quantiles.
 
 For ordered predictive values \(x_{(1)}\leq\cdots\leq x_{(n)}\), an interpolated empirical quantile is \((1-g)x_{(j)}+g x_{(j+1)}\), where \(j=\lfloor h\rfloor\), \(g=h-j\), and the minimum and maximum are used beyond the corresponding endpoints. The predictive quantiles from individual fits used for isotonic projection and synthesis take \(h=1+(n-1)u\), conventionally called type 7. The additional stochastic-model quantiles used for the calibration assessment and the displayed model-interval limits take \(h=(n+1/3)u+1/3\), conventionally called type 8 \citep{hyndman1996sample}. The four principal quantile competitors use the same predictive quantiles in the check-loss and reliability comparisons. Raw ensembles and deterministic quantile grids use the empirical generalized inverse, \(x_{(\lceil nu\rceil)}\) for \(0<u\leq1\), with the minimum at \(u=0\). These conventions specify finite-sample calculations without changing the fitted models.
+
+% WIS rank-pairing identity and normalization.
+For the ordered predictive values used in Subsection~\ref{subsec:distributionchecks}, write \(C_S=(2/S)\sum_{s=1}^S\rho_{s/(S+1)}(y-x_{(s)})\). Let \(K=\lfloor S/2\rfloor\), \(\alpha_k=2k/(S+1)\), \(l_k=x_{(k)}\) and \(u_k=x_{(S+1-k)}\), for \(k=1,\ldots,K\). With \(\alpha\) denoting excluded tail probability, the central interval score is
+\[
+\mathrm{IS}_{\alpha}(l,u;y)=(u-l)+\frac2\alpha(l-y)\mathbf1(y<l)
++\frac2\alpha(y-u)\mathbf1(y>u).
+\]
+Symmetric check losses satisfy
+\[
+\rho_{\alpha_k/2}(y-l_k)+\rho_{1-\alpha_k/2}(y-u_k)
+=\frac{\alpha_k}{2}\mathrm{IS}_{\alpha_k}(l_k,u_k;y).
+\]
+Consequently,
+\[
+C_S=\begin{cases}
+\displaystyle\frac1K\sum_{k=1}^K\frac{\alpha_k}{2}\mathrm{IS}_{\alpha_k}(l_k,u_k;y),&S=2K,\\[6pt]
+\displaystyle\frac{\tfrac12|y-x_{(K+1)}|+\sum_{k=1}^K\tfrac{\alpha_k}{2}\mathrm{IS}_{\alpha_k}(l_k,u_k;y)}{K+\tfrac12},&S=2K+1.
+\end{cases}
+\]
+The odd case is the conventional median-inclusive weighted interval score \citep{bracher2021evaluating}; the even case has no separate median term. These identities concern the assigned rank levels of the full predictive representation, not just the seven fitted probabilities. They do not identify the quantile-grid approximation with exact empirical-distribution CRPS.
+% End WIS rank-pairing identity and normalization.
 
 For the equally weighted empirical distribution $G_m=m^{-1}\sum_{i=1}^m\delta_{x_i}$, define
 \[
@@ -135,7 +156,7 @@ For target probability $p_0$, $\operatorname{exAL}_{p_0}(\mu,\sigma,\gamma)$ den
 \boldsymbol{\omega}_t' = [\zeta_t,\ \boldsymbol{\psi}_t'], \qquad
 \boldsymbol{\eta}_t' = [\boldsymbol{\theta}_t',\ (\boldsymbol{\delta}_t^1)',\ \ldots,\ (\boldsymbol{\delta}_t^J)',\ \boldsymbol{\omega}_t'],
 \]
-where \(\boldsymbol{\omega}_t \in \mathbb{R}^{m+1}\) and \(\boldsymbol{\eta}_t \in \mathbb{R}^{q}\), with \(q = (J+1)p + m + 1\). The transfer update can be written as
+where \(\boldsymbol{\omega}_t \in \mathbb{R}^{m+1}\) and \(\boldsymbol{\eta}_t \in \mathbb{R}^{q}\), with \(q = (J+1)\cdot p + m + 1\). The transfer update can be written as
 \[
 \mathbf{G}^{\text{trans}}_t =
 \begin{bmatrix}

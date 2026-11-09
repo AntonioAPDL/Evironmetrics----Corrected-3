@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import csv
+from decimal import Decimal
 import hashlib
 import importlib.util
 import json
@@ -53,6 +54,61 @@ class CompactPublicationTests(unittest.TestCase):
         self.assertEqual({k[0] for k in data["aggregate"]}, set(compact.METHODS))
         self.assertIn("quantile-grid integration", text)
         self.assertNotIn("Exact CRPS", text)
+
+    def test_aggregate_highlights_minimum_score_and_maximum_skill(self):
+        data = compact.load(self.root)
+        text = compact.render_tables(data)[compact.TABLE_DIR + "/main_aggregate.tex"].decode()
+        reference = next(line for line in text.splitlines() if line.startswith("exAL-M-T1 &"))
+        self.assertIn(r"\textbf{0.20164} & \textbf{0.68601} & \textbf{0.29926} & \textbf{0.58967}", reference)
+        self.assertEqual(text.count(r"\textbf{"), 4)
+        self.assertIn("Bold indicates the lowest CRPS or highest CRPSS in each column.", text)
+
+    def test_extrema_preserve_true_ties_and_ignore_unavailable_cells(self):
+        aggregate = {
+            ("A", 28): {"mean_crps": "0.10000000000000000001", "crpss": "-0.2"},
+            ("B", 28): {"mean_crps": "0.100000000000000000010", "crpss": "-0.20"},
+            ("C", 28): {"mean_crps": "", "crpss": None},
+            ("A", 8): {"mean_crps": "2", "crpss": "-3"},
+        }
+        best = compact.aggregate_extrema(aggregate)
+        self.assertEqual(best[28, "mean_crps"], Decimal("0.10000000000000000001"))
+        for method in ("A", "B"):
+            for field in ("mean_crps", "crpss"):
+                self.assertEqual(Decimal(aggregate[method, 28][field]), best[28, field])
+        self.assertEqual(best[8, "crpss"], Decimal("-3"))
+        self.assertEqual(compact.aggregate_extrema({})[28, "crpss"], None)
+
+    def test_display_rounding_does_not_create_extra_winners(self):
+        data = compact.load(self.root)
+        first, second = compact.METHODS[:2]
+        for method in compact.METHODS:
+            for horizon in (28, 8):
+                if (method, horizon) in data["aggregate"]:
+                    data["aggregate"][method, horizon].update(mean_crps="9", crpss="-9")
+        data["aggregate"][first, 28].update(mean_crps="0.10000000000000000001", crpss="-0.20000000000000000002")
+        data["aggregate"][second, 28].update(mean_crps="0.10000000000000000002", crpss="-0.20000000000000000001")
+        text = compact.render_tables(data)[compact.TABLE_DIR + "/main_aggregate.tex"].decode()
+        first_row = next(line for line in text.splitlines() if line.startswith(first + " &"))
+        second_row = next(line for line in text.splitlines() if line.startswith(second + " &"))
+        self.assertIn(r"\textbf{0.10000} & -0.20000", first_row)
+        self.assertIn(r"0.10000 & \textbf{-0.20000}", second_row)
+
+    def test_true_ties_are_highlighted_in_all_matching_rows(self):
+        data = compact.load(self.root)
+        reference = data["aggregate"]["exAL-M-T1", 28]
+        data["aggregate"]["AL-M-T1", 28].update(mean_crps=reference["mean_crps"], crpss=reference["crpss"])
+        text = compact.render_tables(data)[compact.TABLE_DIR + "/main_aggregate.tex"].decode()
+        for method in ("exAL-M-T1", "AL-M-T1"):
+            line = next(line for line in text.splitlines() if line.startswith(method + " &"))
+            self.assertIn(r"\textbf{0.20164} & \textbf{0.68601}", line)
+
+    def test_table_generator_owns_no_predictive_figure_outputs(self):
+        outputs = compact.generate(self.root)
+        self.assertFalse(any(path.startswith("Figures/") for path in outputs))
+        manifest = json.loads(outputs[compact.ARTIFACT_DIR + "/manifest.json"])
+        self.assertNotIn("plot_contract", manifest)
+        self.assertEqual(manifest["predictive_figure_owner"]["manifest"],
+                         "artifacts/predictive_synthesis_figures/manifest.json")
 
     def test_rejects_duplicate_method_horizon_even_with_unchanged_row_values(self):
         self.mutate("aggregate", lambda rows: rows.append(rows[0].copy()))

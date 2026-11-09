@@ -9,12 +9,14 @@ This repository is the submission-facing freeze of the revised manuscript, its m
 - `wileyNJD-APA.pdf`: locally reviewed complete article PDF (not versioned)
 - `PUBLICATION_PACKAGE.json`: authoritative inventory of the article, its main/appendix scopes and submitted assets
 - `docs/compact_publication.txt`: editorial dispositions, bounded regeneration and validation
-- `docs/appendix_integration_release.json`: source and proof record for the integrated appendices
+- `docs/foundation_revision.txt`: current author corrections and bounded regeneration
+- `docs/foundation_revision_release.json`: current source and proof record
+- `docs/appendix_integration_release.json`: historical integrated-appendix release record
 - `docs/comment1_revision.txt`: implemented comment-1 changes and review/build entrypoints
 - `docs/comment2_revision.txt`: external comparisons, fitting evidence and portable replay
 - `Figures/manuscript/`: the exact figure files used by the manuscript
 - `Figures/forecast_context_by_cutoff/`: cutoff-wide copies of the forecast-context view for all five cutoffs
-- `Figures/multivariate_synthesis_by_cutoff/`: cutoff-wide selected-model synthesis family, including the supplementary overlay panels
+- `Figures/multivariate_synthesis_by_cutoff/`: cutoff-wide selected-model synthesis family, including retained overlay panels
 - `Figures/reference_synthesis_by_cutoff/`: univariate reference-synthesis family for all five cutoffs
 - `tables/compact_publication/`: compact main and appendix tables from saved summaries
 - `tables/editorial_revision/`: retained presentation sources, including the active appendix coefficient table
@@ -48,12 +50,17 @@ For the current compact reading package, use only:
 
 ```bash
 python3 -B scripts/compact_publication.py --check
+python3 -B scripts/predictive_synthesis_figures.py --check
 python3 -B scripts/publication_package.py --check
 ```
 
-To regenerate compact displays after an intentional presentation change, run
-`python3 -B scripts/compact_publication.py`, then both checks. This reads committed
-summaries, preserves all original evidence, and starts no model fits or forecasts.
+The compact generator owns tables only. To regenerate them after an intentional
+presentation change, run `python3 -B scripts/compact_publication.py`. Figures 2, B1
+and B2 have one separate owner: `python3 -B scripts/predictive_synthesis_figures.py`.
+It uses portable source-product inputs and unchanged saved means, intervals and
+sample values, checks two independent exports, then promotes all three PDFs.
+Run the three checks above after an intentional regeneration. Neither generator
+fits models, produces forecasts or changes scores.
 The active inventory describes what readers receive; the older
 `MANUSCRIPT_ASSET_MANIFEST.json` retains the original scientific lineage.
 

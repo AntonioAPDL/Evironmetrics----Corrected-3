@@ -12,6 +12,7 @@ import argparse
 from collections import Counter, defaultdict
 import csv
 from datetime import date, timedelta
+from decimal import Decimal
 import hashlib
 import io
 import json
@@ -242,17 +243,35 @@ def panel(horizon, columns, title=None):
             rf"\multicolumn{{{columns}}}{{l}}{{\textit{{{title or str(horizon)+'-day horizon'}}}}} \\" + "\n")
 
 
+def aggregate_extrema(aggregate):
+    """Choose each column's best archived value before display rounding.
+
+    Decimal strings preserve exact input precision, including genuine ties.
+    Missing method/horizon entries and missing cells do not enter the extrema.
+    """
+    result = {}
+    for horizon in (28, 8):
+        for field, select in (("mean_crps", min), ("crpss", max)):
+            values = [Decimal(r[field]) for (_, h), r in aggregate.items()
+                      if h == horizon and r.get(field) not in (None, "")]
+            result[horizon, field] = select(values) if values else None
+    return result
+
+
 def render_tables(data):
     result = {}
     body = row("Method", "28-day CRPS", "28-day CRPSS", "8-day CRPS", "8-day CRPSS") + "\\hline\n"
+    best = aggregate_extrema(data["aggregate"])
     for m in METHODS:
         cells = [display(m)]
         for h in (28, 8):
             r = data["aggregate"].get((m, h))
-            cells.extend(fmt(r[k]) if r else "---" for k in ("mean_crps", "crpss"))
+            cells.extend(fmt(r[k], r[k] not in (None, "") and
+                             Decimal(r[k]) == best[h, k]) if r else "---"
+                         for k in ("mean_crps", "crpss"))
         body += row(*cells)
     result["main_aggregate.tex"] = table("Mean forecast CRPS and skill relative to seasonal climatology across five origins.", "tab:external_benchmarks", "lrrrr", body,
-        SCALE_NOTE + " CRPS denotes the continuous ranked probability score; lower values are better. CRPSS is one minus the ratio of pooled mean CRPS to the matching climatology mean; higher values are better. Means use 140 daily cases at leads 1--28 and 40 at leads 1--8. NWS has eight daily leads. Scores use quantile-grid integration. " + MODEL_NOTE)
+        SCALE_NOTE + " CRPS denotes the continuous ranked probability score; lower values are better. CRPSS is one minus the ratio of pooled mean CRPS to the matching climatology mean; higher values are better. Bold indicates the lowest CRPS or highest CRPSS in each column. Means use 140 daily cases at leads 1--28 and 40 at leads 1--8. NWS has eight daily leads. Scores use quantile-grid integration. " + MODEL_NOTE)
     body = row("Method", *(f"${t:.2f}$" for t in TAUS)) + "\\hline\n"
     for m in QUANTILE_METHODS:
         body += row(m, *(fmt(data["pooled_losses"][m, t], data["pooled_losses"][m, t] == min(data["pooled_losses"][n, t] for n in QUANTILE_METHODS)) for t in TAUS))
@@ -359,48 +378,6 @@ def render_tables(data):
     return {f"{TABLE_DIR}/{name}": text.encode() for name, text in result.items()}
 
 
-def render_figure(data, origins):
-    """Preserve the archived layers and all 47 dates; render no new estimates."""
-    import matplotlib
-    matplotlib.use("Agg")
-    import matplotlib.dates as mdates
-    import matplotlib.pyplot as plt
-    with plt.rc_context({"font.family": "DejaVu Serif", "font.size": 9,
-                         "axes.titlesize": 10, "axes.labelsize": 9,
-                         "xtick.labelsize": 8, "ytick.labelsize": 8,
-                         "pdf.fonttype": 42, "axes.spines.top": False,
-                         "axes.spines.right": False}):
-        fig, axes = plt.subplots(2, 1, figsize=(6.35, 5.3))
-        for i, (ax, o) in enumerate(zip(axes, origins)):
-            rows = data["forecasts"][o]
-            x = [date.fromisoformat(r["date"]) for r in rows]
-            origin = date.fromisoformat(f"{o[:4]}-{o[4:6]}-{o[6:8]}")
-            ax.fill_between(x, [number(r["interval_low"]) for r in rows],
-                            [number(r["interval_high"]) for r in rows],
-                            color="#4477AA", alpha=.20, linewidth=0, label="95% predictive interval")
-            ax.plot(x, [number(r["model_mean"]) for r in rows], color="#4477AA", linewidth=1.2,
-                    linestyle="--", label="Predictive mean")
-            ax.plot(x, [number(r["observed"]) for r in rows], color="#222222", linewidth=.85,
-                    marker="o", markersize=2.5, label="Observed discharge")
-            ax.axvline(origin, color="#AA3377", linestyle=":", linewidth=1.1, label="Forecast origin")
-            ax.set_title(f"({chr(97+i)}) {origin:%B %d, %Y}", loc="left", pad=5)
-            ax.set_ylabel(r"$\log(1+x)$")
-            ax.xaxis.set_major_locator(mdates.WeekdayLocator(interval=2))
-            ax.xaxis.set_major_formatter(mdates.DateFormatter("%b %d"))
-            ax.set_xlim(x[0], x[-1])
-            ax.margins(y=.08)
-            ax.grid(axis="y", linewidth=.35, color=".85")
-        handles, labels = axes[0].get_legend_handles_labels()
-        fig.legend(handles, labels, loc="lower center", bbox_to_anchor=(.5, .005),
-                   ncol=2, frameon=False, fontsize=8)
-        fig.subplots_adjust(left=.11, right=.985, bottom=.15, top=.95, hspace=.45)
-        stream = io.BytesIO()
-        fig.savefig(stream, format="pdf", metadata={"Creator": "compact_publication.py",
-                    "CreationDate": None, "ModDate": None, "Title": "exAL-M-T1 predictive synthesis"})
-        plt.close(fig)
-        return stream.getvalue()
-
-
 def json_bytes(value):
     return (json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + "\n").encode()
 
@@ -408,8 +385,6 @@ def json_bytes(value):
 def generate(root: Path):
     data = load(root)
     outputs = render_tables(data)
-    outputs["Figures/manuscript/compact_forecasts_2021_early.pdf"] = render_figure(data, ORIGINS[:2])
-    outputs["Figures/manuscript/compact_forecasts_2021_2022.pdf"] = render_figure(data, ORIGINS[2:4])
     records = {
         "main_aggregate": [{"method": m, "horizon_days": h, **r} for (m, h), r in sorted(data["aggregate"].items())],
         "pooled_quantile_loss": [{"method": m, "tau": t, "n_cases": 140, "mean_check_loss": v} for (m, t), v in sorted(data["pooled_losses"].items())],
@@ -419,7 +394,7 @@ def generate(root: Path):
     }
     outputs[f"{ARTIFACT_DIR}/scientific_records.json"] = json_bytes(records)
     manifest = {
-        "schema_version": 1,
+        "schema_version": 2,
         "generator": "scripts/compact_publication.py",
         "generator_sha256": digest((ROOT / "scripts/compact_publication.py").read_bytes()),
         "command": "python3 scripts/compact_publication.py",
@@ -431,10 +406,12 @@ def generate(root: Path):
                        "daily_check_loss": 3920, "pooled_quantile_loss": 28, "origin_quantile_loss": 140,
                        "exact_score_scale_method_horizon": 54, "interval_scale_origin_method_horizon": 324,
                        "fits": 400, "runs": 70, "forecast_rows_per_origin": 47},
-        "plot_contract": {"supporting_origins": list(ORIGINS[:4]), "historical_rows": 19, "forecast_rows": 28,
-                          "layers": ["observed", "model_mean", "interval_low", "interval_high"],
-                          "interval": "2.5th--97.5th percentile, from exact archived focus-render endpoints",
-                          "forecast_misses": [1, 0, 7, 0], "independent_panel_y_scales": True},
+        "output_ownership": "Compact tables and scientific_records.json only; no figure outputs.",
+        "predictive_figure_owner": {
+            "generator": "scripts/predictive_synthesis_figures.py",
+            "manifest": "artifacts/predictive_synthesis_figures/manifest.json",
+            "scope": "Figure 2 and the paired appendix predictive-synthesis figures.",
+        },
     }
     outputs[f"{ARTIFACT_DIR}/manifest.json"] = json_bytes(manifest)
     return outputs

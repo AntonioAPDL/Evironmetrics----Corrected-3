@@ -1,0 +1,27 @@
+{
+  "version": "predictive_synthesis_figures_v1",
+  "derived_from": "artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/publication_style_used.yaml",
+  "style": {
+    "version": "publication_foundation_v1",
+    "png": {"width_in": 6.23, "height_in": 4.9, "dpi": 160},
+    "pdf": {"width_in": 6.23, "height_in": 4.9},
+    "labels": {"y_scale_id": "log1p_cms"},
+    "theme": {"base_family": "sans", "base_size": 10, "title_size": 11, "subtitle_size": 8.5, "caption_size": 8, "legend_position": "bottom", "grid_major": "#DCE3EA", "grid_minor": "#EEF2F6", "forecast_window_fill": "#F7F1E6", "forecast_window_alpha": 0.75},
+    "colors": {"observed": "#238B45", "median": "#8C2D5B", "interval_outer": "#F2B6CF", "interval_inner": "#D97AA5", "sample_paths": "#C79AB2", "cutoff": "#6B7280"},
+    "intervals": {"outer": [2.5, 97.5], "inner": [20, 80]},
+    "posterior": {"render_sample_paths": true, "sample_path_cap": 10, "sample_line_alpha": 0.1, "sample_line_width": 0.25, "show_inner_interval": false},
+    "predictive": {"show_inner_interval": false},
+    "y_limits": null,
+    "y_limits_by_cutoff": []
+  },
+  "primary_y_limits": [-0.1, 6.5],
+  "may_detail_y_limits": [0, 1.3],
+  "selected_sample_indices": [1, 221, 442, 662, 882, 1119, 1339, 1559, 1780, 2000],
+  "single_width_in": 6.23,
+  "single_height_in": 4.9,
+  "pair_width_in": 6.23,
+  "pair_height_in": 7.2,
+  "device": "cairo_pdf",
+  "font_family": "DejaVu Sans",
+  "pdf_metadata_rule": "Replace only the fixed-width Cairo CreationDate value with D:20000101000000Z; leave every other byte unchanged."
+}
