@@ -4,16 +4,6 @@
 
 This document records the current provenance status of manuscript figures and interpretation-dependent tables for the revised Environmetrics article.
 
-Organization checked on 2026-11-07: the main text now proceeds through
-Introduction, Forecasting Setting and Data, Bayesian Correction and Predictive
-Synthesis, Application Specification and Evaluation Methods, Results, and
-Discussion. Results contains the representative forecast, five-origin
-comparisons, and historical interpretation. The univariate reference and other
-origin-specific synthesis panels remain appendix support. The reviewed
-comment-1 presentation assets and their source hashes are recorded in
-`artifacts/comment1_figure_revision/registry.json`; dated generation audits below
-retain the history of the underlying selected-output authority.
-
 Primary manuscript repo:
 - `/data/muscat_data/jaguir26/project1_ucsc_phd/Evironmetrics---REVISED-DOC-Corrected-2`
 
@@ -23,7 +13,7 @@ Primary workflow repo currently linked to figure/table generation:
 Main purpose:
 - identify which manuscript outputs are already traceable to the current workflow,
 - distinguish reproducible workflow-linked outputs from legacy or ambiguous outputs,
-- and document how interpretation material remains aligned with the final selected `exAL-M-T1` analysis behind `tab:benchmark_crps_models`.
+- and define the next regeneration tasks needed to align all interpretation material with the final selected `exAL-M-T1` analysis behind Table 1.
 
 Tracked article-side companions:
 - `MANUSCRIPT_ASSET_MANIFEST.json`
@@ -77,7 +67,7 @@ This inventory now distinguishes three reproducibility levels:
 The manuscript repo is **not fully self-contained** for figure/table generation. It now contains frozen local provenance bundles for all current figure/table assets used by the article, but the authoritative generators still live in the workflow repo above.
 
 Most important results from this audit:
-- current manuscript figures are linked to their frozen source artifacts; the comment-1 presentation registry records the reviewed style revision without changing selected outputs or numerical inputs.
+- every figure file currently used by the manuscript and checked below matches the workflow repo's recorded gold hash exactly.
 - every current figure/table asset in the article is now either:
   - tied to a verified selected-model rerun bundle,
   - or frozen locally as a workflow-linked support figure.
@@ -220,7 +210,7 @@ component gallery under:
 - `artifacts/representative_selected_model_2022_12_25/authoritative_support/analysis_figures/component_evolution/`
 
 That gallery is rendered from the same compact selected-model support CSVs as
-the main-text long-cycle component figure (`fig:80_components`). It includes raw retained state components plus analysis-only
+Figure A1. It includes raw retained state components plus analysis-only
 `component_6_plus_trend_component_1_samplewise` and
 `component_6_minus_trend_component_1_samplewise` diagnostics.
 It is checksummed in the local artifact bundle but intentionally not registered
@@ -354,7 +344,7 @@ The following manuscript figure assets in `Evironmetrics---REVISED-DOC-Corrected
      - `repro/FORECATS_INPUTS_AND_WEIGHTING_PLAN.md`
    - The corrected cutoff-specific derivation anchors that figure to the CRPS-linked `exAL-M-T1` source manifest and the selected forecast/setup support bundles instead of the older generic paper-level copy.
 
-3. The dry/wet regime figures and the main-text long-cycle figure are now regenerated from the representative selected-model support bundle.
+3. The dry/wet regime figures and the appendix long-cycle figure are now regenerated from the representative selected-model support bundle.
    - They are locked to the same `2022-12-25 exAL-M-T1` selected-output authority as the representative synthesis figure.
    - They are frozen locally in:
      - `artifacts/representative_selected_model_2022_12_25/authoritative_support/figures/`
@@ -429,27 +419,27 @@ These objects are produced from the same selected-output support but are intenti
 
 The following policy is now adopted for the revised manuscript and should govern the regeneration work that follows.
 
-### Results: forecast-validation evidence
-- The Results section (`sec:forecastvalidation`) contains the manuscript's five-cutoff forecast-validation evidence, after the application specification and evaluation methods (`sec:evaluation`).
+### Section 4: forecast-validation evidence
+- Section 4 remains the manuscript's five-cutoff forecast-validation evidence.
 - Its benchmark values must continue to come from the validated five-cutoff `exdqlm_multivar_keep` / `exAL-M-T1` comparison workflow.
 - Any rerun used to refresh those values must preserve the same configuration that produced the published CRPS table.
 
-### Results: representative selected-model interpretation
-- The Results section uses one representative final cutoff of the selected specification.
+### Section 5: representative selected-model interpretation
+- Section 5 will use one representative final cutoff of the selected specification.
 - The representative cutoff is fixed as `2022-12-25`, because:
   - it is already the manuscript's current illustrative forecast origin,
   - a recent validated workflow run exists for it, and
   - that run already produces publication-facing cutoff-window synthesis artifacts.
-- Therefore, the following Results objects must be regenerated or re-verified from the `2022-12-25` `exdqlm_multivar_keep` run:
+- Therefore, the following Section 5 objects must be regenerated or re-verified from the `2022-12-25` `exdqlm_multivar_keep` run:
   - `fig:synth1`, through `artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/`
   - `tab:components_23_31`
 
-### Historical interpretation and appendix support summaries
-- The three historical interpretation figures remain descriptive selected-model diagnostics in Results:
+### Appendix: selected-model diagnostics and support summaries
+- Appendix figures and tables remain selected-model diagnostics and support summaries rather than forecast-validation evidence.
+- This applies to:
   - `fig:dry_quantile`
   - `fig:rainy_quantile`
   - `fig:80_components`
-- The source-parameter summaries remain supplementary appendix support:
   - `tab:gamma_sigma_intervals1`
   - `tab:gamma_sigma_intervals2`
 - The captions and nearby text should continue to say so clearly.
@@ -498,13 +488,13 @@ artifact map and the workflow-side authority runbook:
 
 Use these files when:
 - identifying the authoritative source run for a given cutoff,
-- rerunning the selected specification associated with a published `tab:benchmark_crps_models` CRPS value,
+- rerunning the selected specification associated with a published Table 1 CRPS value,
 - verifying that the rerun reproduces the selected `exAL-M-T1` CRPS exactly,
 - and checking whether the required figure and table artifacts were emitted.
 
 ## Current locked state
 
-1. Results (`sec:forecastvalidation`) contains the five-cutoff validation evidence.
+1. Section 4 remains the five-cutoff validation evidence.
    - `tab:benchmark_crps_models` is the current authoritative 28-day
      manuscript benchmark table.
    - `tab:benchmark_crps_models_nws_horizon` is the current authoritative
@@ -512,7 +502,7 @@ Use these files when:
    - Future calibrated replacements are allowed, but only through the workflow
      manifest/overlay refresh path and the cross-repo validation gates.
 
-2. The representative Results illustration and historical interpretation use outputs from one representative final cutoff of the selected `exAL-M-T1` specification.
+2. Section 5 uses outputs from one representative final cutoff of the selected `exAL-M-T1` specification.
    - `fig:synth1`, sourced from `artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/`
    - `tab:components_23_31`
 

@@ -6,7 +6,7 @@
   "source_support_generated_at_utc": "2026-06-26T00:18:27Z",
   "figure_a1_component": 6,
   "figure_a1_component_contract": "raw_state_component",
-  "figure_a1_article_display_label": "long-cycle seasonal component only (about 6.78 years)",
+  "figure_a1_article_display_label": "long-cycle seasonal component only (about 82 months)",
   "hydrologic_regime_periods": [
     {
       "period": "Dry",
@@ -21,35 +21,11 @@
       "fill": "#cfe8f7"
     }
   ],
-  "rendered_files": [
-    "selected_model_quantile_dry_period.png",
-    "selected_model_quantile_wet_period.png",
-    "selected_model_component_80month.png"
-  ],
+  "rendered_files": ["selected_model_quantile_dry_period.png", "selected_model_quantile_wet_period.png", "selected_model_component_80month.png"],
   "component_analysis": {
     "directory": "analysis_figures/component_evolution",
     "manifest": "analysis_figures/component_evolution/component_analysis_manifest.csv",
     "figure_count": 9,
-    "files": [
-      "component_01_raw_state_component.png",
-      "component_02_raw_state_component.png",
-      "component_03_raw_state_component.png",
-      "component_04_raw_state_component.png",
-      "component_05_raw_state_component.png",
-      "component_06_raw_state_component.png",
-      "component_07_raw_state_component.png",
-      "component_06_component_6_plus_trend_component_1_samplewise.png",
-      "component_06_component_6_minus_trend_component_1_samplewise.png"
-    ]
-  },
-  "long_cycle_period_days": 2474.871,
-  "long_cycle_period_years": 6.776,
-  "component_label_revision": {
-    "renderer_contract": "authoritative_selected_model_support_figures_v3",
-    "component_only": true,
-    "note": "Only the long-cycle title was corrected to calendar-year units; original summaries, intervals, component identity and historical-panel images were preserved.",
-    "renderer": "scripts/render_authoritative_selected_model_support_figures.R",
-    "command_suffix": "--component-only true",
-    "png_sha256": "276821de7836c9c4fe6b29dab781420fa24f02fdc1c11da33bf78360ba5d9774"
+    "files": ["component_01_raw_state_component.png", "component_02_raw_state_component.png", "component_03_raw_state_component.png", "component_04_raw_state_component.png", "component_05_raw_state_component.png", "component_06_raw_state_component.png", "component_07_raw_state_component.png", "component_06_component_6_plus_trend_component_1_samplewise.png", "component_06_component_6_minus_trend_component_1_samplewise.png"]
   }
 }

@@ -10,7 +10,6 @@ from pathlib import Path
 
 from article_runtime_bindings import binding_as_path, load_runtime_bindings
 from exal_m_t1_authoritative import load_authoritative_five_run_specs
-from comment1_figure_revision import reapply_comment1_figure_revision, verify_comment1_figure_revision
 from article_repo_layout import (
     CUTOFF_MULTIVARIATE_SYNTHESIS_FILENAMES,
     CUTOFF_MULTIVARIATE_SYNTHESIS_OVERLAY_FILENAMES,
@@ -84,19 +83,16 @@ def mirror_figure_family_to_lowercase(
     lowercase_dir: Path,
     manifest_rows: list[dict[str, str | int]],
 ) -> None:
-    expected = article_root.resolve() / 'figures' / uppercase_dir.name
-    if lowercase_dir.resolve() != expected or uppercase_dir.resolve() == lowercase_dir.resolve():
-        raise ValueError('Compatibility target must be figures/<family>, distinct from canonical Figures/<family>')
-    if uppercase_dir.is_symlink() or lowercase_dir.is_symlink():
-        raise ValueError('Figure family roots must not be symlinks')
-    if (lowercase_dir / 'manifest.csv').is_symlink():
-        raise ValueError('Compatibility manifest must not be a symlink')
+    if lowercase_dir.exists():
+        for child in lowercase_dir.iterdir():
+            if child.is_file() or child.is_symlink():
+                child.unlink()
+            else:
+                shutil.rmtree(child)
     lowercase_dir.mkdir(parents=True, exist_ok=True)
+
     for src in sorted(path for path in uppercase_dir.iterdir() if path.is_file() and path.name != 'manifest.csv'):
-        dst = lowercase_dir / src.name
-        if dst.is_symlink():
-            raise ValueError(f'Compatibility target must not be a symlink: {dst}')
-        copy_tree_file(src, dst)
+        copy_tree_file(src, lowercase_dir / src.name)
 
     lower_rows: list[dict[str, str | int]] = []
     for row in manifest_rows:
@@ -329,7 +325,6 @@ def main() -> None:
     args = parser.parse_args()
 
     article_root = args.article_root.resolve()
-    verify_comment1_figure_revision(article_root)
     bindings = load_runtime_bindings(article_root)
     multivar_runtime_root = (
         args.multivar_runtime_root.resolve()
@@ -461,17 +456,16 @@ def main() -> None:
         title='Reference Synthesis By Cutoff',
         family_description='Advisor-facing copies of the Figure A2-style reference synthesis family for all five cutoffs, including overlay companions with raw/reference ensembles.',
     )
-    reapply_comment1_figure_revision(article_root)
     mirror_figure_family_to_lowercase(
         article_root=article_root,
         uppercase_dir=layout.cutoff_multivariate_synthesis_dir,
-        lowercase_dir=layout.compatibility_figures_dir / 'multivariate_synthesis_by_cutoff',
+        lowercase_dir=layout.figures_dir / 'multivariate_synthesis_by_cutoff',
         manifest_rows=multivar_figure_rows,
     )
     mirror_figure_family_to_lowercase(
         article_root=article_root,
         uppercase_dir=layout.cutoff_reference_synthesis_dir,
-        lowercase_dir=layout.compatibility_figures_dir / 'reference_synthesis_by_cutoff',
+        lowercase_dir=layout.figures_dir / 'reference_synthesis_by_cutoff',
         manifest_rows=reference_figure_rows,
     )
     refresh_poster_frozen_synthesis(

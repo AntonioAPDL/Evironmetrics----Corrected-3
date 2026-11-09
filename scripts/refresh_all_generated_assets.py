@@ -7,7 +7,6 @@ import subprocess
 import sys
 from pathlib import Path
 
-from comment1_figure_revision import reapply_comment1_figure_revision, verify_comment1_figure_revision
 from article_runtime_bindings import binding_as_optional_path, binding_as_path, load_runtime_bindings
 
 def run(cmd: list[str]) -> None:
@@ -79,7 +78,6 @@ def main() -> None:
     args = parser.parse_args()
 
     article_root = args.article_root.resolve()
-    verify_comment1_figure_revision(article_root)
     bindings = load_runtime_bindings(article_root)
     workflow_root = args.workflow_root.resolve() if args.workflow_root is not None else binding_as_path(bindings, 'workflow_root')
     runtime_root = args.runtime_root.resolve() if args.runtime_root is not None else binding_as_path(bindings, 'exal_m_t1', 'keep_runtime_root')
@@ -167,12 +165,8 @@ def main() -> None:
     run([py, str(article_root / 'scripts' / 'promote_cutoff_forecast_context_figures.py'), '--article-root', str(article_root)])
     run([py, str(article_root / 'scripts' / 'promote_setup_support_v2_to_disc.py'), '--article-root', str(article_root)])
     run([py, str(article_root / 'scripts' / 'build_generated_table_includes.py'), '--article-root', str(article_root)])
-    # Point-2 evidence is frozen separately; validate current imported scores
-    # before regenerating only its additional comparison/diagnostic tables.
-    run([py, str(article_root / 'scripts' / 'comment2_revision.py'), '--article-root', str(article_root)])
     run([py, str(article_root / 'scripts' / 'promote_generated_figures_to_disc.py'), '--article-root', str(article_root)])
     run([py, str(article_root / 'scripts' / 'sync_legacy_uppercase_figures.py'), '--article-root', str(article_root)])
-    reapply_comment1_figure_revision(article_root)
     run([py, str(article_root / 'scripts' / 'build_article_asset_review_report.py'), '--article-root', str(article_root)])
     run([py, str(article_root / 'scripts' / 'build_figure_polish_status_audit.py'), '--article-root', str(article_root)])
     run([py, str(article_root / 'scripts' / 'build_article_figure_lineage_audit.py'), '--article-root', str(article_root)])

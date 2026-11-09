@@ -381,7 +381,7 @@ def main() -> None:
         r'\bottomrule',
         r'\end{tabular*}',
         r'\begin{tablenotes}',
-        r'\item \textit{Note:} Check loss is computed on forecast-window rows only, using held-out USGS observations as verification targets on the same $\log(1+x)$ scale used for CRPS, with discharge $x$ measured in m$^3$/s.',
+        r'\item \textit{Note:} Check loss is computed on forecast-window rows only, using held-out USGS observations as verification targets on the same $\log(1+Q)$ scale used for CRPS. The four synthesis competitors are resolved directly from the frozen HE-2 publication manifest.',
         r'\end{tablenotes}',
         r'\end{threeparttable}',
         r'\end{table*}',
