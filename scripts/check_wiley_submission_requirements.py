@@ -79,7 +79,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--article-root', type=Path, default=ROOT)
     parser.add_argument('--entry', default='wileyNJD-APA.tex')
-    parser.add_argument('--document', choices=('main', 'si'), default='main')
+    parser.add_argument('--document', choices=('main',), default='main')
     args = parser.parse_args()
     try:
         report = check_document(args.article_root, args.entry, args.document == 'main')

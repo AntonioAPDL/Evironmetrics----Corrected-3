@@ -140,7 +140,7 @@ class CompactPublicationTests(unittest.TestCase):
             old_row = next(line for line in old.splitlines() if line.startswith(prefix))
             new_row = next(line for line in new.splitlines() if line.startswith(prefix))
             self.assertEqual(old_row, new_row)
-        self.assertNotIn(r"\ref{app:numericalprediction}", new)
+        self.assertIn(r"Appendix~\ref{app:numericalprediction}", new)
 
 
 if __name__ == "__main__":

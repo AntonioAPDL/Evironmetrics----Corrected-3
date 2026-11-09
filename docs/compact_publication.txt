@@ -1,38 +1,34 @@
-COMPACT MAIN ARTICLE AND SUPPORTING INFORMATION
+COMPACT ARTICLE WITH INTEGRATED APPENDICES
 
-The active documents are wileyNJD-APA.tex and supporting_information.tex. Compile
-both independently with scripts/build_manuscript_review.py --entry ROOT --output-dir
-FRESH_DIRECTORY. scripts/publication_package.py --check validates actual source
-reachability, document ownership, references and the main/SI scientific obligations.
-Its --build-dir FRESH_DIRECTORY builds both and records source/PDF hashes and pages.
+The only document root is wileyNJD-APA.tex. It includes appendices.tex through
+Wiley's native appendix environment before one shared bibliography. Compile once
+with scripts/build_manuscript_review.py --output-dir FRESH_DIRECTORY, or validate
+and build through scripts/publication_package.py --build-dir FRESH_DIRECTORY.
+The complete article is one PDF; no separate supplement is submitted.
 
-All original fitted results, CSVs, images, table sources, model code and settings
-are retained. scripts/compact_publication.py derives only compact presentations
-from frozen full-precision summaries; --check is read-only and rejects stale outputs.
-The source hashes and recipes are in artifacts/compact_publication/. No model fit,
-new predictive draw or new forecast scoring is required. The qualitative near-one
-discount statement is unchanged.
+Appendix A describes data sources and historical inputs. Appendix B reports
+origin-specific scores, component comparisons, fitting evidence, quantile losses,
+score/scale sensitivity, calibration and coefficient summaries. Appendix C gives
+state-space construction and computational details. Appendix D contains the two
+variational Bayes algorithms. All references are ordinary local LaTeX labels;
+lettered exhibit numbers and hyperlink destinations are checked in the proof.
 
-Main keeps six scientific sections, the component model equations and predictive
-synthesis, all-method aggregate CRPS/skill, pooled quantile losses, quantitative
-calibration, representative synthesis with source context, history and reliability.
-SI retains all origins, component comparisons, stopping evidence, full quantile
-losses, score/scale sensitivities, coverage by origin, coefficient interpretation,
-data histories and essential computational details. The unique generalized
-inverse-Gaussian convention precedes the retained variational updates.
+PUBLICATION_PACKAGE.json inventories actual included assets and their logical
+main-body/appendix scopes. Main-only obligations cannot be satisfied solely by
+appendix text. Unused retained files cannot count as submitted evidence.
 
-Removed from the submitted reading package, retained in Git: separate raw-product
-context illustration, explanatory role/comparison tables, historical component and
-univariate illustrations, source shape/scale inventories and historical sampling
-displays. Repeated explanations are shortened. A main-to-SI transfer is not counted
-as a reduction in combined pages. Detailed disposition is PUBLICATION_PACKAGE.json.
+Original results, data, source tables/figures, model code and settings are preserved.
+scripts/compact_publication.py regenerates only compact presentations from saved
+full-precision summaries; --check is read-only. The calibration note now links to
+the appendix's numerical quantile conventions. Its numerical cells are unchanged.
+All eleven tables, seven figures and both retained algorithms remain submitted.
 
-Original source replay remains scripts/refresh_editorial_revision.py --check; its
-15-file/1496-number proof is preserved. The active reading package instead uses
-scientific-key equality, full-precision pooled-loss aggregation, all forecast means
-and exact95% bounds, and graph-based ownership. Retained unused files cannot satisfy
-requirements about submitted evidence.
+The compact article keeps six scientific main sections and the model equations,
+with detailed evidence and computation in appendices. Optional displays omitted
+in the preceding editorial revision remain in Git. Historical numerical replay
+and the 15-file/1496-number presentation proof remain intact.
 
-The versioned workflow execution record is docs/article_compact_revision_20261109/
-in AntonioAPDL/Project1. It records the approved plan, immutable source baseline,
-scoped check migration, actual page counts, build identities and release checks.
+The current workflow record is docs/article_appendix_integration_20261109/ in
+AntonioAPDL/Project1. The previous docs/article_compact_revision_20261109/ record
+is historical; its two-document arrangement was superseded by the author's
+preference for integrated appendices.

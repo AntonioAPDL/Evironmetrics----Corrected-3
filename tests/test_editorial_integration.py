@@ -72,18 +72,17 @@ class IncludeTraversalTests(unittest.TestCase):
         self.assertNotEqual(before[active], after[active])
         self.assertEqual(len(sources), 5)
 
-    def test_entry_selection_hashes_only_the_chosen_independent_root(self):
-        self.write('wileyNJD-APA.tex', r'\input{main_table}')
-        main_table = self.write('main_table.tex', 'Main-only numerical result')
-        si = self.write('supporting_information.tex', r'\input{si_table}')
-        si_table = self.write('si_table.tex', 'SI-only numerical result')
+    def test_hashes_cover_body_and_integrated_appendices_but_not_unused_root(self):
+        self.write('wileyNJD-APA.tex', r'\input{main_table}\begin{appendix}\input{appendices}\end{appendix}')
+        main_table = self.write('main_table.tex', 'Main numerical result')
+        appendix = self.write('appendices.tex', r'\input{appendix_table}')
+        appendix_table = self.write('appendix_table.tex', 'Appendix numerical result')
+        unused = self.write('unused_root.tex', 'Unused document')
         for name in ('wileyNJD-APA.bib', 'WileyNJD-v2.cls', 'WileyNJD-APA.bst'):
             self.write(name, 'Fixture source')
-        sources = collect_source_files(self.root, 'supporting_information.tex')
-        self.assertIn(si, sources)
-        self.assertIn(si_table, sources)
-        self.assertNotIn(main_table, sources)
-        self.assertNotIn(self.root / 'wileyNJD-APA.tex', sources)
+        sources = collect_source_files(self.root)
+        self.assertTrue({main_table, appendix, appendix_table}.issubset(sources))
+        self.assertNotIn(unused, sources)
 
 
 class RecorderInputTests(unittest.TestCase):
@@ -119,7 +118,7 @@ class ActiveArticleIntegrationTests(unittest.TestCase):
         graphs = document_graphs(ROOT, package)
         for asset in package['submitted_assets']:
             with self.subTest(asset=asset['id']):
-                graph = graphs[asset['document']]
+                graph = graphs[asset['document']]['scopes'][asset['scope']]
                 paths = graph['tex_paths'] if asset['kind'] == 'table' else graph['figures']
                 self.assertIn(ROOT / asset['path'], paths)
                 self.assertEqual(graph['labels'][asset['label']], 1)

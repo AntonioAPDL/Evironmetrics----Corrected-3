@@ -267,7 +267,7 @@ def render_tables(data):
             cells.extend([f"{r['n_inside']}/{r['n_valid']}", fmt(r["mean_width"]), fmt(r["mean_interval_score"])] if r else ["---"]*3)
         body += row(*cells)
     result["main_calibration.tex"] = table("Coverage, mean width and mean interval score of central 95\\% observation predictive intervals.", "tab:no_refit_calibration", "lrrrrrr", body,
-        "Covered is the number of observations within the closed 2.5th--97.5th percentile interval divided by the case count. Width and interval score are averaged on the $\\log(1+x)$ scale, with discharge $x$ in m$^3$/s; lower interval score is better. Persistence has zero width. Numerical quantile conventions are specified in the Supporting Information. The monotone inverse transformation preserves coverage. " + MODEL_NOTE)
+        "Covered is the number of observations within the closed 2.5th--97.5th percentile interval divided by the case count. Width and interval score are averaged on the $\\log(1+x)$ scale, with discharge $x$ in m$^3$/s; lower interval score is better. Persistence has zero width. Numerical quantile conventions are specified in Appendix~\\ref{app:numericalprediction}. The monotone inverse transformation preserves coverage. " + MODEL_NOTE)
     body = row("Method", *ORIGIN_LABELS) + "\\hline\n"
     for h in (28, 8):
         body += panel(h, 6)

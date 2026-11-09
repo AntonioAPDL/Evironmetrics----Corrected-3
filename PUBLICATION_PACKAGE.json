@@ -1,13 +1,9 @@
 {
-  "schema_version": "publication_package_v1",
-  "inventory_role": "Authoritative inventory of submitted main/SI displays; MANUSCRIPT_ASSET_MANIFEST.json retains original scientific lineage.",
+  "schema_version": "publication_package_v2",
+  "inventory_role": "Authoritative inventory of the single submitted article and its integrated appendices; MANUSCRIPT_ASSET_MANIFEST.json retains original scientific lineage.",
   "documents": {
     "main": {
       "entry": "wileyNJD-APA.tex",
-      "bibliography": "wileyNJD-APA.bib"
-    },
-    "si": {
-      "entry": "supporting_information.tex",
       "bibliography": "wileyNJD-APA.bib"
     }
   },
@@ -20,7 +16,8 @@
       "path": "tables/compact_publication/main_aggregate.tex",
       "sources": [
         "artifacts/comment2_revision/external_baselines/aggregate.csv"
-      ]
+      ],
+      "scope": "main"
     },
     {
       "id": "main_quantile_loss",
@@ -30,7 +27,8 @@
       "path": "tables/compact_publication/main_quantile_loss.tex",
       "sources": [
         "artifacts/he4_quantile_check_loss_current_publication/he4_quantile_check_loss_per_day.csv"
-      ]
+      ],
+      "scope": "main"
     },
     {
       "id": "main_calibration",
@@ -40,84 +38,93 @@
       "path": "tables/compact_publication/main_calibration.tex",
       "sources": [
         "artifacts/no_refit_revision/results/interval_summary.csv"
-      ]
+      ],
+      "scope": "main"
     },
     {
       "id": "si_origin_crps",
-      "document": "si",
+      "document": "main",
       "kind": "table",
       "label": "tab:crps_all_origins",
       "path": "tables/compact_publication/si_origin_crps.tex",
       "sources": [
         "artifacts/comment2_revision/external_baselines/by_origin_horizon.csv"
-      ]
+      ],
+      "scope": "appendix"
     },
     {
       "id": "si_component_comparison",
-      "document": "si",
+      "document": "main",
       "kind": "table",
       "label": "tab:component_comparison",
       "path": "tables/compact_publication/si_component_comparison.tex",
       "sources": [
         "tables/generated_tex/he3_ablation_crps_horizon_summary.csv"
-      ]
+      ],
+      "scope": "appendix"
     },
     {
       "id": "si_fitting_status",
-      "document": "si",
+      "document": "main",
       "kind": "table",
       "label": "tab:fitting_status",
       "path": "tables/compact_publication/si_fitting_status.tex",
       "sources": [
         "artifacts/comment2_revision/component_diagnostics/fit_ledger.csv"
-      ]
+      ],
+      "scope": "appendix"
     },
     {
       "id": "si_quantile_loss",
-      "document": "si",
+      "document": "main",
       "kind": "table",
       "label": "tab:quantile_check_loss",
       "path": "tables/compact_publication/si_quantile_loss.tex",
       "sources": [
         "artifacts/he4_quantile_check_loss_current_publication/he4_quantile_check_loss_per_day.csv"
-      ]
+      ],
+      "scope": "appendix"
     },
     {
       "id": "si_exact_score_sensitivity",
-      "document": "si",
+      "document": "main",
       "kind": "table",
       "label": "tab:exact_score_sensitivity",
       "path": "tables/compact_publication/si_exact_score_sensitivity.tex",
       "sources": [
         "artifacts/no_refit_revision/results/summary_pooled.csv"
-      ]
+      ],
+      "scope": "appendix"
     },
     {
       "id": "si_discharge_score",
-      "document": "si",
+      "document": "main",
       "kind": "table",
       "label": "tab:discharge_scale_scores",
       "path": "tables/compact_publication/si_discharge_score.tex",
       "sources": [
         "artifacts/no_refit_revision/results/summary_pooled.csv"
-      ]
+      ],
+      "scope": "appendix"
     },
     {
       "id": "si_origin_coverage",
-      "document": "si",
+      "document": "main",
       "kind": "table",
       "label": "tab:origin_interval_coverage",
       "path": "tables/compact_publication/si_origin_coverage.tex",
       "sources": [
         "artifacts/no_refit_revision/results/interval_summary.csv"
-      ]
+      ],
+      "scope": "appendix"
     },
     {
       "id": "si_coefficient_effects",
-      "document": "si",
+      "document": "main",
       "kind": "table",
       "label": "tab:components_23_31",
-      "path": "tables/editorial_revision/representative_covariate_effects_table.tex"
+      "path": "tables/editorial_revision/representative_covariate_effects_table.tex",
+      "scope": "appendix"
     },
     {
       "id": "main_history",
@@ -127,7 +134,8 @@
       "path": "Figures/manuscript/site_context_usgs.png",
       "sources": [
         "artifacts/five_cutoff_setup_support/20221225_exal_m_t1/figures/usgs.png"
-      ]
+      ],
+      "scope": "main"
     },
     {
       "id": "main_synthesis",
@@ -137,7 +145,8 @@
       "path": "Figures/multivariate_synthesis_by_cutoff/cutoff_2022_12_25_multivariate_synthesis_with_reference_ensembles.png",
       "sources": [
         "artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/exdqlm_multivar_synth_keep_cutoff_window_posterior_samples_with_raw_ensembles.png"
-      ]
+      ],
+      "scope": "main"
     },
     {
       "id": "main_reliability",
@@ -147,41 +156,46 @@
       "path": "Figures/manuscript/no_refit_quantile_reliability.png",
       "sources": [
         "artifacts/no_refit_revision/results/no_refit_quantile_reliability.png"
-      ]
+      ],
+      "scope": "main"
     },
     {
       "id": "si_covariates",
-      "document": "si",
+      "document": "main",
       "kind": "figure",
       "label": "fig:covariates",
       "path": "Figures/manuscript/covariate_context_precip_soil_gdpc.png",
       "sources": [
         "artifacts/five_cutoff_setup_support/20221225_exal_m_t1/figures/precip_soilmoisture_climatePC1_faceted_labeled.png"
-      ]
+      ],
+      "scope": "appendix"
     },
     {
       "id": "si_retrospectives",
-      "document": "si",
+      "document": "main",
       "kind": "figure",
       "label": "fig:retrospectives",
       "path": "Figures/manuscript/retrospective_products_context.png",
       "sources": [
         "artifacts/five_cutoff_setup_support/20221225_exal_m_t1/figures/retrospective_log_discharge_plot_faceted.png"
-      ]
+      ],
+      "scope": "appendix"
     },
     {
       "id": "si_forecasts_2021_early",
-      "document": "si",
+      "document": "main",
       "kind": "figure",
       "label": "fig:forecast_origins_2021_early",
-      "path": "Figures/manuscript/compact_forecasts_2021_early.pdf"
+      "path": "Figures/manuscript/compact_forecasts_2021_early.pdf",
+      "scope": "appendix"
     },
     {
       "id": "si_forecasts_2021_2022",
-      "document": "si",
+      "document": "main",
       "kind": "figure",
       "label": "fig:forecast_origins_2021_2022",
-      "path": "Figures/manuscript/compact_forecasts_2021_2022.pdf"
+      "path": "Figures/manuscript/compact_forecasts_2021_2022.pdf",
+      "scope": "appendix"
     }
   ],
   "retained_evidence": [
@@ -215,7 +229,7 @@
     {
       "id": "table:tab:components_23_31",
       "path": "tables/editorial_revision/representative_covariate_effects_table.tex",
-      "disposition": "si",
+      "disposition": "appendix",
       "publication_assets": [
         "si_coefficient_effects"
       ]
@@ -323,7 +337,7 @@
     {
       "id": "figure:fig:covariates",
       "path": "Figures/manuscript/covariate_context_precip_soil_gdpc.png",
-      "disposition": "si",
+      "disposition": "appendix",
       "publication_assets": [
         "si_covariates"
       ]
@@ -331,7 +345,7 @@
     {
       "id": "figure:fig:retrospectives",
       "path": "Figures/manuscript/retrospective_products_context.png",
-      "disposition": "si",
+      "disposition": "appendix",
       "publication_assets": [
         "si_retrospectives"
       ]
@@ -415,63 +429,5 @@
       ]
     }
   ],
-  "presentation_contract": "artifacts/compact_publication/manifest.json",
-  "cross_document_references": [
-    {
-      "source_document": "main",
-      "kind": "table",
-      "number": "S1",
-      "target_document": "si",
-      "target_label": "tab:crps_all_origins"
-    },
-    {
-      "source_document": "main",
-      "kind": "table",
-      "number": "S2",
-      "target_document": "si",
-      "target_label": "tab:component_comparison"
-    },
-    {
-      "source_document": "main",
-      "kind": "table",
-      "number": "S3",
-      "target_document": "si",
-      "target_label": "tab:fitting_status"
-    },
-    {
-      "source_document": "main",
-      "kind": "table",
-      "number": "S4",
-      "target_document": "si",
-      "target_label": "tab:quantile_check_loss"
-    },
-    {
-      "source_document": "main",
-      "kind": "table",
-      "number": "S5",
-      "target_document": "si",
-      "target_label": "tab:exact_score_sensitivity"
-    },
-    {
-      "source_document": "main",
-      "kind": "table",
-      "number": "S6",
-      "target_document": "si",
-      "target_label": "tab:discharge_scale_scores"
-    },
-    {
-      "source_document": "main",
-      "kind": "table",
-      "number": "S7",
-      "target_document": "si",
-      "target_label": "tab:origin_interval_coverage"
-    },
-    {
-      "source_document": "main",
-      "kind": "table",
-      "number": "S8",
-      "target_document": "si",
-      "target_label": "tab:components_23_31"
-    }
-  ]
+  "presentation_contract": "artifacts/compact_publication/manifest.json"
 }

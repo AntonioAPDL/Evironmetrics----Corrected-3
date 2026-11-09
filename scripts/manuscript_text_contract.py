@@ -40,24 +40,82 @@ def included_tex_paths(article_root: Path, entry: str = 'wileyNJD-APA.tex') -> l
     return found
 
 
-DOCUMENT_ENTRIES = {'main': 'wileyNJD-APA.tex', 'supplement': 'supporting_information.tex'}
+DOCUMENT_ENTRIES = {'main': 'wileyNJD-APA.tex'}
+INCLUDE_RE = re.compile(r'\\(?:input|include)\s*\{([^}]+)\}')
+APPENDIX_BOUNDARY_RE = re.compile(r'\\(begin|end)\s*\{appendix\}')
+
+
+def expanded_tex_segments(article_root: Path, entry: str = 'wileyNJD-APA.tex') -> list[tuple[Path, str]]:
+    """Expand includes in reading order, preserving source ownership and repeats.
+
+    Repeated includes remain visible to duplicate-label checks. Cycles are
+    rejected rather than silently truncated; comments cannot introduce inputs.
+    """
+    root = Path(article_root).resolve()
+    segments: list[tuple[Path, str]] = []
+
+    def visit(path: Path, parents: tuple[Path, ...]) -> None:
+        path = path.resolve()
+        if not path.is_relative_to(root):
+            raise ValueError('Manuscript include escapes article root')
+        if path in parents:
+            raise ValueError('Cyclic manuscript include: ' + str(path.relative_to(root)))
+        if not path.is_file():
+            raise FileNotFoundError(f'Missing manuscript include: {path.relative_to(root)}')
+        text = active_tex(path.read_text(encoding='utf-8'))
+        start = 0
+        for match in INCLUDE_RE.finditer(text):
+            segments.append((path, text[start:match.start()]))
+            child = root / match.group(1)
+            if not child.suffix:
+                child = child.with_suffix('.tex')
+            visit(child, parents + (path,))
+            start = match.end()
+        segments.append((path, text[start:]))
+
+    visit(root / entry, ())
+    return segments
+
+
+def publication_segments(article_root: Path) -> list[tuple[Path, str, str]]:
+    """Assign actual expanded content to the main body or native Wiley appendix."""
+    result: list[tuple[Path, str, str]] = []
+    scope, begins, ends = 'main', 0, 0
+    for path, text in expanded_tex_segments(article_root):
+        start = 0
+        for match in APPENDIX_BOUNDARY_RE.finditer(text):
+            result.append((path, text[start:match.start()], scope))
+            if match.group(1) == 'begin':
+                begins += 1
+                if scope != 'main' or begins != 1 or ends:
+                    raise ValueError('Article must have exactly one ordered appendix environment')
+                scope = 'appendix'
+            else:
+                ends += 1
+                if scope != 'appendix' or ends != 1:
+                    raise ValueError('Article must have exactly one ordered appendix environment')
+                scope = 'main'
+            result.append((path, match.group(), scope))
+            start = match.end()
+        result.append((path, text[start:], scope))
+    if begins != 1 or ends != 1 or scope != 'main':
+        raise ValueError('Article must have exactly one ordered appendix environment')
+    return result
 
 
 def manuscript_with_includes(article_root: Path, entry: str = 'wileyNJD-APA.tex') -> str:
-    """Read one document's actual include graph; unused files cannot satisfy it."""
-    return '\n'.join(path.read_text(encoding='utf-8')
-                     for path in included_tex_paths(article_root, entry))
+    """Read the actual include graph in order; unused files cannot satisfy it."""
+    return '\n'.join(text for _, text in expanded_tex_segments(article_root, entry))
 
 
 def document_texts(article_root: Path) -> dict[str, str]:
-    """Return separate reading scopes; callers explicitly choose their obligations."""
-    return {name: manuscript_with_includes(article_root, entry)
-            for name, entry in DOCUMENT_ENTRIES.items()}
+    """Return the single submitted document, including its integrated appendices."""
+    return {'main': manuscript_with_includes(article_root)}
 
 
 def publication_with_includes(article_root: Path) -> str:
-    """Read submitted main and supplement, never arbitrary repository fragments."""
-    return '\n'.join(document_texts(article_root).values())
+    """Read the one submitted article, never arbitrary repository fragments."""
+    return manuscript_with_includes(article_root)
 
 
 def normalized_text(text: str) -> str:
@@ -96,7 +154,7 @@ def cited_url(article_text: str, bib_text: str, url: str) -> bool:
     return False
 
 
-def structure_checks(article: str, supplement: str | None = None) -> list[tuple[str, bool, str]]:
+def structure_checks(article: str, appendix: str | None = None) -> list[tuple[str, bool, str]]:
     labels = ['sec:introduction', 'sec:data', 'sec:methodology', 'sec:evaluation', 'sec:forecastvalidation', 'sec5']
     checks = [('label:' + label, has_label(article, label), label) for label in labels]
     checks += [
@@ -104,10 +162,10 @@ def structure_checks(article: str, supplement: str | None = None) -> list[tuple[
         ('scoring_before_results', in_order(article, r'\label{sec:evaluation}', r'\label{sec:forecastvalidation}'), 'evaluation precedes results'),
         ('forecast_evidence', has_concepts(article, r'five', r'rolling.origin|forecast origins?', r'CRPS', r'quantile', r'illustrat'), 'five origins, distributional/quantile scores, illustrative forecast'),
     ]
-    if supplement is not None:
-        checks += [(name, has_label(supplement, label), label)
-                   for name, label in [('support_matrix', 'app:stateconstruction'),
-                                       ('support_augmentation', 'app:augmentation')]]
+    if appendix is not None:
+        checks += [(name, has_label(appendix, label), label)
+                   for name, label in [('appendix_matrix', 'app:stateconstruction'),
+                                       ('appendix_augmentation', 'app:augmentation')]]
     return checks
 
 
@@ -138,22 +196,24 @@ def scientific_checks(article: str, names: list[str] | None = None) -> list[tupl
 
 
 def publication_views(article_root: Path) -> dict[str, str]:
-    """Explicit main/SI/union views, without granting SI main-paper obligations."""
-    texts = document_texts(article_root)
-    return {'main': texts['main'], 'si': texts['supplement'],
-            'union': '\n'.join(texts.values())}
+    """Separate logical body/appendix obligations within the one reading graph."""
+    segments = publication_segments(article_root)
+    main = '\n'.join(text for _, text, scope in segments if scope == 'main')
+    appendix = '\n'.join(text for _, text, scope in segments if scope == 'appendix')
+    return {'main': main, 'appendix': appendix,
+            'union': '\n'.join(text for _, text, _ in segments)}
 
 
 def publication_checks(article_root: Path) -> list[tuple[str, bool, str]]:
-    """Read actual roots and check their separate scientific obligations."""
+    """Check exposition and retained appendix details in their actual scopes."""
     views = publication_views(article_root)
-    return publication_text_checks(views['main'], views['si'])
+    return publication_text_checks(views['main'], views['appendix'])
 
 
-def publication_text_checks(main: str, si: str) -> list[tuple[str, bool, str]]:
-    """Keep main exposition and submitted technical retention separately testable."""
-    views = {'main': main, 'si': si, 'union': main + '\n' + si}
-    checks = structure_checks(views['main'], views['si'])
+def publication_text_checks(main: str, appendix: str) -> list[tuple[str, bool, str]]:
+    """Keep body exposition and appendix retention separately testable."""
+    views = {'main': main, 'appendix': appendix, 'union': main + '\n' + appendix}
+    checks = structure_checks(views['main'], views['appendix'])
     main_names = ['variants', 'scores', 'synthesis', 'origin_design', 'verification',
                   'likelihood', 'climate_covariates', 'data_roles', 'transfer_inputs',
                   'latest_issue', 'uncertainty_estimands', 'prior_weighting']
@@ -162,11 +222,11 @@ def publication_text_checks(main: str, si: str) -> list[tuple[str, bool, str]]:
     checks += [('package:' + name, ok, detail)
                for name, ok, detail in scientific_checks(views['union'],
                                                        ['runtime', 'archive_work', 'physical_models'])]
-    checks += [('si:coefficient_estimands',
-                has_concepts(views['si'], r'posterior means', r'credible intervals', r'covariate'),
+    checks += [('appendix:coefficient_estimands',
+                has_concepts(views['appendix'], r'posterior means', r'credible intervals', r'covariate'),
                 'posterior means and credible intervals for covariate coefficients'),
-               ('si:gig_convention', has_concepts(views['si'], r'generalized inverse.gaussian', r'GIG'),
+               ('appendix:gig_convention', has_concepts(views['appendix'], r'generalized inverse.gaussian', r'GIG'),
                 'explicit generalized inverse-Gaussian convention'),
-               ('si:vb_computation', has_concepts(views['si'], r'variational', r'converg', r'Laplace', r'Delta'),
+               ('appendix:vb_computation', has_concepts(views['appendix'], r'variational', r'converg', r'Laplace', r'Delta'),
                 'variational updates, convergence and joint Laplace–Delta approximation')]
     return checks
