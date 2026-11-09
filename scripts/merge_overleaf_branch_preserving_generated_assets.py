@@ -15,6 +15,8 @@ PROTECTED_GENERATED_PREFIXES = (
     "figures/",
     "Figures/",
     "tables/generated_tex/",
+    "tables/editorial_revision/",
+    "tables/compact_publication/",
     "reports/",
 )
 OVERLEAF_SOURCE_SUFFIXES = (

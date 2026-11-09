@@ -1,0 +1,3914 @@
+{
+  "exact_score_provenance": [
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.0092903103116165342",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "10.527673229698351",
+      "mean_exact_ecdf_crps": "10.429867878535156",
+      "mean_iid_adjusted_crps": "10.429223148257481",
+      "mean_median_absolute_error": "10.744505067411898",
+      "mean_original_grid_score": "10.430511964404756",
+      "model_id": "AL-M-T0",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "0.016109289802536897",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "10.29587262184123",
+      "mean_exact_ecdf_crps": "10.130013426005984",
+      "mean_iid_adjusted_crps": "10.129354892193616",
+      "mean_median_absolute_error": "10.653770641988984",
+      "mean_original_grid_score": "10.130671301613644",
+      "model_id": "AL-M-T0",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.29978117577588803",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "10.527673229698351",
+      "mean_exact_ecdf_crps": "7.3716749707150386",
+      "mean_iid_adjusted_crps": "7.3695161979176751",
+      "mean_median_absolute_error": "9.9321815370740971",
+      "mean_original_grid_score": "7.3738315858184533",
+      "model_id": "AL-M-T1",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "0.38418824073449598",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "10.29587262184123",
+      "mean_exact_ecdf_crps": "6.3403194324295855",
+      "mean_iid_adjusted_crps": "6.3384730873858786",
+      "mean_median_absolute_error": "9.2098787998225333",
+      "mean_original_grid_score": "6.3421639320509593",
+      "model_id": "AL-M-T1",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.26458774131345164",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "10.527673229698351",
+      "mean_exact_ecdf_crps": "7.742179948566374",
+      "mean_iid_adjusted_crps": "7.7412985657661793",
+      "mean_median_absolute_error": "8.7549593267836716",
+      "mean_original_grid_score": "7.74306045042424",
+      "model_id": "AL-U-T1",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "0.0038589100989807612",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "10.29587262184123",
+      "mean_exact_ecdf_crps": "10.256141775002988",
+      "mean_iid_adjusted_crps": "10.255812065191954",
+      "mean_median_absolute_error": "10.619829912535621",
+      "mean_original_grid_score": "10.256471155268981",
+      "model_id": "AL-U-T1",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "not_applicable_deterministic_grid",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "10.527673229698351",
+      "mean_exact_ecdf_crps": "10.527673229698351",
+      "mean_iid_adjusted_crps": "",
+      "mean_median_absolute_error": "12.7990022868505",
+      "mean_original_grid_score": "10.529307221333728",
+      "model_id": "CLIM-SEASONAL",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "deterministic_quantile_grid",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "not_applicable_deterministic_grid",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "0",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "10.29587262184123",
+      "mean_exact_ecdf_crps": "10.29587262184123",
+      "mean_iid_adjusted_crps": "",
+      "mean_median_absolute_error": "12.296307467584001",
+      "mean_original_grid_score": "10.297740268536799",
+      "model_id": "CLIM-SEASONAL",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "deterministic_quantile_grid",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "not_applicable_deterministic_grid",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.14202136917351904",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "10.527673229698351",
+      "mean_exact_ecdf_crps": "9.0325186634051882",
+      "mean_iid_adjusted_crps": "",
+      "mean_median_absolute_error": "10.227532700575292",
+      "mean_original_grid_score": "9.0399936314993994",
+      "model_id": "EMOS-GLOFAS",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "deterministic_quantile_grid",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "not_applicable_deterministic_grid",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "0.06765300853278855",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "10.29587262184123",
+      "mean_exact_ecdf_crps": "9.5993258635033012",
+      "mean_iid_adjusted_crps": "",
+      "mean_median_absolute_error": "10.342057387447799",
+      "mean_original_grid_score": "9.6023393717234082",
+      "model_id": "EMOS-GLOFAS",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "deterministic_quantile_grid",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_recorded_generator",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.052454912303038004",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "10.527673229698351",
+      "mean_exact_ecdf_crps": "9.9754450536794828",
+      "mean_iid_adjusted_crps": "9.7812259732830373",
+      "mean_median_absolute_error": "12.980678334337716",
+      "mean_original_grid_score": "10.161736824671991",
+      "model_id": "N-M-T0",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_marginal_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_recorded_generator",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "-0.063902459035712678",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "10.29587262184123",
+      "mean_exact_ecdf_crps": "10.953804200295355",
+      "mean_iid_adjusted_crps": "10.703345809683315",
+      "mean_median_absolute_error": "13.9223195790192",
+      "mean_original_grid_score": "11.194039799453842",
+      "model_id": "N-M-T0",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_marginal_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_recorded_generator",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "-675163178.39741087",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "10.527673229698351",
+      "mean_exact_ecdf_crps": "7107897329.4201479",
+      "mean_iid_adjusted_crps": "290270017.17284691",
+      "mean_median_absolute_error": "4025152.651704771",
+      "mean_original_grid_score": "13647254139.126762",
+      "model_id": "N-M-T1",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_marginal_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_recorded_generator",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "-197248051.12241641",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "10.29587262184123",
+      "mean_exact_ecdf_crps": "2030840819.5586989",
+      "mean_iid_adjusted_crps": "82943329.362022296",
+      "mean_median_absolute_error": "1155570.7855802893",
+      "mean_original_grid_score": "3899232289.7473536",
+      "model_id": "N-M-T1",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_marginal_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_recorded_generator",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "-0.17557939596642358",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "10.527673229698351",
+      "mean_exact_ecdf_crps": "12.376115736300674",
+      "mean_iid_adjusted_crps": "12.364738682658132",
+      "mean_median_absolute_error": "12.936563798936461",
+      "mean_original_grid_score": "12.387142726754213",
+      "model_id": "N-U-T1",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_marginal_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_recorded_generator",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "-0.15826953757822748",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "10.29587262184123",
+      "mean_exact_ecdf_crps": "11.925395620664375",
+      "mean_iid_adjusted_crps": "11.913729646077455",
+      "mean_median_absolute_error": "12.415783744742621",
+      "mean_original_grid_score": "11.936702642187084",
+      "model_id": "N-U-T1",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_marginal_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "not_applicable_point_mass",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "-0.1754021347227035",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "10.527673229698351",
+      "mean_exact_ecdf_crps": "12.3742495878505",
+      "mean_iid_adjusted_crps": "",
+      "mean_median_absolute_error": "12.3742495878505",
+      "mean_original_grid_score": "12.3742495878505",
+      "model_id": "PERSISTENCE",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "point_mass",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "not_applicable_point_mass",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "-0.16383121460064443",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "10.29587262184123",
+      "mean_exact_ecdf_crps": "11.982657938851",
+      "mean_iid_adjusted_crps": "",
+      "mean_median_absolute_error": "11.982657938851",
+      "mean_original_grid_score": "11.982657938851",
+      "model_id": "PERSISTENCE",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "point_mass",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "physical_ensemble_iid_assumption_only",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "-0.075122014136470128",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "10.527673229698351",
+      "mean_exact_ecdf_crps": "11.318533246883888",
+      "mean_iid_adjusted_crps": "11.298232566256246",
+      "mean_median_absolute_error": "12.0004777426605",
+      "mean_original_grid_score": "11.338053132102775",
+      "model_id": "RAW-GLOFAS",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "physical_ensemble",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "physical_ensemble_iid_assumption_only",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "-0.036492516078224568",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "10.29587262184123",
+      "mean_exact_ecdf_crps": "10.671594919033124",
+      "mean_iid_adjusted_crps": "10.650685070657499",
+      "mean_median_absolute_error": "11.359154538552144",
+      "mean_original_grid_score": "10.691700542471224",
+      "model_id": "RAW-GLOFAS",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "physical_ensemble",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "physical_ensemble_iid_assumption_only",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.36994314505666248",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "10.527673229698351",
+      "mean_exact_ecdf_crps": "6.6330326849749115",
+      "mean_iid_adjusted_crps": "6.1219074058689102",
+      "mean_median_absolute_error": "8.2820467151611226",
+      "mean_original_grid_score": "7.0163766443044135",
+      "model_id": "RAW-NWS",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "physical_ensemble",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "-517.65541402733868",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "10.527673229698351",
+      "mean_exact_ecdf_crps": "5460.2347176937283",
+      "mean_iid_adjusted_crps": "5399.8014733621621",
+      "mean_median_absolute_error": "16.19685394084534",
+      "mean_original_grid_score": "5520.6075589824823",
+      "model_id": "exAL-M-T0",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "-1194.3948791581845",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "10.29587262184123",
+      "mean_exact_ecdf_crps": "12307.633408613958",
+      "mean_iid_adjusted_crps": "12158.096566371318",
+      "mean_median_absolute_error": "17.066122922025283",
+      "mean_original_grid_score": "12457.020788745407",
+      "model_id": "exAL-M-T0",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.28819834434924785",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "10.527673229698351",
+      "mean_exact_ecdf_crps": "7.4936152350493872",
+      "mean_iid_adjusted_crps": "7.4926745157934818",
+      "mean_median_absolute_error": "9.1842902539648978",
+      "mean_original_grid_score": "7.4945550140561608",
+      "model_id": "exAL-M-T1",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "0.39112964733227784",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "10.29587262184123",
+      "mean_exact_ecdf_crps": "6.268851594282415",
+      "mean_iid_adjusted_crps": "6.2677635539755823",
+      "mean_median_absolute_error": "8.2567768074521037",
+      "mean_original_grid_score": "6.2699385470926883",
+      "model_id": "exAL-M-T1",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.2470439660871141",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "10.527673229698351",
+      "mean_exact_ecdf_crps": "7.9268750813645328",
+      "mean_iid_adjusted_crps": "7.926255617577846",
+      "mean_median_absolute_error": "8.7785532300519744",
+      "mean_original_grid_score": "7.9274939259970099",
+      "model_id": "exAL-U-T1",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "0.0023356263284076695",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "10.29587262184123",
+      "mean_exact_ecdf_crps": "10.271825310671726",
+      "mean_iid_adjusted_crps": "10.271561081052434",
+      "mean_median_absolute_error": "10.599039944570634",
+      "mean_original_grid_score": "10.272089276193446",
+      "model_id": "exAL-U-T1",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "discharge_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.15854220210652403",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "0.7291146264896966",
+      "mean_exact_ecdf_crps": "0.61351918801794436",
+      "mean_iid_adjusted_crps": "0.61336114360736438",
+      "mean_median_absolute_error": "0.67428144247677713",
+      "mean_original_grid_score": "0.61367707446309638",
+      "model_id": "AL-M-T0",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "0.16188760286380621",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "0.64196576745112921",
+      "mean_exact_ecdf_crps": "0.53803946823784221",
+      "mean_iid_adjusted_crps": "0.53788065381438444",
+      "mean_median_absolute_error": "0.65738742688751106",
+      "mean_original_grid_score": "0.538198123926244",
+      "model_id": "AL-M-T0",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.57575921382915063",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "0.7291146264896966",
+      "mean_exact_ecdf_crps": "0.30932016235065407",
+      "mean_iid_adjusted_crps": "0.30919638399488869",
+      "mean_median_absolute_error": "0.49312992771393788",
+      "mean_original_grid_score": "0.3094438169899219",
+      "model_id": "AL-M-T1",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "0.63833292544158515",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "0.64196576745112921",
+      "mean_exact_ecdf_crps": "0.23217788108069756",
+      "mean_iid_adjusted_crps": "0.23205541338819557",
+      "mean_median_absolute_error": "0.3610640371296221",
+      "mean_original_grid_score": "0.2323002263667103",
+      "model_id": "AL-M-T1",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.53260291666698012",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "0.7291146264896966",
+      "mean_exact_ecdf_crps": "0.34078604983672839",
+      "mean_iid_adjusted_crps": "0.3407155173111312",
+      "mean_median_absolute_error": "0.41396844034250607",
+      "mean_original_grid_score": "0.34085651186504867",
+      "model_id": "AL-U-T1",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "0.05972895810020884",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "0.64196576745112921",
+      "mean_exact_ecdf_crps": "0.60362182102527229",
+      "mean_iid_adjusted_crps": "0.60357855737335941",
+      "mean_median_absolute_error": "0.64944482713373686",
+      "mean_original_grid_score": "0.60366504143515431",
+      "model_id": "AL-U-T1",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "not_applicable_deterministic_grid",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "0.7291146264896966",
+      "mean_exact_ecdf_crps": "0.7291146264896966",
+      "mean_iid_adjusted_crps": "",
+      "mean_median_absolute_error": "1.1040193671587513",
+      "mean_original_grid_score": "0.72931126454671646",
+      "model_id": "CLIM-SEASONAL",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "deterministic_quantile_grid",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "not_applicable_deterministic_grid",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "0",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "0.64196576745112921",
+      "mean_exact_ecdf_crps": "0.64196576745112921",
+      "mean_iid_adjusted_crps": "",
+      "mean_median_absolute_error": "0.95627110206299304",
+      "mean_original_grid_score": "0.64217756039830287",
+      "model_id": "CLIM-SEASONAL",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "deterministic_quantile_grid",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "not_applicable_deterministic_grid",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.39052670609372231",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "0.7291146264896966",
+      "mean_exact_ecdf_crps": "0.44437589304192071",
+      "mean_iid_adjusted_crps": "",
+      "mean_median_absolute_error": "0.57198415554333659",
+      "mean_original_grid_score": "0.44450254483967744",
+      "model_id": "EMOS-GLOFAS",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "deterministic_quantile_grid",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "not_applicable_deterministic_grid",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "0.2877773121084175",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "0.64196576745112921",
+      "mean_exact_ecdf_crps": "0.45722258442842584",
+      "mean_iid_adjusted_crps": "",
+      "mean_median_absolute_error": "0.55762860103077405",
+      "mean_original_grid_score": "0.4573443282057385",
+      "model_id": "EMOS-GLOFAS",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "deterministic_quantile_grid",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_recorded_generator",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.015754939231520049",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "0.7291146264896966",
+      "mean_exact_ecdf_crps": "0.71762746985653902",
+      "mean_iid_adjusted_crps": "0.7111850761596642",
+      "mean_median_absolute_error": "0.9091836048099734",
+      "mean_original_grid_score": "0.7238069087086435",
+      "model_id": "N-M-T0",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_marginal_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_recorded_generator",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "-0.29820901024817936",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "0.64196576745112921",
+      "mean_exact_ecdf_crps": "0.83340574357594333",
+      "mean_iid_adjusted_crps": "0.82707801797951663",
+      "mean_median_absolute_error": "1.0255947898082061",
+      "mean_original_grid_score": "0.83947519465823017",
+      "model_id": "N-M-T0",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_marginal_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_recorded_generator",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "-3.3440940290990921",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "0.7291146264896966",
+      "mean_exact_ecdf_crps": "3.1673424954627056",
+      "mean_iid_adjusted_crps": "3.1527529958018636",
+      "mean_median_absolute_error": "3.7278834450771021",
+      "mean_original_grid_score": "3.1813365053414726",
+      "model_id": "N-M-T1",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_marginal_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_recorded_generator",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "-2.6926741388074293",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "0.64196576745112921",
+      "mean_exact_ecdf_crps": "2.370570387466449",
+      "mean_iid_adjusted_crps": "2.3594226229094617",
+      "mean_median_absolute_error": "2.7933581650941508",
+      "mean_original_grid_score": "2.3812631412251921",
+      "model_id": "N-M-T1",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_marginal_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_recorded_generator",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "-0.3531477738006461",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "0.7291146264896966",
+      "mean_exact_ecdf_crps": "0.98659983368002258",
+      "mean_iid_adjusted_crps": "0.98303897743146684",
+      "mean_median_absolute_error": "1.1640559960770802",
+      "mean_original_grid_score": "0.99005112512093052",
+      "model_id": "N-U-T1",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_marginal_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_recorded_generator",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "-0.34986153669925724",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "0.64196576745112921",
+      "mean_exact_ecdf_crps": "0.86656489735989928",
+      "mean_iid_adjusted_crps": "0.86293883226387913",
+      "mean_median_absolute_error": "1.0317140852030289",
+      "mean_original_grid_score": "0.8700793912221958",
+      "model_id": "N-U-T1",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_marginal_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "not_applicable_point_mass",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "-0.36951873582678973",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "0.7291146264896966",
+      "mean_exact_ecdf_crps": "0.99853614154299131",
+      "mean_iid_adjusted_crps": "",
+      "mean_median_absolute_error": "0.99853614154299131",
+      "mean_original_grid_score": "0.99853614154299131",
+      "model_id": "PERSISTENCE",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "point_mass",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "not_applicable_point_mass",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "-0.41847497512624043",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "0.64196576745112921",
+      "mean_exact_ecdf_crps": "0.9106123760171384",
+      "mean_iid_adjusted_crps": "",
+      "mean_median_absolute_error": "0.9106123760171384",
+      "mean_original_grid_score": "0.9106123760171384",
+      "model_id": "PERSISTENCE",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "point_mass",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "physical_ensemble_iid_assumption_only",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "-0.060484994026263061",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "0.7291146264896966",
+      "mean_exact_ecdf_crps": "0.77321512031738693",
+      "mean_iid_adjusted_crps": "0.77133873277189069",
+      "mean_median_absolute_error": "0.85863526665160306",
+      "mean_original_grid_score": "0.77501933911113319",
+      "model_id": "RAW-GLOFAS",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "physical_ensemble",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "physical_ensemble_iid_assumption_only",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "0.042694702170135046",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "0.64196576745112921",
+      "mean_exact_ecdf_crps": "0.61455723020638109",
+      "mean_iid_adjusted_crps": "0.61138665501236122",
+      "mean_median_absolute_error": "0.71762367932773841",
+      "mean_original_grid_score": "0.61760586020063102",
+      "model_id": "RAW-GLOFAS",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "physical_ensemble",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "physical_ensemble_iid_assumption_only",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.10816968944109295",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "0.7291146264896966",
+      "mean_exact_ecdf_crps": "0.65024652377534764",
+      "mean_iid_adjusted_crps": "0.63086328698893768",
+      "mean_median_absolute_error": "0.73156528055307424",
+      "mean_original_grid_score": "0.664783951365155",
+      "model_id": "RAW-NWS",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "physical_ensemble",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "-0.55390879602598719",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "0.7291146264896966",
+      "mean_exact_ecdf_crps": "1.1329776314135418",
+      "mean_iid_adjusted_crps": "1.1317436903649425",
+      "mean_median_absolute_error": "1.180926208739616",
+      "mean_original_grid_score": "1.1342103391377549",
+      "model_id": "exAL-M-T0",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "-0.77011329058183509",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "0.64196576745112921",
+      "mean_exact_ecdf_crps": "1.1363521370638114",
+      "mean_iid_adjusted_crps": "1.1351074084209969",
+      "mean_median_absolute_error": "1.1895746834323353",
+      "mean_original_grid_score": "1.1375956216000365",
+      "model_id": "exAL-M-T0",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.58965295102776571",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "0.7291146264896966",
+      "mean_exact_ecdf_crps": "0.2991900353425398",
+      "mean_iid_adjusted_crps": "0.29911861900214615",
+      "mean_median_absolute_error": "0.42478499323238089",
+      "mean_original_grid_score": "0.29926138030228339",
+      "model_id": "exAL-M-T1",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "0.68602341135128952",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "0.64196576745112921",
+      "mean_exact_ecdf_crps": "0.20156222169355698",
+      "mean_iid_adjusted_crps": "0.20148927668847891",
+      "mean_median_absolute_error": "0.2910561126391687",
+      "mean_original_grid_score": "0.20163509379008429",
+      "model_id": "exAL-M-T1",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_8",
+      "ecdf_crpss": "0.51806979419209187",
+      "horizon_days": "8",
+      "mean_climatology_exact_ecdf_crps": "0.7291146264896966",
+      "mean_exact_ecdf_crps": "0.35138236200173556",
+      "mean_iid_adjusted_crps": "0.35132075526895623",
+      "mean_median_absolute_error": "0.42227031525873621",
+      "mean_original_grid_score": "0.3514439071585701",
+      "model_id": "exAL-U-T1",
+      "n_expected_cases": "40",
+      "n_valid_cases": "40",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "log1p_cms"
+    },
+    {
+      "adjustment_status": "model_mc_conditional_curve",
+      "climatology_representation_id": "CLIM-SEASONAL__five_frozen_grids",
+      "comparison_case_set_id": "five_origins_leads_1_28",
+      "ecdf_crpss": "0.071197356074610307",
+      "horizon_days": "28",
+      "mean_climatology_exact_ecdf_crps": "0.64196576745112921",
+      "mean_exact_ecdf_crps": "0.59625950211820067",
+      "mean_iid_adjusted_crps": "0.59621288558780849",
+      "mean_median_absolute_error": "0.65127067812638118",
+      "mean_original_grid_score": "0.59630607205535902",
+      "model_id": "exAL-U-T1",
+      "n_expected_cases": "140",
+      "n_valid_cases": "140",
+      "origin_or_pool": "POOL",
+      "representation_kind": "model_inversecdf_mc",
+      "score_scale": "log1p_cms"
+    }
+  ],
+  "forecast_layers": {
+    "20210123": [
+      {
+        "date": "2021-01-05",
+        "interval_high": "1.62926519619885",
+        "interval_low": "0.181764589255629",
+        "model_mean": "0.759136060928869",
+        "observed": "0.695767770961471",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-06",
+        "interval_high": "0.958627903572521",
+        "interval_low": "0.0739192720106829",
+        "model_mean": "0.424615650109152",
+        "observed": "0.513487636117045",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-07",
+        "interval_high": "0.854216236610605",
+        "interval_low": "0.0526811220860802",
+        "model_mean": "0.405308846701879",
+        "observed": "0.461315196780161",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-08",
+        "interval_high": "0.681218789685007",
+        "interval_low": "0.00975627569081293",
+        "model_mean": "0.291129970924348",
+        "observed": "0.43600410254221",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-09",
+        "interval_high": "0.658921547644994",
+        "interval_low": "-0.0103272904600664",
+        "model_mean": "0.273112115091123",
+        "observed": "0.421247680244083",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-10",
+        "interval_high": "0.621279938423628",
+        "interval_low": "-0.00132497899067079",
+        "model_mean": "0.249690594483518",
+        "observed": "0.411913100916138",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-11",
+        "interval_high": "0.625304409726591",
+        "interval_low": "-0.0145451861900762",
+        "model_mean": "0.247156295816646",
+        "observed": "0.404382188735916",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-12",
+        "interval_high": "0.596966022609983",
+        "interval_low": "-0.0117519011461867",
+        "model_mean": "0.235054206706894",
+        "observed": "0.394888086010787",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-13",
+        "interval_high": "0.588354190951224",
+        "interval_low": "-0.00757547110786912",
+        "model_mean": "0.23373746680151",
+        "observed": "0.385302980620334",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-14",
+        "interval_high": "0.563814794529078",
+        "interval_low": "-0.0137592924631965",
+        "model_mean": "0.217551004915602",
+        "observed": "0.38144306486657",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-15",
+        "interval_high": "0.526928858139321",
+        "interval_low": "-0.00439650204539599",
+        "model_mean": "0.22085076861639",
+        "observed": "0.373678246897648",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-16",
+        "interval_high": "0.511079191796783",
+        "interval_low": "-0.00275710329427939",
+        "model_mean": "0.211003692966271",
+        "observed": "0.371727585006647",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-17",
+        "interval_high": "0.490857868822378",
+        "interval_low": "0.000441059203614777",
+        "model_mean": "0.208065149483895",
+        "observed": "0.367814808732621",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-18",
+        "interval_high": "0.457994433182989",
+        "interval_low": "0.00146279474749191",
+        "model_mean": "0.194156980298801",
+        "observed": "0.359943025025604",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-19",
+        "interval_high": "0.422532926122922",
+        "interval_low": "0.00401100833623599",
+        "model_mean": "0.186202007756971",
+        "observed": "0.346016516418803",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-20",
+        "interval_high": "0.385922125296918",
+        "interval_low": "0.00479317828739289",
+        "model_mean": "0.180274562589463",
+        "observed": "0.346016516418803",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-21",
+        "interval_high": "0.391617668290016",
+        "interval_low": "-0.00130152450720281",
+        "model_mean": "0.173765823917625",
+        "observed": "0.350015348754616",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-22",
+        "interval_high": "0.554116326237862",
+        "interval_low": "-0.000593037720715028",
+        "model_mean": "0.224714922224995",
+        "observed": "0.396794131289316",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-23",
+        "interval_high": "1.2573243221839",
+        "interval_low": "0.0081234846940193",
+        "model_mean": "0.433688820978575",
+        "observed": "0.400595357322325",
+        "segment": "history"
+      },
+      {
+        "date": "2021-01-24",
+        "interval_high": "0.565865737071898",
+        "interval_low": "0.0135327368674718",
+        "model_mean": "0.223362302231018",
+        "observed": "0.411913100916138",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-01-25",
+        "interval_high": "0.909421136821238",
+        "interval_low": "0.0577675447504659",
+        "model_mean": "0.399733788066286",
+        "observed": "0.42680688760884",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-01-26",
+        "interval_high": "0.856673697332569",
+        "interval_low": "0.0565158496788528",
+        "model_mean": "0.363727395643312",
+        "observed": "0.601042985921738",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-01-27",
+        "interval_high": "3.45396336156697",
+        "interval_low": "1.05748657880889",
+        "model_mean": "2.19530372378186",
+        "observed": "2.63481971331722",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-01-28",
+        "interval_high": "4.19896081551124",
+        "interval_low": "1.52238502599917",
+        "model_mean": "2.685417572459",
+        "observed": "3.34076796849211",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-01-29",
+        "interval_high": "4.58072534951338",
+        "interval_low": "1.67245842852279",
+        "model_mean": "2.92917114926953",
+        "observed": "2.02412812626543",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-01-30",
+        "interval_high": "2.31132288269219",
+        "interval_low": "0.895186404663346",
+        "model_mean": "1.51809980885306",
+        "observed": "1.38669071746034",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-01-31",
+        "interval_high": "1.95644933523077",
+        "interval_low": "0.489351811989168",
+        "model_mean": "1.05323992357709",
+        "observed": "1.11146696389966",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-01",
+        "interval_high": "1.46332768422217",
+        "interval_low": "0.463988068624291",
+        "model_mean": "0.904063052581835",
+        "observed": "0.973819921991195",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-02",
+        "interval_high": "1.91843481391222",
+        "interval_low": "0.830340121662239",
+        "model_mean": "1.41926144602125",
+        "observed": "1.56153687840928",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-03",
+        "interval_high": "1.57809740349345",
+        "interval_low": "0.721044835560964",
+        "model_mean": "1.16826215477849",
+        "observed": "1.26092794456487",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-04",
+        "interval_high": "1.42425244133225",
+        "interval_low": "0.57090193478127",
+        "model_mean": "1.00485798039249",
+        "observed": "1.05096735603763",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-05",
+        "interval_high": "1.59650648165164",
+        "interval_low": "0.449532929346564",
+        "model_mean": "0.918238100400826",
+        "observed": "0.939001504061878",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-06",
+        "interval_high": "1.16302782490193",
+        "interval_low": "0.43606297259403",
+        "model_mean": "0.786529396063422",
+        "observed": "0.8714427974809",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-07",
+        "interval_high": "0.971038557315317",
+        "interval_low": "0.50682755096034",
+        "model_mean": "0.800521796593631",
+        "observed": "0.816661034048199",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-08",
+        "interval_high": "1.46388234926022",
+        "interval_low": "0.402324345729452",
+        "model_mean": "0.837678869668742",
+        "observed": "0.779697515261744",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-09",
+        "interval_high": "0.985917303108734",
+        "interval_low": "0.390725127310924",
+        "model_mean": "0.682711808493121",
+        "observed": "0.744009965556625",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-10",
+        "interval_high": "1.74948190024876",
+        "interval_low": "0.780990840664195",
+        "model_mean": "1.33785906594143",
+        "observed": "0.716728602445559",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-11",
+        "interval_high": "1.50165781491294",
+        "interval_low": "0.512636971442994",
+        "model_mean": "0.924258595570763",
+        "observed": "0.726361969597808",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-12",
+        "interval_high": "1.36719344192131",
+        "interval_low": "0.434570221090002",
+        "model_mean": "0.880333395621515",
+        "observed": "0.820408009628283",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-13",
+        "interval_high": "1.15955929872491",
+        "interval_low": "0.431911030344321",
+        "model_mean": "0.775520681971919",
+        "observed": "0.723619035502175",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-14",
+        "interval_high": "1.48004163679064",
+        "interval_low": "0.574921628036769",
+        "model_mean": "1.05694867410849",
+        "observed": "0.695767770961471",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-15",
+        "interval_high": "1.54815279138723",
+        "interval_low": "0.422013680982243",
+        "model_mean": "0.877900486733715",
+        "observed": "0.69152236141596",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-16",
+        "interval_high": "1.71897312929535",
+        "interval_low": "0.485867926523477",
+        "model_mean": "1.02084699313555",
+        "observed": "0.70280364526839",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-17",
+        "interval_high": "1.18877974626796",
+        "interval_low": "0.393317474571615",
+        "model_mean": "0.753013150788366",
+        "observed": "0.670020677819343",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-18",
+        "interval_high": "1.21147851380038",
+        "interval_low": "0.312245627182147",
+        "model_mean": "0.712313271001319",
+        "observed": "0.645079778015392",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-19",
+        "interval_high": "1.13082605883363",
+        "interval_low": "0.245783667004003",
+        "model_mean": "0.603620565789309",
+        "observed": "0.637624252765645",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-02-20",
+        "interval_high": "1.29299524790761",
+        "interval_low": "0.40203686559612",
+        "model_mean": "0.823827019299843",
+        "observed": "0.628603624711033",
+        "segment": "forecast"
+      }
+    ],
+    "20211112": [
+      {
+        "date": "2021-10-25",
+        "interval_high": "4.33752827800684",
+        "interval_low": "0.621200567294801",
+        "model_mean": "1.68883565672672",
+        "observed": "3.09923612322976",
+        "segment": "history"
+      },
+      {
+        "date": "2021-10-26",
+        "interval_high": "2.25184703124401",
+        "interval_low": "0.959660437872467",
+        "model_mean": "1.43075524255148",
+        "observed": "1.41460314114697",
+        "segment": "history"
+      },
+      {
+        "date": "2021-10-27",
+        "interval_high": "1.56784316612972",
+        "interval_low": "0.757921980491322",
+        "model_mean": "1.13351718708964",
+        "observed": "0.899477213496615",
+        "segment": "history"
+      },
+      {
+        "date": "2021-10-28",
+        "interval_high": "1.03641934426242",
+        "interval_low": "0.516457584964557",
+        "model_mean": "0.8449877234245",
+        "observed": "0.708396918106204",
+        "segment": "history"
+      },
+      {
+        "date": "2021-10-29",
+        "interval_high": "0.988749886671939",
+        "interval_low": "0.475298218565344",
+        "model_mean": "0.794483041245647",
+        "observed": "0.611851453720677",
+        "segment": "history"
+      },
+      {
+        "date": "2021-10-30",
+        "interval_high": "0.936755304031089",
+        "interval_low": "0.46632701329895",
+        "model_mean": "0.756948672065457",
+        "observed": "0.55984229650899",
+        "segment": "history"
+      },
+      {
+        "date": "2021-10-31",
+        "interval_high": "0.903791553577643",
+        "interval_low": "0.446433498288507",
+        "model_mean": "0.728241066816908",
+        "observed": "0.523603264334366",
+        "segment": "history"
+      },
+      {
+        "date": "2021-11-01",
+        "interval_high": "0.906956988865583",
+        "interval_low": "0.426728040889402",
+        "model_mean": "0.711867793573088",
+        "observed": "0.73046231521277",
+        "segment": "history"
+      },
+      {
+        "date": "2021-11-02",
+        "interval_high": "1.45346678865112",
+        "interval_low": "0.514625920084885",
+        "model_mean": "0.916387739783081",
+        "observed": "0.864309647371096",
+        "segment": "history"
+      },
+      {
+        "date": "2021-11-03",
+        "interval_high": "1.10492131292931",
+        "interval_low": "0.564353314873954",
+        "model_mean": "0.878704675481112",
+        "observed": "0.662749469699745",
+        "segment": "history"
+      },
+      {
+        "date": "2021-11-04",
+        "interval_high": "1.11525888529669",
+        "interval_low": "0.536173992225222",
+        "model_mean": "0.84591940218302",
+        "observed": "0.608775222343418",
+        "segment": "history"
+      },
+      {
+        "date": "2021-11-05",
+        "interval_high": "0.966827038488371",
+        "interval_low": "0.486988979092669",
+        "model_mean": "0.761687467563944",
+        "observed": "0.567898453590398",
+        "segment": "history"
+      },
+      {
+        "date": "2021-11-06",
+        "interval_high": "0.899524633281573",
+        "interval_low": "0.464869978425546",
+        "model_mean": "0.727854541963741",
+        "observed": "0.533617590496223",
+        "segment": "history"
+      },
+      {
+        "date": "2021-11-07",
+        "interval_high": "0.864343715471704",
+        "interval_low": "0.439851023167054",
+        "model_mean": "0.691773458273572",
+        "observed": "0.506686585219815",
+        "segment": "history"
+      },
+      {
+        "date": "2021-11-08",
+        "interval_high": "0.84117186607174",
+        "interval_low": "0.422365481778333",
+        "model_mean": "0.65754455485151",
+        "observed": "0.494672298354342",
+        "segment": "history"
+      },
+      {
+        "date": "2021-11-09",
+        "interval_high": "1.67499218857771",
+        "interval_low": "0.516652942188855",
+        "model_mean": "0.954016848435728",
+        "observed": "1.5002862487364",
+        "segment": "history"
+      },
+      {
+        "date": "2021-11-10",
+        "interval_high": "1.34908534524869",
+        "interval_low": "0.625040419274116",
+        "model_mean": "0.96071229414377",
+        "observed": "1.0568895168962",
+        "segment": "history"
+      },
+      {
+        "date": "2021-11-11",
+        "interval_high": "1.12966001331368",
+        "interval_low": "0.590454807970232",
+        "model_mean": "0.87961505190752",
+        "observed": "0.814155227623247",
+        "segment": "history"
+      },
+      {
+        "date": "2021-11-12",
+        "interval_high": "0.976425120977832",
+        "interval_low": "0.513360545133177",
+        "model_mean": "0.777559575194117",
+        "observed": "0.7070015301024",
+        "segment": "history"
+      },
+      {
+        "date": "2021-11-13",
+        "interval_high": "0.899237698728251",
+        "interval_low": "0.481043296401395",
+        "model_mean": "0.725819054568452",
+        "observed": "0.645079778015392",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-14",
+        "interval_high": "0.855592435913084",
+        "interval_low": "0.460313097100535",
+        "model_mean": "0.683740541164071",
+        "observed": "0.602594223602068",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-15",
+        "interval_high": "0.768995981233318",
+        "interval_low": "0.433217205476042",
+        "model_mean": "0.641123919368259",
+        "observed": "0.575890227341676",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-16",
+        "interval_high": "0.755868823605456",
+        "interval_low": "0.419465864011282",
+        "model_mean": "0.626352370076702",
+        "observed": "0.554977264267484",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-17",
+        "interval_high": "0.751769547265859",
+        "interval_low": "0.398955441357175",
+        "model_mean": "0.610434933481348",
+        "observed": "0.535276937977957",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-18",
+        "interval_high": "0.724005752586797",
+        "interval_low": "0.382265479262479",
+        "model_mean": "0.592631134137269",
+        "observed": "0.521924416302326",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-19",
+        "interval_high": "0.719689464435743",
+        "interval_low": "0.37718404520296",
+        "model_mean": "0.578301088752566",
+        "observed": "0.511791704815381",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-20",
+        "interval_high": "0.743146684580057",
+        "interval_low": "0.351584180242171",
+        "model_mean": "0.570716389911079",
+        "observed": "0.49983896311539",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-21",
+        "interval_high": "0.713466610640848",
+        "interval_low": "0.339620429297024",
+        "model_mean": "0.546300469822477",
+        "observed": "0.492944127597105",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-22",
+        "interval_high": "0.724936863041904",
+        "interval_low": "0.318605398606075",
+        "model_mean": "0.540106723069309",
+        "observed": "0.487741623294915",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-23",
+        "interval_high": "0.721056766856534",
+        "interval_low": "0.311404097801067",
+        "model_mean": "0.524464961885649",
+        "observed": "0.480762578549163",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-24",
+        "interval_high": "0.709411085566878",
+        "interval_low": "0.298805481335038",
+        "model_mean": "0.51703488014986",
+        "observed": "0.4719697155932",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-25",
+        "interval_high": "0.72743694710351",
+        "interval_low": "0.284155932369478",
+        "model_mean": "0.508653744530506",
+        "observed": "0.466656645965956",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-26",
+        "interval_high": "0.714722018704447",
+        "interval_low": "0.267496462288354",
+        "model_mean": "0.491012777737432",
+        "observed": "0.459528354608435",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-27",
+        "interval_high": "0.734841787419796",
+        "interval_low": "0.253024604413667",
+        "model_mean": "0.484062493650673",
+        "observed": "0.454148591019099",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-28",
+        "interval_high": "0.74118018318127",
+        "interval_low": "0.244789425813796",
+        "model_mean": "0.492606510598432",
+        "observed": "0.448739728960038",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-29",
+        "interval_high": "0.725576532916636",
+        "interval_low": "0.241411874232582",
+        "model_mean": "0.469084065389152",
+        "observed": "0.44511749902391",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-11-30",
+        "interval_high": "0.732040892358006",
+        "interval_low": "0.223701189882094",
+        "model_mean": "0.457715952895207",
+        "observed": "0.441482100825146",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-01",
+        "interval_high": "0.682618139175195",
+        "interval_low": "0.212093679926822",
+        "model_mean": "0.44098338787167",
+        "observed": "0.437833438270441",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-02",
+        "interval_high": "0.688439225891107",
+        "interval_low": "0.198855574785895",
+        "model_mean": "0.439867376123298",
+        "observed": "0.434171414210798",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-03",
+        "interval_high": "0.711135929068445",
+        "interval_low": "0.193553101205729",
+        "model_mean": "0.436715701056737",
+        "observed": "0.434171414210798",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-04",
+        "interval_high": "0.711628151564787",
+        "interval_low": "0.182608916912146",
+        "model_mean": "0.437934833128661",
+        "observed": "0.432335360965084",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-05",
+        "interval_high": "0.734880243851452",
+        "interval_low": "0.168577649386521",
+        "model_mean": "0.431967985691348",
+        "observed": "0.428653110146072",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-06",
+        "interval_high": "0.747830895462872",
+        "interval_low": "0.167705147074447",
+        "model_mean": "0.424599165699514",
+        "observed": "0.428653110146072",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-07",
+        "interval_high": "0.791007975165053",
+        "interval_low": "0.141235402601498",
+        "model_mean": "0.423957426401914",
+        "observed": "0.450545935573863",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-08",
+        "interval_high": "0.724546634797224",
+        "interval_low": "0.145009474523203",
+        "model_mean": "0.405309109527314",
+        "observed": "0.441482100825146",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-09",
+        "interval_high": "1.24627419275542",
+        "interval_low": "0.12316391428481",
+        "model_mean": "0.519865672968926",
+        "observed": "0.452348885686386",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-10",
+        "interval_high": "0.876280858652038",
+        "interval_low": "0.176394077840091",
+        "model_mean": "0.472184787311184",
+        "observed": "0.44511749902391",
+        "segment": "forecast"
+      }
+    ],
+    "20211221": [
+      {
+        "date": "2021-12-03",
+        "interval_high": "0.749332401259604",
+        "interval_low": "0.390874942464606",
+        "model_mean": "0.540557049500651",
+        "observed": "0.434171414210798",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-04",
+        "interval_high": "0.751662890106787",
+        "interval_low": "0.391387663967659",
+        "model_mean": "0.532363610548399",
+        "observed": "0.432335360965084",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-05",
+        "interval_high": "0.742322887193907",
+        "interval_low": "0.37321962469256",
+        "model_mean": "0.526931819089083",
+        "observed": "0.428653110146072",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-06",
+        "interval_high": "0.737727559953132",
+        "interval_low": "0.383589557299501",
+        "model_mean": "0.517434312158087",
+        "observed": "0.428653110146072",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-07",
+        "interval_high": "0.800798768007664",
+        "interval_low": "0.370534030707318",
+        "model_mean": "0.529879103135559",
+        "observed": "0.450545935573863",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-08",
+        "interval_high": "0.748742512682156",
+        "interval_low": "0.38545542914807",
+        "model_mean": "0.515708179349834",
+        "observed": "0.441482100825146",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-09",
+        "interval_high": "0.798394703950096",
+        "interval_low": "0.364017757976365",
+        "model_mean": "0.524263784166127",
+        "observed": "0.452348885686386",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-10",
+        "interval_high": "0.74076733001853",
+        "interval_low": "0.37514156493993",
+        "model_mean": "0.511691108836047",
+        "observed": "0.44511749902391",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-11",
+        "interval_high": "0.703838345437369",
+        "interval_low": "0.358060397864137",
+        "model_mean": "0.496242915909979",
+        "observed": "0.439659433639175",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-12",
+        "interval_high": "0.732279436949929",
+        "interval_low": "0.339489131857737",
+        "model_mean": "0.484952435493041",
+        "observed": "0.82414099777663",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-13",
+        "interval_high": "3.48456762953275",
+        "interval_low": "0.726617820404387",
+        "model_mean": "1.70006183891438",
+        "observed": "4.43716207102816",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-14",
+        "interval_high": "4.26310458720543",
+        "interval_low": "1.47343984697707",
+        "model_mean": "2.51223634693801",
+        "observed": "3.50499282695604",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-15",
+        "interval_high": "2.90852220777341",
+        "interval_low": "1.57943779713824",
+        "model_mean": "2.15072846348063",
+        "observed": "2.54342509378789",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-16",
+        "interval_high": "3.72606431321481",
+        "interval_low": "1.5014328560374",
+        "model_mean": "2.35706454762576",
+        "observed": "3.69080879942973",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-17",
+        "interval_high": "2.31275433216065",
+        "interval_low": "1.3942745141189",
+        "model_mean": "1.78227828327475",
+        "observed": "2.58484206952349",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-18",
+        "interval_high": "2.11839805905948",
+        "interval_low": "1.27415591802302",
+        "model_mean": "1.64512315517767",
+        "observed": "2.15047240540911",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-19",
+        "interval_high": "1.75874815168596",
+        "interval_low": "1.09722028187712",
+        "model_mean": "1.38698194828333",
+        "observed": "1.90929356424203",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-20",
+        "interval_high": "1.70262191397504",
+        "interval_low": "1.05340155210253",
+        "model_mean": "1.3468323147162",
+        "observed": "1.71542044906476",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-21",
+        "interval_high": "1.66565428846528",
+        "interval_low": "1.02549751342145",
+        "model_mean": "1.30561712981707",
+        "observed": "1.59081045983277",
+        "segment": "history"
+      },
+      {
+        "date": "2021-12-22",
+        "interval_high": "1.93830005043039",
+        "interval_low": "1.0652210546155",
+        "model_mean": "1.43153673108317",
+        "observed": "2.0716144166254",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-23",
+        "interval_high": "3.52880301649167",
+        "interval_low": "1.41719319213483",
+        "model_mean": "2.21265201665563",
+        "observed": "3.62510682930954",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-24",
+        "interval_high": "3.49126483440802",
+        "interval_low": "1.76076415601483",
+        "model_mean": "2.4744754742921",
+        "observed": "3.578777753391",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-25",
+        "interval_high": "3.14759299923687",
+        "interval_low": "2.05243960547557",
+        "model_mean": "2.4638044488585",
+        "observed": "3.1754105794529",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-26",
+        "interval_high": "3.42565732305788",
+        "interval_low": "2.25289949161153",
+        "model_mean": "2.59857423391331",
+        "observed": "3.09923612322976",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-27",
+        "interval_high": "2.85622646374451",
+        "interval_low": "2.33038826974063",
+        "model_mean": "2.4652011160798",
+        "observed": "3.18833954466501",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-28",
+        "interval_high": "2.48249151067324",
+        "interval_low": "2.29963308480667",
+        "model_mean": "2.34787529739263",
+        "observed": "2.84967630600563",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-29",
+        "interval_high": "2.75369941810708",
+        "interval_low": "2.36100734334694",
+        "model_mean": "2.47928000841641",
+        "observed": "2.96265710085726",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-30",
+        "interval_high": "2.97569926446448",
+        "interval_low": "2.24220624654639",
+        "model_mean": "2.42964988326972",
+        "observed": "2.94791441341076",
+        "segment": "forecast"
+      },
+      {
+        "date": "2021-12-31",
+        "interval_high": "2.8390513243667",
+        "interval_low": "2.13393467247477",
+        "model_mean": "2.31735861934886",
+        "observed": "2.56543715834426",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-01",
+        "interval_high": "2.79598402842482",
+        "interval_low": "1.99057369191864",
+        "model_mean": "2.18283082058137",
+        "observed": "2.33371959795988",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-02",
+        "interval_high": "2.8056873430441",
+        "interval_low": "1.86981544726967",
+        "model_mean": "2.09598595662256",
+        "observed": "2.17650582550741",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-03",
+        "interval_high": "2.57541185256983",
+        "interval_low": "1.79419768338745",
+        "model_mean": "2.00765306639372",
+        "observed": "2.14053244876839",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-04",
+        "interval_high": "3.00218549062848",
+        "interval_low": "1.82865828261164",
+        "model_mean": "2.20537364572277",
+        "observed": "2.23271536222119",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-05",
+        "interval_high": "2.95816220827627",
+        "interval_low": "1.91728152245709",
+        "model_mean": "2.25836622595125",
+        "observed": "2.05724194785479",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-06",
+        "interval_high": "2.50308583227777",
+        "interval_low": "1.87820781989365",
+        "model_mean": "2.0872032507894",
+        "observed": "1.95039839405515",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-07",
+        "interval_high": "2.71764618480142",
+        "interval_low": "1.76696995876291",
+        "model_mean": "2.05753621125224",
+        "observed": "1.87079678557276",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-08",
+        "interval_high": "2.56426725051243",
+        "interval_low": "1.65494316841462",
+        "model_mean": "1.92663841229438",
+        "observed": "1.79377108593645",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-09",
+        "interval_high": "2.5734451387411",
+        "interval_low": "1.60347808685335",
+        "model_mean": "1.8761412374542",
+        "observed": "1.71542044906476",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-10",
+        "interval_high": "2.58806371854975",
+        "interval_low": "1.52844000099433",
+        "model_mean": "1.83949019590508",
+        "observed": "1.64690580121098",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-11",
+        "interval_high": "2.62868958096628",
+        "interval_low": "1.47743763131639",
+        "model_mean": "1.78558634093227",
+        "observed": "1.58502389779272",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-12",
+        "interval_high": "2.59185568027735",
+        "interval_low": "1.43773751733112",
+        "model_mean": "1.77273403908022",
+        "observed": "1.53748492370553",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-13",
+        "interval_high": "2.65511423856638",
+        "interval_low": "1.39667734279011",
+        "model_mean": "1.74809832705102",
+        "observed": "1.48115480162484",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-14",
+        "interval_high": "2.61848409316078",
+        "interval_low": "1.3499418039029",
+        "model_mean": "1.71545038437175",
+        "observed": "1.44175757100764",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-15",
+        "interval_high": "2.65443863808849",
+        "interval_low": "1.29727712302043",
+        "model_mean": "1.69207320081475",
+        "observed": "1.39374220350763",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-16",
+        "interval_high": "2.65445657797677",
+        "interval_low": "1.26731164441036",
+        "model_mean": "1.67443740603861",
+        "observed": "1.35066757378754",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-17",
+        "interval_high": "2.6962476468643",
+        "interval_low": "1.24715167616128",
+        "model_mean": "1.65618591008598",
+        "observed": "1.31785688400507",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-01-18",
+        "interval_high": "2.69410442370329",
+        "interval_low": "1.19841624180551",
+        "model_mean": "1.62205544750755",
+        "observed": "1.27921657973829",
+        "segment": "forecast"
+      }
+    ],
+    "20220511": [
+      {
+        "date": "2022-04-23",
+        "interval_high": "1.07059984076398",
+        "interval_low": "0.429328122606679",
+        "model_mean": "0.729142471456264",
+        "observed": "0.829096736738847",
+        "segment": "history"
+      },
+      {
+        "date": "2022-04-24",
+        "interval_high": "0.974451962860609",
+        "interval_low": "0.392812466917071",
+        "model_mean": "0.654661517762226",
+        "observed": "0.75870340959149",
+        "segment": "history"
+      },
+      {
+        "date": "2022-04-25",
+        "interval_high": "0.920253232334496",
+        "interval_low": "0.371225270145034",
+        "model_mean": "0.632370025950445",
+        "observed": "0.719490475643556",
+        "segment": "history"
+      },
+      {
+        "date": "2022-04-26",
+        "interval_high": "0.886352746627978",
+        "interval_low": "0.370446501497334",
+        "model_mean": "0.609037372690853",
+        "observed": "0.687258851497442",
+        "segment": "history"
+      },
+      {
+        "date": "2022-04-27",
+        "interval_high": "0.851092178446668",
+        "interval_low": "0.359507611402076",
+        "model_mean": "0.598721987608646",
+        "observed": "0.670020677819343",
+        "segment": "history"
+      },
+      {
+        "date": "2022-04-28",
+        "interval_high": "0.845357997166439",
+        "interval_low": "0.381654761103207",
+        "model_mean": "0.594695701920516",
+        "observed": "0.6583612309231",
+        "segment": "history"
+      },
+      {
+        "date": "2022-04-29",
+        "interval_high": "0.853551580173702",
+        "interval_low": "0.376651996481116",
+        "model_mean": "0.583877359745984",
+        "observed": "0.643593113124195",
+        "segment": "history"
+      },
+      {
+        "date": "2022-04-30",
+        "interval_high": "0.827407674916632",
+        "interval_low": "0.373082393189951",
+        "model_mean": "0.576905004611268",
+        "observed": "0.633124110170166",
+        "segment": "history"
+      },
+      {
+        "date": "2022-05-01",
+        "interval_high": "0.818434683993947",
+        "interval_low": "0.361860305437795",
+        "model_mean": "0.575686746769872",
+        "observed": "0.619500883653189",
+        "segment": "history"
+      },
+      {
+        "date": "2022-05-02",
+        "interval_high": "0.795244412529909",
+        "interval_low": "0.37121050557234",
+        "model_mean": "0.561617584496015",
+        "observed": "0.607233550661807",
+        "segment": "history"
+      },
+      {
+        "date": "2022-05-03",
+        "interval_high": "0.781133844095577",
+        "interval_low": "0.374628112218711",
+        "model_mean": "0.557426543482254",
+        "observed": "0.604143058670599",
+        "segment": "history"
+      },
+      {
+        "date": "2022-05-04",
+        "interval_high": "0.799190505986036",
+        "interval_low": "0.378781374171154",
+        "model_mean": "0.557618426399351",
+        "observed": "0.597933272828316",
+        "segment": "history"
+      },
+      {
+        "date": "2022-05-05",
+        "interval_high": "0.763053912040203",
+        "interval_low": "0.368132018531634",
+        "model_mean": "0.547185580976056",
+        "observed": "0.585396805606396",
+        "segment": "history"
+      },
+      {
+        "date": "2022-05-06",
+        "interval_high": "0.765970435671874",
+        "interval_low": "0.369165520793339",
+        "model_mean": "0.543246287088922",
+        "observed": "0.579069139014875",
+        "segment": "history"
+      },
+      {
+        "date": "2022-05-07",
+        "interval_high": "0.772365541406386",
+        "interval_low": "0.374083736125534",
+        "model_mean": "0.544491924801268",
+        "observed": "0.574296973901593",
+        "segment": "history"
+      },
+      {
+        "date": "2022-05-08",
+        "interval_high": "0.759880507062963",
+        "interval_low": "0.373853960280529",
+        "model_mean": "0.539689188388268",
+        "observed": "0.574296973901593",
+        "segment": "history"
+      },
+      {
+        "date": "2022-05-09",
+        "interval_high": "0.756945420245632",
+        "interval_low": "0.37396287967159",
+        "model_mean": "0.53997867760909",
+        "observed": "0.579069139014875",
+        "segment": "history"
+      },
+      {
+        "date": "2022-05-10",
+        "interval_high": "0.76664257408427",
+        "interval_low": "0.364297266829664",
+        "model_mean": "0.537474104500932",
+        "observed": "0.580654813310284",
+        "segment": "history"
+      },
+      {
+        "date": "2022-05-11",
+        "interval_high": "0.769433685484722",
+        "interval_low": "0.358582582747498",
+        "model_mean": "0.5364738874509",
+        "observed": "0.577480946362672",
+        "segment": "history"
+      },
+      {
+        "date": "2022-05-12",
+        "interval_high": "0.769377035224164",
+        "interval_low": "0.364367125352592",
+        "model_mean": "0.544938225209809",
+        "observed": "0.569501925984288",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-13",
+        "interval_high": "0.761431270589098",
+        "interval_low": "0.361747296365979",
+        "model_mean": "0.540749385845774",
+        "observed": "0.561458728425452",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-14",
+        "interval_high": "0.793589516177415",
+        "interval_low": "0.335206863695953",
+        "model_mean": "0.534132455424976",
+        "observed": "0.556601572938805",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-15",
+        "interval_high": "0.784730353131885",
+        "interval_low": "0.348183479750058",
+        "model_mean": "0.539205446586215",
+        "observed": "0.545175613195231",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-16",
+        "interval_high": "0.765378887743297",
+        "interval_low": "0.330032646576944",
+        "model_mean": "0.52508798899547",
+        "observed": "0.54188692987142",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-17",
+        "interval_high": "0.763433920807552",
+        "interval_low": "0.336573814384977",
+        "model_mean": "0.518570851559044",
+        "observed": "0.540238523507972",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-18",
+        "interval_high": "0.731590492111351",
+        "interval_low": "0.317659335963483",
+        "model_mean": "0.517213805628462",
+        "observed": "0.533617590496223",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-19",
+        "interval_high": "0.733469077298907",
+        "interval_low": "0.346027565521581",
+        "model_mean": "0.537221641386588",
+        "observed": "0.51855824091295",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-20",
+        "interval_high": "0.728344632455229",
+        "interval_low": "0.331542156124275",
+        "model_mean": "0.526946062817738",
+        "observed": "0.506686585219815",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-21",
+        "interval_high": "0.723808738248421",
+        "interval_low": "0.331324702132114",
+        "model_mean": "0.526571139854227",
+        "observed": "0.501555269587075",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-22",
+        "interval_high": "0.716788158455636",
+        "interval_low": "0.328422288555789",
+        "model_mean": "0.517907963760767",
+        "observed": "0.498119705870643",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-23",
+        "interval_high": "0.713068340397458",
+        "interval_low": "0.311870432118222",
+        "model_mean": "0.520358021143572",
+        "observed": "0.494672298354342",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-24",
+        "interval_high": "0.684427902062931",
+        "interval_low": "0.328936900897282",
+        "model_mean": "0.512587384294114",
+        "observed": "0.484258189292878",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-25",
+        "interval_high": "0.70742349357135",
+        "interval_low": "0.314639563756648",
+        "model_mean": "0.503067480757104",
+        "observed": "0.475496143920442",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-26",
+        "interval_high": "0.715315970025958",
+        "interval_low": "0.313184188131851",
+        "model_mean": "0.503258653869666",
+        "observed": "0.47725470563467",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-27",
+        "interval_high": "0.684954091093261",
+        "interval_low": "0.294889774769501",
+        "model_mean": "0.491296094078481",
+        "observed": "0.482511911332052",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-28",
+        "interval_high": "0.681506427731513",
+        "interval_low": "0.305982343056609",
+        "model_mean": "0.490448220830988",
+        "observed": "0.475496143920442",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-29",
+        "interval_high": "0.670913999247997",
+        "interval_low": "0.299122596370933",
+        "model_mean": "0.48807380566167",
+        "observed": "0.463098851840958",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-30",
+        "interval_high": "0.67312599139652",
+        "interval_low": "0.300555376351656",
+        "model_mean": "0.488044401400318",
+        "observed": "0.455945063230323",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-05-31",
+        "interval_high": "0.683054035481204",
+        "interval_low": "0.29332769906122",
+        "model_mean": "0.484315484525712",
+        "observed": "0.450545935573863",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-06-01",
+        "interval_high": "0.692793987618",
+        "interval_low": "0.298928247773996",
+        "model_mean": "0.477448568799372",
+        "observed": "0.441482100825146",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-06-02",
+        "interval_high": "0.659962108251137",
+        "interval_low": "0.300119628856722",
+        "model_mean": "0.480173058666327",
+        "observed": "0.432335360965084",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-06-03",
+        "interval_high": "0.661904762507188",
+        "interval_low": "0.277813710033075",
+        "model_mean": "0.467792594199801",
+        "observed": "0.430495930426007",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-06-04",
+        "interval_high": "0.66737231305566",
+        "interval_low": "0.287602927060536",
+        "model_mean": "0.469226827732811",
+        "observed": "0.432335360965084",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-06-05",
+        "interval_high": "0.6469536586783",
+        "interval_low": "0.269295659816596",
+        "model_mean": "0.464225922311922",
+        "observed": "0.452348885686386",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-06-06",
+        "interval_high": "0.627356382648538",
+        "interval_low": "0.292149382486922",
+        "model_mean": "0.459515664546736",
+        "observed": "0.454148591019099",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-06-07",
+        "interval_high": "0.654525844850522",
+        "interval_low": "0.271216870355156",
+        "model_mean": "0.455412736683418",
+        "observed": "0.43600410254221",
+        "segment": "forecast"
+      },
+      {
+        "date": "2022-06-08",
+        "interval_high": "0.629807600896999",
+        "interval_low": "0.266010284819359",
+        "model_mean": "0.446446235502699",
+        "observed": "0.421247680244083",
+        "segment": "forecast"
+      }
+    ]
+  },
+  "main_aggregate": [
+    {
+      "crpss": "0.15855259023798218",
+      "horizon_days": "8",
+      "mean_climatology_crps": "0.72931126454671646",
+      "mean_crps": "0.61367707446309638",
+      "method": "AL-M-T0",
+      "model": "AL-M-T0",
+      "n_valid": "40",
+      "origins": "5"
+    },
+    {
+      "crpss": "0.16191695706023568",
+      "horizon_days": "28",
+      "mean_climatology_crps": "0.64217756039830287",
+      "mean_crps": "0.538198123926244",
+      "method": "AL-M-T0",
+      "model": "AL-M-T0",
+      "n_valid": "140",
+      "origins": "5"
+    },
+    {
+      "crpss": "0.57570404841854694",
+      "horizon_days": "8",
+      "mean_climatology_crps": "0.72931126454671646",
+      "mean_crps": "0.3094438169899219",
+      "method": "AL-M-T1",
+      "model": "AL-M-T1",
+      "n_valid": "40",
+      "origins": "5"
+    },
+    {
+      "crpss": "0.63826168852329745",
+      "horizon_days": "28",
+      "mean_climatology_crps": "0.64217756039830287",
+      "mean_crps": "0.23230022636671024",
+      "method": "AL-M-T1",
+      "model": "AL-M-T1",
+      "n_valid": "140",
+      "origins": "5"
+    },
+    {
+      "crpss": "0.53263232252843551",
+      "horizon_days": "8",
+      "mean_climatology_crps": "0.72931126454671646",
+      "mean_crps": "0.34085651186504867",
+      "method": "AL-U-T1",
+      "model": "AL-U-T1",
+      "n_valid": "40",
+      "origins": "5"
+    },
+    {
+      "crpss": "0.059971760675134433",
+      "horizon_days": "28",
+      "mean_climatology_crps": "0.64217756039830287",
+      "mean_crps": "0.6036650414351542",
+      "method": "AL-U-T1",
+      "model": "AL-U-T1",
+      "n_valid": "140",
+      "origins": "5"
+    },
+    {
+      "crpss": "0",
+      "horizon_days": "8",
+      "mean_climatology_crps": "0.72931126454671646",
+      "mean_crps": "0.72931126454671646",
+      "method": "CLIM-SEASONAL",
+      "model": "CLIM-SEASONAL",
+      "n_valid": "40",
+      "origins": "5"
+    },
+    {
+      "crpss": "0",
+      "horizon_days": "28",
+      "mean_climatology_crps": "0.64217756039830287",
+      "mean_crps": "0.64217756039830287",
+      "method": "CLIM-SEASONAL",
+      "model": "CLIM-SEASONAL",
+      "n_valid": "140",
+      "origins": "5"
+    },
+    {
+      "crpss": "0.3905173737910852",
+      "horizon_days": "8",
+      "mean_climatology_crps": "0.72931126454671646",
+      "mean_crps": "0.44450254483967744",
+      "method": "EMOS-GLOFAS",
+      "model": "EMOS-GLOFAS",
+      "n_valid": "40",
+      "origins": "5"
+    },
+    {
+      "crpss": "0.28782262662358338",
+      "horizon_days": "28",
+      "mean_climatology_crps": "0.64217756039830287",
+      "mean_crps": "0.4573443282057385",
+      "method": "EMOS-GLOFAS",
+      "model": "EMOS-GLOFAS",
+      "n_valid": "140",
+      "origins": "5"
+    },
+    {
+      "crpss": "0.0075473341845255781",
+      "horizon_days": "8",
+      "mean_climatology_crps": "0.72931126454671646",
+      "mean_crps": "0.72380690870864339",
+      "method": "N-M-T0",
+      "model": "N-M-T0",
+      "n_valid": "40",
+      "origins": "5"
+    },
+    {
+      "crpss": "-0.30723221493064279",
+      "horizon_days": "28",
+      "mean_climatology_crps": "0.64217756039830287",
+      "mean_crps": "0.83947519465823017",
+      "method": "N-M-T0",
+      "model": "N-M-T0",
+      "n_valid": "140",
+      "origins": "5"
+    },
+    {
+      "crpss": "-3.3621107474855005",
+      "horizon_days": "8",
+      "mean_climatology_crps": "0.72931126454671646",
+      "mean_crps": "3.1813365053414726",
+      "method": "N-M-T1",
+      "model": "N-M-T1",
+      "n_valid": "40",
+      "origins": "5"
+    },
+    {
+      "crpss": "-2.7081070533642477",
+      "horizon_days": "28",
+      "mean_climatology_crps": "0.64217756039830287",
+      "mean_crps": "2.3812631412251926",
+      "method": "N-M-T1",
+      "model": "N-M-T1",
+      "n_valid": "140",
+      "origins": "5"
+    },
+    {
+      "crpss": "-0.35751519721318137",
+      "horizon_days": "8",
+      "mean_climatology_crps": "0.72931126454671646",
+      "mean_crps": "0.99005112512093052",
+      "method": "N-U-T1",
+      "model": "N-U-T1",
+      "n_valid": "40",
+      "origins": "5"
+    },
+    {
+      "crpss": "-0.35488912238312964",
+      "horizon_days": "28",
+      "mean_climatology_crps": "0.64217756039830287",
+      "mean_crps": "0.87007939122219591",
+      "method": "N-U-T1",
+      "model": "N-U-T1",
+      "n_valid": "140",
+      "origins": "5"
+    },
+    {
+      "crpss": "-0.36914948401846548",
+      "horizon_days": "8",
+      "mean_climatology_crps": "0.72931126454671646",
+      "mean_crps": "0.99853614154299142",
+      "method": "PERSISTENCE",
+      "model": "PERSISTENCE",
+      "n_valid": "40",
+      "origins": "5"
+    },
+    {
+      "crpss": "-0.41800715592170801",
+      "horizon_days": "28",
+      "mean_climatology_crps": "0.64217756039830287",
+      "mean_crps": "0.9106123760171384",
+      "method": "PERSISTENCE",
+      "model": "PERSISTENCE",
+      "n_valid": "140",
+      "origins": "5"
+    },
+    {
+      "crpss": "-0.062672931005426591",
+      "horizon_days": "8",
+      "mean_climatology_crps": "0.72931126454671646",
+      "mean_crps": "0.77501933911113319",
+      "method": "RAW-GLOFAS",
+      "model": "RAW-GLOFAS",
+      "n_valid": "40",
+      "origins": "5"
+    },
+    {
+      "crpss": "0.03826309375000847",
+      "horizon_days": "28",
+      "mean_climatology_crps": "0.64217756039830287",
+      "mean_crps": "0.61760586020063091",
+      "method": "RAW-GLOFAS",
+      "model": "RAW-GLOFAS",
+      "n_valid": "140",
+      "origins": "5"
+    },
+    {
+      "crpss": "0.088477055433480389",
+      "horizon_days": "8",
+      "mean_climatology_crps": "0.72931126454671646",
+      "mean_crps": "0.664783951365155",
+      "method": "RAW-NWS",
+      "model": "RAW-NWS",
+      "n_valid": "40",
+      "origins": "5"
+    },
+    {
+      "crpss": "-0.55518006408785192",
+      "horizon_days": "8",
+      "mean_climatology_crps": "0.72931126454671646",
+      "mean_crps": "1.1342103391377549",
+      "method": "exAL-M-T0",
+      "model": "exAL-M-T0",
+      "n_valid": "40",
+      "origins": "5"
+    },
+    {
+      "crpss": "-0.77146585578987925",
+      "horizon_days": "28",
+      "mean_climatology_crps": "0.64217756039830287",
+      "mean_crps": "1.1375956216000365",
+      "method": "exAL-M-T0",
+      "model": "exAL-M-T0",
+      "n_valid": "140",
+      "origins": "5"
+    },
+    {
+      "crpss": "0.58966576433139128",
+      "horizon_days": "8",
+      "mean_climatology_crps": "0.72931126454671646",
+      "mean_crps": "0.29926138030228339",
+      "method": "exAL-M-T1",
+      "model": "exAL-M-T1",
+      "n_valid": "40",
+      "origins": "5"
+    },
+    {
+      "crpss": "0.68601348563935716",
+      "horizon_days": "28",
+      "mean_climatology_crps": "0.64217756039830287",
+      "mean_crps": "0.20163509379008429",
+      "method": "exAL-M-T1",
+      "model": "exAL-M-T1",
+      "n_valid": "140",
+      "origins": "5"
+    },
+    {
+      "crpss": "0.51811534492477573",
+      "horizon_days": "8",
+      "mean_climatology_crps": "0.72931126454671646",
+      "mean_crps": "0.3514439071585701",
+      "method": "exAL-U-T1",
+      "model": "exAL-U-T1",
+      "n_valid": "40",
+      "origins": "5"
+    },
+    {
+      "crpss": "0.071431160432470775",
+      "horizon_days": "28",
+      "mean_climatology_crps": "0.64217756039830287",
+      "mean_crps": "0.59630607205535902",
+      "method": "exAL-U-T1",
+      "model": "exAL-U-T1",
+      "n_valid": "140",
+      "origins": "5"
+    }
+  ],
+  "origin_quantile_loss": [
+    {
+      "mean_check_loss": 0.028943586186463612,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.0717828414315601,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.09340712398425115,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.09699523802739962,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.08930629628373667,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.06937043028828317,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.04116204384272039,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.03149995873479597,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.08873581351433443,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.12510653998251645,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.1353425021192567,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.14455855401028503,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.1461661138199593,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.12576446598954327,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.02529308397124721,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.07061364151691611,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.0914907083031461,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.0940729617258261,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.08697486876425953,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.07164626919248478,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.030927361108172645,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.03314349243867933,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.09433500225645085,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.12252205908094387,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.13139710800029972,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.13264773917271225,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.1286735996406715,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.10144209568645117,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20210123",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.011135059076159633,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.022418084681816604,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.022637286459448392,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.035472109537173786,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.03936982749607993,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.033942424862553146,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.023689061674141126,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.018433687247517542,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.02075114439618775,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.07353883322573572,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.0674585485969122,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.04860137029391947,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.02873575875381151,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.010181529448498728,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.009427423627032036,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.02225934085077036,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.02164201065596206,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.03223554900126921,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.036586070856779444,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.027368910488340514,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.012666106497584342,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.011095436439891573,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.0258628365592992,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.08965985444685974,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.09603089478078368,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.06947162028822386,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.041825959050536606,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.012790252636810903,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20211112",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.055943922583062876,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.102458825066689,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.1499364027943139,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.1778600454650909,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.22531202965822225,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.17117662629905003,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.052048722364955044,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.06383943329685378,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.23664697244759664,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.3393785941551445,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.45254022494408114,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.5759257211375156,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.6751656605007869,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.6858419011772471,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.02203951183222604,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.08242617008132672,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.13305877599763571,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.17423070796272394,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.21136069664621807,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.17833033409647192,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.08277866172384199,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.06544366910501911,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.22311403377208205,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.3301944542392462,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.4274999322694844,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.5441412896464556,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.6440595307700921,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.6733758556724558,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20211221",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.01094502389599548,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.03551931893600663,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.03957079067798875,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.03432548975695921,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.021347294046338217,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.027303222782869067,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.016613665524059202,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.031857484620263575,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.03618543984780643,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.09686183101881464,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.08487141960610248,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.06068436120878091,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.036748027645624466,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.013633477954646775,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.007543988247149575,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.00818326577227787,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.007836149881365679,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.01525639167902312,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.013872690955982118,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.013993302290289443,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.00904458355988896,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.018522701705206403,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.04288797749126196,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.10851707731929519,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.10902261067250067,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.07884507212513622,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.048029109833112295,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.015014675946413559,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20220511",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.1068470345877658,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.3382599417245692,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.49366812587263154,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.5580072100374319,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.2843907466851256,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.22048758824425888,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.13794726916616482,
+      "method": "AL-M-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.12012402309331718,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.43474635796218797,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.6459403197887295,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.8833993725679896,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 1.13231690023412,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 1.3581477940549698,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 1.4690947104514491,
+      "method": "AL-U-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.08853299818285662,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.21289112253417572,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.3092154223803978,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.41184467122907925,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.41425983968169644,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.25745883142575365,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.14368903036063463,
+      "method": "exAL-M-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.12106396438654583,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.41104058447573427,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.6385839045699095,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.8642261495928842,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 1.1084530204839917,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 1.3334213562213042,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 1.478934620140867,
+      "method": "exAL-U-T1",
+      "n_cases": 28,
+      "origin": "20221225",
+      "tau": 0.95
+    }
+  ],
+  "pooled_quantile_loss": [
+    {
+      "mean_check_loss": 0.04276292526588948,
+      "method": "AL-M-T1",
+      "n_cases": 140,
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.1140878023681283,
+      "method": "AL-M-T1",
+      "n_cases": 140,
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.15984394595772675,
+      "method": "AL-M-T1",
+      "n_cases": 140,
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.18053201856481108,
+      "method": "AL-M-T1",
+      "n_cases": 140,
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.13194523883390052,
+      "method": "AL-M-T1",
+      "n_cases": 140,
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.10445605849540285,
+      "method": "AL-M-T1",
+      "n_cases": 140,
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.05429215251440811,
+      "method": "AL-M-T1",
+      "n_cases": 140,
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.05315091739854961,
+      "method": "AL-U-T1",
+      "n_cases": 140,
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.16341314563362264,
+      "method": "AL-U-T1",
+      "n_cases": 140,
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.2561652236341881,
+      "method": "AL-U-T1",
+      "n_cases": 140,
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.3247224135668684,
+      "method": "AL-U-T1",
+      "n_cases": 140,
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.3924173813769242,
+      "method": "AL-U-T1",
+      "n_cases": 140,
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.44899267095503037,
+      "method": "AL-U-T1",
+      "n_cases": 140,
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.46090321700427705,
+      "method": "AL-U-T1",
+      "n_cases": 140,
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.030567401172102292,
+      "method": "exAL-M-T1",
+      "n_cases": 140,
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.07927470815109336,
+      "method": "exAL-M-T1",
+      "n_cases": 140,
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.11264861344370147,
+      "method": "exAL-M-T1",
+      "n_cases": 140,
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.14552805631958432,
+      "method": "exAL-M-T1",
+      "n_cases": 140,
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.1526108333809871,
+      "method": "exAL-M-T1",
+      "n_cases": 140,
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.10975952949866806,
+      "method": "exAL-M-T1",
+      "n_cases": 140,
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.055821148650024514,
+      "method": "exAL-M-T1",
+      "n_cases": 140,
+      "tau": 0.95
+    },
+    {
+      "mean_check_loss": 0.049853852815068454,
+      "method": "exAL-U-T1",
+      "n_cases": 140,
+      "tau": 0.05
+    },
+    {
+      "mean_check_loss": 0.15944808691096565,
+      "method": "exAL-U-T1",
+      "n_cases": 140,
+      "tau": 0.2
+    },
+    {
+      "mean_check_loss": 0.25789546993125095,
+      "method": "exAL-U-T1",
+      "n_cases": 140,
+      "tau": 0.35
+    },
+    {
+      "mean_check_loss": 0.32563533906319053,
+      "method": "exAL-U-T1",
+      "n_cases": 140,
+      "tau": 0.5
+    },
+    {
+      "mean_check_loss": 0.38671174834330396,
+      "method": "exAL-U-T1",
+      "n_cases": 140,
+      "tau": 0.65
+    },
+    {
+      "mean_check_loss": 0.4392019111031433,
+      "method": "exAL-U-T1",
+      "n_cases": 140,
+      "tau": 0.8
+    },
+    {
+      "mean_check_loss": 0.45631150001659976,
+      "method": "exAL-U-T1",
+      "n_cases": 140,
+      "tau": 0.95
+    }
+  ]
+}

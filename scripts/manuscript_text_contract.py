@@ -40,10 +40,24 @@ def included_tex_paths(article_root: Path, entry: str = 'wileyNJD-APA.tex') -> l
     return found
 
 
-def manuscript_with_includes(article_root: Path) -> str:
-    """Read the scientific text that is actually included in the current article."""
+DOCUMENT_ENTRIES = {'main': 'wileyNJD-APA.tex', 'supplement': 'supporting_information.tex'}
+
+
+def manuscript_with_includes(article_root: Path, entry: str = 'wileyNJD-APA.tex') -> str:
+    """Read one document's actual include graph; unused files cannot satisfy it."""
     return '\n'.join(path.read_text(encoding='utf-8')
-                     for path in included_tex_paths(article_root))
+                     for path in included_tex_paths(article_root, entry))
+
+
+def document_texts(article_root: Path) -> dict[str, str]:
+    """Return separate reading scopes; callers explicitly choose their obligations."""
+    return {name: manuscript_with_includes(article_root, entry)
+            for name, entry in DOCUMENT_ENTRIES.items()}
+
+
+def publication_with_includes(article_root: Path) -> str:
+    """Read submitted main and supplement, never arbitrary repository fragments."""
+    return '\n'.join(document_texts(article_root).values())
 
 
 def normalized_text(text: str) -> str:
@@ -82,17 +96,18 @@ def cited_url(article_text: str, bib_text: str, url: str) -> bool:
     return False
 
 
-def structure_checks(article: str) -> list[tuple[str, bool, str]]:
+def structure_checks(article: str, supplement: str | None = None) -> list[tuple[str, bool, str]]:
     labels = ['sec:introduction', 'sec:data', 'sec:methodology', 'sec:evaluation', 'sec:forecastvalidation', 'sec5']
     checks = [('label:' + label, has_label(article, label), label) for label in labels]
     checks += [
         ('six_section_order', in_order(article, *(r'\label{' + label + '}' for label in labels)), 'introduction/data/method/evaluation/results/discussion'),
         ('scoring_before_results', in_order(article, r'\label{sec:evaluation}', r'\label{sec:forecastvalidation}'), 'evaluation precedes results'),
-        ('illustration_before_interpretation', in_order(article, r'\label{subsec:synthillustration}', r'\label{sec:interpretation}'), 'forecast illustration precedes historical interpretation'),
-        ('appendix_matrix', in_order(article, r'\appendix', r'\label{app:stateconstruction}'), 'full matrix construction in appendix'),
-        ('appendix_augmentation', in_order(article, r'\appendix', r'\label{app:augmentation}'), 'likelihood augmentation in appendix'),
         ('forecast_evidence', has_concepts(article, r'five', r'rolling.origin|forecast origins?', r'CRPS', r'quantile', r'illustrat'), 'five origins, distributional/quantile scores, illustrative forecast'),
     ]
+    if supplement is not None:
+        checks += [(name, has_label(supplement, label), label)
+                   for name, label in [('support_matrix', 'app:stateconstruction'),
+                                       ('support_augmentation', 'app:augmentation')]]
     return checks
 
 
@@ -120,3 +135,38 @@ SCIENTIFIC_CONCEPTS = {
 def scientific_checks(article: str, names: list[str] | None = None) -> list[tuple[str, bool, str]]:
     return [(name, has_concepts(article, *SCIENTIFIC_CONCEPTS[name]), ', '.join(SCIENTIFIC_CONCEPTS[name]))
             for name in (names if names is not None else SCIENTIFIC_CONCEPTS)]
+
+
+def publication_views(article_root: Path) -> dict[str, str]:
+    """Explicit main/SI/union views, without granting SI main-paper obligations."""
+    texts = document_texts(article_root)
+    return {'main': texts['main'], 'si': texts['supplement'],
+            'union': '\n'.join(texts.values())}
+
+
+def publication_checks(article_root: Path) -> list[tuple[str, bool, str]]:
+    """Read actual roots and check their separate scientific obligations."""
+    views = publication_views(article_root)
+    return publication_text_checks(views['main'], views['si'])
+
+
+def publication_text_checks(main: str, si: str) -> list[tuple[str, bool, str]]:
+    """Keep main exposition and submitted technical retention separately testable."""
+    views = {'main': main, 'si': si, 'union': main + '\n' + si}
+    checks = structure_checks(views['main'], views['si'])
+    main_names = ['variants', 'scores', 'synthesis', 'origin_design', 'verification',
+                  'likelihood', 'climate_covariates', 'data_roles', 'transfer_inputs',
+                  'latest_issue', 'uncertainty_estimands', 'prior_weighting']
+    checks += [('main:' + name, ok, detail)
+               for name, ok, detail in scientific_checks(views['main'], main_names)]
+    checks += [('package:' + name, ok, detail)
+               for name, ok, detail in scientific_checks(views['union'],
+                                                       ['runtime', 'archive_work', 'physical_models'])]
+    checks += [('si:coefficient_estimands',
+                has_concepts(views['si'], r'posterior means', r'credible intervals', r'covariate'),
+                'posterior means and credible intervals for covariate coefficients'),
+               ('si:gig_convention', has_concepts(views['si'], r'generalized inverse.gaussian', r'GIG'),
+                'explicit generalized inverse-Gaussian convention'),
+               ('si:vb_computation', has_concepts(views['si'], r'variational', r'converg', r'Laplace', r'Delta'),
+                'variational updates, convergence and joint Laplace–Delta approximation')]
+    return checks

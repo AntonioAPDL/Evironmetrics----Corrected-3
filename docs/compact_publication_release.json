@@ -1,0 +1,65 @@
+{
+  "baseline_commit": "b2e0b82e9e65d6e9bbd09daa0a4b54d6f04546d0",
+  "combined_pages": 33,
+  "documents": {
+    "main": {
+      "entry": "wileyNJD-APA.tex",
+      "pages": 14,
+      "pdf_sha256": "a143604417ab5d4b755531e20740fa9ad1b75d2ff879f93c8e282e457fff30ae",
+      "text_sha256": "e8e3976f67b7631051dd705e9e491e61ede2aa9e6974736d1bdf49e68d3900cd",
+      "source_hashes": {
+        "Figures/manuscript/no_refit_quantile_reliability.png": "c0097bd2684b17565c328871d08c3b0ee7117cf2be3d5fb9833906f885e8d4e6",
+        "Figures/manuscript/site_context_usgs.png": "eeef68672852e4a5362455147b84212ca5bd28d02f9774bb40bdc2a495dc8d8c",
+        "Figures/multivariate_synthesis_by_cutoff/cutoff_2022_12_25_multivariate_synthesis_with_reference_ensembles.png": "0e7e44311a1a4eb82113cb30bc9383f631f86b7a45af07fa9b54608149ed46bb",
+        "NJDapacite.sty": "7617cfbb3a1c1fc084c9d4612d9544cff74316d12a452bc42abac6d2df755dde",
+        "WileyNJD-APA.bst": "237c3b81013630af8236b7a4ea8d6c4e22b2c15fba1ccb30c26d3a2f581962c5",
+        "WileyNJD-v2.cls": "5d8faf972becd3cf1d9b0b28397e9f22b23d583673e58a74bb90cc7af1e94f3e",
+        "tables/compact_publication/main_aggregate.tex": "188d865eb984ae240b100a764d194d7f1d1dc063346a7b596bacc0f57ed5b8be",
+        "tables/compact_publication/main_calibration.tex": "ccd28e0967d7997b7523eede5cd64973416cc50d03c8b0536e6e265de3864d14",
+        "tables/compact_publication/main_quantile_loss.tex": "7c1a3c228a745a4c1770eac7f3aa70b7333395b6ef750b2c4deacfbdd667a5b7",
+        "wileyNJD-APA.bib": "7c517166cd3cd94006f50656fb9664c3f32bec892ffbc8b9cca2dbcef13ceb97",
+        "wileyNJD-APA.tex": "a6227b4e314798c498f8321fdd63d22a33c51c99afd20bd80353bf2b9a643304"
+      },
+      "auxiliary_labels_stable": true,
+      "unresolved_citations_or_references": [],
+      "bibtex_warnings": [],
+      "passed": true
+    },
+    "si": {
+      "entry": "supporting_information.tex",
+      "pages": 19,
+      "pdf_sha256": "7ebdac46c296b0c26e9027adc7df5c9362e4627cbc5966dd99e20c1c986835dd",
+      "text_sha256": "e540ffc1b4b580e4bab27c2ea9e769957c37feaa8bbd6a6f7384aee34f79b61c",
+      "source_hashes": {
+        "Figures/manuscript/compact_forecasts_2021_2022.pdf": "d311096bcdfa1bef9c0a51610532099866cb9db027850a6bbd81f19846753064",
+        "Figures/manuscript/compact_forecasts_2021_early.pdf": "b3935f66399973730b928519528b5eee141e3beffb3e939b960a46a949a44dd6",
+        "Figures/manuscript/covariate_context_precip_soil_gdpc.png": "a450b7fa331403f61ea0af951dc1bdf65fab1e4d471c8f89b26cc72d89b9ad03",
+        "Figures/manuscript/retrospective_products_context.png": "a670b1de369c4a576c9d9221eec27f83e78bbdf00db88419a714efa2bf5de16e",
+        "NJDapacite.sty": "7617cfbb3a1c1fc084c9d4612d9544cff74316d12a452bc42abac6d2df755dde",
+        "WileyNJD-APA.bst": "237c3b81013630af8236b7a4ea8d6c4e22b2c15fba1ccb30c26d3a2f581962c5",
+        "WileyNJD-v2.cls": "5d8faf972becd3cf1d9b0b28397e9f22b23d583673e58a74bb90cc7af1e94f3e",
+        "supporting_information.tex": "7e4aa7adfee9558f1441aeb30e98f05f5d6efd96ab1fd654653340669b45ded4",
+        "tables/compact_publication/si_component_comparison.tex": "564aacd5e5f31eed03683ca7c88df29c6aaa35851151ac4dbe165c368f1f293d",
+        "tables/compact_publication/si_discharge_score.tex": "91c68daf25bd2a976116599af2dcdf65299532b872f3177cefb510a8d22d265b",
+        "tables/compact_publication/si_exact_score_sensitivity.tex": "a78056df64a098956d1a16de667c86418718d1cbafd58311b7391cc6f99cd25a",
+        "tables/compact_publication/si_fitting_status.tex": "36b535d4f6d33b6e150bee8a6b3a017d54600df953dd421d0ad30f0602996159",
+        "tables/compact_publication/si_origin_coverage.tex": "c0ccc537cdaf5c76d0acf07111fc96a45b5815115eda5dcfcd868c17b90e2def",
+        "tables/compact_publication/si_origin_crps.tex": "467a5c5f14be487bce2963ce9811950555ca4c8302e37fb15ff89b52310fb112",
+        "tables/compact_publication/si_quantile_loss.tex": "a9e662b0539cc402247e4ebc07fe52743d3e8bb70a5ec14521dc0076ef163141",
+        "tables/editorial_revision/representative_covariate_effects_table.tex": "66e0bc3a113e8df763e7b5eab49f0a9e07d3ae4cc2b526a82380c830849c66e9",
+        "wileyNJD-APA.bib": "7c517166cd3cd94006f50656fb9664c3f32bec892ffbc8b9cca2dbcef13ceb97"
+      },
+      "auxiliary_labels_stable": true,
+      "unresolved_citations_or_references": [],
+      "bibtex_warnings": [],
+      "passed": true
+    }
+  },
+  "cross_document_verification": {
+    "passed": true,
+    "errors": [],
+    "registered_count": 8
+  },
+  "workflow_record": "AntonioAPDL/Project1:docs/article_compact_revision_20261109/",
+  "note": "Commit identity is given by the containing Git commit; PDFs are locally built, not versioned."
+}

@@ -11,6 +11,7 @@ scripts/__pycache__/
 *.fls
 *.synctex.gz
 wileyNJD-APA.pdf
+supporting_information.pdf
 output.pdf
 main.pdf
 empty-eps-converted-to.pdf

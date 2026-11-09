@@ -11,7 +11,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
-from manuscript_text_contract import active_tex, cited_url, has_concepts, has_label, in_order, scientific_checks, structure_checks
+from manuscript_text_contract import active_tex, cited_url, has_concepts, has_label, in_order, scientific_checks, structure_checks, publication_views, publication_checks
+from publication_package import submitted_asset_path, read_package
 
 
 def sha256(path: Path) -> str:
@@ -26,7 +27,13 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         return r'\input{' + path + '}'
 
     def article_text(self) -> str:
-        return active_tex((ROOT / "wileyNJD-APA.tex").read_text(encoding="utf-8"))
+        return active_tex(publication_views(ROOT)['main'])
+
+    def package_text(self) -> str:
+        return active_tex(publication_views(ROOT)['union'])
+
+    def supporting_text(self) -> str:
+        return active_tex(publication_views(ROOT)['si'])
 
     def assertConcepts(self, article: str, *patterns: str) -> None:
         self.assertTrue(has_concepts(article, *patterns), f"Missing scientific concepts: {patterns}")
@@ -71,7 +78,7 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         self.assertIn("https://CRAN.R-project.org/package=exdqlm", article)
         self.assertIn("https://doi.org/10.32614/CRAN.package.exdqlm", article)
         self.assertTrue(cited_url(article, (ROOT / "wileyNJD-APA.bib").read_text(encoding="utf-8"), "https://github.com/AntonioAPDL/san-lorenzo-exdqlm-reproducibility"))
-        self.assertConcepts(article, r'reproducibility repository', r'analysis data', r'statistical code', r'data.source documentation')
+        self.assertConcepts(article, r'reproducibility (?:repository|materials)', r'analysis data', r'(?:analysis |statistical )?code', r'(?:data.)?source documentation')
         self.assertNotIn("workflow repository has been archived", article)
 
     def test_runtime_benchmark_manifest_and_text_are_wired(self) -> None:
@@ -93,7 +100,7 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         self.assertEqual((planned.get("planned_run_units"), planned.get("done"), planned.get("pending")), (72, 54, 18))
         self.assertFalse(manifest.get("claims_policy", {}).get("report_fit_forecast_decomposition"))
 
-        article = (ROOT / "wileyNJD-APA.tex").read_text(encoding="utf-8")
+        article = self.package_text()
         self.assertConcepts(article, r'(?:about|approximately) two hours',
                             r'combined.{0,90}fitting and forecasting|fitting and forecasting.{0,90}combined')
         self.assertScientificChecks(article, ["runtime"])
@@ -155,7 +162,7 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         self.assertTrue((ROOT / "docs" / "forecast_design_contract.md").exists())
         article = (ROOT / "wileyNJD-APA.tex").read_text(encoding="utf-8")
         self.assertScientificChecks(article, ['transfer_inputs', 'climate_covariates', 'verification', 'data_roles', 'origin_design'])
-        self.assertConcepts(article, r'precipitation', r'dry days', r'no separate precipitation occurrence or intensity model', r'deterministic', r'nonlinear')
+        self.assertConcepts(article, r'precipitation', r'dry days', r'no separate precipitation occurrence or intensity model|without a separate occurrence model', r'deterministic', r'nonlinear')
         self.assertNotIn("GDPC forecast product", article)
 
     def test_selected_prior_and_discount_text_are_manifest_backed(self) -> None:
@@ -176,7 +183,7 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
             self.assertIn("epsilon", forecast_cov, row["run_id"])
             self.assertEqual(float(forecast_cov.get("c_factor")), 1.0)
 
-        article = (ROOT / "wileyNJD-APA.tex").read_text(encoding="utf-8")
+        article = self.package_text()
         self.assertRegex(article, r"\\lambda\s*=\s*0\.97")
         self.assertRegex(article, r"(?<![A-Za-z])c\s*=\s*1")
         self.assertRegex(article, r"\\epsilon\s*=\s*1")
@@ -208,7 +215,7 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         self.assertTrue((ROOT / "docs" / "latest_forecast_issue_contract.md").exists())
         article = (ROOT / "wileyNJD-APA.tex").read_text(encoding="utf-8")
         self.assertScientificChecks(article, ['latest_issue', 'verification'])
-        self.assertConcepts(article, r'GloFAS issues daily forecasts|GloFAS.{0,30}daily', r'hourly NWS|NWS.{0,30}hourly', r'latest available issuance', r'target time and member', r'aggregat')
+        self.assertConcepts(article, r'GloFAS issues daily forecasts|GloFAS.{0,30}daily', r'hourly NWS|NWS.{0,80}hourly', r'latest (?:available |hourly )?issuance', r'(?:target time and member|member and target)', r'aggregat')
         self.assertNotIn("weighted combination of prior forecasts", article)
 
     def test_reviewer1_overview_forecasting_emphasis_is_wired(self) -> None:
@@ -229,10 +236,13 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
     def test_reviewer1_expanded_forecast_evidence_is_wired(self) -> None:
         article = self.article_text()
         self.assertScientificChecks(article, ['origin_design', 'verification', 'scores'])
-        for label in ['sec:forecastvalidation', 'subsec:synthillustration', 'sec:interpretation']:
+        for label in ['sec:forecastvalidation', 'subsec:synthillustration']:
             self.assertTrue(has_label(article, label), label)
-        for label in ['tab:benchmark_crps_models', 'tab:benchmark_crps_models_nws_horizon', 'tab:he4_quantile_check_loss']:
-            self.assertIn(self.table_input(label), article)
+        for label in ['tab:external_benchmarks', 'tab:quantile_check_loss_pooled', 'tab:no_refit_calibration']:
+            self.assertTrue(has_label(article, label), label)
+            self.assertTrue(submitted_asset_path(ROOT, label, 'main').is_file())
+        for label in ['tab:crps_all_origins', 'tab:quantile_check_loss']:
+            self.assertTrue(submitted_asset_path(ROOT, label, 'si').is_file())
 
     def test_reviewer1_fair_forecast_assessment_is_wired(self) -> None:
         article = self.article_text()
@@ -241,8 +251,8 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
 
     def test_reviewer1_uncertainty_sources_are_distinguished(self) -> None:
         article = self.article_text()
-        self.assertConcepts(article, r'hydrolog\w* uncertainty', r'structur', r'parameters?', r'states?', r'observations?')
-        self.assertConcepts(article, r'meteorolog\w* uncertainty', r'precipitation', r'forc')
+        self.assertConcepts(article, r'hydrolog\w* uncertainty|uncertainty.{0,80}hydrolog', r'structur', r'parameters?', r'states?', r'observations?')
+        self.assertConcepts(article, r'meteorolog\w* uncertainty|uncertain meteorolog', r'precipitation', r'forc')
         self.assertScientificChecks(article, ['climate_covariates', 'data_roles'])
         self.assertNotIn("local hydrological covariates", article)
 
@@ -399,7 +409,7 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         self.assertIn("analysis_component", bundle_manifest)
 
     def test_reviewer1_figure_variance_explanation_and_lineage_are_wired(self) -> None:
-        article = (ROOT / "wileyNJD-APA.tex").read_text(encoding="utf-8")
+        article = self.package_text()
         self.assertScientificChecks(article, ['uncertainty_estimands', 'synthesis'])
         self.assertConcepts(article, r'1/6.8068493', r'363.5854', r'2[,.]?474.871|2474.87')
 
@@ -447,25 +457,25 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         self.assertIn("selected_model_component_80month.png", provenance)
         self.assertIn("not full posterior predictive distributions", provenance)
 
-    def test_cutoff_appendix_uses_multivariate_synthesis_overlays(self) -> None:
-        article = (ROOT / "wileyNJD-APA.tex").read_text(encoding="utf-8")
-        self.assertIn("{Figures/multivariate_synthesis_by_cutoff/}", article)
-        self.assertTrue(has_label(article, 'app:cutoffsynthpanels'))
-        for name in [
-            "cutoff_2021_01_23_multivariate_synthesis_with_reference_ensembles.png",
-            "cutoff_2021_11_12_multivariate_synthesis_with_reference_ensembles.png",
-            "cutoff_2021_12_21_multivariate_synthesis_with_reference_ensembles.png",
-            "cutoff_2022_05_11_multivariate_synthesis_with_reference_ensembles.png",
-            "cutoff_2022_12_25_multivariate_synthesis_with_reference_ensembles.png",
+    def test_cutoff_supplement_uses_both_two_origin_composites(self) -> None:
+        si = self.supporting_text()
+        for label, filename in [
+            ('fig:forecast_origins_2021_early', 'compact_forecasts_2021_early.pdf'),
+            ('fig:forecast_origins_2021_2022', 'compact_forecasts_2021_2022.pdf'),
         ]:
-            self.assertIn(name, article)
-        for retired in [
-            "cutoff_2021_01_23_setup_support.png",
-            "cutoff_2021_11_12_setup_support.png",
-            "cutoff_2021_12_21_setup_support.png",
-            "cutoff_2022_05_11_setup_support.png",
-        ]:
-            self.assertNotIn(retired, article)
+            self.assertTrue(has_label(si, label), label)
+            self.assertEqual(submitted_asset_path(ROOT, label, 'si').name, filename)
+        package = read_package(ROOT)
+        retained = package['additional_retained_evidence']
+        expected = {'2021_01_23', '2021_11_12', '2021_12_21', '2022_05_11'}
+        actual = {re.search(r'cutoff_(\d{4}_\d{2}_\d{2})', item['path']).group(1)
+                  for item in retained}
+        self.assertEqual(actual, expected)
+        self.assertTrue(all((ROOT / item['path']).is_file() for item in retained))
+        self.assertTrue(all(item['disposition'] == 'merged' for item in retained))
+        # The representative main illustration still contains original-source
+        # context; the additional origins are represented by the SI composites.
+        self.assertTrue(submitted_asset_path(ROOT, 'fig:synth1', 'main').is_file())
 
     def test_selected_model_quantile_figures_use_current_rating_references(self) -> None:
         renderer = (ROOT / "scripts" / "render_authoritative_selected_model_support_figures.R").read_text(encoding="utf-8")
@@ -562,22 +572,11 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         self.assertIn("RAW-NWS", short_text)
         self.assertIn("forecast leads 1--8", short_text)
 
-        article_text = (ROOT / "wileyNJD-APA.tex").read_text(encoding="utf-8")
-        self.assertIn(r"Appendix~\ref{app:he3ablation}", article_text)
-        self.assertIn(r"\label{app:he3ablation}", article_text)
-        self.assertIn("1/6.8068493", article_text)
-        self.assertLess(
-            article_text.index(r"\appendix"),
-            article_text.index(self.table_input('tab:he3_ablation_crps')),
-        )
-        self.assertEqual(
-            article_text.count(self.table_input('tab:he3_ablation_crps')),
-            1,
-        )
-        self.assertEqual(
-            article_text.count(self.table_input('tab:he3_ablation_crps_nws_horizon')),
-            1,
-        )
+        supporting = self.supporting_text()
+        self.assertTrue(has_label(supporting, 'tab:component_comparison'))
+        self.assertIn('1/6.8068493', supporting)
+        self.assertTrue(submitted_asset_path(ROOT, 'tab:component_comparison', 'si').is_file())
+        self.assertNotIn('tab:component_comparison}', self.article_text())
 
         source_text = source_csv.read_text(encoding="utf-8")
         self.assertIn("tab:he3_ablation_crps,RAW-GLOFAS,20210123,28", source_text)
@@ -586,12 +585,16 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
 
     def test_reviewer1_math_detail_is_streamlined(self) -> None:
         article = self.article_text()
+        supporting = self.supporting_text()
         self.assertScientificChecks(article, ['synthesis', 'scores', 'uncertainty_estimands'])
-        for label in ['subsec:quantilesynthesis', 'app:stateconstruction', 'app:augmentation']:
-            self.assertTrue(has_label(article, label), label)
-        for technical in [r'\label{app:stateconstruction}', r'\label{app:augmentation}', r'\section{Markov Chain Monte Carlo Algorithms}', r'\section{Variational Bayes Algorithms}']:
-            self.assertTrue(in_order(article, r'\appendix', technical), technical)
-        self.assertConcepts(article, r'isotonic regression', r'monotone rearrangement', r'u_s=s/\(S\+1\)', r'point mass')
+        self.assertTrue(has_label(article, 'subsec:quantilesynthesis'))
+        for label in ['app:stateconstruction', 'app:augmentation']:
+            self.assertTrue(has_label(supporting, label), label)
+            self.assertFalse(has_label(article, label), label)
+        self.assertConcepts(supporting, r'generalized inverse.gaussian', r'GIG', r'variational', r'Laplace', r'Delta')
+        self.assertConcepts(article + supporting, r'isotonic regression', r'monotone rearrangement', r'u_s=s/\(S\+1\)|\\rho_\{s/\(S\+1\)\}', r'point mass')
+        failed = [name for name, ok, _ in publication_checks(ROOT) if not ok]
+        self.assertFalse(failed, failed)
         for forbidden in ['probability integral transform', 'PITs are described in detail', 'two-step method', 'resolve quantile crossing']:
             self.assertNotIn(forbidden, article)
 

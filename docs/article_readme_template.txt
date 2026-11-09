@@ -4,15 +4,20 @@ This repository is the submission-facing freeze of the revised manuscript, its m
 
 ## Where to look first
 
-- `wileyNJD-APA.tex`: manuscript source used by Overleaf
-- `wileyNJD-APA.pdf`: current locally built review PDF
+- `wileyNJD-APA.tex`: main article and default Overleaf root
+- `supporting_information.tex`: independently compiled supporting information
+- `wileyNJD-APA.pdf` and `supporting_information.pdf`: locally reviewed PDFs (not versioned)
+- `PUBLICATION_PACKAGE.json`: authoritative inventory of the submitted documents and assets
+- `docs/compact_publication.txt`: editorial dispositions, bounded regeneration and validation
 - `docs/comment1_revision.txt`: implemented comment-1 changes and review/build entrypoints
 - `docs/comment2_revision.txt`: external comparisons, fitting evidence and portable replay
 - `Figures/manuscript/`: the exact figure files used by the manuscript
 - `Figures/forecast_context_by_cutoff/`: cutoff-wide copies of the forecast-context view for all five cutoffs
 - `Figures/multivariate_synthesis_by_cutoff/`: cutoff-wide selected-model synthesis family, including the supplementary overlay panels
 - `Figures/reference_synthesis_by_cutoff/`: univariate reference-synthesis family for all five cutoffs
-- `tables/generated_tex/`: the exact generated table blocks included by the manuscript
+- `tables/compact_publication/`: compact main and supporting tables from saved summaries
+- `tables/editorial_revision/`: retained presentation sources, including the active supporting coefficient table
+- `tables/generated_tex/`: retained original numerical tables and source-replay evidence
 - `docs/figure_table_provenance.md`: figure/table provenance summary
 - `artifacts/software_availability/software_availability_manifest.json`: compact HE-5 software availability and archive-status manifest
 - `docs/software_availability_contract.md`: manuscript-side software reproducibility contract
@@ -38,7 +43,20 @@ validators pass.
 
 ## Standard refresh command
 
-For the additive saved-output revision, use the dedicated commands:
+For the current compact reading package, use only:
+
+```bash
+python3 -B scripts/compact_publication.py --check
+python3 -B scripts/publication_package.py --check
+```
+
+To regenerate compact displays after an intentional presentation change, run
+`python3 -B scripts/compact_publication.py`, then both checks. This reads committed
+summaries, preserves all original evidence, and starts no model fits or forecasts.
+The active inventory describes what readers receive; the older
+`MANUSCRIPT_ASSET_MANIFEST.json` retains the original scientific lineage.
+
+For the earlier additive saved-output revision, the retained commands are:
 
 ```bash
 python3 -B scripts/no_refit_revision.py --check
@@ -70,12 +88,25 @@ assets, or local audit reports are intentionally being rebuilt too.
 ## Overleaf sync recovery
 
 Overleaf can create `overleaf-*` branches that delete generated publication
-assets under `figures/`, `Figures/`, `artifacts/`, or `tables/generated_tex/`.
+assets under `figures/`, `Figures/`, `artifacts/`, `tables/generated_tex/`,
+`tables/editorial_revision/` or `tables/compact_publication/`.
 Those deletion-only branches are not manuscript edits and should not be accepted
 into `main`.
 
 When Overleaf reports that GitHub and Overleaf could not automatically merge,
-first audit the branch from this repo:
+first audit the branch from this repo. Install the local ancestry guard once:
+
+```bash
+python3 -B scripts/install_overleaf_guard.py
+```
+
+Its dispatcher lives in Git metadata outside the Overleaf-synchronized tree,
+preserves existing hooks, and continues to work if an Overleaf merge changes the
+tracked hook's executable permission. Before every main publication, also invoke
+`python3 -B scripts/check_overleaf_sync.py` explicitly. The check queries live
+Overleaf branches; it never discards or automatically merges their edits.
+
+Audit a reported branch:
 
 ```bash
 python3 scripts/merge_overleaf_branch_preserving_generated_assets.py --fetch origin/overleaf-YYYY-MM-DD-HHMM
@@ -99,6 +130,19 @@ deliberately regenerating them.
 python3 -B scripts/build_manuscript_review.py \
   --output-dir /tmp/NEW_article_review --jobname manuscript_review
 ```
+
+Build supporting information independently, or validate/build the full package:
+
+```bash
+python3 -B scripts/build_manuscript_review.py \
+  --entry supporting_information.tex \
+  --output-dir /tmp/NEW_si_review --jobname supporting_information
+python3 -B scripts/publication_package.py --build-dir /tmp/NEW_package_review
+```
+
+In Overleaf, keep `wileyNJD-APA.tex` as the default main document. Select
+`supporting_information.tex` to compile and download the supplement separately;
+neither document needs the other's auxiliary files.
 
 Choose a new output directory for each build. The helper records source, table
 and included-image hashes, LaTeX/BibTeX commands, label stability and PDF checks.
