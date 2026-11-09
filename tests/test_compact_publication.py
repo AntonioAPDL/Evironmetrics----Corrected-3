@@ -7,6 +7,7 @@ import hashlib
 import importlib.util
 import json
 from pathlib import Path
+import re
 import shutil
 import tempfile
 import unittest
@@ -39,6 +40,14 @@ class CompactPublicationTests(unittest.TestCase):
             writer = csv.DictWriter(stream, fieldnames=rows[0].keys(), lineterminator="\n")
             writer.writeheader()
             writer.writerows(rows)
+
+    def table_cells(self, text, method, horizon=None, origin=None):
+        if horizon is not None:
+            text = text.split(f"% horizon_days={horizon}\n", 1)[1].split("% horizon_days=", 1)[0]
+        if origin is not None:
+            text = text.split(f"% Origin {origin}\n", 1)[1].split("% Origin ", 1)[0]
+        line = next(line for line in text.splitlines() if line.startswith(method + " & "))
+        return [cell.strip().removesuffix(r"\\").strip() for cell in line.split("&")[1:]]
 
     def test_production_outputs_reproduce_without_writes(self):
         paths = [ARTICLE / rel for rel in self.manifest["outputs"]]
@@ -109,6 +118,132 @@ class CompactPublicationTests(unittest.TestCase):
         self.assertNotIn("plot_contract", manifest)
         self.assertEqual(manifest["predictive_figure_owner"]["manifest"],
                          "artifacts/predictive_synthesis_figures/manifest.json")
+
+    def test_shared_extrema_handle_directions_ties_precision_and_unavailable_values(self):
+        values = [None, "", "NA", "NaN", "-0.20000000000000000002",
+                  "-0.20000000000000000001", "-0.200000000000000000010"]
+        low = compact.best_value(values)
+        high = compact.best_value(values, "max")
+        self.assertEqual(low, Decimal("-0.20000000000000000002"))
+        self.assertEqual(high, Decimal("-0.20000000000000000001"))
+        self.assertEqual(compact.best_cell(values[4], high), "-0.20000")
+        for value in values[5:]:
+            self.assertEqual(compact.best_cell(value, high), r"\textbf{-0.20000}")
+        for value in values[:4]:
+            self.assertEqual(compact.best_cell(value, high), "---")
+        self.assertIsNone(compact.best_value(values[:4]))
+        with self.assertRaisesRegex(ValueError, "Unknown score direction"):
+            compact.best_value([1], "closest")
+        with self.assertRaisesRegex(ValueError, "Nonfinite extremum"):
+            compact.best_value(["Infinity"])
+
+    def test_origin_highlights_are_separate_for_each_origin_and_horizon(self):
+        data = compact.load(self.root)
+        origin = compact.ORIGINS[0]
+        first, second = compact.METHODS[:2]
+        for (o, m, h), entry in data["origins"].items():
+            if o == origin:
+                entry["mean_crps"] = "5"
+        data["origins"][origin, first, 28]["mean_crps"] = "0.10000000000000000001"
+        data["origins"][origin, second, 28]["mean_crps"] = "0.10000000000000000002"
+        data["origins"][origin, "RAW-NWS", 8]["mean_crps"] = "0.2"
+        text = compact.render_tables(data)[compact.TABLE_DIR + "/si_origin_crps.tex"].decode()
+        self.assertEqual(self.table_cells(text, first, 28)[0], r"\textbf{0.10000}")
+        self.assertEqual(self.table_cells(text, second, 28)[0], "0.10000")
+        self.assertEqual(self.table_cells(text, "NWS", 8)[0], r"\textbf{0.20000}")
+        self.assertEqual(self.table_cells(text, first, 8)[0], "5.00000")
+        self.assertNotIn("NWS &", text.split("% horizon_days=28\n")[1].split("% horizon_days=8\n")[0])
+
+    def test_component_highlights_include_raw_references(self):
+        data = compact.load(self.root)
+        origin = compact.ORIGINS[0]
+        for (o, m, h), entry in data["components"].items():
+            if o == origin:
+                entry["mean_crps"] = "3"
+        data["components"][origin, "RAW-GLOFAS", 28]["mean_crps"] = "1"
+        data["components"][origin, "RAW-NWS", 8]["mean_crps"] = "0.5"
+        text = compact.render_tables(data)[compact.TABLE_DIR + "/si_component_comparison.tex"].decode()
+        self.assertEqual(self.table_cells(text, "GloFAS", 28)[0], r"\textbf{1.00000}")
+        self.assertEqual(self.table_cells(text, "exAL-M-T1 (full)", 28)[0], "3.00000")
+        self.assertEqual(self.table_cells(text, "NWS", 8)[0], r"\textbf{0.50000}")
+
+    def test_quantile_highlights_respect_probability_and_origin_groups(self):
+        data = compact.load(self.root)
+        first, second = compact.ORIGINS[:2]
+        for origin in (first, second):
+            for method in compact.QUANTILE_METHODS:
+                for probability in compact.TAUS:
+                    data["origin_losses"][origin, method, probability] = "5"
+        data["origin_losses"][first, "AL-M-T1", .05] = "0.123451"
+        data["origin_losses"][first, "exAL-M-T1", .05] = "0.123452"
+        data["origin_losses"][first, "AL-U-T1", .20] = "0.3"
+        data["origin_losses"][second, "exAL-M-T1", .05] = "0.01"
+        text = compact.render_tables(data)[compact.TABLE_DIR + "/si_quantile_loss.tex"].decode()
+        self.assertEqual(self.table_cells(text, "AL-M-T1", origin="01/23/2021")[0], r"\textbf{0.12345}")
+        self.assertEqual(self.table_cells(text, "exAL-M-T1", origin="01/23/2021")[0], "0.12345")
+        self.assertEqual(self.table_cells(text, "AL-U-T1", origin="01/23/2021")[1], r"\textbf{0.30000}")
+        self.assertEqual(self.table_cells(text, "exAL-M-T1", origin="11/12/2021")[0], r"\textbf{0.01000}")
+
+    def test_exact_score_columns_use_different_directions_and_exclude_inapplicable_adjustments(self):
+        data = compact.load(self.root)
+        for (scale, _, _), entry in data["scores"].items():
+            if scale == "log1p_cms":
+                entry.update(mean_exact_ecdf_crps="10", ecdf_crpss="-10", mean_iid_adjusted_crps="")
+        data["scores"]["log1p_cms", "exAL-M-T1", 28].update(
+            mean_exact_ecdf_crps="0.2", ecdf_crpss="-1", mean_iid_adjusted_crps="0.1")
+        data["scores"]["log1p_cms", "RAW-GLOFAS", 28].update(
+            mean_exact_ecdf_crps="0.3", ecdf_crpss="-2", mean_iid_adjusted_crps="0.05")
+        data["scores"]["log1p_cms", "RAW-NWS", 8].update(
+            mean_exact_ecdf_crps="0.01", ecdf_crpss="-0.1", mean_iid_adjusted_crps="0.009")
+        text = compact.render_tables(data)[compact.TABLE_DIR + "/si_exact_score_sensitivity.tex"].decode()
+        self.assertEqual(self.table_cells(text, "exAL-M-T1", 28),
+                         [r"\textbf{0.20000}", r"\textbf{-1.00000}", "0.10000"])
+        self.assertEqual(self.table_cells(text, "GloFAS", 28),
+                         ["0.30000", "-2.00000", r"\textbf{0.05000}"])
+        self.assertEqual(self.table_cells(text, "NWS", 8),
+                         [r"\textbf{0.01000}", r"\textbf{-0.10000}", r"\textbf{0.00900}"])
+        self.assertEqual(self.table_cells(text, "Persistence", 28)[2], "---")
+
+    def test_calibration_bolds_only_interval_scores(self):
+        text = compact.render_tables(compact.load(self.root))[compact.TABLE_DIR + "/main_calibration.tex"].decode()
+        cells = self.table_cells(text, "AL-M-T1")
+        self.assertEqual(cells[2], r"\textbf{2.44957}")
+        self.assertEqual(cells[5], r"\textbf{2.81501}")
+        self.assertEqual(text.count(r"\textbf{"), 2)
+        self.assertFalse(any(r"\textbf{" in cells[index] for index in (0, 1, 3, 4)))
+
+    def test_discharge_highlights_use_each_horizons_actual_best_reference(self):
+        text = compact.render_tables(compact.load(self.root))[compact.TABLE_DIR + "/si_discharge_score.tex"].decode()
+        reference = self.table_cells(text, "exAL-M-T1")
+        nws = self.table_cells(text, "NWS")
+        self.assertTrue(all(cell.startswith(r"\textbf{") for cell in reference[:2]))
+        self.assertFalse(any(cell.startswith(r"\textbf{") for cell in reference[2:]))
+        self.assertEqual(nws[:2], ["---", "---"])
+        self.assertTrue(all(cell.startswith(r"\textbf{") for cell in nws[2:]))
+
+    def test_archived_fitting_table_is_not_written_or_owned(self):
+        relative = compact.TABLE_DIR + "/si_fitting_status.tex"
+        archive = self.root / relative
+        archive.parent.mkdir(parents=True)
+        archive.write_bytes((ARTICLE / relative).read_bytes())
+        before = archive.read_bytes()
+        outputs = compact.generate(self.root)
+        manifest = json.loads(outputs[compact.ARTIFACT_DIR + "/manifest.json"])
+        self.assertNotIn(relative, outputs)
+        self.assertNotIn(relative, manifest["outputs"])
+        compact.run(self.root)
+        self.assertEqual(archive.read_bytes(), before)
+        self.assertEqual((self.root / compact.ARTIFACT_DIR / "scientific_records.json").read_bytes(),
+                         (ARTICLE / compact.ARTIFACT_DIR / "scientific_records.json").read_bytes())
+
+    def test_archived_fit_group_validation_remains_active_without_its_table(self):
+        def swap_statuses(rows):
+            normal = next(r for r in rows if r["label"] == "N-U-T1" and r["stopping_status"] == "converged")
+            univariate = next(r for r in rows if r["label"] == "AL-U-T1" and r["stopping_status"] == "unknown")
+            normal["stopping_status"], univariate["stopping_status"] = "unknown", "converged"
+        self.mutate("fits", swap_statuses)
+        with self.assertRaisesRegex(ValueError, "Fitting group classifications changed"):
+            compact.load(self.root)
 
     def test_rejects_duplicate_method_horizon_even_with_unchanged_row_values(self):
         self.mutate("aggregate", lambda rows: rows.append(rows[0].copy()))
@@ -195,7 +330,7 @@ class CompactPublicationTests(unittest.TestCase):
             prefix = method + " & "
             old_row = next(line for line in old.splitlines() if line.startswith(prefix))
             new_row = next(line for line in new.splitlines() if line.startswith(prefix))
-            self.assertEqual(old_row, new_row)
+            self.assertEqual(old_row, re.sub(r"\\textbf\{([^{}]*)\}", r"\1", new_row))
         self.assertIn(r"Appendix~\ref{app:numericalprediction}", new)
 
 

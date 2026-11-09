@@ -19,7 +19,7 @@ AL-M-T0 & 0.53804 & 0.16189 & 0.53788 \\
 AL-M-T1 & 0.23218 & 0.63833 & 0.23206 \\
 exAL-U-T1 & 0.59626 & 0.07120 & 0.59621 \\
 exAL-M-T0 & 1.13635 & -0.77011 & 1.13511 \\
-exAL-M-T1 & 0.20156 & 0.68602 & 0.20149 \\
+exAL-M-T1 & \textbf{0.20156} & \textbf{0.68602} & \textbf{0.20149} \\
 GloFAS & 0.61456 & 0.04269 & 0.61139 \\
 Seasonal climatology & 0.64197 & 0.00000 & --- \\
 Persistence & 0.91061 & -0.41847 & --- \\
@@ -35,7 +35,7 @@ AL-M-T0 & 0.61352 & 0.15854 & 0.61336 \\
 AL-M-T1 & 0.30932 & 0.57576 & 0.30920 \\
 exAL-U-T1 & 0.35138 & 0.51807 & 0.35132 \\
 exAL-M-T0 & 1.13298 & -0.55391 & 1.13174 \\
-exAL-M-T1 & 0.29919 & 0.58965 & 0.29912 \\
+exAL-M-T1 & \textbf{0.29919} & \textbf{0.58965} & \textbf{0.29912} \\
 GloFAS & 0.77322 & -0.06048 & 0.77134 \\
 NWS & 0.65025 & 0.10817 & 0.63086 \\
 Seasonal climatology & 0.72911 & 0.00000 & --- \\
@@ -44,7 +44,7 @@ GloFAS EMOS & 0.44438 & 0.39053 & --- \\
 \hline
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item \textit{Note:} Scores use $\log(1+x)$ discharge, with $x$ in m$^3$/s. Exact CRPS gives equal weight to each predictive sample or grid value; CRPSS uses the matching exact climatology score. Means pool 140 or 40 cases. Adjusted CRPS applies the pairwise correction for independent, identically distributed predictive draws. Independence of physical ensemble members is a sensitivity assumption. Counts are 2,000 for AL/exAL, 64 for N-U-T1, 48 for N-M-T0/T1, 51 for GloFAS and seven for NWS. The adjustment is inapplicable to deterministic climatology and EMOS grids and to persistence; dashes denote this inapplicability. Adjusted skill is not reported. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods; U and M denote one and multiple observation sources. T1 retains the transfer contribution at forecast leads and T0 omits it.
+\item \textit{Note:} Scores use $\log(1+x)$ discharge, with $x$ in m$^3$/s. Exact CRPS gives equal weight to each predictive sample or grid value; CRPSS uses the matching exact climatology score. Bold marks the lowest score or highest CRPSS in each horizon among applicable entries. Means pool 140 or 40 cases. Adjusted CRPS applies the pairwise correction for independent, identically distributed predictive draws. Independence of physical ensemble members is a sensitivity assumption. Counts are 2,000 for AL/exAL, 64 for N-U-T1, 48 for N-M-T0/T1, 51 for GloFAS and seven for NWS. The adjustment is inapplicable to deterministic climatology and EMOS grids and to persistence; dashes denote this inapplicability. Adjusted skill is not reported. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods; U and M denote one and multiple observation sources. T1 retains the transfer contribution at forecast leads and T0 omits it.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

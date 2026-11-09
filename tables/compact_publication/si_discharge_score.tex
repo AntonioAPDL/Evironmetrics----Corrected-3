@@ -17,16 +17,16 @@ AL-M-T0 & 10.13001 & 0.01611 & 10.42987 & 0.00929 \\
 AL-M-T1 & 6.34032 & 0.38419 & 7.37167 & 0.29978 \\
 exAL-U-T1 & 10.27183 & 0.00234 & 7.92688 & 0.24704 \\
 exAL-M-T0 & 12307.63341 & -1194.39488 & 5460.23472 & -517.65541 \\
-exAL-M-T1 & 6.26885 & 0.39113 & 7.49362 & 0.28820 \\
+exAL-M-T1 & \textbf{6.26885} & \textbf{0.39113} & 7.49362 & 0.28820 \\
 GloFAS & 10.67159 & -0.03649 & 11.31853 & -0.07512 \\
-NWS & --- & --- & 6.63303 & 0.36994 \\
+NWS & --- & --- & \textbf{6.63303} & \textbf{0.36994} \\
 Seasonal climatology & 10.29587 & 0.00000 & 10.52767 & 0.00000 \\
 Persistence & 11.98266 & -0.16383 & 12.37425 & -0.17540 \\
 GloFAS EMOS & 9.59933 & 0.06765 & 9.03252 & 0.14202 \\
 \hline
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item \textit{Note:} Each predictive value is transformed by $\exp(y)-1$ before scoring; transformed-scale scores are not exponentiated. CRPS is in m$^3$/s and CRPSS is dimensionless. The empirical distribution weights each sample or grid value equally. Skill uses matching seasonal-climatology scores. Means pool 140 or 40 daily cases; NWS has eight leads. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods; U and M denote one and multiple observation sources. T1 retains the transfer contribution at forecast leads and T0 omits it.
+\item \textit{Note:} Each predictive value is transformed by $\exp(y)-1$ before scoring; transformed-scale scores are not exponentiated. CRPS is in m$^3$/s and CRPSS is dimensionless. Bold marks the lowest CRPS or highest CRPSS for each horizon. The empirical distribution weights each sample or grid value equally. Skill uses matching seasonal-climatology scores. Means pool 140 or 40 daily cases; NWS has eight leads. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods; U and M denote one and multiple observation sources. T1 retains the transfer contribution at forecast leads and T0 omits it.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

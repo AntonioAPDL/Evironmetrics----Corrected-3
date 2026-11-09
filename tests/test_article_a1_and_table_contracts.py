@@ -466,7 +466,8 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
             self.assertTrue(has_label(appendix, label), label)
             self.assertEqual(submitted_asset_path(ROOT, label, 'main', 'appendix').name, filename)
         package = read_package(ROOT)
-        retained = package['additional_retained_evidence']
+        retained = [item for item in package['additional_retained_evidence']
+                    if item['path'].startswith('Figures/multivariate_synthesis_by_cutoff/')]
         expected = {'2021_01_23', '2021_11_12', '2021_12_21', '2022_05_11'}
         actual = {re.search(r'cutoff_(\d{4}_\d{2}_\d{2})', item['path']).group(1)
                   for item in retained}
@@ -476,6 +477,24 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         # The representative main illustration still contains original-source
         # context; the additional origins are represented by the appendix composites.
         self.assertTrue(submitted_asset_path(ROOT, 'fig:synth1', 'main').is_file())
+
+    def test_retired_classification_table_is_archive_only_and_calibration_is_submitted(self) -> None:
+        package = read_package(ROOT)
+        self.assertFalse(any(item['label'] == 'tab:fitting_status'
+                             for item in package['submitted_assets']))
+        archived_paths = {'tables/compact_publication/si_fitting_status.tex',
+                          'tables/editorial_revision/comment2_fit_diagnostic_table.tex'}
+        retained = package['retained_evidence'] + package['additional_retained_evidence']
+        archives = {item['path']: item for item in retained if item['path'] in archived_paths}
+        self.assertEqual(set(archives), archived_paths)
+        for relative, item in archives.items():
+            self.assertEqual(item['disposition'], 'repository')
+            self.assertFalse(item.get('publication_assets'))
+            self.assertTrue((ROOT / relative).is_file())
+        with self.assertRaises(ValueError):
+            submitted_asset_path(ROOT, 'tab:fitting_status')
+        self.assertEqual(submitted_asset_path(ROOT, 'tab:no_refit_calibration', 'main', 'main').name,
+                         'main_calibration.tex')
 
     def test_selected_model_quantile_figures_use_current_rating_references(self) -> None:
         renderer = (ROOT / "scripts" / "render_authoritative_selected_model_support_figures.R").read_text(encoding="utf-8")

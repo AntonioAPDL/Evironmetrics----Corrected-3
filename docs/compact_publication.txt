@@ -7,7 +7,7 @@ and build through scripts/publication_package.py --build-dir FRESH_DIRECTORY.
 The complete article is one PDF; no separate supplement is submitted.
 
 Appendix A describes data sources and historical inputs. Appendix B reports
-origin-specific scores, component comparisons, fitting evidence, quantile losses,
+origin-specific scores, component comparisons, quantile losses,
 score/scale sensitivity, calibration and coefficient summaries. Appendix C gives
 state-space construction and computational details. Appendix D contains the two
 variational Bayes algorithms. All references are ordinary local LaTeX labels;
@@ -24,15 +24,18 @@ the sole owner of Figures 2, B1 and B2. It reads unchanged saved summaries and
 sample values plus the portable source-product bundle. Both --check commands
 are read-only and use temporary space for any rendering. The calibration note now links to
 the appendix's numerical quantile conventions. Its numerical cells are unchanged.
-All eleven tables, seven figures and both retained algorithms remain submitted.
+Ten tables, seven figures and both retained algorithms remain submitted. The
+former Appendix B3 classification table and underlying ledgers are retained as
+repository-only evidence; the active generator no longer emits that display.
 
 The compact article keeps six scientific main sections and the model equations,
 with detailed evidence and computation in appendices. Optional displays omitted
 in the preceding editorial revision remain in Git. Historical numerical replay
 and the 15-file/1496-number presentation proof remain intact.
 
-The current workflow record is docs/article_foundation_revision_20261109/ in
-AntonioAPDL/Project1; see docs/foundation_revision.txt and its release JSON. The
+The current workflow record is docs/article_presentation_revision_20261109/ in
+AntonioAPDL/Project1; see docs/presentation_revision.txt and its release JSON.
+The foundation revision remains a historical record. The
 preceding docs/article_appendix_integration_20261109/ record remains historical. The previous docs/article_compact_revision_20261109/ record
 is historical; its two-document arrangement was superseded by the author's
 preference for integrated appendices.

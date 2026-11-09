@@ -33,19 +33,12 @@ Table~\ref{tab:crps_all_origins} gives mean continuous ranked probability scores
 
 \input{tables/compact_publication/si_origin_crps.tex}
 
-\subsection{Component-Removal Comparisons and Fitting Evidence}
+\subsection{Component-Removal Comparisons}
 \label{app:he3ablation}
-\label{app:fitdiagnostics}
 
-The reductions retain reference settings while removing one structural component. The labels \texttt{noTrend}, \texttt{noH1}, \texttt{noH2} and \texttt{noH3} remove the shared and source-discrepancy local level or corresponding seasonal pair. The third pair has period 2474.87 days (Subsection~\ref{app:seasonalconstruction}). The \texttt{noTF} model removes transfer in both fitting and forecasting, unlike T0. Table~\ref{tab:component_comparison} documents sensitivity under inherited settings, without separately optimizing the reduced models.
+The reductions retain reference settings while removing one structural component. The labels \texttt{noTrend}, \texttt{noH1}, \texttt{noH2} and \texttt{noH3} remove the shared and source-discrepancy local level or corresponding seasonal pair. The third pair has period 2474.87 days (Subsection~\ref{app:seasonalconstruction}). The \texttt{noTF} model removes transfer in both fitting and forecasting, unlike T0. Table~\ref{tab:component_comparison} gives the comparisons over both horizons and all five origins.
 
 \input{tables/compact_publication/si_component_comparison.tex}
-
-The assessment in Table~\ref{tab:fitting_status} covers 70 runs and 400 fits. It uses joint stopping criteria, iteration limits, actual parameter updates and simulation outcomes, rather than termination alone. Sixteen fits satisfy their recorded criteria: 15 Gaussian fits and the January 2021 median \texttt{noH1} fit. The other 314 multivariate quantile fits reach their iteration limits, including all 35 reference fits and 174/175 reduced fits. Three AL-M-T0 fits end with some updates held fixed; zero terminal changes for such parameters do not establish convergence. The 70 univariate AL/exAL fits lack explicit joint-criterion evidence and are unknown, rather than classified as failures.
-
-\input{tables/compact_publication/si_fitting_status.tex}
-
-These categories do not distinguish good and poor forecasts automatically: Gaussian convergence coexists with some poor scores, and both the reference and reductions are iteration-limited. Finite predictions alone establish neither convergence nor posterior accuracy. Consequently, component-removal differences describe the reported fitted configurations and do not resolve the performance of independently retuned reductions.
 
 \subsection{Quantile Loss and Distributional Diagnostics}
 \label{app:distributionchecks}

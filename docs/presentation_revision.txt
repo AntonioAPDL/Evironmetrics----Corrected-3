@@ -1,0 +1,61 @@
+PRESENTATION, UNCERTAINTY AND COMPARISON TABLE REVISION
+
+This release implements the author-approved plan against article main
+30b2c5690521e1e89ea185ee8df2e83a6ef27282. It sharpens the three methodological
+contributions, clarifies computational feasibility and the interpretation of
+uncertainty, completes score highlighting, and removes the former Appendix B3
+classification display from the submitted article. Main Table 3 remains.
+
+The anticipated several-week full-data MCMC computation is an author-provided
+estimate, clarified in the conversation on 2026-11-08 America/Los_Angeles. It is
+not development time, an observed MCMC benchmark or a demonstrated speed ratio.
+The approximately two-hour combined VB fitting/forecasting statement retains
+its documented Appendix C.1 hardware, parallelization and preparation conditions.
+The article explicitly states that a corresponding full-model MCMC posterior
+comparison has not been performed. This release starts no such calculation.
+
+Parameter credible intervals concern unknown model quantities; predictive intervals
+concern future observations with additional state/observation variation and the
+specified synthesis. Good predictive coverage cannot establish parameter-posterior
+accuracy. A prospective controlled study would assess matching-target VB/MCMC
+posterior differences, prediction differences after identical synthesis, and
+coverage across independent simulated datasets separately. Finite simulations
+would quantify errors under studied conditions; no general equivalence guarantee
+or current simulation result is claimed. The detailed future protocol is recorded
+in the companion workflow plan, not added as a separate supplement.
+
+COMPARISON DISPLAYS
+
+The active compact generator no longer emits si_fitting_status.tex. Its frozen
+physical file and original ledgers remain unchanged, explicitly marked as
+repository-only evidence. The former original diagnostics table likewise has a
+repository-only disposition. There are three main tables and seven appendix
+tables; LaTeX renumbers the remaining former B4--B8 as B3--B7.
+
+Score emphasis compares unrounded values within each documented group, excludes
+unavailable cells and includes genuine ties. Lower loss/CRPS/interval score is
+better; higher CRPSS is better. Table 3 highlights interval scores only. Coverage,
+width and coefficient magnitude alone do not define winners. Bold is descriptive
+of observed comparisons and does not assert statistical significance.
+
+GENERATION AND REVIEW
+
+python3 -B scripts/compact_publication.py --check
+python3 -B scripts/predictive_synthesis_figures.py --check
+python3 -B scripts/publication_package.py --check
+python3 -B scripts/publication_package.py --build-dir /tmp/NEW_article_package
+
+The compact generator owns current tables and scientific_records.json only;
+figure output ownership remains with the dedicated predictive generator. No
+figures, scientific data, scores or model results are substituted. Both checks
+are read-only. For an intentional table regeneration, run compact_publication.py
+without --check, then repeat the checks above. Archived classification data
+remain numerically validated without being included in the article.
+
+The only document root is wileyNJD-APA.tex, with integrated Appendices A--D and
+one bibliography. PUBLICATION_PACKAGE.json inventories ten submitted tables and
+seven figures. The two algorithms remain. docs/presentation_revision_release.json
+records the current proof/source hashes and checks. The current workflow record
+is AntonioAPDL/Project1:docs/article_presentation_revision_20261109/. Historical
+release records are retained unchanged. Original Corrected-2 and the other
+protected repositories are not modified.

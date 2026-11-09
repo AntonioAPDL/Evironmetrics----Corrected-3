@@ -9,8 +9,9 @@ This repository is the submission-facing freeze of the revised manuscript, its m
 - `wileyNJD-APA.pdf`: locally reviewed complete article PDF (not versioned)
 - `PUBLICATION_PACKAGE.json`: authoritative inventory of the article, its main/appendix scopes and submitted assets
 - `docs/compact_publication.txt`: editorial dispositions, bounded regeneration and validation
-- `docs/foundation_revision.txt`: current author corrections and bounded regeneration
-- `docs/foundation_revision_release.json`: current source and proof record
+- `docs/presentation_revision.txt`: current presentation, uncertainty and table revisions
+- `docs/presentation_revision_release.json`: current source and proof record
+- `docs/foundation_revision_release.json`: historical foundation-revision proof record
 - `docs/appendix_integration_release.json`: historical integrated-appendix release record
 - `docs/comment1_revision.txt`: implemented comment-1 changes and review/build entrypoints
 - `docs/comment2_revision.txt`: external comparisons, fitting evidence and portable replay

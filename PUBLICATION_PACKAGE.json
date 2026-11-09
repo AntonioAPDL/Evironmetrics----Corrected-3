@@ -64,17 +64,6 @@
       "scope": "appendix"
     },
     {
-      "id": "si_fitting_status",
-      "document": "main",
-      "kind": "table",
-      "label": "tab:fitting_status",
-      "path": "tables/compact_publication/si_fitting_status.tex",
-      "sources": [
-        "artifacts/comment2_revision/component_diagnostics/fit_ledger.csv"
-      ],
-      "scope": "appendix"
-    },
-    {
       "id": "si_quantile_loss",
       "document": "main",
       "kind": "table",
@@ -323,10 +312,7 @@
     {
       "id": "table:tab:comment2_fit_diagnostics",
       "path": "tables/editorial_revision/comment2_fit_diagnostic_table.tex",
-      "disposition": "merged",
-      "publication_assets": [
-        "si_fitting_status"
-      ]
+      "disposition": "repository"
     },
     {
       "id": "table:tab:no_refit_scores",
@@ -469,6 +455,12 @@
       "publication_assets": [
         "si_forecasts_2021_2022"
       ]
+    },
+    {
+      "id": "table:archived_compact_fitting_status",
+      "path": "tables/compact_publication/si_fitting_status.tex",
+      "disposition": "repository",
+      "note": "Retained historical table; excluded from the submitted article."
     }
   ],
   "presentation_contract": "artifacts/compact_publication/manifest.json"

@@ -96,6 +96,29 @@ def model_horizon_keys():
     return {(m, h) for m in METHODS for h in (28, 8) if (m, h) != ("RAW-NWS", 28)}
 
 
+def validate_fit_groups(fits, runs):
+    """Retain the complete archived fit/run classification checks."""
+    groups = [
+        set(METHODS[:3]),
+        {"AL-U-T1", "exAL-U-T1"},
+        {"AL-M-T0", "AL-M-T1", "exAL-M-T0", "exAL-M-T1"},
+        {"exAL-M-T1-noH1"},
+        {"exAL-M-T1-noTrend", "exAL-M-noTF", "exAL-M-T1-noH2", "exAL-M-T1-noH3"},
+    ]
+    counts = []
+    for members in groups:
+        selected = [r for r in fits.values() if r["label"] in members]
+        n = sum(r["label"] in members for r in runs.values())
+        statuses = Counter(r["stopping_status"] for r in selected)
+        counts.append((n, len(selected), statuses["converged"],
+                       statuses["budget_limited"], statuses["unknown"]))
+    require(tuple(sum(x[i] for x in counts) for i in range(5)) == (70, 400, 16, 314, 70),
+            "Fitting groups must cover every fit exactly once")
+    require(counts == [(15, 15, 15, 0, 0), (10, 70, 0, 0, 70), (20, 140, 0, 140, 0),
+                       (5, 35, 1, 34, 0), (20, 140, 0, 140, 0)],
+            "Fitting group classifications changed")
+
+
 def load(root: Path):
     """Load and validate every required scientific key before rendering outputs."""
     raw = {name: (root / rel).read_bytes() for name, rel in INPUTS.items()}
@@ -175,6 +198,7 @@ def load(root: Path):
     require(all(r["stopping_status"] == "budget_limited" for r in fits.values() if r["label"] == "exAL-M-T1"), "Full-reference stopping evidence changed")
     exceptions = [r for r in fits.values() if r["study"] == "component_removal" and r["stopping_status"] == "converged"]
     require(len(exceptions) == 1 and exceptions[0]["label"] == "exAL-M-T1-noH1" and iso(exceptions[0]["cutoff"]) == ORIGINS[0] and number(exceptions[0]["quantile"]) == 50, "Unexpected converged reduction")
+    validate_fit_groups(fits, runs)
     forecasts = {}
     for o in ORIGINS:
         rows = data["forecast_"+o]
@@ -211,8 +235,24 @@ def display(model):
     return DISPLAY.get(model, model)
 
 
+def decimal_value(value):
+    """Preserve full numerical precision and distinguish unavailable entries."""
+    if value is None or str(value).strip() in ("", "NA", "NaN", "nan"):
+        return None
+    parsed = Decimal(str(value))
+    require(parsed.is_finite(), f"Nonfinite extremum input: {value!r}")
+    return parsed
+
+
+def best_value(values, direction="min"):
+    """Return an exact extremum among applicable cells in one comparison group."""
+    require(direction in ("min", "max"), f"Unknown score direction: {direction}")
+    available = [parsed for value in values if (parsed := decimal_value(value)) is not None]
+    return (min if direction == "min" else max)(available) if available else None
+
+
 def fmt(value, bold=False):
-    if value is None or value == "":
+    if decimal_value(value) is None:
         return "---"
     v = float(value)
     if v != 0 and abs(v) >= 1e7:
@@ -221,6 +261,11 @@ def fmt(value, bold=False):
     else:
         s = f"{v:.5f}"
     return rf"\textbf{{{s}}}" if bold else s
+
+
+def best_cell(value, best):
+    parsed = decimal_value(value)
+    return fmt(value, parsed is not None and parsed == best)
 
 
 def table(caption, label, columns, body, note):
@@ -251,10 +296,9 @@ def aggregate_extrema(aggregate):
     """
     result = {}
     for horizon in (28, 8):
-        for field, select in (("mean_crps", min), ("crpss", max)):
-            values = [Decimal(r[field]) for (_, h), r in aggregate.items()
-                      if h == horizon and r.get(field) not in (None, "")]
-            result[horizon, field] = select(values) if values else None
+        for field, direction in (("mean_crps", "min"), ("crpss", "max")):
+            result[horizon, field] = best_value(
+                (r.get(field) for (_, h), r in aggregate.items() if h == horizon), direction)
     return result
 
 
@@ -266,100 +310,95 @@ def render_tables(data):
         cells = [display(m)]
         for h in (28, 8):
             r = data["aggregate"].get((m, h))
-            cells.extend(fmt(r[k], r[k] not in (None, "") and
-                             Decimal(r[k]) == best[h, k]) if r else "---"
+            cells.extend(best_cell(r[k], best[h, k]) if r else "---"
                          for k in ("mean_crps", "crpss"))
         body += row(*cells)
     result["main_aggregate.tex"] = table("Mean forecast CRPS and skill relative to seasonal climatology across five origins.", "tab:external_benchmarks", "lrrrr", body,
         SCALE_NOTE + " CRPS denotes the continuous ranked probability score; lower values are better. CRPSS is one minus the ratio of pooled mean CRPS to the matching climatology mean; higher values are better. Bold indicates the lowest CRPS or highest CRPSS in each column. Means use 140 daily cases at leads 1--28 and 40 at leads 1--8. NWS has eight daily leads. Scores use quantile-grid integration. " + MODEL_NOTE)
     body = row("Method", *(f"${t:.2f}$" for t in TAUS)) + "\\hline\n"
+    best = {t: best_value(data["pooled_losses"][m, t] for m in QUANTILE_METHODS) for t in TAUS}
     for m in QUANTILE_METHODS:
-        body += row(m, *(fmt(data["pooled_losses"][m, t], data["pooled_losses"][m, t] == min(data["pooled_losses"][n, t] for n in QUANTILE_METHODS)) for t in TAUS))
+        body += row(m, *(best_cell(data["pooled_losses"][m, t], best[t]) for t in TAUS))
     result["main_quantile_loss.tex"] = table("Mean daily quantile check loss pooled over five 28-day forecast windows.", "tab:quantile_check_loss_pooled", "lrrrrrrr", body,
         "Columns are target probabilities; each entry averages 140 archived daily losses. Lower values are better; bold marks the minimum in each column. " + SCALE_NOTE + " " + MODEL_NOTE)
     body = row("Method", r"\multicolumn{3}{c}{28 days}", r"\multicolumn{3}{c}{8 days}")
     body += row("", "Covered", "Width", "Interval score", "Covered", "Width", "Interval score") + "\\hline\n"
-    for m in ("exAL-M-T1", "AL-M-T1", "exAL-U-T1", "AL-U-T1", "RAW-GLOFAS", "RAW-NWS", "CLIM-SEASONAL", "PERSISTENCE", "EMOS-GLOFAS"):
+    calibration_methods = ("exAL-M-T1", "AL-M-T1", "exAL-U-T1", "AL-U-T1", "RAW-GLOFAS", "RAW-NWS", "CLIM-SEASONAL", "PERSISTENCE", "EMOS-GLOFAS")
+    best = {h: best_value(data["intervals"]["log1p_cms", "POOL", m, h]["mean_interval_score"]
+                          for m in calibration_methods if ("log1p_cms", "POOL", m, h) in data["intervals"])
+            for h in (28, 8)}
+    for m in calibration_methods:
         cells = [display(m)]
         for h in (28, 8):
             r = data["intervals"].get(("log1p_cms", "POOL", m, h))
-            cells.extend([f"{r['n_inside']}/{r['n_valid']}", fmt(r["mean_width"]), fmt(r["mean_interval_score"])] if r else ["---"]*3)
+            cells.extend([f"{r['n_inside']}/{r['n_valid']}", fmt(r["mean_width"]), best_cell(r["mean_interval_score"], best[h])] if r else ["---"]*3)
         body += row(*cells)
     result["main_calibration.tex"] = table("Coverage, mean width and mean interval score of central 95\\% observation predictive intervals.", "tab:no_refit_calibration", "lrrrrrr", body,
-        "Covered is the number of observations within the closed 2.5th--97.5th percentile interval divided by the case count. Width and interval score are averaged on the $\\log(1+x)$ scale, with discharge $x$ in m$^3$/s; lower interval score is better. Persistence has zero width. Numerical quantile conventions are specified in Appendix~\\ref{app:numericalprediction}. The monotone inverse transformation preserves coverage. " + MODEL_NOTE)
+        "Covered is the number of observations within the closed 2.5th--97.5th percentile interval divided by the case count. Width and interval score are averaged on the $\\log(1+x)$ scale, with discharge $x$ in m$^3$/s. Bold marks the lowest interval score for each horizon. Persistence has zero width. Numerical quantile conventions are specified in Appendix~\\ref{app:numericalprediction}. The monotone inverse transformation preserves coverage. " + MODEL_NOTE)
     body = row("Method", *ORIGIN_LABELS) + "\\hline\n"
     for h in (28, 8):
         body += panel(h, 6)
+        best = {o: best_value(data["origins"][o, m, h]["mean_crps"] for m in METHODS
+                              if (o, m, h) in data["origins"]) for o in ORIGINS}
         for m in METHODS:
             if (m, h) == ("RAW-NWS", 28):
                 continue
-            body += row(display(m), *(fmt(data["origins"][o, m, h]["mean_crps"]) for o in ORIGINS))
+            body += row(display(m), *(best_cell(data["origins"][o, m, h]["mean_crps"], best[o]) for o in ORIGINS))
         if h == 28:
             body += "\\hline\n"
     result["si_origin_crps.tex"] = table("Mean quantile-grid CRPS by forecast origin and horizon.", "tab:crps_all_origins", "lrrrrr", body,
-        SCALE_NOTE + " Each entry averages the stated number of daily leads; lower is better. Origins are January 23, November 12 and December 21, 2021, and May 11 and December 25, 2022. NWS has only eight daily leads. " + MODEL_NOTE)
+        SCALE_NOTE + " Each entry averages the stated number of daily leads. Bold marks the lowest CRPS in each origin column within each horizon. Origins are January 23, November 12 and December 21, 2021, and May 11 and December 25, 2022. NWS has only eight daily leads. " + MODEL_NOTE)
     body = row("Method", *ORIGIN_LABELS) + "\\hline\n"
     for h in (28, 8):
         body += panel(h, 6)
+        best = {o: best_value(data["components"][o, m, h]["mean_crps"] for m in COMPONENTS
+                              if (o, m, h) in data["components"]) for o in ORIGINS}
         for m in COMPONENTS:
             if (m, h) == ("RAW-NWS", 28):
                 continue
-            body += row(display(m), *(fmt(data["components"][o, m, h]["mean_crps"]) for o in ORIGINS))
+            body += row(display(m), *(best_cell(data["components"][o, m, h]["mean_crps"], best[o]) for o in ORIGINS))
         if h == 28:
             body += "\\hline\n"
     result["si_component_comparison.tex"] = table("Mean CRPS for the full exAL-M-T1 model and component-removal comparisons.", "tab:component_comparison", "lrrrrr", body,
-        SCALE_NOTE + " Scores use quantile-grid integration and the five origins listed in Table~\\ref{tab:crps_all_origins}. Suffixes noTrend, noTF and noH1--noH3 remove the trend, transfer component and respective harmonic blocks. Structural removal of the transfer component differs from T0, which omits its forecast contribution. GloFAS and NWS are uncorrected references; NWS has eight leads. Lower scores are better. Recorded stopping evidence is reported in Table~\\ref{tab:fitting_status}.")
-    groups = [
-        ("Three normal configurations", set(METHODS[:3])),
-        ("Two univariate quantile configurations", {"AL-U-T1", "exAL-U-T1"}),
-        ("Four multivariate quantile configurations", {"AL-M-T0", "AL-M-T1", "exAL-M-T0", "exAL-M-T1"}),
-        ("noH1 component removal", {"exAL-M-T1-noH1"}),
-        ("Other four component removals", {"exAL-M-T1-noTrend", "exAL-M-noTF", "exAL-M-T1-noH2", "exAL-M-T1-noH3"}),
-    ]
-    body = row("Configuration group", "Runs", "Fits", "Converged", "Limit", "Unrecorded") + "\\hline\n"
-    counts = []
-    for name, members in groups:
-        f = [r for r in data["fits"].values() if r["label"] in members]
-        n = sum(r["label"] in members for r in data["runs"].values())
-        c = Counter(r["stopping_status"] for r in f)
-        numbers = (n, len(f), c["converged"], c["budget_limited"], c["unknown"])
-        counts.append(numbers)
-        body += row(name, *(str(x) for x in numbers))
-    require(tuple(sum(x[i] for x in counts) for i in range(5)) == (70, 400, 16, 314, 70), "Fitting groups must cover every fit exactly once")
-    require(counts == [(15, 15, 15, 0, 0), (10, 70, 0, 0, 70), (20, 140, 0, 140, 0),
-                       (5, 35, 1, 34, 0), (20, 140, 0, 140, 0)], "Fitting group classifications changed")
-    body += "\\hline\n" + row("Total", "70", "400", "16", "314", "70")
-    result["si_fitting_status.tex"] = table("Recorded stopping classifications for the comparison fits.", "tab:fitting_status", "lrrrrr", body,
-        "Normal configurations are N-U-T1, N-M-T0 and N-M-T1; univariate quantile configurations are AL-U-T1 and exAL-U-T1; multivariate quantile configurations are AL-M-T0/T1 and exAL-M-T0/T1. Other removals are noTrend, noTF, noH2 and noH3. Converged means the recorded criteria were satisfied; Limit means the iteration limit was reached with criteria unmet. Unrecorded is insufficient stopping evidence, rather than demonstrated failure. The only converged removal is the January 23, 2021 median noH1 fit; all 35 full-reference exAL-M-T1 quantile fits reached their limits. Three AL-M-T0 runs have terminal held updates. These classifications do not establish model adequacy.")
+        SCALE_NOTE + " Scores use quantile-grid integration and the five origins listed in Table~\\ref{tab:crps_all_origins}. Suffixes noTrend, noTF and noH1--noH3 remove the trend, transfer component and respective harmonic blocks. Structural removal of the transfer component differs from T0, which omits its forecast contribution. GloFAS and NWS are uncorrected references; NWS has eight leads. Bold marks the lowest CRPS in each origin column within each horizon.")
     body = row("Method", *(f"${t:.2f}$" for t in TAUS)) + "\\hline\n"
     for o in ORIGINS:
         d = date.fromisoformat(f"{o[:4]}-{o[4:6]}-{o[6:8]}")
         body += f"% Origin {d:%m/%d/%Y}\n" + rf"\multicolumn{{8}}{{l}}{{\textit{{{d:%B %d, %Y}}}}} \\" + "\n"
+        best = {t: best_value(data["origin_losses"][o, m, t] for m in QUANTILE_METHODS) for t in TAUS}
         for m in QUANTILE_METHODS:
-            body += row(m, *(fmt(data["origin_losses"][o, m, t]) for t in TAUS))
+            body += row(m, *(best_cell(data["origin_losses"][o, m, t], best[t]) for t in TAUS))
     result["si_quantile_loss.tex"] = table("Mean daily quantile check loss by forecast origin and probability.", "tab:quantile_check_loss", "lrrrrrrr", body,
-        "Each entry averages 28 archived daily losses at the column probability. Lower values are better. " + SCALE_NOTE + " " + MODEL_NOTE)
+        "Each entry averages 28 archived daily losses at the column probability. Bold marks the lowest loss at each probability within each origin. " + SCALE_NOTE + " " + MODEL_NOTE)
     body = row("Method", "Exact CRPS", "CRPSS", "Adjusted CRPS") + "\\hline\n"
     for h in (28, 8):
         body += panel(h, 4)
+        fields = (("mean_exact_ecdf_crps", "min"), ("ecdf_crpss", "max"),
+                  ("mean_iid_adjusted_crps", "min"))
+        best = {field: best_value((data["scores"]["log1p_cms", m, h][field] for m in METHODS
+                                   if ("log1p_cms", m, h) in data["scores"]), direction)
+                for field, direction in fields}
         for m in METHODS:
             if (m, h) == ("RAW-NWS", 28):
                 continue
             r = data["scores"]["log1p_cms", m, h]
-            body += row(display(m), *(fmt(r[k]) for k in ("mean_exact_ecdf_crps", "ecdf_crpss", "mean_iid_adjusted_crps")))
+            body += row(display(m), *(best_cell(r[field], best[field]) for field, _ in fields))
         if h == 28:
             body += "\\hline\n"
     result["si_exact_score_sensitivity.tex"] = table("Exact empirical-distribution scores and independent-draw sensitivity.", "tab:exact_score_sensitivity", "lrrr", body,
-        SCALE_NOTE + " Exact CRPS gives equal weight to each predictive sample or grid value; CRPSS uses the matching exact climatology score. Means pool 140 or 40 cases. Adjusted CRPS applies the pairwise correction for independent, identically distributed predictive draws. Independence of physical ensemble members is a sensitivity assumption. Counts are 2,000 for AL/exAL, 64 for N-U-T1, 48 for N-M-T0/T1, 51 for GloFAS and seven for NWS. The adjustment is inapplicable to deterministic climatology and EMOS grids and to persistence; dashes denote this inapplicability. Adjusted skill is not reported. " + MODEL_NOTE)
+        SCALE_NOTE + " Exact CRPS gives equal weight to each predictive sample or grid value; CRPSS uses the matching exact climatology score. Bold marks the lowest score or highest CRPSS in each horizon among applicable entries. Means pool 140 or 40 cases. Adjusted CRPS applies the pairwise correction for independent, identically distributed predictive draws. Independence of physical ensemble members is a sensitivity assumption. Counts are 2,000 for AL/exAL, 64 for N-U-T1, 48 for N-M-T0/T1, 51 for GloFAS and seven for NWS. The adjustment is inapplicable to deterministic climatology and EMOS grids and to persistence; dashes denote this inapplicability. Adjusted skill is not reported. " + MODEL_NOTE)
     body = row("Method", "28-day CRPS", "28-day CRPSS", "8-day CRPS", "8-day CRPSS") + "\\hline\n"
+    best = {(h, field): best_value((data["scores"]["discharge_cms", m, h][field] for m in METHODS
+                                    if ("discharge_cms", m, h) in data["scores"]), direction)
+            for h in (28, 8) for field, direction in (("mean_exact_ecdf_crps", "min"), ("ecdf_crpss", "max"))}
     for m in METHODS:
         cells = [display(m)]
         for h in (28, 8):
             r = data["scores"].get(("discharge_cms", m, h))
-            cells.extend(fmt(r[k]) if r else "---" for k in ("mean_exact_ecdf_crps", "ecdf_crpss"))
+            cells.extend(best_cell(r[k], best[h, k]) if r else "---" for k in ("mean_exact_ecdf_crps", "ecdf_crpss"))
         body += row(*cells)
     result["si_discharge_score.tex"] = table("Exact empirical-distribution forecast scores on the discharge scale.", "tab:discharge_scale_scores", "lrrrr", body,
-        r"Each predictive value is transformed by $\exp(y)-1$ before scoring; transformed-scale scores are not exponentiated. CRPS is in m$^3$/s and CRPSS is dimensionless. The empirical distribution weights each sample or grid value equally. Skill uses matching seasonal-climatology scores. Means pool 140 or 40 daily cases; NWS has eight leads. " + MODEL_NOTE)
+        r"Each predictive value is transformed by $\exp(y)-1$ before scoring; transformed-scale scores are not exponentiated. CRPS is in m$^3$/s and CRPSS is dimensionless. Bold marks the lowest CRPS or highest CRPSS for each horizon. The empirical distribution weights each sample or grid value equally. Skill uses matching seasonal-climatology scores. Means pool 140 or 40 daily cases; NWS has eight leads. " + MODEL_NOTE)
     body = row("Method", *ORIGIN_LABELS) + "\\hline\n"
     for h in (28, 8):
         body += panel(h, 6)

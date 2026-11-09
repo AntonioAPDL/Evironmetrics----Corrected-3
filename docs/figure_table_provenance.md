@@ -86,6 +86,17 @@ Most important results from this audit:
 
 That means the current manuscript figures are strongly linked to the current workflow repo, even though the manuscript repo itself does not carry the full generation scripts.
 
+## 2026-11-09 presentation and uncertainty revision
+
+The current package retains ten tables and all seven figures. The former Appendix
+B3 classification display is repository-only evidence; main Table 3 remains the
+predictive-interval assessment. The compact generator now highlights minima of
+loss/score columns and maxima of skill within their stated comparison groups.
+Coverage, width and coefficient summaries remain descriptive. Source numerical
+values, scientific records, original tables and all figures are preserved.
+`docs/presentation_revision_release.json` gives the current source and proof record.
+The dated foundation record below remains historical.
+
 ## 2026-11-09 foundation revision
 
 `PUBLICATION_PACKAGE.json` gives the current submitted inventory. Figures 2, B1
