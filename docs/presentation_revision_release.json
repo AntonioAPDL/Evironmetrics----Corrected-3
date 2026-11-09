@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-09T07:59:29.857037+00:00",
+  "release_type": "contributions_uncertainty_and_comparison_table_presentation",
+  "baseline_article_commit": "30b2c5690521e1e89ea185ee8df2e83a6ef27282",
+  "document": {
+    "entry": "wileyNJD-APA.tex",
+    "pages": 31,
+    "pdf_sha256": "f4030687746f5c891614419a7b30e1808d2072711e218c014d8658cddc7f0b62",
+    "text_sha256": "a2da38ddd3472888ba68ffa610c72c8261be458bd427ec33dd273375916783d6",
+    "source_hashes": {
+      "Figures/manuscript/compact_forecasts_2021_2022.pdf": "cd67a050c647cb204d59fc10a25214430d6befe801491fe7932fdb5dd54e870d",
+      "Figures/manuscript/compact_forecasts_2021_early.pdf": "e3b3794865990125124be1b5b84a80a6d0ba3b52c0ac97672e653a172429bb29",
+      "Figures/manuscript/covariate_context_precip_soil_gdpc.png": "a450b7fa331403f61ea0af951dc1bdf65fab1e4d471c8f89b26cc72d89b9ad03",
+      "Figures/manuscript/no_refit_quantile_reliability.png": "c0097bd2684b17565c328871d08c3b0ee7117cf2be3d5fb9833906f885e8d4e6",
+      "Figures/manuscript/predictive_synthesis_2022_12_25.pdf": "48fc5c19a82454783826f1750676c4461ec6e648f1d11fd44774dd8a76dba9eb",
+      "Figures/manuscript/retrospective_products_context.png": "a670b1de369c4a576c9d9221eec27f83e78bbdf00db88419a714efa2bf5de16e",
+      "Figures/manuscript/site_context_usgs.png": "eeef68672852e4a5362455147b84212ca5bd28d02f9774bb40bdc2a495dc8d8c",
+      "NJDapacite.sty": "7617cfbb3a1c1fc084c9d4612d9544cff74316d12a452bc42abac6d2df755dde",
+      "WileyNJD-APA.bst": "237c3b81013630af8236b7a4ea8d6c4e22b2c15fba1ccb30c26d3a2f581962c5",
+      "WileyNJD-v2.cls": "5d8faf972becd3cf1d9b0b28397e9f22b23d583673e58a74bb90cc7af1e94f3e",
+      "appendices.tex": "3044a516c855ce7992f3112d4c14346d97fbc65dedc76d42aca5cf95b9a120eb",
+      "tables/compact_publication/main_aggregate.tex": "794bd770af9e8628513f70943cd7f991535673f7905edcc793ecacc0a979f991",
+      "tables/compact_publication/main_calibration.tex": "104f62fbed21cd05724a87d7d1b73943a66469d3df8b0ded001e2d5f9da95838",
+      "tables/compact_publication/main_quantile_loss.tex": "7c1a3c228a745a4c1770eac7f3aa70b7333395b6ef750b2c4deacfbdd667a5b7",
+      "tables/compact_publication/si_component_comparison.tex": "e30b9dd76cfe68320f8128a4d9bd746747a8c4addd43b1db4e86f9494351e266",
+      "tables/compact_publication/si_discharge_score.tex": "cefddc0abfb2a78f058ced16ae3a28c155c158616494e12c710dbcd833d9af80",
+      "tables/compact_publication/si_exact_score_sensitivity.tex": "cbc7d930b014eff30795f7a294f39ba7a4db1d6a6ba26280f6c2bf27e426583b",
+      "tables/compact_publication/si_origin_coverage.tex": "c0ccc537cdaf5c76d0acf07111fc96a45b5815115eda5dcfcd868c17b90e2def",
+      "tables/compact_publication/si_origin_crps.tex": "7788901838b02db4605c4bd9fc3fae8f98b4e53882df09a0de6f115e81483bb4",
+      "tables/compact_publication/si_quantile_loss.tex": "ce21351a8de288d20e3df4c769bda7ec5379bb7b2674d69b853dd680865c289d",
+      "tables/editorial_revision/representative_covariate_effects_table.tex": "66e0bc3a113e8df763e7b5eab49f0a9e07d3ae4cc2b526a82380c830849c66e9",
+      "wileyNJD-APA.bib": "4147ba426b68a73ec6908a93963410e16281df8f5684cac182c1664f20b8691f",
+      "wileyNJD-APA.tex": "40ce55c5c2b92c060c0f2c9383d64dccdc3a790f512462bdd52cc691df32a87e"
+    },
+    "auxiliary_labels_stable": true,
+    "unresolved_citations_or_references": [],
+    "bibtex_warnings": [],
+    "duplicate_labels": [],
+    "passed": true
+  },
+  "appendix_fragment": "appendices.tex",
+  "submitted_displays": {
+    "tables": 10,
+    "figures": 7,
+    "algorithms": 2
+  },
+  "validation": {
+    "passed": true,
+    "unique_python_test_ids": 318,
+    "r_assertions": {
+      "test_post_publication_figures.R": 48,
+      "test_comment2_external_baselines.R": 39,
+      "test_no_refit_review_diagnostics.R": 121,
+      "test_no_refit_diagnostic_indices.R": 15,
+      "test_no_refit_synthesis_diagnostics.R": 25
+    },
+    "r_assertions_total": 248,
+    "compiled_pdf_checks": 79,
+    "scientific_sources_preserved": true,
+    "implementation_unchanged_during_validation": true,
+    "protected_repositories_unchanged": true,
+    "independent_layout_and_final_proofs_same_sources_and_text": true
+  },
+  "mathematics": {
+    "main": {
+      "baseline_expression_count": 133,
+      "current_expression_count": 133,
+      "baseline_sha256": "9c47da9f9f2603e220cba3a77a0d820405dfddff796caf1a280815734e76a138",
+      "current_sha256": "9c47da9f9f2603e220cba3a77a0d820405dfddff796caf1a280815734e76a138",
+      "differences": [],
+      "passed": true
+    },
+    "appendix": {
+      "baseline_expression_count": 225,
+      "current_expression_count": 225,
+      "baseline_sha256": "9cb6330782030150fb6f9d7a6d6365b457a31d7a80c378ce715ea660a42c923e",
+      "current_sha256": "9cb6330782030150fb6f9d7a6d6365b457a31d7a80c378ce715ea660a42c923e",
+      "differences": [],
+      "passed": true
+    }
+  },
+  "tables": {
+    "all_original_table_blocks_preserved_after_bold_unwrapping": true,
+    "compared_table_blocks": 11,
+    "retired_stopping_table_archive_byte_identical": true,
+    "main_table_3_retained": true,
+    "renumbered_appendix_tables": {
+      "tab:crps_all_origins": "B1",
+      "tab:component_comparison": "B2",
+      "tab:quantile_check_loss": "B3",
+      "tab:exact_score_sensitivity": "B4",
+      "tab:discharge_scale_scores": "B5",
+      "tab:origin_interval_coverage": "B6",
+      "tab:components_23_31": "B7"
+    }
+  },
+  "algorithms_byte_identical": true,
+  "all_figures_byte_identical_to_baseline": true,
+  "mcmc_runtime_statement": {
+    "several_weeks": "Authors anticipated full-data computation, as clarified by the author; not a measured matched benchmark.",
+    "vb_two_hours": "Documented representative combined fitting and forecasting under Appendix C.1 conditions.",
+    "matching_mcmc_validation_performed": false
+  },
+  "future_simulation_study": "Prospective only; no simulations or refits conducted in this release.",
+  "scientific_records_sha256": "7f6f3755ce076d3a7e8b784dc4c048579efb586dabd3e463c5acb4708e45193c",
+  "layout_review": {
+    "passed": true,
+    "pages_inspected": [
+      1,
+      2,
+      5,
+      10,
+      11,
+      12,
+      14,
+      17,
+      19
+    ],
+    "class_font_margin_settings_unchanged": true,
+    "overfull_warnings_identical_to_baseline": [
+      "Overfull \\hbox (346.99213pt too wide) in paragraph at lines 68--68",
+      "Overfull \\vbox (6.46347pt too high) has occurred while \\output is active []"
+    ]
+  },
+  "workflow_record": "AntonioAPDL/Project1:docs/article_presentation_revision_20261109/",
+  "note": "The containing commit identifies this source release. One complete PDF is built locally, not versioned. Numerical results, figures, algorithms, archived ledgers and historical releases are preserved."
+}

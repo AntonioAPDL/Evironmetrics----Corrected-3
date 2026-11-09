@@ -19,32 +19,32 @@ AL-M-T0 & 0.46798 & 0.19990 & 0.58668 & 0.09940 & 1.33703 \\
 AL-M-T1 & 0.14592 & 0.05551 & 0.27775 & 0.05467 & 0.62764 \\
 exAL-U-T1 & 0.21622 & 0.10194 & 0.83337 & 0.12452 & 1.70548 \\
 exAL-M-T0 & 0.75682 & 1.72135 & 0.97762 & 1.02087 & 1.21132 \\
-exAL-M-T1 & 0.13971 & 0.04724 & 0.26045 & 0.02273 & 0.53806 \\
+exAL-M-T1 & \textbf{0.13971} & \textbf{0.04724} & \textbf{0.26045} & 0.02273 & \textbf{0.53806} \\
 GloFAS & 0.40366 & 0.16957 & 0.68246 & 0.27227 & 1.56006 \\
 Seasonal climatology & 0.45262 & 0.09588 & 0.79703 & 0.15235 & 1.71301 \\
 Persistence & 0.62063 & 0.22551 & 0.69663 & 0.09059 & 2.91971 \\
-GloFAS EMOS & 0.26847 & 0.24060 & 0.45633 & 0.01763 & 1.30369 \\
+GloFAS EMOS & 0.26847 & 0.24060 & 0.45633 & \textbf{0.01763} & 1.30369 \\
 \hline
 % horizon_days=8
 \multicolumn{6}{l}{\textit{8-day horizon}} \\
 N-U-T1 & 0.76838 & 0.13732 & 2.04040 & 0.12611 & 1.87805 \\
 N-M-T0 & 1.31032 & 0.25581 & 0.41461 & 0.63732 & 1.00096 \\
 N-M-T1 & 4.72798 & 0.71930 & 5.13027 & 0.79737 & 4.53177 \\
-AL-U-T1 & 0.18835 & 0.10367 & 0.75625 & 0.03599 & 0.62002 \\
+AL-U-T1 & \textbf{0.18835} & 0.10367 & 0.75625 & 0.03599 & 0.62002 \\
 AL-M-T0 & 0.63929 & 0.16893 & 1.15588 & 0.09506 & 1.00922 \\
 AL-M-T1 & 0.23740 & 0.07170 & 0.56351 & 0.05867 & 0.61593 \\
 exAL-U-T1 & 0.18999 & 0.11312 & 0.77939 & 0.04489 & 0.62982 \\
 exAL-M-T0 & 0.94687 & 1.69464 & 0.69022 & 1.02364 & 1.31568 \\
-exAL-M-T1 & 0.22691 & 0.05858 & 0.59445 & 0.02567 & 0.59070 \\
+exAL-M-T1 & 0.22691 & \textbf{0.05858} & 0.59445 & 0.02567 & 0.59070 \\
 GloFAS & 0.57251 & 0.20670 & 1.29127 & 0.32274 & 1.48188 \\
-NWS & 0.83037 & 1.37192 & 0.28118 & 0.28366 & 0.55680 \\
+NWS & 0.83037 & 1.37192 & \textbf{0.28118} & 0.28366 & \textbf{0.55680} \\
 Seasonal climatology & 0.56808 & 0.06898 & 1.49136 & 0.16292 & 1.35522 \\
 Persistence & 1.09161 & 0.15108 & 1.47804 & 0.03160 & 2.24035 \\
-GloFAS EMOS & 0.64070 & 0.11361 & 0.64016 & 0.02381 & 0.80423 \\
+GloFAS EMOS & 0.64070 & 0.11361 & 0.64016 & \textbf{0.02381} & 0.80423 \\
 \hline
 \end{tabular}
 \begin{tablenotes}\footnotesize
-\item \textit{Note:} Scores use $\log(1+x)$ discharge, with $x$ in m$^3$/s. Each entry averages the stated number of daily leads; lower is better. Origins are January 23, November 12 and December 21, 2021, and May 11 and December 25, 2022. NWS has only eight daily leads. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods; U and M denote one and multiple observation sources. T1 retains the transfer contribution at forecast leads and T0 omits it.
+\item \textit{Note:} Scores use $\log(1+x)$ discharge, with $x$ in m$^3$/s. Each entry averages the stated number of daily leads. Bold marks the lowest CRPS in each origin column within each horizon. Origins are January 23, November 12 and December 21, 2021, and May 11 and December 25, 2022. NWS has only eight daily leads. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods; U and M denote one and multiple observation sources. T1 retains the transfer contribution at forecast leads and T0 omits it.
 \end{tablenotes}
 \end{threeparttable}
 \end{table}

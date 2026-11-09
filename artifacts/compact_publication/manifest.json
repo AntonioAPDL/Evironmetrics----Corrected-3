@@ -2,7 +2,7 @@
   "check_command": "python3 scripts/compact_publication.py --check",
   "command": "python3 scripts/compact_publication.py",
   "generator": "scripts/compact_publication.py",
-  "generator_sha256": "36c351c71c5a839d3be5a918b66a01498e0149d5f4800ce82b429af6df03d224",
+  "generator_sha256": "e6ceadd11c2bc4d55b451ba2237b59ac64d8ce9647559c443627465007bedd36",
   "key_counts": {
     "aggregate_method_horizon": 27,
     "component_origin_horizon": 75,
@@ -25,31 +25,28 @@
       "sha256": "794bd770af9e8628513f70943cd7f991535673f7905edcc793ecacc0a979f991"
     },
     "tables/compact_publication/main_calibration.tex": {
-      "sha256": "b1b5b8f83c9fb6a7a306781ad597da95c66c2de13449da5da64f6ca1045b2d27"
+      "sha256": "104f62fbed21cd05724a87d7d1b73943a66469d3df8b0ded001e2d5f9da95838"
     },
     "tables/compact_publication/main_quantile_loss.tex": {
       "sha256": "7c1a3c228a745a4c1770eac7f3aa70b7333395b6ef750b2c4deacfbdd667a5b7"
     },
     "tables/compact_publication/si_component_comparison.tex": {
-      "sha256": "564aacd5e5f31eed03683ca7c88df29c6aaa35851151ac4dbe165c368f1f293d"
+      "sha256": "e30b9dd76cfe68320f8128a4d9bd746747a8c4addd43b1db4e86f9494351e266"
     },
     "tables/compact_publication/si_discharge_score.tex": {
-      "sha256": "91c68daf25bd2a976116599af2dcdf65299532b872f3177cefb510a8d22d265b"
+      "sha256": "cefddc0abfb2a78f058ced16ae3a28c155c158616494e12c710dbcd833d9af80"
     },
     "tables/compact_publication/si_exact_score_sensitivity.tex": {
-      "sha256": "a78056df64a098956d1a16de667c86418718d1cbafd58311b7391cc6f99cd25a"
-    },
-    "tables/compact_publication/si_fitting_status.tex": {
-      "sha256": "36b535d4f6d33b6e150bee8a6b3a017d54600df953dd421d0ad30f0602996159"
+      "sha256": "cbc7d930b014eff30795f7a294f39ba7a4db1d6a6ba26280f6c2bf27e426583b"
     },
     "tables/compact_publication/si_origin_coverage.tex": {
       "sha256": "c0ccc537cdaf5c76d0acf07111fc96a45b5815115eda5dcfcd868c17b90e2def"
     },
     "tables/compact_publication/si_origin_crps.tex": {
-      "sha256": "467a5c5f14be487bce2963ce9811950555ca4c8302e37fb15ff89b52310fb112"
+      "sha256": "7788901838b02db4605c4bd9fc3fae8f98b4e53882df09a0de6f115e81483bb4"
     },
     "tables/compact_publication/si_quantile_loss.tex": {
-      "sha256": "a9e662b0539cc402247e4ebc07fe52743d3e8bb70a5ec14521dc0076ef163141"
+      "sha256": "ce21351a8de288d20e3df4c769bda7ec5379bb7b2674d69b853dd680865c289d"
     }
   },
   "predictive_figure_owner": {
