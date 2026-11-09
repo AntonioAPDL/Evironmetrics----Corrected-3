@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "created_utc": "2026-11-09T05:13:07.784474+00:00",
+  "release_type": "single_article_with_integrated_appendices",
+  "baseline_article_commit": "e103cc990c7fc3bca426276caeec8749b0d5feec",
+  "documents": {
+    "main": {
+      "entry": "wileyNJD-APA.tex",
+      "pages": 31,
+      "pdf_sha256": "51852b5ea73a09aadd3729bd5a0adf3247a4126cb479aac24ac52b3eeb175fdc",
+      "text_sha256": "c807a1388a20450816e8e3e8ffcf8c7432f5e81de6d23fc25c705384904485d9",
+      "source_hashes": {
+        "Figures/manuscript/compact_forecasts_2021_2022.pdf": "d311096bcdfa1bef9c0a51610532099866cb9db027850a6bbd81f19846753064",
+        "Figures/manuscript/compact_forecasts_2021_early.pdf": "b3935f66399973730b928519528b5eee141e3beffb3e939b960a46a949a44dd6",
+        "Figures/manuscript/covariate_context_precip_soil_gdpc.png": "a450b7fa331403f61ea0af951dc1bdf65fab1e4d471c8f89b26cc72d89b9ad03",
+        "Figures/manuscript/no_refit_quantile_reliability.png": "c0097bd2684b17565c328871d08c3b0ee7117cf2be3d5fb9833906f885e8d4e6",
+        "Figures/manuscript/retrospective_products_context.png": "a670b1de369c4a576c9d9221eec27f83e78bbdf00db88419a714efa2bf5de16e",
+        "Figures/manuscript/site_context_usgs.png": "eeef68672852e4a5362455147b84212ca5bd28d02f9774bb40bdc2a495dc8d8c",
+        "Figures/multivariate_synthesis_by_cutoff/cutoff_2022_12_25_multivariate_synthesis_with_reference_ensembles.png": "0e7e44311a1a4eb82113cb30bc9383f631f86b7a45af07fa9b54608149ed46bb",
+        "NJDapacite.sty": "7617cfbb3a1c1fc084c9d4612d9544cff74316d12a452bc42abac6d2df755dde",
+        "WileyNJD-APA.bst": "237c3b81013630af8236b7a4ea8d6c4e22b2c15fba1ccb30c26d3a2f581962c5",
+        "WileyNJD-v2.cls": "5d8faf972becd3cf1d9b0b28397e9f22b23d583673e58a74bb90cc7af1e94f3e",
+        "appendices.tex": "285b913c629670538383bf96df507cb83db115f969ac7a5bfa44e3a0c900107b",
+        "tables/compact_publication/main_aggregate.tex": "188d865eb984ae240b100a764d194d7f1d1dc063346a7b596bacc0f57ed5b8be",
+        "tables/compact_publication/main_calibration.tex": "b1b5b8f83c9fb6a7a306781ad597da95c66c2de13449da5da64f6ca1045b2d27",
+        "tables/compact_publication/main_quantile_loss.tex": "7c1a3c228a745a4c1770eac7f3aa70b7333395b6ef750b2c4deacfbdd667a5b7",
+        "tables/compact_publication/si_component_comparison.tex": "564aacd5e5f31eed03683ca7c88df29c6aaa35851151ac4dbe165c368f1f293d",
+        "tables/compact_publication/si_discharge_score.tex": "91c68daf25bd2a976116599af2dcdf65299532b872f3177cefb510a8d22d265b",
+        "tables/compact_publication/si_exact_score_sensitivity.tex": "a78056df64a098956d1a16de667c86418718d1cbafd58311b7391cc6f99cd25a",
+        "tables/compact_publication/si_fitting_status.tex": "36b535d4f6d33b6e150bee8a6b3a017d54600df953dd421d0ad30f0602996159",
+        "tables/compact_publication/si_origin_coverage.tex": "c0ccc537cdaf5c76d0acf07111fc96a45b5815115eda5dcfcd868c17b90e2def",
+        "tables/compact_publication/si_origin_crps.tex": "467a5c5f14be487bce2963ce9811950555ca4c8302e37fb15ff89b52310fb112",
+        "tables/compact_publication/si_quantile_loss.tex": "a9e662b0539cc402247e4ebc07fe52743d3e8bb70a5ec14521dc0076ef163141",
+        "tables/editorial_revision/representative_covariate_effects_table.tex": "66e0bc3a113e8df763e7b5eab49f0a9e07d3ae4cc2b526a82380c830849c66e9",
+        "wileyNJD-APA.bib": "7c517166cd3cd94006f50656fb9664c3f32bec892ffbc8b9cca2dbcef13ceb97",
+        "wileyNJD-APA.tex": "23283502dab4837fc7412703f1fb0ff0f90af15a43b8dff0d4f1ba2d44f1cfac"
+      },
+      "auxiliary_labels_stable": true,
+      "unresolved_citations_or_references": [],
+      "bibtex_warnings": [],
+      "duplicate_labels": [],
+      "passed": true
+    }
+  },
+  "appendix_fragment": "appendices.tex",
+  "appendix_sections": {
+    "app:datahistories": {
+      "number": "A",
+      "page": 12,
+      "title": "Data Sources and Historical Inputs",
+      "anchor": "Appendix.1.A"
+    },
+    "app:extras": {
+      "number": "B",
+      "page": 14,
+      "title": "Additional Forecast Results",
+      "anchor": "Appendix.1.B"
+    },
+    "app:stateconstruction": {
+      "number": "C",
+      "page": 24,
+      "title": "State-Space Construction and Computational Details",
+      "anchor": "Appendix.1.C"
+    },
+    "app:vbupdates": {
+      "number": "D",
+      "page": 27,
+      "title": "Variational Bayes Updates",
+      "anchor": "Appendix.1.D"
+    }
+  },
+  "submitted_displays": {
+    "tables": 11,
+    "figures": 7,
+    "algorithms": 2
+  },
+  "reference_checks": {
+    "passed": true,
+    "compiled_pdf_checks": 41,
+    "local_references": {
+      "passed": true,
+      "errors": [],
+      "compiled_display_labels": {
+        "fig:sanlorenzo": "1",
+        "fig:synth1": "2",
+        "tab:external_benchmarks": "1",
+        "tab:quantile_check_loss_pooled": "2",
+        "tab:no_refit_calibration": "3",
+        "fig:no_refit_reliability": "3",
+        "fig:covariates": "A1",
+        "fig:retrospectives": "A2",
+        "tab:crps_all_origins": "B1",
+        "tab:component_comparison": "B2",
+        "tab:fitting_status": "B3",
+        "tab:quantile_check_loss": "B4",
+        "tab:exact_score_sensitivity": "B5",
+        "tab:discharge_scale_scores": "B6",
+        "tab:origin_interval_coverage": "B7",
+        "tab:components_23_31": "B8",
+        "fig:forecast_origins_2021_early": "B1",
+        "fig:forecast_origins_2021_2022": "B2"
+      }
+    }
+  },
+  "scientific_preservation": {
+    "main_math_expressions": 133,
+    "appendix_math_expressions": 215,
+    "calibration_tabular_unchanged": true,
+    "passed": true
+  },
+  "workflow_record": "AntonioAPDL/Project1:docs/article_appendix_integration_20261109/",
+  "supersedes_arrangement_in": "docs/compact_publication_release.json",
+  "note": "Commit identity is given by the containing Git commit. One complete PDF is built locally, not versioned. Historical release records are unchanged."
+}

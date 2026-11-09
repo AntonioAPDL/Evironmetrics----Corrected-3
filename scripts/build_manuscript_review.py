@@ -85,7 +85,7 @@ def recorder_local_sources(article: Path, recorder: Path, output: Path) -> set[P
         name = Path(line[6:])
         path = (name if name.is_absolute() else root / name).resolve()
         if path.is_relative_to(root) and not path.is_relative_to(build_root) and path.is_file():
-            # These are transient TeX outputs; neither document may depend on
+            # These are transient TeX outputs; the article must not depend on
             # a stale auxiliary file in the article checkout.
             if path.suffix in {".aux", ".bbl", ".toc", ".out", ".lof", ".lot"}:
                 raise ValueError(f"Build reads a source-checkout auxiliary file: {path}")

@@ -1,79 +1,4 @@
-\documentclass[APA,STIX1COL]{WileyNJD-v2}
-\usepackage[utf8]{inputenc}
-\usepackage{siunitx}
-\sisetup{group-digits=false}
-\renewcommand{\thefigure}{\arabic{figure}}
-\renewcommand{\thetable}{\arabic{table}}
-\usepackage{graphicx}
-\usepackage{subcaption}
-\usepackage{array}
-\captionsetup[figure]{labelsep=quad}
-\captionsetup[table]{labelsep=quad}
-\usepackage[section]{placeins}
-\usepackage{float}        % for [H] placement
-\usepackage{threeparttable}
-
-\usepackage{soul}
-
-% Figures/ is the manuscript's canonical asset tree.
-\graphicspath{
-  {Figures/manuscript/}
-  {Figures/appendix_cutoff_panels/}
-  {Figures/multivariate_synthesis_by_cutoff/}
-}
-
-\articletype{Supporting Information} % Specify article type
-
-\historydates{}
-\doiheadtext{}
-\copyyear{2025}
-\startpage{1}
-
-\raggedbottom
-\hypersetup{hidelinks}
-% The unpublished draft has no journal volume, page range, or citation box.
-\renewcommand{\printjnlcitation}{}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% My commands:
-\newcommand*\mymin[1][]{\min_{#1}\,}
-\newcommand{\vect}[1]{\mathbf{#1}}
-\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
-\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
-\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
-
-\newcommand{\bs}[1]{{\textcolor{blue}{#1}}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{document}
-
-\title{Supporting Information: Bayesian Quantile-Based Correction and Synthesis of Hydrologic Products}
-
-\author[1]{Antonio De Leon*}
-\author[1]{Raquel Prado}
-\author[1]{Bruno Sans\'o}
-
-\authormark{De Leon \textsc{et al.}} % Running head author name
-
-\address[1]{\orgdiv{Department of Statistics}, \orgname{University of California, Santa Cruz}, \orgaddress{\state{California}, \country{USA}}}
-
-\corres{*Corresponding author: Antonio De Leon. \email{jaguir26@ucsc.edu}}
-
-\presentaddress{University of California, Santa Cruz, Santa Cruz, CA, USA.}
-
-\abstract[Summary]{This document provides data-source details, origin-specific forecast comparisons, fitting diagnostics and computational specifications for the Bayesian quantile correction-and-synthesis analysis of San Lorenzo River discharge.}
-
-\maketitle
-
-
-\renewcommand{\thesection}{S\arabic{section}}
-\renewcommand{\thefigure}{S\arabic{figure}}
-\renewcommand{\thetable}{S\arabic{table}}
-\renewcommand{\theequation}{S\arabic{equation}}
-\renewcommand{\thealgorithm}{S\arabic{algorithm}}
-
 \section{Data Sources and Historical Inputs}
-\label{sec:data}
 \label{app:datahistories}
 
 The target is daily mean discharge at the U.S. Geological Survey (USGS) Big Trees gauge, station 11160500, Santa Cruz, California \citep{usgs_daily_11160500}. The 12,995-observation record spans May 29, 1987 through December 25, 2022. Figures~\ref{fig:covariates} and \ref{fig:retrospectives} display the historical covariates and retrospective products. All modeled discharge is transformed as $\log(1+x)$, with $x$ in m$^3$/s. A forecast origin $T$ ends the historical window; verification starts at $T+1$.
@@ -104,18 +29,18 @@ External discharge comes from ECMWF's Global Flood Awareness System (GloFAS; \ci
 
 The five origins are January 23, November 12 and December 21, 2021, and May 11 and December 25, 2022. Nine Bayesian variants combine Gaussian (N), asymmetric Laplace (AL) or extended asymmetric Laplace (exAL) likelihoods with gauge-only (U) or source-inclusive (M) observations and transfer-active (T1) or forecast-transfer-suppressed (T0) configurations. M-T0 retains transfer during historical fitting. AL/exAL predictive syntheses combine fits at probabilities $0.05,0.20,0.35,0.50,0.65,0.80,0.95$. The exAL-M-T1 configuration is the reference specification.
 
-Table~\ref{tab:crps_all_origins} gives mean continuous ranked probability scores (CRPS; smaller is better) using the reported quantile-grid calculation on transformed discharge. External references are raw GloFAS/NWS ensembles, seasonal climatology, persistence and GloFAS ensemble model output statistics (EMOS). The horizons retain matching verification dates, with NWS available only for eight days. Aggregate means and climatology-relative skill appear in the main paper.
+Table~\ref{tab:crps_all_origins} gives mean continuous ranked probability scores (CRPS; smaller is better) using the reported quantile-grid calculation on transformed discharge. External references are raw GloFAS/NWS ensembles, seasonal climatology, persistence and GloFAS ensemble model output statistics (EMOS). The horizons retain matching verification dates, with NWS available only for eight days. Aggregate means and climatology-relative skill appear in Table~\ref{tab:external_benchmarks}.
 
 \input{tables/compact_publication/si_origin_crps.tex}
 
 \subsection{Component-Removal Comparisons and Fitting Evidence}
 \label{app:he3ablation}
+\label{app:fitdiagnostics}
 
 The reductions retain reference settings while removing one structural component. The labels \texttt{noTrend}, \texttt{noH1}, \texttt{noH2} and \texttt{noH3} remove the shared and source-discrepancy local level or corresponding seasonal pair. The third pair has period 2474.87 days (Subsection~\ref{app:seasonalconstruction}). The \texttt{noTF} model removes transfer in both fitting and forecasting, unlike T0. Table~\ref{tab:component_comparison} documents sensitivity under inherited settings, without separately optimizing the reduced models.
 
 \input{tables/compact_publication/si_component_comparison.tex}
 
-\label{app:fitdiagnostics}
 The assessment in Table~\ref{tab:fitting_status} covers 70 runs and 400 fits. It uses joint stopping criteria, iteration limits, actual parameter updates and simulation outcomes, rather than termination alone. Sixteen fits satisfy their recorded criteria: 15 Gaussian fits and the January 2021 median \texttt{noH1} fit. The other 314 multivariate quantile fits reach their iteration limits, including all 35 reference fits and 174/175 reduced fits. Three AL-M-T0 fits end with some updates held fixed; zero terminal changes for such parameters do not establish convergence. The 70 univariate AL/exAL fits lack explicit joint-criterion evidence and are unknown, rather than classified as failures.
 
 \input{tables/compact_publication/si_fitting_status.tex}
@@ -125,7 +50,7 @@ These categories do not distinguish good and poor forecasts automatically: Gauss
 \subsection{Quantile Loss and Distributional Diagnostics}
 \label{app:distributionchecks}
 
-Table~\ref{tab:quantile_check_loss} reports check losses for each origin and target probability; the pooled 28-day comparison is in the main paper. These are losses of synthesized predictive quantiles against subsequent USGS observations, not losses of conditional model locations. Tables~\ref{tab:exact_score_sensitivity} and \ref{tab:discharge_scale_scores} distinguish exact empirical-distribution scores, the independent-draw sensitivity and discharge-scale results. Subsection~\ref{app:numericalprediction} defines their finite-representation conventions. Table~\ref{tab:origin_interval_coverage} reports the origin-specific central 95\% interval counts. The analysis materials also provide complete reliability hits, ties, interval scores and raw-product error/spread summaries \citep{deleon2026sanlorenzo_reproducibility}.
+Table~\ref{tab:quantile_check_loss} reports check losses for each origin and target probability; Table~\ref{tab:quantile_check_loss_pooled} gives the pooled 28-day comparison. These are losses of synthesized predictive quantiles against subsequent USGS observations, not losses of conditional model locations. Tables~\ref{tab:exact_score_sensitivity} and \ref{tab:discharge_scale_scores} distinguish exact empirical-distribution scores, the independent-draw sensitivity and discharge-scale results. Subsection~\ref{app:numericalprediction} defines their finite-representation conventions. Table~\ref{tab:origin_interval_coverage} reports the origin-specific central 95\% interval counts. The analysis materials also provide complete reliability hits, ties, interval scores and raw-product error/spread summaries \citep{deleon2026sanlorenzo_reproducibility}.
 
 \input{tables/compact_publication/si_quantile_loss.tex}
 \input{tables/compact_publication/si_exact_score_sensitivity.tex}
@@ -195,14 +120,15 @@ The exact empirical-distribution score and separate independent-draw adjustment 
 \mathrm{CRPS}(G_m,y)=A-\frac{D}{m^2},\qquad
 \mathrm{CRPS}_{\rm adj}=A-\frac{D}{m(m-1)}.
 \]
-The main paper's quantile-grid score equals the exact score plus $D/[m^2(m+1)]$, explaining their difference on the same predictive values \citep{zamo2018crps}. The adjusted score estimates the parent-distribution CRPS under independent, identically distributed draws \citep{ferro2014fair}; that assumption is additional for physical ensembles. The adjustment is inapplicable to deterministic quantile grids and point masses. Exact skill uses the matching exact climatology denominator; no adjusted skill is reported.
+The quantile-grid score in Subsection~\ref{subsec:distributionchecks} equals the exact score plus $D/[m^2(m+1)]$, explaining their difference on the same predictive values \citep{zamo2018crps}. The adjusted score estimates the parent-distribution CRPS under independent, identically distributed draws \citep{ferro2014fair}; that assumption is additional for physical ensembles. The adjustment is inapplicable to deterministic quantile grids and point masses. Exact skill uses the matching exact climatology denominator; no adjusted skill is reported.
 
 \subsection{EMOS Optimization}
 \label{app:emoscomputation}
 
-For each lead, the EMOS fit minimizes the analytic truncated-normal CRPS over the eligible training cases described in the main paper. We use four deterministic initial values and bounded limited-memory Broyden--Fletcher--Goldfarb--Shanno optimization (L-BFGS-B), retaining the converged solution with the lowest objective. The constraints are \(b,d\geq0\) and \(c>0\) in the location and variance parameterization. Training cases, numerical scaling and bounds, fitted parameter values, convergence criteria and boundary assessments are included in the reproducibility materials.
+For each lead, the EMOS fit minimizes the analytic truncated-normal CRPS over the eligible training cases described in Subsection~\ref{subsec:externalreferences}. We use four deterministic initial values and bounded limited-memory Broyden--Fletcher--Goldfarb--Shanno optimization (L-BFGS-B), retaining the converged solution with the lowest objective. The constraints are \(b,d\geq0\) and \(c>0\) in the location and variance parameterization. Training cases, numerical scaling and bounds, fitted parameter values, convergence criteria and boundary assessments are included in the reproducibility materials.
 
 \subsection{Stacked States and Selectors}
+\label{app:stackedstates}
 
 For target probability $p_0$, $\operatorname{exAL}_{p_0}(\mu,\sigma,\gamma)$ denotes the extended asymmetric Laplace working likelihood with quantile location $\mu$, scale $\sigma>0$ and skewness $\gamma$ in the domain defined below. Each quantile model uses a shared $p$-dimensional trend/seasonal state $\boldsymbol\theta_t$, source discrepancies $\boldsymbol\delta_t^j$ and an $(m+1)$-dimensional transfer block. Let $\mathcal J=\{1,\ldots,J\}$ index external sources; source $j$ has members $i\in\mathcal I_j=\{1,\ldots,I_j\}$ and leads $k\in\mathcal K_j=\{1,\ldots,K_{(j)}\}$, with $K_{\max}=\max_jK_{(j)}$. The loading $\mathbf F_t$ and transition $\mathbf G_t$ have dimensions $p$ and $p\times p$. Stack
 \[
@@ -329,6 +255,7 @@ r(\boldsymbol\eta_{0:T+K_{\max}})\prod_{a\in\mathcal A}r(v_a)r(s_a)
 Here $\mathcal A$ indexes available observations, including each active forecast member. Dependence between scale and skewness is retained within each channel's Laplace factor.
 
 \section{Variational Bayes Updates}
+\label{app:vbupdates}
 
 Algorithms~\ref{alg:Alg3} and \ref{alg:Alg4} display historical-window coordinate updates and Gaussian state recursions. Initialize state moments from $\mathcal N(\mathbf m_0,\mathbf C_0)$ and initialize augmentation and channel-parameter moments before the first outer iteration. Angle brackets denote expectations under the current variational factors; $\mathcal L$ denotes the evidence lower bound (ELBO). The same observation-level updates apply to each available forecast member after replacing $(t,j)$ by $(T+k,j,i)$ and using the corresponding selector and active-state transition. In the forecast window, an observation vector stacks all active pairs \((j,i)\), where \(j\) identifies a source and \(i\) a member. Selector columns repeat within a source, while each member has its own augmentation variables. A source-specific parameter objective includes every retrospective value and available issued member: with complete historical support this gives \(T+I_jK_{(j)}\) contributions for external source \(j\), and \(T\) for the gauge channel. Forecast state evolution uses the covariance specification in Subsection~\ref{app:forecastcovariance}.
 
@@ -386,7 +313,7 @@ A^j = A(\gamma^j;p_0), \quad B^j = B(\gamma^j;p_0), \quad C^j = C(\gamma^j;p_0),
 
 \State \textbf{Notation:}
 \State $\left\langle g(\xi) \right\rangle = \mathbb{E}_\xi\left[ g(\xi) \right]$
-\State  During the pre-cutoff observation window, \(\mathbf{H}_t = [\mathbf{h}_{t,0}, \mathbf{h}_{t,1}, \ldots, \mathbf{h}_{t,J}]\), \(\mathbf{Y}_t = [y_t^o, z_t^1, \ldots, z_t^J]'\), and \(\mathbf{D}_t, \boldsymbol{\Lambda}_t\) are as defined in Subsection~\ref{app:stateconstruction}.
+\State  During the pre-cutoff observation window, \(\mathbf{H}_t = [\mathbf{h}_{t,0}, \mathbf{h}_{t,1}, \ldots, \mathbf{h}_{t,J}]\), \(\mathbf{Y}_t = [y_t^o, z_t^1, \ldots, z_t^J]'\), and \(\mathbf{D}_t, \boldsymbol{\Lambda}_t\) are as defined in Subsection~\ref{app:stackedstates}.
 \State  Equivalently, let \(y_t^0 \equiv y_t^o\) and \(y_t^j \equiv z_t^j\) for \(j\in\mathcal{J}\).
 \State For each active channel, define the expected precision and weighted offset:
 \State $\pi_t^j=\left\langle\frac{1}{B^j\sigma^jv_t^j}\right\rangle$
@@ -427,10 +354,3 @@ A^j = A(\gamma^j;p_0), \quad B^j = B(\gamma^j;p_0), \quad C^j = C(\gamma^j;p_0),
 
 \end{algorithmic}
 \end{algorithm}
-
-
-
-
-
-\bibliography{wileyNJD-APA}
-\end{document}

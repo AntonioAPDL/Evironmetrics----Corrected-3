@@ -32,8 +32,8 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
     def package_text(self) -> str:
         return active_tex(publication_views(ROOT)['union'])
 
-    def supporting_text(self) -> str:
-        return active_tex(publication_views(ROOT)['si'])
+    def appendix_text(self) -> str:
+        return active_tex(publication_views(ROOT)['appendix'])
 
     def assertConcepts(self, article: str, *patterns: str) -> None:
         self.assertTrue(has_concepts(article, *patterns), f"Missing scientific concepts: {patterns}")
@@ -242,7 +242,7 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
             self.assertTrue(has_label(article, label), label)
             self.assertTrue(submitted_asset_path(ROOT, label, 'main').is_file())
         for label in ['tab:crps_all_origins', 'tab:quantile_check_loss']:
-            self.assertTrue(submitted_asset_path(ROOT, label, 'si').is_file())
+            self.assertTrue(submitted_asset_path(ROOT, label, 'main', 'appendix').is_file())
 
     def test_reviewer1_fair_forecast_assessment_is_wired(self) -> None:
         article = self.article_text()
@@ -457,14 +457,14 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         self.assertIn("selected_model_component_80month.png", provenance)
         self.assertIn("not full posterior predictive distributions", provenance)
 
-    def test_cutoff_supplement_uses_both_two_origin_composites(self) -> None:
-        si = self.supporting_text()
+    def test_cutoff_appendix_uses_both_two_origin_composites(self) -> None:
+        appendix = self.appendix_text()
         for label, filename in [
             ('fig:forecast_origins_2021_early', 'compact_forecasts_2021_early.pdf'),
             ('fig:forecast_origins_2021_2022', 'compact_forecasts_2021_2022.pdf'),
         ]:
-            self.assertTrue(has_label(si, label), label)
-            self.assertEqual(submitted_asset_path(ROOT, label, 'si').name, filename)
+            self.assertTrue(has_label(appendix, label), label)
+            self.assertEqual(submitted_asset_path(ROOT, label, 'main', 'appendix').name, filename)
         package = read_package(ROOT)
         retained = package['additional_retained_evidence']
         expected = {'2021_01_23', '2021_11_12', '2021_12_21', '2022_05_11'}
@@ -474,7 +474,7 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         self.assertTrue(all((ROOT / item['path']).is_file() for item in retained))
         self.assertTrue(all(item['disposition'] == 'merged' for item in retained))
         # The representative main illustration still contains original-source
-        # context; the additional origins are represented by the SI composites.
+        # context; the additional origins are represented by the appendix composites.
         self.assertTrue(submitted_asset_path(ROOT, 'fig:synth1', 'main').is_file())
 
     def test_selected_model_quantile_figures_use_current_rating_references(self) -> None:
@@ -572,11 +572,12 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         self.assertIn("RAW-NWS", short_text)
         self.assertIn("forecast leads 1--8", short_text)
 
-        supporting = self.supporting_text()
+        supporting = self.appendix_text()
         self.assertTrue(has_label(supporting, 'tab:component_comparison'))
         self.assertIn('1/6.8068493', supporting)
-        self.assertTrue(submitted_asset_path(ROOT, 'tab:component_comparison', 'si').is_file())
-        self.assertNotIn('tab:component_comparison}', self.article_text())
+        self.assertTrue(submitted_asset_path(ROOT, 'tab:component_comparison', 'main', 'appendix').is_file())
+        self.assertFalse(has_label(self.article_text(), 'tab:component_comparison'))
+        self.assertIn(r'\ref{tab:component_comparison}', self.article_text())
 
         source_text = source_csv.read_text(encoding="utf-8")
         self.assertIn("tab:he3_ablation_crps,RAW-GLOFAS,20210123,28", source_text)
@@ -585,7 +586,7 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
 
     def test_reviewer1_math_detail_is_streamlined(self) -> None:
         article = self.article_text()
-        supporting = self.supporting_text()
+        supporting = self.appendix_text()
         self.assertScientificChecks(article, ['synthesis', 'scores', 'uncertainty_estimands'])
         self.assertTrue(has_label(article, 'subsec:quantilesynthesis'))
         for label in ['app:stateconstruction', 'app:augmentation']:

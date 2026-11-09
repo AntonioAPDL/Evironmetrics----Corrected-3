@@ -4,19 +4,20 @@ This repository is the submission-facing freeze of the revised manuscript, its m
 
 ## Where to look first
 
-- `wileyNJD-APA.tex`: main article and default Overleaf root
-- `supporting_information.tex`: independently compiled supporting information
-- `wileyNJD-APA.pdf` and `supporting_information.pdf`: locally reviewed PDFs (not versioned)
-- `PUBLICATION_PACKAGE.json`: authoritative inventory of the submitted documents and assets
+- `wileyNJD-APA.tex`: the complete article and only Overleaf root
+- `appendices.tex`: Appendices A--D, included in the article before its single bibliography
+- `wileyNJD-APA.pdf`: locally reviewed complete article PDF (not versioned)
+- `PUBLICATION_PACKAGE.json`: authoritative inventory of the article, its main/appendix scopes and submitted assets
 - `docs/compact_publication.txt`: editorial dispositions, bounded regeneration and validation
+- `docs/appendix_integration_release.json`: source and proof record for the integrated appendices
 - `docs/comment1_revision.txt`: implemented comment-1 changes and review/build entrypoints
 - `docs/comment2_revision.txt`: external comparisons, fitting evidence and portable replay
 - `Figures/manuscript/`: the exact figure files used by the manuscript
 - `Figures/forecast_context_by_cutoff/`: cutoff-wide copies of the forecast-context view for all five cutoffs
 - `Figures/multivariate_synthesis_by_cutoff/`: cutoff-wide selected-model synthesis family, including the supplementary overlay panels
 - `Figures/reference_synthesis_by_cutoff/`: univariate reference-synthesis family for all five cutoffs
-- `tables/compact_publication/`: compact main and supporting tables from saved summaries
-- `tables/editorial_revision/`: retained presentation sources, including the active supporting coefficient table
+- `tables/compact_publication/`: compact main and appendix tables from saved summaries
+- `tables/editorial_revision/`: retained presentation sources, including the active appendix coefficient table
 - `tables/generated_tex/`: retained original numerical tables and source-replay evidence
 - `docs/figure_table_provenance.md`: figure/table provenance summary
 - `artifacts/software_availability/software_availability_manifest.json`: compact HE-5 software availability and archive-status manifest
@@ -131,18 +132,16 @@ python3 -B scripts/build_manuscript_review.py \
   --output-dir /tmp/NEW_article_review --jobname manuscript_review
 ```
 
-Build supporting information independently, or validate/build the full package:
+Validate and build the complete article with all appendices:
 
 ```bash
-python3 -B scripts/build_manuscript_review.py \
-  --entry supporting_information.tex \
-  --output-dir /tmp/NEW_si_review --jobname supporting_information
-python3 -B scripts/publication_package.py --build-dir /tmp/NEW_package_review
+python3 -B scripts/publication_package.py --check
+python3 -B scripts/publication_package.py --build-dir /tmp/NEW_article_package
 ```
 
-In Overleaf, keep `wileyNJD-APA.tex` as the default main document. Select
-`supporting_information.tex` to compile and download the supplement separately;
-neither document needs the other's auxiliary files.
+In Overleaf, keep `wileyNJD-APA.tex` as the main document. It includes
+`appendices.tex`; the article, appendix tables/figures/algorithms and shared
+references compile into one PDF. All appendix citations use local LaTeX labels.
 
 Choose a new output directory for each build. The helper records source, table
 and included-image hashes, LaTeX/BibTeX commands, label stability and PDF checks.

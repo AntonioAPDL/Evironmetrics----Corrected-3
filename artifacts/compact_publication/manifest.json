@@ -2,7 +2,7 @@
   "check_command": "python3 scripts/compact_publication.py --check",
   "command": "python3 scripts/compact_publication.py",
   "generator": "scripts/compact_publication.py",
-  "generator_sha256": "f2800e81136a8b548d86f3c534b44b95ddabc800d46842d275f3e1835c186b3f",
+  "generator_sha256": "2569e2c4de30611731e8d7ce512374e4ca54035f9da27317890db37c02a523d7",
   "key_counts": {
     "aggregate_method_horizon": 27,
     "component_origin_horizon": 75,
@@ -30,7 +30,7 @@
       "sha256": "188d865eb984ae240b100a764d194d7f1d1dc063346a7b596bacc0f57ed5b8be"
     },
     "tables/compact_publication/main_calibration.tex": {
-      "sha256": "ccd28e0967d7997b7523eede5cd64973416cc50d03c8b0536e6e265de3864d14"
+      "sha256": "b1b5b8f83c9fb6a7a306781ad597da95c66c2de13449da5da64f6ca1045b2d27"
     },
     "tables/compact_publication/main_quantile_loss.tex": {
       "sha256": "7c1a3c228a745a4c1770eac7f3aa70b7333395b6ef750b2c4deacfbdd667a5b7"
