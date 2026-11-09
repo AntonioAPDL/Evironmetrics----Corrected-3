@@ -6,6 +6,10 @@ import re
 import sys
 from pathlib import Path
 
+# Historical workflow checks load this helper by file path, outside scripts/.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from manuscript_text_contract import active_tex, included_tex_paths
+
 GRAPHICSDIR_PATTERN = re.compile(r"\{([^{}]+)\}")
 INCLUDEGRAPHICS_PATTERN = re.compile(r"\\includegraphics(?:\[[^\]]*\])?\{([^{}]+)\}")
 
@@ -43,14 +47,31 @@ def parse_includegraphics(tex: str) -> list[str]:
 
 def resolve_include(article_root: Path, tex_path: Path, search_roots: list[Path], ref: str) -> Path | None:
     ref_path = Path(ref)
-    direct = (tex_path.parent / ref_path).resolve()
-    if direct.exists():
-        return direct
-    for root in search_roots:
-        candidate = (article_root / root / ref_path).resolve()
-        if candidate.exists():
-            return candidate
+    candidates = [article_root / ref_path, tex_path.parent / ref_path]
+    candidates += [article_root / root / ref_path for root in search_roots]
+    for candidate in candidates:
+        options = [candidate] if candidate.suffix else [candidate.with_suffix(ext) for ext in ('.pdf', '.png', '.jpg', '.jpeg')]
+        for option in options:
+            path = option.resolve()
+            if path.is_file():
+                return path
     return None
+
+
+def resolved_figures(article_root: Path, entry: str = 'wileyNJD-APA.tex') -> list[tuple[str, Path]]:
+    root = article_root.resolve()
+    paths = included_tex_paths(root, entry)
+    search = parse_graphicspath(active_tex(paths[0].read_text(encoding='utf-8')))
+    rows: list[tuple[str, Path]] = []
+    for path in paths:
+        for ref in parse_includegraphics(active_tex(path.read_text(encoding='utf-8'))):
+            resolved = resolve_include(root, path, search, ref)
+            if resolved is None:
+                raise ValueError(f'Missing figure asset: {ref}')
+            if not resolved.is_relative_to(root):
+                raise ValueError(f'Figure asset escapes article root: {ref}')
+            rows.append((ref, resolved))
+    return rows
 
 
 def main() -> None:
@@ -73,29 +94,14 @@ def main() -> None:
     tex_path = args.tex_path if args.tex_path.is_absolute() else article_root / args.tex_path
     tex_path = tex_path.resolve()
 
-    content = tex_path.read_text(encoding="utf-8")
-    search_roots = parse_graphicspath(content)
-    includes = parse_includegraphics(content)
-
-    if not search_roots:
-        raise SystemExit("No \\graphicspath definition found in manuscript.")
-    if not includes:
-        raise SystemExit("No \\includegraphics calls found in manuscript.")
-
-    missing: list[str] = []
-    resolved_rows: list[tuple[str, str]] = []
-    for ref in includes:
-        resolved = resolve_include(article_root, tex_path, search_roots, ref)
-        if resolved is None:
-            missing.append(ref)
-            continue
-        resolved_rows.append((ref, str(resolved.relative_to(article_root))))
-
-    if missing:
-        print("Missing figure assets:")
-        for ref in missing:
-            print(f"  - {ref}")
-        sys.exit(1)
+    try:
+        entry = str(tex_path.relative_to(article_root))
+        rows = resolved_figures(article_root, entry)
+        if not rows:
+            raise ValueError('No active figure includes in selected document')
+    except (OSError, ValueError) as exc:
+        raise SystemExit(str(exc)) from exc
+    resolved_rows = [(ref, str(path.relative_to(article_root))) for ref, path in rows]
 
     print("Validated manuscript figure paths:")
     for ref, resolved in resolved_rows:

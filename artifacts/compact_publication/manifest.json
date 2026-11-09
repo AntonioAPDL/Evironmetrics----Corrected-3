@@ -1,0 +1,144 @@
+{
+  "check_command": "python3 scripts/compact_publication.py --check",
+  "command": "python3 scripts/compact_publication.py",
+  "generator": "scripts/compact_publication.py",
+  "generator_sha256": "f2800e81136a8b548d86f3c534b44b95ddabc800d46842d275f3e1835c186b3f",
+  "key_counts": {
+    "aggregate_method_horizon": 27,
+    "component_origin_horizon": 75,
+    "daily_check_loss": 3920,
+    "exact_score_scale_method_horizon": 54,
+    "fits": 400,
+    "forecast_rows_per_origin": 47,
+    "interval_scale_origin_method_horizon": 324,
+    "origin_method_horizon": 135,
+    "origin_quantile_loss": 140,
+    "pooled_quantile_loss": 28,
+    "runs": 70
+  },
+  "outputs": {
+    "Figures/manuscript/compact_forecasts_2021_2022.pdf": {
+      "sha256": "d311096bcdfa1bef9c0a51610532099866cb9db027850a6bbd81f19846753064"
+    },
+    "Figures/manuscript/compact_forecasts_2021_early.pdf": {
+      "sha256": "b3935f66399973730b928519528b5eee141e3beffb3e939b960a46a949a44dd6"
+    },
+    "artifacts/compact_publication/scientific_records.json": {
+      "sha256": "7f6f3755ce076d3a7e8b784dc4c048579efb586dabd3e463c5acb4708e45193c"
+    },
+    "tables/compact_publication/main_aggregate.tex": {
+      "sha256": "188d865eb984ae240b100a764d194d7f1d1dc063346a7b596bacc0f57ed5b8be"
+    },
+    "tables/compact_publication/main_calibration.tex": {
+      "sha256": "ccd28e0967d7997b7523eede5cd64973416cc50d03c8b0536e6e265de3864d14"
+    },
+    "tables/compact_publication/main_quantile_loss.tex": {
+      "sha256": "7c1a3c228a745a4c1770eac7f3aa70b7333395b6ef750b2c4deacfbdd667a5b7"
+    },
+    "tables/compact_publication/si_component_comparison.tex": {
+      "sha256": "564aacd5e5f31eed03683ca7c88df29c6aaa35851151ac4dbe165c368f1f293d"
+    },
+    "tables/compact_publication/si_discharge_score.tex": {
+      "sha256": "91c68daf25bd2a976116599af2dcdf65299532b872f3177cefb510a8d22d265b"
+    },
+    "tables/compact_publication/si_exact_score_sensitivity.tex": {
+      "sha256": "a78056df64a098956d1a16de667c86418718d1cbafd58311b7391cc6f99cd25a"
+    },
+    "tables/compact_publication/si_fitting_status.tex": {
+      "sha256": "36b535d4f6d33b6e150bee8a6b3a017d54600df953dd421d0ad30f0602996159"
+    },
+    "tables/compact_publication/si_origin_coverage.tex": {
+      "sha256": "c0ccc537cdaf5c76d0acf07111fc96a45b5815115eda5dcfcd868c17b90e2def"
+    },
+    "tables/compact_publication/si_origin_crps.tex": {
+      "sha256": "467a5c5f14be487bce2963ce9811950555ca4c8302e37fb15ff89b52310fb112"
+    },
+    "tables/compact_publication/si_quantile_loss.tex": {
+      "sha256": "a9e662b0539cc402247e4ebc07fe52743d3e8bb70a5ec14521dc0076ef163141"
+    }
+  },
+  "plot_contract": {
+    "forecast_misses": [
+      1,
+      0,
+      7,
+      0
+    ],
+    "forecast_rows": 28,
+    "historical_rows": 19,
+    "independent_panel_y_scales": true,
+    "interval": "2.5th--97.5th percentile, from exact archived focus-render endpoints",
+    "layers": [
+      "observed",
+      "model_mean",
+      "interval_low",
+      "interval_high"
+    ],
+    "supporting_origins": [
+      "20210123",
+      "20211112",
+      "20211221",
+      "20220511"
+    ]
+  },
+  "schema_version": 1,
+  "scope": "Presentation of archived summaries; no fits, predictive-cache reads, new draws or forecast scoring.",
+  "source_files": {
+    "artifacts/comment2_revision/component_diagnostics/fit_ledger.csv": {
+      "rows": 400,
+      "sha256": "4e9e637642c6af8de339c1b77ab1bff68e2a0be86b4a423704f64407b9f6ca48"
+    },
+    "artifacts/comment2_revision/component_diagnostics/run_ledger.csv": {
+      "rows": 70,
+      "sha256": "c0bb9dac1a04b0af37761eff14d959a199d8e81ed85f5b3659e092d986955677"
+    },
+    "artifacts/comment2_revision/external_baselines/aggregate.csv": {
+      "rows": 27,
+      "sha256": "75036a845ed97f1ba7011d28c1ffc78c5a6299252b549d642cf51425ea64aa29"
+    },
+    "artifacts/comment2_revision/external_baselines/by_origin_horizon.csv": {
+      "rows": 135,
+      "sha256": "0c79d3aef9553fc3360aaf6120f9b2755dba59b3fa933b561aa687a2ba870b29"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20210123_exal_m_t1/exdqlm_multivar_synth_keep_focus_render_numeric_contract.csv": {
+      "rows": 47,
+      "sha256": "9c707a73577066f814bae1e8b609c4198cd0b6cb392f5077be0cddb3178858f6"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20211112_exal_m_t1/exdqlm_multivar_synth_keep_focus_render_numeric_contract.csv": {
+      "rows": 47,
+      "sha256": "a9dabe6dfb3f2c49eefa5646841fcd3d9c2adf50f00e30e454839da154cad34a"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20211221_exal_m_t1/exdqlm_multivar_synth_keep_focus_render_numeric_contract.csv": {
+      "rows": 47,
+      "sha256": "da0bcbffa03a65173dc79219cc6daf9f2bda21c99d86ee0fb5e40fac54370b91"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20220511_exal_m_t1/exdqlm_multivar_synth_keep_focus_render_numeric_contract.csv": {
+      "rows": 47,
+      "sha256": "5ef5b38fe9f001822df72d26568c1e1f2e2ccb5bdb4027ac640591ffe73e6125"
+    },
+    "artifacts/five_cutoff_main_model_synthesis/20221225_exal_m_t1/exdqlm_multivar_synth_keep_focus_render_numeric_contract.csv": {
+      "rows": 47,
+      "sha256": "d19e60cb3f5af7daf8da136bca68a92322059469085bffc8e7c13ce8c1790707"
+    },
+    "artifacts/he4_quantile_check_loss_current_publication/he4_quantile_check_loss_per_day.csv": {
+      "rows": 3920,
+      "sha256": "a95f224ecd77fe25b48d05d601fa4f271b6eacac39403a8dd8e135b2ee79fab8"
+    },
+    "artifacts/no_refit_revision/results/interval_summary.csv": {
+      "rows": 324,
+      "sha256": "e83066c9c2dbdb40b0d3ad6dc147d5599b25da49158556be7ee2eaa9e55659c2"
+    },
+    "artifacts/no_refit_revision/results/intervals_per_case.csv": {
+      "rows": 3720,
+      "sha256": "06c4c457229a615d07cd3b561a65cbb6acfb8626f0924952d349313b7b3b7849"
+    },
+    "artifacts/no_refit_revision/results/summary_pooled.csv": {
+      "rows": 54,
+      "sha256": "aa60a0808af1685bb7f1294641be474123d6d9b0aaa76182d82670b81bdcb431"
+    },
+    "tables/generated_tex/he3_ablation_crps_horizon_summary.csv": {
+      "rows": 75,
+      "sha256": "4a5ac1ef5923f5e2b57483461f6d0ccad2a6e03089c95e1abf9eef412725a656"
+    }
+  }
+}

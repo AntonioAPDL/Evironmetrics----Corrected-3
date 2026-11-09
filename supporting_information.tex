@@ -1,0 +1,436 @@
+\documentclass[APA,STIX1COL]{WileyNJD-v2}
+\usepackage[utf8]{inputenc}
+\usepackage{siunitx}
+\sisetup{group-digits=false}
+\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{array}
+\captionsetup[figure]{labelsep=quad}
+\captionsetup[table]{labelsep=quad}
+\usepackage[section]{placeins}
+\usepackage{float}        % for [H] placement
+\usepackage{threeparttable}
+
+\usepackage{soul}
+
+% Figures/ is the manuscript's canonical asset tree.
+\graphicspath{
+  {Figures/manuscript/}
+  {Figures/appendix_cutoff_panels/}
+  {Figures/multivariate_synthesis_by_cutoff/}
+}
+
+\articletype{Supporting Information} % Specify article type
+
+\historydates{}
+\doiheadtext{}
+\copyyear{2025}
+\startpage{1}
+
+\raggedbottom
+\hypersetup{hidelinks}
+% The unpublished draft has no journal volume, page range, or citation box.
+\renewcommand{\printjnlcitation}{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% My commands:
+\newcommand*\mymin[1][]{\min_{#1}\,}
+\newcommand{\vect}[1]{\mathbf{#1}}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+\newcommand{\bs}[1]{{\textcolor{blue}{#1}}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{Supporting Information: Bayesian Quantile-Based Correction and Synthesis of Hydrologic Products}
+
+\author[1]{Antonio De Leon*}
+\author[1]{Raquel Prado}
+\author[1]{Bruno Sans\'o}
+
+\authormark{De Leon \textsc{et al.}} % Running head author name
+
+\address[1]{\orgdiv{Department of Statistics}, \orgname{University of California, Santa Cruz}, \orgaddress{\state{California}, \country{USA}}}
+
+\corres{*Corresponding author: Antonio De Leon. \email{jaguir26@ucsc.edu}}
+
+\presentaddress{University of California, Santa Cruz, Santa Cruz, CA, USA.}
+
+\abstract[Summary]{This document provides data-source details, origin-specific forecast comparisons, fitting diagnostics and computational specifications for the Bayesian quantile correction-and-synthesis analysis of San Lorenzo River discharge.}
+
+\maketitle
+
+
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\theequation}{S\arabic{equation}}
+\renewcommand{\thealgorithm}{S\arabic{algorithm}}
+
+\section{Data Sources and Historical Inputs}
+\label{sec:data}
+\label{app:datahistories}
+
+The target is daily mean discharge at the U.S. Geological Survey (USGS) Big Trees gauge, station 11160500, Santa Cruz, California \citep{usgs_daily_11160500}. The 12,995-observation record spans May 29, 1987 through December 25, 2022. Figures~\ref{fig:covariates} and \ref{fig:retrospectives} display the historical covariates and retrospective products. All modeled discharge is transformed as $\log(1+x)$, with $x$ in m$^3$/s. A forecast origin $T$ ends the historical window; verification starts at $T+1$.
+
+The base covariates are precipitation from the Parameter-elevation Regressions on Independent Slopes Model (PRISM) Climate Group \citep{prism}, soil moisture from European Centre for Medium-Range Weather Forecasts (ECMWF) ERA5-Land \citep{ecmwf,munozsabater2021era5land}, and a generalized dynamic principal component (GDPC; \citealp{JSSv092c02}) of National Oceanic and Atmospheric Administration (NOAA) Physical Sciences Laboratory climate indices \citep{noaa_climate_indices}. The monthly indices are solar flux, Ni\~no 1+2, Oceanic Ni\~no Index, Southern Oscillation Index, Western Hemisphere Warm Pool, global mean temperature, Northern Oscillation Index, Atlantic Multidecadal Oscillation, and tropical South and North Atlantic indices. They are interpolated to daily resolution and standardized; the first GDPC explains 44.07\% of total variability. Forecast covariate paths include Global Ensemble Forecast System precipitation and shallow soil water.
+
+External discharge comes from ECMWF's Global Flood Awareness System (GloFAS; \citealp{harrigan2020glofas}) and NOAA National Weather Service (NWS), including National Water Model (NWM) output \citep{cosgrove2024noaa}. Gridded covariates and GloFAS use the gauge cell or nearest valid river cell; NWM uses the corresponding reach or model-output point. PRISM has 4 km resolution and ERA5-Land 0.1-degree resolution. GloFAS retrospective version 2.1 is used for January 2021 and version 3.1 for other origins; NWM version 2.1 has a version 3.0 extension beyond its coverage. Hourly NWS forecasts retain the latest available issuance for each target and member at the origin before daily aggregation. GloFAS contributes 51 members over 28 daily leads and NWS seven members over eight valid daily leads. Data-source records document extraction and versions by origin \citep{deleon2026sanlorenzo_reproducibility}.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=450pt]{covariate_context_precip_soil_gdpc.png}
+\caption{Historical daily precipitation (mm), soil moisture (m$^3$/m$^3$) and first GDPC score, May 29, 1987 through December 25, 2022.}
+\label{fig:covariates}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=450pt]{retrospective_products_context.png}
+\caption{GloFAS and NWS retrospective discharge over available coverage for the December 25, 2022 origin. Values are on the $\log(1+x)$ scale with $x$ in m$^3$/s; the displayed record spans May 29, 1987 through December 25, 2022.}
+\label{fig:retrospectives}
+\end{figure}
+
+\section{Additional Forecast Results}
+\label{app:extras}
+
+\subsection{Model Comparisons by Origin}
+\label{app:externalreferences}
+
+The five origins are January 23, November 12 and December 21, 2021, and May 11 and December 25, 2022. Nine Bayesian variants combine Gaussian (N), asymmetric Laplace (AL) or extended asymmetric Laplace (exAL) likelihoods with gauge-only (U) or source-inclusive (M) observations and transfer-active (T1) or forecast-transfer-suppressed (T0) configurations. M-T0 retains transfer during historical fitting. AL/exAL predictive syntheses combine fits at probabilities $0.05,0.20,0.35,0.50,0.65,0.80,0.95$. The exAL-M-T1 configuration is the reference specification.
+
+Table~\ref{tab:crps_all_origins} gives mean continuous ranked probability scores (CRPS; smaller is better) using the reported quantile-grid calculation on transformed discharge. External references are raw GloFAS/NWS ensembles, seasonal climatology, persistence and GloFAS ensemble model output statistics (EMOS). The horizons retain matching verification dates, with NWS available only for eight days. Aggregate means and climatology-relative skill appear in the main paper.
+
+\input{tables/compact_publication/si_origin_crps.tex}
+
+\subsection{Component-Removal Comparisons and Fitting Evidence}
+\label{app:he3ablation}
+
+The reductions retain reference settings while removing one structural component. The labels \texttt{noTrend}, \texttt{noH1}, \texttt{noH2} and \texttt{noH3} remove the shared and source-discrepancy local level or corresponding seasonal pair. The third pair has period 2474.87 days (Subsection~\ref{app:seasonalconstruction}). The \texttt{noTF} model removes transfer in both fitting and forecasting, unlike T0. Table~\ref{tab:component_comparison} documents sensitivity under inherited settings, without separately optimizing the reduced models.
+
+\input{tables/compact_publication/si_component_comparison.tex}
+
+\label{app:fitdiagnostics}
+The assessment in Table~\ref{tab:fitting_status} covers 70 runs and 400 fits. It uses joint stopping criteria, iteration limits, actual parameter updates and simulation outcomes, rather than termination alone. Sixteen fits satisfy their recorded criteria: 15 Gaussian fits and the January 2021 median \texttt{noH1} fit. The other 314 multivariate quantile fits reach their iteration limits, including all 35 reference fits and 174/175 reduced fits. Three AL-M-T0 fits end with some updates held fixed; zero terminal changes for such parameters do not establish convergence. The 70 univariate AL/exAL fits lack explicit joint-criterion evidence and are unknown, rather than classified as failures.
+
+\input{tables/compact_publication/si_fitting_status.tex}
+
+These categories do not distinguish good and poor forecasts automatically: Gaussian convergence coexists with some poor scores, and both the reference and reductions are iteration-limited. Finite predictions alone establish neither convergence nor posterior accuracy. Consequently, component-removal differences describe the reported fitted configurations and do not resolve the performance of independently retuned reductions.
+
+\subsection{Quantile Loss and Distributional Diagnostics}
+\label{app:distributionchecks}
+
+Table~\ref{tab:quantile_check_loss} reports check losses for each origin and target probability; the pooled 28-day comparison is in the main paper. These are losses of synthesized predictive quantiles against subsequent USGS observations, not losses of conditional model locations. Tables~\ref{tab:exact_score_sensitivity} and \ref{tab:discharge_scale_scores} distinguish exact empirical-distribution scores, the independent-draw sensitivity and discharge-scale results. Subsection~\ref{app:numericalprediction} defines their finite-representation conventions. Table~\ref{tab:origin_interval_coverage} reports the origin-specific central 95\% interval counts. The analysis materials also provide complete reliability hits, ties, interval scores and raw-product error/spread summaries \citep{deleon2026sanlorenzo_reproducibility}.
+
+\input{tables/compact_publication/si_quantile_loss.tex}
+\input{tables/compact_publication/si_exact_score_sensitivity.tex}
+\input{tables/compact_publication/si_discharge_score.tex}
+\input{tables/compact_publication/si_origin_coverage.tex}
+
+\subsection{Conditional Covariate Coefficients}
+
+Table~\ref{tab:components_23_31} reports the three base-input coefficient states at December 25, 2022, rather than averages across the historical record. The 12-input vector includes the base inputs, squared precipitation and soil moisture, their interaction and one-, two- and three-day lags of precipitation and soil moisture. Each is divided by its historical standard deviation without centering. The terminal state $\boldsymbol\psi_T$ enters the next transfer update through $\mathbf x_{T+1}'\boldsymbol\psi_T$. These are conditional, noncausal effects alongside the other latent components and nonlinear covariates. Approximate variational posterior means and credible intervals do not account for all approximation error or establish exact posterior coverage \citep{blei2017variational}.
+
+\input{tables/editorial_revision/representative_covariate_effects_table.tex}
+
+\subsection{Predictions at the Remaining Origins}
+\label{app:cutoffsynthpanels}
+
+Figures~\ref{fig:forecast_origins_2021_early} and \ref{fig:forecast_origins_2021_2022} show all four additional exAL-M-T1 cases. Each shows 19 historical dates and 28 forecast dates, observed values, the predictive mean and the central 95\% interval. The limits are the 2.5th and 97.5th predictive percentiles, rather than the outer 5th and 95th fitted quantile levels. These figures show marginal observation prediction; they do not depict parameter-posterior intervals.
+
+\begin{figure}[p]
+\centering
+\includegraphics[width=450pt]{compact_forecasts_2021_early.pdf}
+\caption{Reference exAL-M-T1 predictions at January 23 and November 12, 2021. Each panel shows observed discharge, predictive mean and pointwise central 95\% predictive interval on the $\log(1+x)$ scale, $x$ in m$^3$/s. The vertical line marks the origin $T$ and the first target is $T+1$.}
+\label{fig:forecast_origins_2021_early}
+\end{figure}
+\begin{figure}[p]
+\centering
+\includegraphics[width=450pt]{compact_forecasts_2021_2022.pdf}
+\caption{Reference exAL-M-T1 predictions at December 21, 2021 and May 11, 2022. Lines, intervals, units and origin convention match Figure~\ref{fig:forecast_origins_2021_early}.}
+\label{fig:forecast_origins_2021_2022}
+\end{figure}
+\section{State-Space Construction and Computational Details}
+\label{app:stateconstruction}
+
+\subsection{Computing Time}
+\label{app:computationtime}
+
+AL and exAL fits use mean-field variational Bayes (VB); Gaussian variants use Gaussian filtering and smoothing. For the daily record in this application, fitting and forecasting at the seven target probabilities take approximately two hours on a Linux server with 64 cores and 503 GiB of memory, after preparation of the observation and covariate series. This is combined elapsed time for fitting and forecasting; the two stages were not timed separately. Computing time depends on the hardware, implementation, series length and state dimension.
+
+\subsection{Seasonal Rotations}
+\label{app:seasonalconstruction}
+
+For daily time steps, the seasonal specification uses a base period \(P=363.5854\) days and frequency multipliers \(h_1=1\), \(h_2=2\), and \(h_3=1/6.8068493\). The daily angular frequencies are \(\omega_a=2\pi h_a/P\), with rotation matrix
+\[
+\mathbf R(\omega)=
+\begin{bmatrix}\cos\omega&\sin\omega\\-\sin\omega&\cos\omega\end{bmatrix}.
+\]
+The corresponding periods are approximately 363.59, 181.79, and 2474.87 days; the last is about 6.78 calendar years, or 81.3 months. These are the periods of the fitted daily rotations. With \(\mathbf E_2=(1,0)'\), the observation loading and transition are
+\[
+\mathbf F_t=(1,\mathbf E_2',\mathbf E_2',\mathbf E_2')',\qquad
+\mathbf G_t=\operatorname{BlockDiag}\{1,\mathbf R(\omega_1),\mathbf R(\omega_2),\mathbf R(\omega_3)\},
+\]
+so \(p=7\), \(\mathbf F_t\in\mathbb R^7\), and \(\mathbf G_t\in\mathbb R^{7\times7}\).
+
+\subsection{Predictive Synthesis and Empirical Quantiles}
+\label{app:numericalprediction}
+
+The initial synthesized quantile curve in the predictive synthesis is evaluated at 1,001 internal probability-grid points. Its values are sorted for monotone rearrangement, and inverse cumulative distribution function (CDF) sampling produces 2,000 draws per time. Linear interpolation is used between the grid values and constant interpolation beyond the two endpoints. Beyond the lowest and highest fitted probabilities, 0.05 and 0.95, the construction uses the corresponding outer fitted predictive distributions. Consequently, the limits of a central 95\% predictive interval are not separately fitted 0.025 and 0.975 model quantiles.
+
+For ordered predictive values \(x_{(1)}\leq\cdots\leq x_{(n)}\), an interpolated empirical quantile is \((1-g)x_{(j)}+g x_{(j+1)}\), where \(j=\lfloor h\rfloor\), \(g=h-j\), and the minimum and maximum are used beyond the corresponding endpoints. The predictive quantiles from individual fits used for isotonic projection and synthesis take \(h=1+(n-1)u\), conventionally called type 7. The additional stochastic-model quantiles used for the calibration assessment and the displayed model-interval limits take \(h=(n+1/3)u+1/3\), conventionally called type 8 \citep{hyndman1996sample}. The four principal quantile competitors use the same predictive quantiles in the check-loss and reliability comparisons. Raw ensembles and deterministic quantile grids use the empirical generalized inverse, \(x_{(\lceil nu\rceil)}\) for \(0<u\leq1\), with the minimum at \(u=0\). These conventions specify finite-sample calculations without changing the fitted models.
+
+For the equally weighted empirical distribution $G_m=m^{-1}\sum_{i=1}^m\delta_{x_i}$, define
+\[
+A=\frac1m\sum_{i=1}^m|x_i-y|,\qquad
+D=\sum_{i<j}|x_i-x_j|.
+\]
+The exact empirical-distribution score and separate independent-draw adjustment are
+\[
+\mathrm{CRPS}(G_m,y)=A-\frac{D}{m^2},\qquad
+\mathrm{CRPS}_{\rm adj}=A-\frac{D}{m(m-1)}.
+\]
+The main paper's quantile-grid score equals the exact score plus $D/[m^2(m+1)]$, explaining their difference on the same predictive values \citep{zamo2018crps}. The adjusted score estimates the parent-distribution CRPS under independent, identically distributed draws \citep{ferro2014fair}; that assumption is additional for physical ensembles. The adjustment is inapplicable to deterministic quantile grids and point masses. Exact skill uses the matching exact climatology denominator; no adjusted skill is reported.
+
+\subsection{EMOS Optimization}
+\label{app:emoscomputation}
+
+For each lead, the EMOS fit minimizes the analytic truncated-normal CRPS over the eligible training cases described in the main paper. We use four deterministic initial values and bounded limited-memory Broyden--Fletcher--Goldfarb--Shanno optimization (L-BFGS-B), retaining the converged solution with the lowest objective. The constraints are \(b,d\geq0\) and \(c>0\) in the location and variance parameterization. Training cases, numerical scaling and bounds, fitted parameter values, convergence criteria and boundary assessments are included in the reproducibility materials.
+
+\subsection{Stacked States and Selectors}
+
+For target probability $p_0$, $\operatorname{exAL}_{p_0}(\mu,\sigma,\gamma)$ denotes the extended asymmetric Laplace working likelihood with quantile location $\mu$, scale $\sigma>0$ and skewness $\gamma$ in the domain defined below. Each quantile model uses a shared $p$-dimensional trend/seasonal state $\boldsymbol\theta_t$, source discrepancies $\boldsymbol\delta_t^j$ and an $(m+1)$-dimensional transfer block. Let $\mathcal J=\{1,\ldots,J\}$ index external sources; source $j$ has members $i\in\mathcal I_j=\{1,\ldots,I_j\}$ and leads $k\in\mathcal K_j=\{1,\ldots,K_{(j)}\}$, with $K_{\max}=\max_jK_{(j)}$. The loading $\mathbf F_t$ and transition $\mathbf G_t$ have dimensions $p$ and $p\times p$. Stack
+\[
+\boldsymbol{\omega}_t' = [\zeta_t,\ \boldsymbol{\psi}_t'], \qquad
+\boldsymbol{\eta}_t' = [\boldsymbol{\theta}_t',\ (\boldsymbol{\delta}_t^1)',\ \ldots,\ (\boldsymbol{\delta}_t^J)',\ \boldsymbol{\omega}_t'],
+\]
+where \(\boldsymbol{\omega}_t \in \mathbb{R}^{m+1}\) and \(\boldsymbol{\eta}_t \in \mathbb{R}^{q}\), with \(q = (J+1)p + m + 1\). The transfer update can be written as
+\[
+\mathbf{G}^{\text{trans}}_t =
+\begin{bmatrix}
+\lambda & \mathbf{x}_t' \\
+\mathbf{0}_m & \mathbf{I}_m
+\end{bmatrix}.
+\]
+Let $\mathcal J=\{1,\ldots,J\}$ and \(\mathcal{J}_0=\{0\}\cup\mathcal{J}\), where \(s=0\) denotes the USGS observation channel and \(s\in\mathcal{J}\) denotes an external product family. Let \(y_t^0 \equiv y_t^o\) denote the observation channel and \(y_t^s \equiv z_t^s\), \(s\in\mathcal{J}\), denote the retrospective-product channels. The corresponding compact form is:
+\begin{alignat}{3}
+\text{Pre-cutoff observations:}\quad&
+y_t^s \mid \boldsymbol{\eta}_t, \sigma^s, \gamma^s
+&\sim{}& \text{exAL}_{p_0}\!\left(\mathbf{h}_{t,s}' \boldsymbol{\eta}_t, \sigma^s, \gamma^s\right),
+&\qquad& 1 \le t \le T,\ s \in \mathcal{J}_0, \label{eq:compact_est_obs}
+\\
+\text{Pre-cutoff state evolution:}\quad&
+\boldsymbol{\eta}_t \mid \boldsymbol{\eta}_{t-1}
+&\sim{}& \mathcal{N}\!\left(\boldsymbol{D}_t \boldsymbol{\eta}_{t-1}, \boldsymbol{\Lambda}_t\right),
+&\qquad& 1 \le t \le T, \label{eq:compact_est_state}
+\\
+\text{Forecast observations:}\quad&
+y_T^{j,i}(k) \mid \boldsymbol{\eta}_{T+k}, \sigma^j, \gamma^j
+&\sim{}& \text{exAL}_{p_0}\!\left(\mathbf{e}_{T+k,j}' \boldsymbol{\eta}_{T+k}, \sigma^j, \gamma^j\right),
+&\qquad& j \in \mathcal{J},\ i \in \mathcal{I}_j,\ k \in \mathcal{K}_j, \label{eq:compact_fc_obs}
+\\
+\text{Forecast state evolution:}\quad&
+\boldsymbol{\eta}_{T+k} \mid \boldsymbol{\eta}_{T+k-1}
+&\sim{}& \mathcal{N}\!\left(\boldsymbol{M}_{T+k} \boldsymbol{\eta}_{T+k-1}, \mathbf{W}_{T+k}\right),
+&\qquad& 1 \le k \le K_{\max}. \label{eq:compact_fc_state}
+\end{alignat}
+
+Here
+\[
+\big(\mathbf{F}_t^{\text{trans}}\big)' = [1,\ \mathbf{0}_m'], \qquad
+\mathbf{h}_{t,0}' =
+\big[\mathbf{F}_t',\ \mathbf{0}_{pJ}',\ \big(\mathbf{F}_t^{\text{trans}}\big)'\big],
+\qquad
+\mathbf{h}_{t,j}' =
+\big[\mathbf{F}_t',\ \mathbf{0}_{p(j-1)}',\ \mathbf{F}_t',\ \mathbf{0}_{p(J-j)}',\ \big(\mathbf{F}_t^{\text{trans}}\big)'\big],
+\quad j \in \mathcal{J},
+\]
+with \(\mathbf{F}_t^{\text{trans}} \in \mathbb{R}^{m+1}\), \(\mathbf{h}_{t,0}, \mathbf{h}_{t,j} \in \mathbb{R}^{q}\), and
+\[
+\boldsymbol{D}_t = \text{BlockDiag}\!\left(\mathbf{G}_t,\ \underbrace{\mathbf{G}_t,\ldots,\mathbf{G}_t}_{J\ \text{discrepancy blocks}},\ \mathbf{G}^{\text{trans}}_t\right), \qquad
+\boldsymbol{\Lambda}_t = \text{BlockDiag}\!\left(\mathbf{W}^{\theta}_t,\ \underbrace{\mathbf{W}^{\delta^1}_t,\ldots,\mathbf{W}^{\delta^J}_t}_{J\ \text{source-specific discrepancy blocks}},\ \text{BlockDiag}\!\left(w_t^{\zeta}, \mathbf{W}^{\psi}_t\right)\right),
+\]
+where \(\boldsymbol{D}_t, \boldsymbol{\Lambda}_t \in \mathbb{R}^{q\times q}\) and \(\sigma^s \in \mathbb{R}_+\), \(\gamma^s \in \mathbb{R}\) denote the channel-specific scale and skewness parameters for \(s \in \mathcal{J}_0\). Thus, \(\mathbf{h}_{t,0}' \boldsymbol{\eta}_t = \mathbf{F}_t' \boldsymbol{\theta}_t + \zeta_t\) and \(\mathbf{h}_{t,j}' \boldsymbol{\eta}_t = \mathbf{F}_t'(\boldsymbol{\theta}_t + \boldsymbol{\delta}_t^j) + \zeta_t\). For the forecast window, \(\mathbf{e}_{T+k,j}\) is the analogue of \(\mathbf{h}_{t,j}\): it extracts the latent trend-and-seasonal block, the discrepancy block for source \(j\), and the transfer block. For \(t>T\), \(\boldsymbol M_t\) denotes the forecast transition constructed from the same blocks as \(\boldsymbol D_t\): the trend-and-seasonal block, the discrepancy blocks of active sources, and \(\mathbf G_t^{\mathrm{trans}}\) evaluated with \(\mathbf x_t\). At a change in source availability, the preceding state is first restricted to the retained coordinates. State vectors, selectors and covariance matrices are restricted consistently. The full dimension is \(q\); the active dimension is denoted by \(p_t\) in Subsection~\ref{app:forecastcovariance}.
+
+The augmentation in Subsection~\ref{app:augmentation} makes the observation equations conditionally Gaussian, while the state evolution remains Gaussian. The model can therefore be handled with standard state-space methods, including filtering, smoothing, and sampling recursions.
+
+\subsection{Extended Asymmetric Laplace Augmentation}
+\label{app:augmentation}
+
+For fixed \(p_0\), the skewness bounds are the negative root \(L_\gamma(p_0)\) of \(g(\gamma)=1-p_0\) and positive root \(U_\gamma(p_0)\) of \(g(\gamma)=p_0\), where
+\[
+g(\gamma)=2\Phi(-|\gamma|)\exp(\gamma^2/2).
+\]
+Here \(\Phi\) is the standard normal cumulative distribution function. These bounds ensure \(0<p(\gamma;p_0)<1\) for
+\[
+p(\gamma;p_0)=I(\gamma<0)+\{p_0-I(\gamma<0)\}/g(\gamma).
+\]
+The functions used in the algorithms are
+\[
+A(\gamma;p_0)=\frac{1-2p(\gamma;p_0)}{p(\gamma;p_0)\{1-p(\gamma;p_0)\}},\qquad
+B(\gamma;p_0)=\frac{2}{p(\gamma;p_0)\{1-p(\gamma;p_0)\}},\qquad
+C(\gamma;p_0)=\{I(\gamma>0)-p(\gamma;p_0)\}^{-1}.
+\]
+Using independent \(e\sim\mathcal N(0,1)\), \(u\sim\operatorname{Exp}(1)\), and \(s\sim\mathcal N^+(0,1)\), where the last distribution is truncated to the positive half-line, \citet{yan2025new} give the representation
+\[
+Y=\mu+C(\gamma;p_0)\sigma|\gamma|s+A(\gamma;p_0)\sigma u+
+\sqrt{B(\gamma;p_0)\sigma^2u}\,e.
+\]
+The algorithms use $v=\sigma u$, so the conditional Gaussian variance is $B(\gamma;p_0)\sigma v$. We use the generalized inverse-Gaussian convention
+\[
+\mathcal{GIG}(p,a,b)\propto x^{p-1}\exp\{-(ax+b/x)/2\},\qquad x>0.
+\]
+The positive-truncated normal distribution is denoted by $\mathcal N^+$. The second argument of \(\mathcal N^+\) in the algorithms is the underlying Gaussian variance. This separates the augmentation variables from the retrospective products \(z_t^j\), and the Gaussian noise \(e\) from the covariance-prior weight \(\epsilon\).
+
+\subsection{Forecast-Window Covariance Prior}
+\label{app:forecastcovariance}
+
+During the forecast window ($t \in \{T+1, \ldots, T+K_{\max}\}$), we set the Inverse Wishart prior parameters as $\mathbf{S}_t = (\nu_t - p_t - 1)\, c\, \mathbf{W}_T$ and $\nu_t = (p_t + 1 + \epsilon)$, with $\epsilon, c > 0$, where \(p_t\) denotes the dimension of the active forecast-window state at time \(t\), \(\mathbf{S}_t \in \mathbb{R}^{p_t\times p_t}\), and \(\mathbf{W}_T \in \mathbb{R}^{p_t\times p_t}\) after restricting the full pre-cutoff covariance to the active forecast-window block. Under this specification, the posterior mean is
+\(
+\mathbb{E}[\mathbf{W}_t \mid \mathcal{D}_t] = \frac{\epsilon}{1 + \epsilon}(c\, \mathbf{W}_T) + \frac{1}{1 + \epsilon} \mathbb{E}\left[ (\boldsymbol{\eta}_t - \boldsymbol{M}_t \boldsymbol{\eta}_{t-1}) (\boldsymbol{\eta}_t - \boldsymbol{M}_t \boldsymbol{\eta}_{t-1})' \mid \mathcal{D}_t \right],
+\)
+where $\mathcal{D}_t$ denotes all data available up to and including time $t$.
+
+The inverse-Wishart convention has mean $\mathbf S_t/(\nu_t-p_t-1)$. The weights stabilize covariance estimation from the available forecast-product updates. To evaluate the innovation expectation, write $\bar{\mathbf e}_t=\mathbf m_t^s-\mathbf M_t\mathbf m_{t-1}^s$ and $\mathbf C_{t,t-1}^s=\operatorname{Cov}(\boldsymbol\eta_t,\boldsymbol\eta_{t-1})$. Then
+\[
+\mathbb E(\mathbf e_t\mathbf e_t')=
+\bar{\mathbf e}_t\bar{\mathbf e}_t'+\mathbf C_t^s+
+\mathbf M_t\mathbf C_{t-1}^s\mathbf M_t'
+-\mathbf C_{t,t-1}^s\mathbf M_t'-\mathbf M_t(\mathbf C_{t,t-1}^s)'.
+\]
+With the smoothing gains in Algorithm~\ref{alg:Alg4}, $\mathbf C_{t,t-1}^s=\mathbf C_t^s\mathbf B_{t-1}'$. All quantities are restricted consistently when the active state dimension changes.
+
+\subsection{Laplace--Delta Approximation}
+\label{app:vblad}
+
+The variational Bayes Laplace--Delta (VB-LD) approximation updates scale and skewness jointly. Let \(\mathcal D\) denote the observation values entering the specified likelihood. Let \(\boldsymbol\alpha\) collect unconstrained scale and skewness parameters for one channel, and let \(\boldsymbol\beta\) collect the remaining unknown quantities, whose current variational density is \(r(\boldsymbol\beta)\). The non-conjugate coordinate update has log kernel
+\(\ell(\boldsymbol\alpha)=\mathbb E_{r(\boldsymbol\beta)}[\log p(\mathcal D,\boldsymbol\alpha,\boldsymbol\beta)]\).
+A Laplace approximation sets
+\[
+r(\boldsymbol\alpha)\approx\mathcal N(\widehat{\boldsymbol\alpha},\boldsymbol\Sigma),\qquad
+\widehat{\boldsymbol\alpha}=\arg\max\ell(\boldsymbol\alpha),\qquad
+\boldsymbol\Sigma=-\{\nabla^2\ell(\widehat{\boldsymbol\alpha})\}^{-1}.
+\]
+For a nonlinear function \(g\), the second-order Delta approximation supplies
+\[
+\mathbb E_r[g(\boldsymbol\alpha)]\approx g(\widehat{\boldsymbol\alpha})+
+\tfrac12\operatorname{Tr}\{\nabla^2g(\widehat{\boldsymbol\alpha})\boldsymbol\Sigma\}.
+\]
+These moments enter the conditionally conjugate state and augmentation updates in Algorithms~\ref{alg:Alg3} and \ref{alg:Alg4}. Conditional on the evolution covariances, the factorization is
+\[
+r(\boldsymbol\eta_{0:T+K_{\max}})\prod_{a\in\mathcal A}r(v_a)r(s_a)
+\prod_{j\in\mathcal J_0}r(\sigma^j,\gamma^j),
+\]
+Here $\mathcal A$ indexes available observations, including each active forecast member. Dependence between scale and skewness is retained within each channel's Laplace factor.
+
+\section{Variational Bayes Updates}
+
+Algorithms~\ref{alg:Alg3} and \ref{alg:Alg4} display historical-window coordinate updates and Gaussian state recursions. Initialize state moments from $\mathcal N(\mathbf m_0,\mathbf C_0)$ and initialize augmentation and channel-parameter moments before the first outer iteration. Angle brackets denote expectations under the current variational factors; $\mathcal L$ denotes the evidence lower bound (ELBO). The same observation-level updates apply to each available forecast member after replacing $(t,j)$ by $(T+k,j,i)$ and using the corresponding selector and active-state transition. In the forecast window, an observation vector stacks all active pairs \((j,i)\), where \(j\) identifies a source and \(i\) a member. Selector columns repeat within a source, while each member has its own augmentation variables. A source-specific parameter objective includes every retrospective value and available issued member: with complete historical support this gives \(T+I_jK_{(j)}\) contributions for external source \(j\), and \(T\) for the gauge channel. Forecast state evolution uses the covariance specification in Subsection~\ref{app:forecastcovariance}.
+
+\begin{algorithm}
+\caption{Historical-window variational Bayes (VB) coordinate updates}
+\label{alg:Alg3}
+\begin{algorithmic}
+
+\State \textbf{Notation:}
+\State  $\left\langle g(\xi) \right\rangle = \mathbb{E}_\xi\left[ g(\xi) \right]$
+\State  \(
+A^j = A(\gamma^j;p_0), \quad B^j = B(\gamma^j;p_0), \quad C^j = C(\gamma^j;p_0), \text{ as defined in Subsection~\ref{app:augmentation}}
+\)
+\State  Let \(\mathcal{J}_0=\{0\}\cup\mathcal{J}\). During the pre-cutoff observation window, let \(y_t^0 \equiv y_t^o\) and \(y_t^j \equiv z_t^j\) for \(j\in\mathcal{J}\), with selector \(\mathbf{h}_{t,j}\).
+\State \textbf{Step 0: Set initial values}
+\State Choose \(k_{\max}\), minimum update counts, and convergence tolerances; set \(k=0\)
+
+\While{\(k < k_{\max}\) and convergence criteria are not met}
+    \State \(k \leftarrow k+1\)
+    \State \textbf{Step 1: Update $r(\boldsymbol{\eta}_t)=\mathcal{N}(\mathbf m^{(k)}_t,\mathbf C^{(k)}_t)$}
+    \State Use Algorithm~\ref{alg:Alg4}
+
+    \For{$j \in \mathcal{J}_0$}
+        \State \textbf{Step 2: Update $r(v^j_t)=\mathcal{GIG}(a_t^{j,(k)},b_t^{j,(k)},c_t^{j,(k)})$}
+        \For{$t = 1$ to $T$}
+            \State $a_t^{j,(k)} = \frac{1}{2}$
+            \State $b_t^{j,(k)} = \left\langle \frac{(A^j)^2}{\sigma^j B^j} \right\rangle^{(k-1)} + 2 \left\langle \frac{1}{\sigma^j} \right\rangle^{(k-1)}$
+            \State $c_t^{j,(k)} = \left\langle \frac{1}{\sigma^j B^j} \right\rangle^{(k-1)} \Big[ (y_t^j)^2 - 2y_t^j \left\langle  \mathbf{h}_{t,j}' \boldsymbol{\eta}_t \right\rangle^{(k)} + \left\langle (  \mathbf{h}_{t,j}' \boldsymbol{\eta}_t )^2 \right\rangle^{(k)} \Big]$
+            \State $\quad \quad -2 \left\langle s^j_t \right\rangle^{(k-1)} \left\langle \frac{C^j|\gamma^j|}{B^j} \right\rangle^{(k-1)} \Big[ y_t^j - \left\langle  \mathbf{h}_{t,j}' \boldsymbol{\eta}_t \right\rangle^{(k)} \Big]$
+            \State $\quad \quad + \left\langle (s^j_t)^2 \right\rangle^{(k-1)} \left\langle \frac{(C^j)^2\sigma^j|\gamma^j|^2}{B^j} \right\rangle^{(k-1)}$
+        \EndFor
+
+        \State \textbf{Step 3: Update $r(s^j_t)=\mathcal{N}^+(a_{s,t}^{j,(k)},\ell_t^{j,(k)})$}
+        \For{$t = 1$ to $T$}
+            \State $\ell_t^{j,(k)} = \Big[ 1+\left\langle \frac{(C^j)^2 \sigma^j |(\gamma^j)|^2}{B^j} \right\rangle^{(k-1)} \left\langle \frac{1}{v^j_t} \right\rangle^{(k)} \Big]^{-1}$
+            \State $a_{s,t}^{j,(k)} = \ell_t^{j,(k)}  \Big[ \left\langle \frac{C^j |\gamma^j|}{B^j} \right\rangle^{(k-1)} \left\langle \frac{1}{v^j_t} \right\rangle^{(k)} \Big( y_t^j - \left\langle  \mathbf{h}_{t,j}' \boldsymbol{\eta}_t \right\rangle^{(k)} \Big) - \left\langle \frac{C^j |\gamma^j| A^j}{B^j} \right\rangle^{(k-1)} \Big]$
+        \EndFor
+
+        \State \textbf{Step 4: Update $r(\gamma^j, \sigma^j )$}
+        \State Approximate via VB-LD, as described in Subsection~\ref{app:vblad}
+    \EndFor
+    \State \textbf{Step 5: Check convergence}
+    \State Compute \(\mathcal{L}^{(k)}\), \(\Delta_{\mathcal{L}}^{(k)}=|\mathcal{L}^{(k)}-\mathcal{L}^{(k-1)}|\), and the relative ELBO change
+    \State Declare convergence after required update iterations when ELBO,
+    \Statex \hspace{\algorithmicindent} state, scale, and skewness changes are below their tolerances
+\EndWhile
+
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{VB-Filtering and VB-Smoothing}
+\label{alg:Alg4}
+\begin{algorithmic}
+
+\State \textbf{Notation:}
+\State $\left\langle g(\xi) \right\rangle = \mathbb{E}_\xi\left[ g(\xi) \right]$
+\State  During the pre-cutoff observation window, \(\mathbf{H}_t = [\mathbf{h}_{t,0}, \mathbf{h}_{t,1}, \ldots, \mathbf{h}_{t,J}]\), \(\mathbf{Y}_t = [y_t^o, z_t^1, \ldots, z_t^J]'\), and \(\mathbf{D}_t, \boldsymbol{\Lambda}_t\) are as defined in Subsection~\ref{app:stateconstruction}.
+\State  Equivalently, let \(y_t^0 \equiv y_t^o\) and \(y_t^j \equiv z_t^j\) for \(j\in\mathcal{J}\).
+\State For each active channel, define the expected precision and weighted offset:
+\State $\pi_t^j=\left\langle\frac{1}{B^j\sigma^jv_t^j}\right\rangle$
+\State $b_t^j=(\pi_t^j)^{-1}\left\langle\frac{C^j\sigma^j|\gamma^j|s_t^j+A^jv_t^j}{B^j\sigma^jv_t^j}\right\rangle$
+\State $\mathbf b_t=[b_t^j]_{j\in\mathcal J_0}$, \quad $\mathbf O_t=\operatorname{Diag}\big([(\pi_t^j)^{-1}]_{j\in\mathcal J_0}\big)$
+\State At outer iteration \(k\), augmentation and parameter moments are from iteration \(k-1\); the smoothed moments below define \(\mathbf m_t^{(k)},\mathbf C_t^{(k)}\).
+\State \(A^j,B^j,C^j\) are defined in Subsection~\ref{app:augmentation}.
+\State \textbf{Step 1: Forward Filtering}
+\For{$t = 1$ to $T$}
+    \State Compute Prior moments:
+    \State $\mathbf{a}_t = \mathbf{D}_t \mathbf{m}_{t-1}$
+    \State $\mathbf{R}_t = \mathbf{D}_t \mathbf{C}_{t-1} \mathbf{D}_t' +  \boldsymbol{\Lambda}_t$
+
+    \State One-step-ahead forecast:
+    \State $\mathbf{f}_t = \mathbf{H}_t'\mathbf{a}_t + \mathbf{b}_t$
+    \State $\mathbf{Q}_t = \mathbf{H}_t'\mathbf{R}_t\mathbf{H}_t + \mathbf{O}_t$
+
+    \State Compute Posterior moments:
+    \State $\mathbf{m}_t = \mathbf{a}_t + \mathbf{R}_t \mathbf{H}_t \mathbf{Q}_t^{-1}(\mathbf{Y}_t - \mathbf{f}_t)$
+    \State $\mathbf{C}_t = \mathbf{R}_t - \mathbf{R}_t \mathbf{H}_t \mathbf{Q}_t^{-1} \mathbf{H}_t' \mathbf{R}_t$
+\EndFor
+
+\State \textbf{Step 2: Backward Smoothing}
+\For{$t = T$ down to $1$}
+    \If{$t = T$}
+        \State Set $r^{(k)}(\boldsymbol{\eta}_T) := \mathcal{N}(\mathbf{m}_T^s, \mathbf{C}_T^s)$
+        \State $\mathbf{m}_T^s = \mathbf{m}_T$
+        \State $\mathbf{C}_T^s = \mathbf{C}_T$
+    \Else
+        \State Compute Smoothing moments:
+        \State $r^{(k)}(\boldsymbol{\eta}_t) := \mathcal{N}(\mathbf{m}_t^s, \mathbf{C}_t^s)$
+        \State $\mathbf{B}_t = \mathbf{C}_t \mathbf{D}_{t+1}' \mathbf{R}_{t+1}^{-1}$
+        \State $\mathbf{m}_t^s = \mathbf{m}_t + \mathbf{B}_t (\mathbf{m}_{t+1}^s - \mathbf{a}_{t+1})$
+        \State $\mathbf{C}_t^s = \mathbf{C}_t + \mathbf{B}_t (\mathbf{C}_{t+1}^s - \mathbf{R}_{t+1}) \mathbf{B}_t'$
+    \EndIf
+\EndFor
+
+
+\end{algorithmic}
+\end{algorithm}
+
+
+
+
+
+\bibliography{wileyNJD-APA}
+\end{document}

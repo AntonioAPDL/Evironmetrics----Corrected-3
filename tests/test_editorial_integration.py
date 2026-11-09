@@ -8,8 +8,9 @@ from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
-from build_manuscript_review import collect_source_files, sha256
+from build_manuscript_review import collect_source_files, sha256, recorder_local_sources
 from manuscript_text_contract import included_tex_paths
+from publication_package import read_package, validate_package, document_graphs
 import refresh_editorial_revision
 
 
@@ -71,26 +72,75 @@ class IncludeTraversalTests(unittest.TestCase):
         self.assertNotEqual(before[active], after[active])
         self.assertEqual(len(sources), 5)
 
+    def test_entry_selection_hashes_only_the_chosen_independent_root(self):
+        self.write('wileyNJD-APA.tex', r'\input{main_table}')
+        main_table = self.write('main_table.tex', 'Main-only numerical result')
+        si = self.write('supporting_information.tex', r'\input{si_table}')
+        si_table = self.write('si_table.tex', 'SI-only numerical result')
+        for name in ('wileyNJD-APA.bib', 'WileyNJD-v2.cls', 'WileyNJD-APA.bst'):
+            self.write(name, 'Fixture source')
+        sources = collect_source_files(self.root, 'supporting_information.tex')
+        self.assertIn(si, sources)
+        self.assertIn(si_table, sources)
+        self.assertNotIn(main_table, sources)
+        self.assertNotIn(self.root / 'wileyNJD-APA.tex', sources)
+
+
+class RecorderInputTests(unittest.TestCase):
+    def test_stale_checkout_auxiliary_is_rejected(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            output = root / 'build'
+            output.mkdir()
+            (root / 'other.aux').write_text('Stale labels')
+            recorder = output / 'proof.fls'
+            recorder.write_text('INPUT ./other.aux\n')
+            with self.assertRaisesRegex(ValueError, 'source-checkout auxiliary'):
+                recorder_local_sources(root, recorder, output)
+
+    def test_recorder_distinguishes_build_products_and_local_sources(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            output = root / 'build'
+            output.mkdir()
+            source = root / 'shared.sty'
+            source.write_text('Local definitions')
+            (output / 'proof.aux').write_text('Generated')
+            recorder = output / 'proof.fls'
+            recorder.write_text(f'INPUT {source}\nINPUT {output / "proof.aux"}\nINPUT /missing/system.sty\n')
+            self.assertEqual(recorder_local_sources(root, recorder, output), {source})
+
 
 class ActiveArticleIntegrationTests(unittest.TestCase):
-    def test_all_asset_manifest_tables_are_actually_included(self):
-        manifest = json.loads((ROOT / 'MANUSCRIPT_ASSET_MANIFEST.json').read_text())
-        paths = {ROOT / item['table_tex_path'] for item in manifest['tables'].values()}
-        active = set(included_tex_paths(ROOT))
-        self.assertEqual(len(paths), 15)
-        self.assertEqual(len(manifest['tables']), 16)
-        self.assertTrue(paths.issubset(active))
-        self.assertTrue(all(p.parent == ROOT / 'tables/editorial_revision' for p in paths))
+    def test_active_package_assets_are_owned_by_their_actual_document(self):
+        report = validate_package(ROOT)
+        self.assertTrue(report['passed'], report['errors'])
+        package = read_package(ROOT)
+        graphs = document_graphs(ROOT, package)
+        for asset in package['submitted_assets']:
+            with self.subTest(asset=asset['id']):
+                graph = graphs[asset['document']]
+                paths = graph['tex_paths'] if asset['kind'] == 'table' else graph['figures']
+                self.assertIn(ROOT / asset['path'], paths)
+                self.assertEqual(graph['labels'][asset['label']], 1)
 
-    def test_review_hashes_cover_all_actual_included_presentation_files(self):
-        active = set(included_tex_paths(ROOT))
-        sources = set(collect_source_files(ROOT))
-        self.assertTrue(active.issubset(sources))
+    def test_review_hashes_follow_each_document_not_retained_unused_assets(self):
+        package = read_package(ROOT)
+        for name, document in package['documents'].items():
+            with self.subTest(document=name):
+                active = set(included_tex_paths(ROOT, document['entry']))
+                sources = set(collect_source_files(ROOT, document['entry']))
+                self.assertTrue(active.issubset(sources))
+                submitted = {ROOT / asset['path'] for asset in package['submitted_assets']
+                             if asset['document'] == name}
+                self.assertTrue(submitted.issubset(sources))
+                repository_only = {ROOT / item['path'] for item in package['retained_evidence']
+                                   if item['disposition'] == 'repository'}
+                self.assertFalse(sources & repository_only)
+        # Original replay outputs remain available without being mistaken for
+        # the displays selected for the current reading package.
         presentation = list((ROOT / 'tables/editorial_revision').glob('*.tex'))
         self.assertEqual(len(presentation), 15)
-        self.assertTrue(set(presentation).issubset(sources))
-        self.assertFalse(any(p.parent == ROOT / 'tables/generated_tex' for p in sources))
-        self.assertIn(ROOT / 'Figures/manuscript/editorial_long_cycle_component.png', sources)
 
     def test_editorial_check_invokes_only_two_bounded_read_only_builders(self):
         commands = refresh_editorial_revision.commands(ROOT, check=True)
