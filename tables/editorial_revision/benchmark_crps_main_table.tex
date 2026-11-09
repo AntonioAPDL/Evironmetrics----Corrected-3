@@ -1,0 +1,30 @@
+\begin{table*}[htbp]
+\centering
+\renewcommand{\arraystretch}{1.08}
+\begin{threeparttable}
+\caption{Mean continuous ranked probability score (CRPS) over leads 1--28 at each of five forecast origins. Bold identifies the lowest score in each origin column.}
+\label{tab:benchmark_crps_models}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} >{\ttfamily}l r r r r r}
+\toprule
+Model & 01/23/2021 & 11/12/2021 & 12/21/2021 & 05/11/2022 & 12/25/2022 \\
+\midrule
+\multicolumn{6}{l}{\textit{Uncorrected forecast products}} \\
+GloFAS & 0.40366 & 0.16957 & 0.68246 & 0.27227 & 1.56006 \\
+\midrule
+\multicolumn{6}{l}{\textit{Bayesian model variants}} \\
+N-U-T1 & 0.33592 & 0.17059 & 1.19344 & 0.15077 & 2.49968 \\
+N-M-T0 & 1.84333 & 0.38023 & 0.65964 & 0.67014 & 0.64404 \\
+N-M-T1 & 3.21490 & 0.89096 & 3.04362 & 0.86820 & 3.88863 \\
+AL-U-T1 & 0.23107 & 0.07795 & 0.87049 & 0.10506 & 1.73376 \\
+AL-M-T0 & 0.46798 & 0.19990 & 0.58668 & 0.09940 & 1.33703 \\
+AL-M-T1 & 0.14592 & 0.05551 & 0.27775 & 0.05467 & 0.62764 \\
+exAL-U-T1 & 0.21622 & 0.10194 & 0.83337 & 0.12452 & 1.70548 \\
+exAL-M-T0 & 0.75682 & 1.72135 & 0.97762 & 1.02087 & 1.21132 \\
+exAL-M-T1 & \textbf{0.13971} & \textbf{0.04724} & \textbf{0.26045} & \textbf{0.02273} & \textbf{0.53806} \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}
+\item \textit{Note:} Daily CRPS is evaluated by quantile-grid integration and averaged over the stated leads for each origin. Scores use $\log(1+x)$ discharge, with $x$ in m$^3$/s. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods. U and M denote one and multiple observation sources; T1 retains the transfer contribution at forecast leads and T0 omits it. GloFAS is the uncorrected ensemble reference; NWS has only eight available daily leads and is compared in Table~\ref{tab:benchmark_crps_models_nws_horizon}. Column dates use month/day/year.
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}

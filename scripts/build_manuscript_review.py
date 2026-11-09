@@ -17,6 +17,7 @@ import re
 import subprocess
 import sys
 
+from manuscript_text_contract import active_tex, included_tex_paths
 from validate_manuscript_figure_paths import (
     parse_graphicspath, parse_includegraphics, resolve_include,
 )
@@ -26,24 +27,37 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def collect_source_files(article: Path) -> list[Path]:
+    """Resolve the active manuscript and its included TeX and figure sources.
+
+    Unused generated fragments cannot stand in for included presentation files.
+    Include traversal rejects missing paths and paths outside the article root.
+    """
+    article = article.resolve()
+    tex_paths = included_tex_paths(article)
+    sources = tex_paths + [article / name for name in (
+        "wileyNJD-APA.bib", "WileyNJD-v2.cls", "WileyNJD-APA.bst"
+    )]
+    main_text = active_tex(tex_paths[0].read_text(encoding="utf-8"))
+    search = parse_graphicspath(main_text)
+    for tex_path in tex_paths:
+        tex = active_tex(tex_path.read_text(encoding="utf-8"))
+        for ref in parse_includegraphics(tex):
+            image_path = resolve_include(article, tex_path, search, ref)
+            if image_path is None:
+                raise ValueError(f"Unresolved manuscript figure: {ref}")
+            if not image_path.is_relative_to(article):
+                raise ValueError(f"Manuscript figure escapes article root: {ref}")
+            sources.append(image_path)
+    return sorted(set(sources))
+
+
 def build(article: Path, output: Path, job: str) -> dict:
     if not re.fullmatch(r"[A-Za-z0-9_-]+", job):
         raise ValueError("Job name may contain letters, digits, underscores and hyphens")
     if output.exists():
         raise ValueError("Output directory already exists; choose a fresh review directory")
-    sources = [article / name for name in (
-        "wileyNJD-APA.tex", "wileyNJD-APA.bib", "WileyNJD-v2.cls", "WileyNJD-APA.bst"
-    )]
-    sources.extend(sorted((article / "tables/generated_tex").glob("*.tex")))
-    tex_path = article / "wileyNJD-APA.tex"
-    tex = tex_path.read_text(encoding="utf-8")
-    search = parse_graphicspath(tex)
-    for ref in parse_includegraphics(tex):
-        image_path = resolve_include(article, tex_path, search, ref)
-        if image_path is None:
-            raise ValueError(f"Unresolved manuscript figure: {ref}")
-        sources.append(image_path)
-    sources = sorted(set(sources))
+    sources = collect_source_files(article)
     before = {str(p.relative_to(article)): sha256(p) for p in sources}
     output.mkdir(parents=True)
     env = os.environ.copy()

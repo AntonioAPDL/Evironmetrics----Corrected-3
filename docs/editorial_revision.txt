@@ -1,0 +1,144 @@
+Editorial revision: statistical exposition and main-text allocation
+=================================================================
+
+Baseline: Corrected-3 main d60d765. This revision changes exposition,
+organization, captions, reference metadata and bounded notation. It does not
+replace numerical model results, refit models, change forecasting settings,
+rescore predictive distributions or alter the statistical target.
+
+Audit and decisions
+-------------------
+The audit read the complete 1,004-line baseline TeX source, the 15 active
+included table files, the relevant bibliography entries and the template's
+public date/DOI interfaces. It checked the argument from data and units through
+model, inference, synthesis, comparison, calibration and interpretation.
+
+1. Retain the six-section argument: Introduction; Forecasting Setting and
+   Data; Bayesian Correction and Predictive Synthesis; Application
+   Specification and Evaluation; Results; Discussion and Conclusions.
+2. Define the conditional model quantile, the posterior predictive quantile
+   from an individual fit, and the synthesized predictive quantile before
+   the synthesis construction. State the conditional gauge location as
+   F_t' theta_t + zeta_t. Define an observation channel on first use.
+3. Define the actual nine configurations as three likelihood families crossed
+   with U-T1, M-T0 and M-T1. Clarify that univariate/multivariate refers to
+   the observation sources for one discharge target, not to multiple basins.
+4. Expand relevant abbreviations in context, including exAL, exDQLM and CRPS;
+   give the full PRISM name and identify the numerical optimizer in Appendix B.
+5. Describe scores by statistical definition rather than revision chronology.
+   Retain the quantile-grid score and exact empirical-distribution score,
+   unequal sample counts, independent-draw sensitivity assumptions,
+   reliability definitions, interval score and discharge-scale findings.
+6. Replace revision-history and software-storage vocabulary with scientific
+   descriptions. Examples include 'own-fit anchors' -> 'predictive quantiles
+   from individual fits', 'engineered predictors' -> 'covariates', and
+   'iteration budgets' -> 'iteration limits'. Preserve standard statistical
+   vocabulary, including working likelihood, state-space model, variational
+   Bayes, filtering/smoothing, isotonic regression and posterior prediction.
+7. Keep the information-role table, site history, forecast context, scientific
+   model equations, essential inference and synthesis construction, tail rule,
+   prior interpretation, benchmark definitions and principal forecast results
+   in the main text. Keep the conditional coefficient interpretation there.
+8. Move full historical covariate and retrospective-product figures to the
+   existing supplementary appendix (app:datahistories); keep the data-source
+   and extraction descriptions in the main article.
+9. Move the dry/wet historical component illustrations and long-cycle panel,
+   with their interpretation, to app:historicalcomponents. Preserve a concise
+   main-text interpretation and explicit cross-reference.
+10. Move the pooled exact empirical-distribution score table to Appendix A;
+    retain its numerical conclusions and cross-reference in Results. Keep
+    the principal CRPS, quantile-loss, calibration and coefficient tables in
+    the main article.
+11. Put exact rotation matrices, numerical synthesis-grid/interpolation
+    conventions, the quantile type-7/type-8 definitions and EMOS optimization
+    mechanics in named Appendix B subsections. Preserve p=7 and q=34 and the
+    model component interpretation in the main text.
+12. Redirect all 15 active TeX table inclusions to presentation files under
+    tables/editorial_revision. Original numerical table sources and protected
+    historical reproduction materials remain intact. The presentation-table
+    generator and its checks are maintained separately.
+13. Replace the Wang--Blei preprint bibliography entry with its published
+    JMLR citation, retaining the citation key. Add Hyndman--Fan (1996) for
+    the empirical-quantile interpolation conventions.
+14. Suppress template received/revised/accepted and dummy DOI text through
+    the class's historydates and doiheadtext interfaces. Do not fork the class.
+15. Use an abstract of 171 whitespace-delimited words, with the same headline
+    score improvements, coverage and scope limitations as the baseline.
+
+Bounded notation corrections
+----------------------------
+These corrections resolve notation against the already specified statistical
+objects; they do not introduce a new sampler or a new posterior target.
+- Algorithm 3: restore the missing source index in (A^j)^2.
+- Algorithm 4: label the state-factor update r^(k), consistent with Algorithm
+  3 incrementing k before the state update, instead of r^(k+1).
+- Algorithm 1: label the channel-wide scale-update GIG parameters
+  kappa_sigma^j, psi_sigma^j and chi_sigma^j rather than reusing
+  observation-time subscripts or the scale-prior hyperparameter names.
+- Laplace--Delta appendix: beta denotes remaining unknown quantities with
+  variational density r(beta); define D as observation values entering the
+  specified likelihood.
+- Stacked-state appendix: distinguish the full dimension q from active
+  forecast-state dimension p_t and state that inactive blocks are removed
+  by restricting states, selectors, transitions and covariance matrices.
+
+Preservation requirements
+-------------------------
+All reported numerical findings, model labels, probability levels, forecast
+origins and substantive limitations remain. The near-one discount-factor
+sentence remains verbatim. The earlier removed data-availability sentence and
+exact-discount table are not reintroduced. The historical conditional-sampling
+scope and the distinction between approximate parameter intervals and
+observation predictive intervals remain explicit.
+
+Verification
+------------
+The coordinating revision report records complete test and build
+results, reference checks, presentation-table numerical equality, figure
+preservation and the final Git identities. This file records editorial intent
+and source organization; it does not claim a new inference result.
+
+Reproduction and active-document integration
+-------------------------------------------
+Use the bounded editorial command from the article root:
+
+    python3 -B scripts/refresh_editorial_revision.py --check
+
+This checks both table presentation and the long-cycle axis annotation against
+the retained inputs. It writes no tracked source or output files. The figure
+check renders temporary comparison images to verify the retained annotation
+and plotted layers. It does not repeat model fitting or predictive scoring.
+
+To reproduce only these editorial outputs after a reviewed change to their
+explicit presentation contracts, omit --check:
+
+    python3 -B scripts/refresh_editorial_revision.py
+
+The table source contract pins all 15 original table SHA256 values and lists
+each permitted wording substitution. Generation checks every source and every
+statistical table entry before writing the new presentation files. It cannot
+silently adopt changed numerical inputs. The figure uses the compact retained
+summary and verifies that all pixels outside the y-axis annotation are unchanged.
+These commands do not call the general generated-asset refresh, import new
+model outputs, or change the original protected table and figure files.
+
+The active manuscript includes the presentation tables directly, and all 16
+table entries in MANUSCRIPT_ASSET_MANIFEST.json point to those 15 included files.
+The review builder follows actual input/include dependencies recursively;
+commented and unused companion fragments cannot satisfy active-document checks.
+Its before/after source hashes include every reachable presentation table and
+the active long-cycle figure. Missing or external TeX includes are rejected.
+
+Focused integration and statistical-preservation checks:
+
+    python3 -B -m unittest discover -s tests -p test_editorial_revision.py
+    python3 -B -m unittest discover -s tests -p test_editorial_integration.py
+
+For a fresh PDF proof, choose an output directory that does not yet exist:
+
+    python3 -B scripts/build_manuscript_review.py --output-dir /tmp/editorial_review_fresh --jobname editorial_review
+
+The proof report records source hashes, reference stability, bibliography
+warnings and the PDF identity. Main-text runtime remains approximately two
+hours for the seven fitted probabilities; hardware and timing-scope details
+are given in the computational appendix (app:computationtime).

@@ -6,6 +6,7 @@
 \renewcommand{\thetable}{\arabic{table}}
 \usepackage{graphicx}
 \usepackage{subcaption}
+\usepackage{array}
 \captionsetup[figure]{labelsep=quad}
 \captionsetup[table]{labelsep=quad}
 \usepackage[section]{placeins}
@@ -23,9 +24,8 @@
 
 \articletype{Research Article} % Specify article type
 
-\received{Date Month Year}
-\revised{Date Month Year}
-\accepted{Date Month Year}
+\historydates{}
+\doiheadtext{}
 \copyyear{2025}
 \startpage{1}
 
@@ -61,7 +61,7 @@
 
 \presentaddress{University of California, Santa Cruz, Santa Cruz, CA, USA.}
 
-\abstract[Summary]{River-flow forecasting requires predictive distributions that remain informative in both routine and extreme conditions. We develop a Bayesian quantile-based correction-and-synthesis framework built on dynamic quantile linear models (DQLMs). The framework links U.S. Geological Survey (USGS) observations, retrospective products, and ensemble forecast products through a shared latent quantile process, learns dynamic discrepancies for each external source, and combines quantile-specific posterior predictions into a single predictive distribution. We also adapt variational Bayes (VB) inference to the extended dynamic quantile linear model using Laplace--Delta approximations for non-conjugate parameters. The methodology is illustrated using daily flow for the San Lorenzo River together with products from the European Centre for Medium-Range Weather Forecasts (ECMWF) Global Flood Awareness System (GloFAS) and the National Oceanic and Atmospheric Administration (NOAA) National Weather Service (NWS). Across five origins, the selected specification reduces mean continuous ranked probability scores on the log scale relative to seasonal climatology by 68.6\% over 28 days and 59.0\% over eight days. Its 95\% predictive intervals cover 87.9\% and 72.5\% of cases, respectively; eight-day rankings change on the discharge scale. Fitting diagnostics limit component attribution.}
+\abstract[Summary]{River-flow forecasting requires predictive distributions that describe routine and extreme conditions. We develop a Bayesian correction-and-synthesis framework based on dynamic quantile linear models. Gauge observations, retrospective products and forecast ensembles share a latent quantile process, with dynamic discrepancies for external sources. Predictive synthesis combines separately fitted quantile models into a nondecreasing predictive quantile function. For the extended dynamic quantile linear model, variational Bayes (VB) computation uses Laplace--Delta approximations for non-conjugate scale and skewness parameters. We illustrate the method with daily San Lorenzo River flow, combining U.S. Geological Survey observations with European Centre for Medium-Range Weather Forecasts Global Flood Awareness System products and National Oceanic and Atmospheric Administration National Weather Service products. Across five forecast origins, the reference specification reduces mean continuous ranked probability score relative to seasonal climatology by 68.6\% over 28 days and 59.0\% over eight days on the log-transformed discharge scale. Its central 95\% predictive intervals cover 87.9\% and 72.5\% of cases, respectively. Eight-day rankings change on the discharge scale. Numerical convergence limitations restrict conclusions about individual model components.}
 
 \keywords{Bayesian forecasting, quantile regression, dynamic models, river flow prediction}
 
@@ -75,11 +75,11 @@
 
 River-flow forecasts support flood preparedness, drought monitoring, reservoir operations, and water-supply planning. Decisions in each setting require an assessment of uncertainty as well as a forecast of flow. Hydrological uncertainty arises from imperfect observations, model structure, parameters, and initial states; meteorological uncertainty enters through precipitation and other atmospheric forcing. These sources interact as uncertain weather inputs propagate through a hydrological system \citep{thiboult2016accounting, tarek2021daily}. A statistical forecasting method must therefore connect the available hydrological and meteorological information to a predictive distribution that describes both routine conditions and the tails relevant to floods and droughts.
 
-Operational forecasts use conceptual and physically based hydrological models, with calibration and deployment choices shaping how meteorological forcing is translated into river-flow predictions \citep{thiboult2016accounting, demargne2013science}. Several complementary sources of information are available for statistical correction of their output. Gauge observations measure the target flow, retrospective products reconstruct past conditions, and forecast ensembles describe possible future conditions. Operational ensemble services explicitly seek to represent uncertainty in hydrological predictions \citep{demargne2013science}; their products nevertheless differ in spatial support, forecast horizon, update frequency, and model formulation. Retrospective records allow systematic differences between an external product and the gauge record to be learned over time. Issued ensembles can then inform future flow through the corresponding source-specific correction. The statistical task is to preserve these distinct information roles while combining their contributions to the target predictive distribution.
+Operational forecasts use conceptual and physically based hydrological models, with calibration and implementation choices shaping how meteorological forcing is translated into river-flow predictions \citep{thiboult2016accounting, demargne2013science}. Several complementary sources of information are available for statistical correction of their output. Gauge observations measure the target flow, retrospective products reconstruct past conditions, and forecast ensembles describe possible future conditions. Operational ensemble services explicitly seek to represent uncertainty in hydrological predictions \citep{demargne2013science}; their products nevertheless differ in spatial support, forecast horizon, update frequency, and model formulation. Retrospective records allow systematic differences between an external product and the gauge record to be learned over time. Issued ensembles can then inform future flow through the corresponding source-specific correction. The statistical task is to preserve these distinct information roles while combining their contributions to the target predictive distribution.
 
-Forecast combination and statistical post-processing provide established approaches to calibration and combination \citep{siegert2019forecast, vannitsem, wang2022forecastcombinations50yearreview}. Within hydrology, Bayesian model averaging combines predictive distributions from multiple models \citep{duan2006bma}. Ensemble model output statistics (EMOS) links the parameters of a predictive distribution to ensemble forecasts \citep{gneiting2005emos}; hydrological applications include the correction of forecast location and spread \citep{hemri2015multivariate}. Quantile-based methods have also been used to merge precipitation products \citep{yumnam2022quantile}, while dynamic Bayesian predictive synthesis addresses combination over time \citep{mcalinn2019dynamic}. Here the external products enter a shared quantile state-space model through source-specific dynamic discrepancies. A subsequent synthesis combines predictions from independently fitted quantile models. The correction step therefore connects products to a common river-flow process, and the synthesis step connects the separately fitted portions of its predictive distribution.
+Forecast combination and statistical post-processing provide established approaches to calibration and combination \citep{siegert2019forecast, vannitsem, wang2022forecastcombinations50yearreview}. Within hydrology, Bayesian model averaging combines predictive distributions from multiple models \citep{duan2006bma}. Ensemble model output statistics (EMOS) links the parameters of a predictive distribution to ensemble forecasts \citep{gneiting2005emos}; hydrological applications include the correction of forecast location and spread \citep{hemri2015multivariate}. Quantile-based methods have also been used to merge precipitation products \citep{yumnam2022quantile}, while dynamic Bayesian predictive synthesis addresses combination over time \citep{mcalinn2019dynamic}. Here the external products enter a shared quantile state-space model through source-specific dynamic discrepancies. A subsequent synthesis combines predictions from separately fitted quantile models. The correction step therefore connects products to a common river-flow process, and the synthesis step connects the separately fitted portions of its predictive distribution.
 
-We develop this correction-and-synthesis construction using dynamic quantile linear models (DQLMs) \citep{gourieroux2008dqlm, goncalves, barata2021_flex_quantile}. Its methodological contribution is the integration of three elements. A shared latent quantile process links gauge observations to retrospective and forecast products while estimating a dynamic discrepancy for each external source. A post-fit synthesis step combines the quantile-specific predictive output into a single nondecreasing predictive quantile function. Finally, we adapt variational Bayes (VB) inference for the extended DQLM (exDQLM), using Laplace--Delta approximations \citep{wang2013nonconjugatevb} to update its non-conjugate scale and skewness parameters. This computation makes the separate quantile fits practical for a long daily record. The application evaluates the resulting configuration against its internal variants and external forecasting references; these comparisons delimit the empirical gains from the construction.
+We develop this correction-and-synthesis construction using dynamic quantile linear models (DQLMs) \citep{gourieroux2008dqlm, goncalves, barata2021_flex_quantile}. Its methodological contribution is the integration of three elements. A shared latent quantile process links gauge observations to retrospective and forecast products while estimating a dynamic discrepancy for each external source. A post-fit synthesis step combines the quantile-specific predictive output into a single nondecreasing predictive quantile function. Finally, we adapt variational Bayes (VB) inference for the extended dynamic quantile linear model (exDQLM), using Laplace--Delta approximations \citep{wang2013nonconjugatevb} to update its non-conjugate scale and skewness parameters. This computation makes the separate quantile fits practical for a long daily record. The application compares the resulting predictive distributions with model variants and benchmark forecasts using the continuous ranked probability score (CRPS). These comparisons characterize the empirical gains and their limits.
 
 We illustrate the framework using daily San Lorenzo River flow at Big Trees, California. The analysis combines U.S. Geological Survey (USGS) observations with products from the European Centre for Medium-Range Weather Forecasts (ECMWF) Global Flood Awareness System (GloFAS) and the National Oceanic and Atmospheric Administration (NOAA) National Weather Service (NWS). Five forecast origins support comparisons of predictive distributions over 28 days and over the common eight-day NWS horizon. Section~\ref{sec:data} introduces the forecasting setting and data. Section~\ref{sec:methodology} develops the model, computation, and predictive synthesis. Section~\ref{sec:evaluation} gives the application specification and evaluation methods, Section~\ref{sec:forecastvalidation} presents the results, and Section~\ref{sec5} discusses their implications.
 
@@ -88,7 +88,7 @@ We illustrate the framework using daily San Lorenzo River flow at Big Trees, Cal
 
 \subsection{Study Setting and Observations}
 
-Our target is daily mean discharge of the San Lorenzo River at the USGS Big Trees gauge (station 11160500), Santa Cruz, California (Figure~\ref{fig:sanlorenzo}; \citealp{usgs_daily_11160500}). The raw USGS discharge record is reported in cubic feet per second; we convert it to m$^3$/s before applying the $\log(1+x)$ transformation used in the figures and model inputs. Over the study window used in this article, the daily series covers May 29, 1987, through December 25, 2022, and contains 12,995 observations.
+Our target is daily mean discharge of the San Lorenzo River at the USGS Big Trees gauge (station 11160500), Santa Cruz, California (Figure~\ref{fig:sanlorenzo}; \citealp{usgs_daily_11160500}). The USGS discharge record is reported in cubic feet per second. We convert discharge to m$^3$/s and model its transformation $\log(1+x)$, where $x$ denotes discharge in m$^3$/s. The daily study series covers May 29, 1987, through December 25, 2022, and contains 12,995 observations.
 The San Lorenzo River is a major water resource for the Santa Cruz area and is relevant to both flood response and longer-term water-supply planning. The record includes high-flow episodes as well as prolonged dry conditions. The analysis and forecasting of lower quantiles are therefore relevant for drought conditions, whereas upper quantiles are relevant for flood risk.
 
 \begin{figure}[!htbp]
@@ -106,7 +106,7 @@ A forecast origin, also called a cutoff, is denoted by \(T\): historical observa
 \caption{Information sources and their roles in the forecasting framework.}
 \label{tab:informationroles}
 \centering
-\begin{tabular}{p{0.20\linewidth}p{0.34\linewidth}p{0.38\linewidth}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.20\linewidth}>{\raggedright\arraybackslash}p{0.34\linewidth}>{\raggedright\arraybackslash}p{0.38\linewidth}}
 \hline
 Role & Data & Contribution \\
 \hline
@@ -120,34 +120,23 @@ Transfer covariates & Local precipitation, soil moisture, and a climate-index su
 
 \subsection{External Data Sources and Forecast Covariates}
 
-The transfer component has three base inputs: local precipitation from the PRISM Climate Group \citep{prism}, soil moisture from ECMWF ERA5-Land \citep{ecmwf, munozsabater2021era5land}, and a summary of broader climate conditions. Historical precipitation and soil moisture are extracted at the gauge location. Forecast-window inputs include Global Ensemble Forecast System (GEFS) precipitation and shallow soil-water forecasts, summarized as deterministic covariate paths. Precipitation enters through transfer predictors, including dry days; there is no separate precipitation occurrence or intensity model. ERA5-Land supplies a reanalysis-based land-state covariate with uncertainty, while USGS discharge supplies the verification target.
+The transfer component has three base inputs: local precipitation from the Parameter-elevation Regressions on Independent Slopes Model (PRISM) Climate Group \citep{prism}, soil moisture from ECMWF ERA5-Land \citep{ecmwf, munozsabater2021era5land}, and a summary of broader climate conditions. Historical precipitation and soil moisture are extracted at the gauge location. Forecast-window inputs include Global Ensemble Forecast System (GEFS) precipitation and shallow soil-water forecasts, summarized as deterministic covariate paths. Precipitation enters through transfer covariates, including dry days; there is no separate precipitation occurrence or intensity model. ERA5-Land supplies a reanalysis-based land-state covariate with uncertainty, while USGS discharge supplies the verification target.
 
-Monthly climate and environmental indices from NOAA's Physical Sciences Laboratory \citep{noaa_climate_indices} provide the broader climate information: solar flux, Ni\~no 1+2, the Oceanic Ni\~no Index, the Southern Oscillation Index, the Western Hemisphere Warm Pool, global mean temperature, the Northern Oscillation Index, the Atlantic Multidecadal Oscillation, and tropical South and North Atlantic indices. The series are interpolated to daily resolution and standardized. Their first generalized dynamic principal component (GDPC; \citealp{JSSv092c02}) explains 44.07\% of the index matrix's total variability and enters as a covariate. Figure~\ref{fig:covariates} displays the three base input series.
+Monthly climate and environmental indices from NOAA's Physical Sciences Laboratory \citep{noaa_climate_indices} provide the broader climate information: solar flux, Ni\~no 1+2, the Oceanic Ni\~no Index, the Southern Oscillation Index, the Western Hemisphere Warm Pool, global mean temperature, the Northern Oscillation Index, the Atlantic Multidecadal Oscillation, and tropical South and North Atlantic indices. The series are interpolated to daily resolution and standardized. Their first generalized dynamic principal component (GDPC; \citealp{JSSv092c02}) explains 44.07\% of the index matrix's total variability and enters as a covariate. Appendix Figure~\ref{fig:covariates} displays the three base input series.
 
-\begin{figure}[!htbp]
-\centering
-\centerline{\includegraphics[width=450pt]{covariate_context_precip_soil_gdpc.png}}
-\caption{
-Historical daily precipitation [mm], soil moisture [m$^3$/m$^3$], and first GDPC score over May 29, 1987 through December 25, 2022.}
-\label{fig:covariates}
-\end{figure}
 
-GloFAS and NWS provide the external discharge product families. The NWS source includes NOAA National Water Model (NWM) output \citep{cosgrove2024noaa}; the GloFAS system couples meteorological forcing to a global hydrological model \citep{harrigan2020glofas}. Each contributes a retrospective series for learning discrepancies from the USGS target and an ensemble for the forecast window. Figure~\ref{fig:retrospectives} displays their historical support for the December 25, 2022 origin. Exact source versions and extraction records accompany the model-ready inputs in the reproducibility archive \citep{deleon2026sanlorenzo_reproducibility}.
 
-These products also differ in spatial support. For gridded covariates and GloFAS discharge fields, the workflow extracts the cell or nearest valid river cell associated with the Big Trees gauge coordinates. For NWM streamflow, the workflow uses the corresponding model-output point or reach series and aggregates the latest available forecast issuances to daily member-specific forecast matrices. The PRISM precipitation path uses the 4 km product, while ERA5-Land soil moisture is extracted from its 0.1-degree gridded product. The GloFAS retrospective input uses version 2.1 for January 2021 and version 3.1 for the other origins. The NWM retrospective input uses version 2.1, with a version 3.0 extension beyond its coverage. The archive records these versions and the extraction policy for each origin \citep{deleon2026sanlorenzo_reproducibility}.
+GloFAS and NWS provide the external discharge product families. The NWS source includes NOAA National Water Model (NWM) output \citep{cosgrove2024noaa}; the GloFAS system couples meteorological forcing to a global hydrological model \citep{harrigan2020glofas}. Each contributes a retrospective series for learning discrepancies from the USGS target and an ensemble for the forecast window. Appendix Figure~\ref{fig:retrospectives} displays their historical coverage for the December 25, 2022 origin. Source versions and extraction records accompany the analysis data in the reproducibility materials \citep{deleon2026sanlorenzo_reproducibility}.
+
+These products also differ in spatial support. For gridded covariates and GloFAS discharge fields, we extract the cell or nearest valid river cell associated with the Big Trees gauge coordinates. For NWM streamflow, we use the corresponding model-output point or reach series and aggregate the latest available forecast issuances to daily member-specific forecast matrices. The PRISM precipitation path uses the 4 km product, while ERA5-Land soil moisture is extracted from its 0.1-degree gridded product. The GloFAS retrospective input uses version 2.1 for January 2021 and version 3.1 for the other origins. The NWM retrospective input uses version 2.1, with a version 3.0 extension beyond its coverage. The reproducibility materials document these versions and the extraction rules for each origin \citep{deleon2026sanlorenzo_reproducibility}.
 
 The operational forecast products are used only after a cutoff date. The NWS ensemble has 7 members: 6 members provide medium-range forecasts up to 8.5 days, and one control member extends to 10 days. The GloFAS ensemble contains 51 members, all providing medium-range forecasts for up to 28 days. The products differ in source, forecast horizon, and update pattern. The model accommodates these differences through source-specific channels and lead-time availability.
 
-\begin{figure}[!htbp]
-\centering
-\centerline{\includegraphics[width=450pt]{retrospective_products_context.png}}
-\caption{Selected GloFAS and NWS retrospective product series over the available pre-cutoff support window for the December 25, 2022 origin, May 29, 1987 through December 25, 2022. Displayed flow values use the $\log(1+x)$ scale with $x$ in m$^3$/s.}
-\label{fig:retrospectives}
-\end{figure}
+
 
 \subsection{Forecast-Origin Information}
 
-Figure~\ref{fig:ensembles} puts these sources on a common time axis for the representative December 25, 2022 origin. GloFAS contributes 28 daily forecast leads, December 26, 2022 through January 22, 2023; the archived NWS product contributes eight valid daily leads, December 26, 2022 through January 2, 2023. The vertical origin line marks \(T\), and USGS measurements after that line provide verification. Source availability determines which observation channels enter the model at each lead.
+Figure~\ref{fig:ensembles} puts these sources on a common time axis for the representative December 25, 2022 origin. GloFAS contributes 28 daily forecast leads, December 26, 2022 through January 22, 2023; the NWS product used in the analysis contributes eight valid daily leads, December 26, 2022 through January 2, 2023. The vertical origin line marks \(T\), and USGS measurements after that line provide verification. Source availability determines which observation channels enter the model at each lead.
 
 \begin{figure}[!htbp]
 \centering
@@ -161,19 +150,19 @@ Information available around the December 25, 2022 forecast origin, spanning Nov
 \section{BAYESIAN CORRECTION AND PREDICTIVE SYNTHESIS}
 \label{sec:methodology}
 
-For each target probability \(p_0\), the model learns a latent river-flow quantile from observations and source-specific products. The framework has two stages: dynamic correction combines the information channels within each quantile fit, and predictive synthesis combines output across those fits. Bold symbols denote vectors or matrices; their dimensions are stated when introduced. We write \(\mathbf I_r\), \(\mathbf 0_r\), and \(\mathbf 1_r\) for the \(r\)-dimensional identity matrix, zero vector, and one vector, respectively.
+For each target probability \(p_0\), the model estimates a conditional river-flow quantile from gauge observations and external products. An observation channel is a source-specific observation series. The framework has two stages: dynamic correction combines the channels within each quantile fit, and predictive synthesis combines the predictive distributions across those fits. We distinguish a conditional model quantile, defined given the latent states and likelihood parameters, from a posterior predictive quantile, which integrates their uncertainty. The synthesized predictive quantile is a third quantity, obtained by combining the predictive distributions of the separately fitted quantile models. Bold symbols denote vectors or matrices; their dimensions are stated when introduced. We write \(\mathbf I_r\), \(\mathbf 0_r\), and \(\mathbf 1_r\) for the \(r\)-dimensional identity matrix, zero vector, and one vector, respectively.
 
 \subsection{Quantile Likelihood}
 \label{subsec:exal}
 
-The asymmetric Laplace (AL) distribution provides a working likelihood for Bayesian quantile inference \citep{yu2001bayesian, sriram2013theoretical}. We use its extended form, \(\operatorname{exAL}_{p_0}(\mu,\sigma,\gamma)\), developed by \citet{yan2025new}. Its location \(\mu\) is the \(p_0\)-quantile, \(\sigma>0\) controls scale, and \(\gamma\) provides additional skewness flexibility. To preserve the specified quantile, \(\gamma\) lies in an interval \((L_\gamma(p_0),U_\gamma(p_0))\) whose endpoints depend on \(p_0\). Appendix~\ref{app:augmentation} gives these endpoints and the latent-variable representation used for computation. This distribution defines the observation model; the state process below determines how its quantile evolves and is shared across sources.
+The asymmetric Laplace (AL) distribution provides a working likelihood for Bayesian quantile inference \citep{yu2001bayesian, sriram2013theoretical}. We use the extended asymmetric Laplace (exAL) distribution, \(\operatorname{exAL}_{p_0}(\mu,\sigma,\gamma)\), developed by \citet{yan2025new}. Its location \(\mu\) is the \(p_0\)-quantile, \(\sigma>0\) controls scale, and \(\gamma\) provides additional skewness flexibility. To preserve the specified quantile, \(\gamma\) lies in an interval \((L_\gamma(p_0),U_\gamma(p_0))\) whose endpoints depend on \(p_0\). Appendix~\ref{app:augmentation} gives these endpoints and the latent-variable representation used for computation. This distribution defines the observation model; the state process below determines how its quantile evolves and is shared across sources.
 
 \subsection{State-Space Model Specification}
 \label{subsec:fullmodel}
 
-For a fixed target quantile $p_0$, we use a state-space model for the transformed discharge \(\log(1+x)\). Its latent process spans the historical observation period and the forecast horizon defined by the origin \(T\). The latent river-flow quantile is represented by a trend-and-seasonal state \(\boldsymbol{\theta}_t \in \mathbb{R}^p\), observed through the loading vector \(\mathbf{F}_t\). Each external product family \(j\) has its own discrepancy state \(\boldsymbol{\delta}_t^j \in \mathbb{R}^p\), allowing that product to depart systematically from the observed river-flow series. A scalar transfer adjustment \(\zeta_t\) incorporates exogenous covariates \(\mathbf{x}_t \in \mathbb{R}^m\), whose time-varying effects are collected in \(\boldsymbol{\psi}_t \in \mathbb{R}^m\). Let \(\mathcal{J}=\{1,\ldots,J\}\) denote the set of external product families. For each \(j\in\mathcal{J}\), let \(\mathcal{I}_j=\{1,\ldots,I_j\}\) index forecast members and \(\mathcal{K}_j=\{1,\ldots,K_{(j)}\}\) index forecast lead times. Finally, define \(K_{\max}=\max_{j\in\mathcal{J}}K_{(j)}\), the maximum forecast horizon across all sources.
+For a fixed target quantile $p_0$, we use a state-space model for the transformed discharge \(\log(1+x)\). Its latent process spans the historical observation period and the forecast horizon defined by the origin \(T\). The trend and seasonal contribution to the conditional quantile is represented by a state \(\boldsymbol{\theta}_t \in \mathbb{R}^p\), observed through the loading vector \(\mathbf{F}_t\). Each external product family \(j\) has its own discrepancy state \(\boldsymbol{\delta}_t^j \in \mathbb{R}^p\), allowing that product to depart systematically from the observed river-flow series. A scalar transfer adjustment \(\zeta_t\) incorporates exogenous covariates \(\mathbf{x}_t \in \mathbb{R}^m\), whose time-varying effects are collected in \(\boldsymbol{\psi}_t \in \mathbb{R}^m\). Let \(\mathcal{J}=\{1,\ldots,J\}\) denote the set of external product families. For each \(j\in\mathcal{J}\), let \(\mathcal{I}_j=\{1,\ldots,I_j\}\) index forecast members and \(\mathcal{K}_j=\{1,\ldots,K_{(j)}\}\) index forecast lead times. Finally, define \(K_{\max}=\max_{j\in\mathcal{J}}K_{(j)}\), the maximum forecast horizon across all sources.
 
-Conditionally on the states and channel parameters, the observation channels are independent and have the following distributions:
+Let \(y_t^o\), \(z_t^j\), and \(y_T^{j,i}(k)\) denote, respectively, the gauge observation at time \(t\), the retrospective discharge from source \(j\) at time \(t\), and member \(i\)'s forecast from source \(j\), issued at \(T\) for lead \(k\). All three quantities are discharge transformed by \(\log(1+x)\), with discharge \(x\) expressed in m$^3$/s. Conditionally on the states and channel parameters, the observation channels are independent and have the following distributions:
 \begin{alignat}{3}
 \text{Observed measurements:}\quad&
 y_t^o
@@ -211,7 +200,7 @@ y_T^{j,i}(k)
 &\qquad& 1 \le t \le T+K_{\max}. \notag
 \end{alignat}
 
-Here \(\mathbf{F}_t \in \mathbb{R}^{p}\), \(\mathbf{G}_t \in \mathbb{R}^{p\times p}\), \(\mathbf{W}_t^\theta \in \mathbb{R}^{p\times p}\), \(\mathbf{W}_t^{\delta^j} \in \mathbb{R}^{p\times p}\), \(\mathbf{W}_t^\psi \in \mathbb{R}^{m\times m}\), and \(w_t^\zeta \in \mathbb{R}_+\) is the scalar evolution variance for the transfer state \(\zeta_t\). The parameter \(\lambda \in \mathbb{R}\) governs persistence in the transfer adjustment, while \(\mathbf{x}_t'\boldsymbol{\psi}_{t-1}\) is the covariate contribution at time \(t\). During the forecast window, \(\mathbf{x}_{T+k}\) denotes the supplied covariate vector at lead \(k\). The notation \(y_T^{j,i}(k)\) denotes the \(k\)-step-ahead forecast issued at time \(T\) by member \(i\) of source \(j\).
+The conditional \(p_0\)-quantile of the gauge observation is \(\mu^o_{p_0,t}=\mathbf F_t'\boldsymbol\theta_t+\zeta_t\). The corresponding source-product quantile additionally contains the discrepancy term \(\mathbf F_t'\boldsymbol\delta_t^j\). Thus the transfer adjustment contributes to the conditional quantile as well as the trend and seasonal states. Here \(\mathbf{F}_t \in \mathbb{R}^{p}\), \(\mathbf{G}_t \in \mathbb{R}^{p\times p}\), \(\mathbf{W}_t^\theta \in \mathbb{R}^{p\times p}\), \(\mathbf{W}_t^{\delta^j} \in \mathbb{R}^{p\times p}\), \(\mathbf{W}_t^\psi \in \mathbb{R}^{m\times m}\), and \(w_t^\zeta \in \mathbb{R}_+\) is the scalar evolution variance for the transfer state \(\zeta_t\). The parameter \(\lambda \in \mathbb{R}\) governs persistence in the transfer adjustment, while \(\mathbf{x}_t'\boldsymbol{\psi}_{t-1}\) is the covariate contribution at time \(t\). During the forecast window, \(\mathbf{x}_{T+k}\) denotes the supplied covariate vector at lead \(k\).
 
 The first two observation equations correspond to the pre-cutoff observation window, where the available channels are the observed USGS flow and the retrospective products. The third observation equation corresponds to the forecast window, where issued forecast products enter through the same source-specific discrepancy structure. The state-evolution equations define the roles of the dynamic components: \(\boldsymbol{\theta}_t\) carries the river-flow level and seasonal structure, \(\boldsymbol{\delta}_t^j\) captures systematic source-specific departures from the observations, and the transfer component maps exogenous covariates into the quantile process through \(\zeta_t\) and \(\boldsymbol{\psi}_t\). These are modeling roles; their forecast value is assessed through the specified comparisons in Subsection~\ref{subsec:comparisonspecifications}.
 
@@ -222,7 +211,7 @@ For prior specification and computation, collect the latent components in
 \boldsymbol\eta_t'=[\boldsymbol\theta_t',\ (\boldsymbol\delta_t^1)',\ldots,(\boldsymbol\delta_t^J)',\ \zeta_t,\ \boldsymbol\psi_t'],
 \qquad q=(J+1)p+m+1.
 \]
-Let \(\mathcal J_0=\{0\}\cup\mathcal J\), with channel 0 denoting USGS and channels \(1,\ldots,J\) denoting the external source families. Appendix~\ref{app:stateconstruction} constructs the selector vectors and block matrices for this \(q\)-dimensional state. That compact representation is used by the algorithms; the equations above specify its scientific components.
+Let \(\mathcal J_0=\{0\}\cup\mathcal J\), with channel 0 denoting USGS and channels \(1,\ldots,J\) denoting the external source families. Appendix~\ref{app:stateconstruction} constructs the selector vectors and block matrices for this \(q\)-dimensional state. The compact representation yields the filtering and smoothing recursions; the equations above identify the roles of its components.
 
 \subsection{Prior Specification and Discounting}
 \label{subsec:prioranddisc}
@@ -237,7 +226,7 @@ where \(\phi^s\) and \(\nu^s\) denote the scale and degrees of freedom hyperpara
 \]
 with \(a_{\sigma^s}\) and \(b_{\sigma^s}\) as shape and scale hyperparameters. The full latent state is initialized as \(\boldsymbol{\eta}_0 \sim \mathcal{N}(\mathbf{m}_0, \mathbf{C}_0)\), with \(\mathbf{m}_0 \in \mathbb{R}^{q}\) and \(\mathbf{C}_0 \in \mathbb{R}^{q\times q}\). This initial prior covers the shared trend-and-seasonal quantile block, the source-specific discrepancy blocks, and the transfer block.
 
-Component discount factors \citep{prado2021time} control state-evolution variances. Values lie in \((0,1]\): a value of 1 suppresses evolution for that component, while smaller values allow greater temporal adaptation. In the forecast window, an inverse-Wishart prior stabilizes the evolution covariance around \(c\mathbf W_T\), the covariance learned at the origin and multiplied by a positive scale \(c\). A positive parameter \(\epsilon\) gives this anchor weight \(\epsilon/(1+\epsilon)\) in the posterior mean; the remaining weight is assigned to the expected state-innovation covariance. Appendix~\ref{app:forecastcovariance} gives the full specification and dimensions. Subsection~\ref{subsec:specification} gives the application settings.
+Component discount factors \citep{prado2021time} control state-evolution variances. Values lie in \((0,1]\): a value of 1 suppresses evolution for that component, while smaller values allow greater temporal adaptation. In the forecast window, an inverse-Wishart prior stabilizes the evolution covariance around \(c\mathbf W_T\), the covariance learned at the origin and multiplied by a positive scale \(c\). A positive parameter \(\epsilon\) gives this covariance weight \(\epsilon/(1+\epsilon)\) in the posterior mean; the remaining weight is assigned to the expected state-innovation covariance. Appendix~\ref{app:forecastcovariance} gives the full specification and dimensions. Subsection~\ref{subsec:specification} gives the application settings.
 
 \subsection{Posterior Computation}
 \label{subsec:postinf}
@@ -248,14 +237,14 @@ Coordinate-ascent iterations cycle through three groups of updates. Variational 
 
 This adaptation extends the flexible DQLM approach of \citet{barata2021_flex_quantile}, whose importance-sampling treatment of non-conjugate parameters fixes the scale using an AL fit. The Laplace--Delta updates approximate scale and skewness jointly. They provide the deterministic posterior approximation used throughout the comparisons below. Algorithms~\ref{alg1} and \ref{alg:Alg2} give conditional sampling equations for the historical observation model. All reported posterior summaries use VB; its accuracy relative to a full-model Markov chain Monte Carlo (MCMC) posterior has not been assessed.
 
-Separate target quantiles can be fitted in parallel using the estimation routines in the \texttt{exdqlm} package \citep{deleon2026exdqlm}. With the model-ready observations, retrospective products, forecast products, and covariates prepared, representative publication runs for the seven-quantile set take about two hours end-to-end on a Linux server with 64 cores and 503 GiB of RAM. This is combined wall-clock time for fitting and forecasting; those stages were not timed separately. Runtime depends on the hardware, implementation, series length, and state dimension, with repeated filtering and smoothing accounting for the main computational cost.
+Separate target quantiles can be fitted in parallel using the estimation routines in the R package \texttt{exdqlm} \citep{deleon2026exdqlm}. Fitting and forecasting at the seven target probabilities take approximately two hours in the computing environment described in Appendix~\ref{app:computationtime}. Repeated filtering and smoothing account for the main computational cost.
 
 \subsection{Posterior Predictive Synthesis Across Quantiles}
 \label{subsec:quantilesynthesis}
 
-The source-aware model is fitted separately at probabilities \(0<\tau_1<\cdots<\tau_L<1\), setting \(p_0=\tau_\ell\) in fit \(\ell\). These fits need not produce an ordered set of quantiles. A separate post-processing step constructs one marginal predictive distribution at each time from their predictive draws, without changing the fitted state-space models.
+The model with source-specific discrepancies is fitted separately at probabilities \(0<\tau_1<\cdots<\tau_L<1\), setting \(p_0=\tau_\ell\) in fit \(\ell\). These fits need not produce an ordered set of quantiles. A separate post-processing step constructs one marginal predictive distribution at each time from their predictive draws, without changing the fitted state-space models.
 
-Let \(Y_{\ell,t}^{(r)}\), \(r=1,\ldots,R\), denote predictive draws from fit \(\ell\), and let \(q_{\ell,t}\) be their empirical \(\tau_\ell\)-quantile. First, isotonic regression \citep{barlow1972} orders these anchors:
+Let \(Y_{\ell,t}^{(r)}\), \(r=1,\ldots,R\), denote predictive draws from fit \(\ell\), and let \(q_{\ell,t}\) be their empirical \(\tau_\ell\)-quantile. First, isotonic regression \citep{barlow1972} orders these predictive quantiles:
 \[
 \mathbf m_t^*=\underset{m_1\le\cdots\le m_L}{\arg\min}
 \sum_{\ell=1}^L(q_{\ell,t}-m_\ell)^2.
@@ -265,16 +254,16 @@ Each fit's draws are shifted by \(m_{\ell,t}^*-q_{\ell,t}\). Write \(Q^{\rm adj}
 Q_t^{\rm init}(u)=(1-w)Q^{\rm adj}_{\ell,t}(u)+wQ^{\rm adj}_{\ell+1,t}(u),
 \qquad w=\frac{u-\tau_\ell}{\tau_{\ell+1}-\tau_\ell}.
 \]
-Below \(\tau_1\) and above \(\tau_L\), it uses the adjusted quantile functions of the lowest and highest fitted probabilities, respectively. Thus the blend uses the predictive distributions, including their tails, as well as their fitted quantile anchors.
+Below \(\tau_1\) and above \(\tau_L\), it uses the adjusted quantile functions of the lowest and highest fitted probabilities, respectively. Thus the synthesis uses the predictive distributions, including their tails, as well as the predictive quantiles at the fitted probabilities.
 
 We evaluate this curve on a dense probability grid and sort its values, applying monotone rearrangement \citep{chernozhukov2010} to obtain a nondecreasing quantile function \(\widetilde Q_t\). Inverse cumulative distribution function (CDF) sampling then gives
 \[
 \widetilde Y_t^{(r)}=\widetilde Q_t(U_t^{(r)}),\qquad
 U_t^{(r)}\sim\operatorname{Uniform}(0,1).
 \]
-The resulting sample defines the per-time marginal predictive distribution used for the predictive means, pointwise intervals, quantiles, and continuous ranked probability score (CRPS) calculations. The implementation evaluates the initial curve at 1,001 internal grid points, applies rearrangement, and produces 2,000 inverse-CDF draws per time; interpolation is constant beyond the endpoint grid values. The outer fitted predictive distributions supply the tails beyond the 0.05 and 0.95 anchors, including the limits of the reported central 95\% intervals. These limits are not separately fitted 0.025 and 0.975 quantile models. The synthesis is marginal in time: lines connecting displayed sample values should be read as predictive sample traces, without a jointly specified temporal dependence model for those synthesized traces.
+The resulting sample defines the marginal predictive distribution at each time used for predictive means, pointwise intervals, quantiles, and CRPS calculations. We generate 2,000 inverse-CDF draws per time; Appendix~\ref{app:numericalprediction} gives the numerical grid and interpolation conventions. The outer fitted predictive distributions supply the tails beyond the 0.05 and 0.95 fitted probabilities, including the limits of the reported central 95\% intervals. These limits are not separately fitted 0.025 and 0.975 quantile models. The synthesis is marginal in time: lines connecting displayed sample values should be read as predictive sample traces, without a jointly specified temporal dependence model for those synthesized traces.
 
-We separately assess the own-fit predictive anchors, their isotonic projection, and the final synthesized quantiles using targeted check loss and crossing counts. Own-fit anchors use sample type 7, as in the synthesis construction. They are predictive quantiles from the individual fits, distinct from latent fitted locations. The seven anchors alone do not define a complete predictive distribution for a pre-synthesis CRPS comparison.
+We assess the predictive quantiles from the individual fits, their isotonic projection, and the final synthesized quantiles using check loss and crossing counts. Predictive quantiles from individual fits are distinct from the conditional model locations \(\mu^o_{p_0,t}\). The seven predictive quantiles alone do not define a complete predictive distribution for a CRPS comparison before synthesis. Appendix~\ref{app:numericalprediction} specifies their empirical interpolation convention.
 
 \section{APPLICATION SPECIFICATION AND EVALUATION}
 \label{sec:evaluation}
@@ -284,19 +273,9 @@ We separately assess the own-fit predictive anchors, their isotonic projection, 
 
 The application uses a local level to represent persistent flow conditions, two approximately annual and semiannual rotations to describe recurring within-year variation, and a slower rotation to permit multi-year variation. The slower component was retained as an exploratory representation of multi-year variability. Its period is a model-specification choice, and we do not assign it to a particular physical climate mechanism. Each source discrepancy has the same seven-state level-and-seasonal structure, allowing source differences to vary at these time scales.
 
-For daily time steps, the fitted seasonal constructor uses a base period \(P=363.5854\) days and frequency multipliers \(h_1=1\), \(h_2=2\), and \(h_3=1/6.8068493\). The daily angular frequencies are \(\omega_a=2\pi h_a/P\), with rotation matrix
-\[
-\mathbf R(\omega)=
-\begin{bmatrix}\cos\omega&\sin\omega\\-\sin\omega&\cos\omega\end{bmatrix}.
-\]
-The corresponding periods are approximately 363.59, 181.79, and 2474.87 days; the last is about 6.78 calendar years, or 81.3 months. These are the periods of the fitted daily rotations. With \(\mathbf E_2=(1,0)'\), the observation loading and transition are
-\[
-\mathbf F_t=(1,\mathbf E_2',\mathbf E_2',\mathbf E_2')',\qquad
-\mathbf G_t=\operatorname{BlockDiag}\{1,\mathbf R(\omega_1),\mathbf R(\omega_2),\mathbf R(\omega_3)\},
-\]
-so \(p=7\), \(\mathbf F_t\in\mathbb R^7\), and \(\mathbf G_t\in\mathbb R^{7\times7}\).
+The shared state and each source discrepancy contain one level and three two-dimensional rotations, so \(p=7\). The rotation periods are approximately 363.59, 181.79, and 2474.87 days; the last is about 6.78 calendar years, or 81.3 months. Appendix~\ref{app:seasonalconstruction} gives the frequencies, loading vector and transition matrices.
 
-The transfer vector has \(m=12\) predictors. In addition to precipitation, soil moisture, and the first GDPC score, it includes squared precipitation, squared soil moisture, their interaction, and separate one-, two-, and three-day lags of precipitation and soil moisture. Each engineered predictor is divided by its historical standard deviation without centering. These terms permit delayed and nonlinear covariate contributions within the linear state-space formulation. The scalar transfer state \(\zeta_t\) adds persistence through \(\lambda\). With two external source families, the full model therefore has \(q=3(7)+12+1=34\) latent states. Table~\ref{tab:components_23_31} summarizes the three base-input coefficients.
+The transfer vector has \(m=12\) covariates. In addition to precipitation, soil moisture, and the first GDPC score, it includes squared precipitation, squared soil moisture, their interaction, and separate one-, two-, and three-day lags of precipitation and soil moisture. Each covariate is divided by its historical standard deviation without centering. These terms permit delayed and nonlinear covariate contributions within the linear state-space formulation. The scalar transfer state \(\zeta_t\) adds persistence through \(\lambda\). With two external source families, the full model therefore has \(q=3(7)+12+1=34\) latent states. Table~\ref{tab:components_23_31} summarizes the three base-input coefficients.
 
 For prior hyperparameters (see Subsection~\ref{subsec:prioranddisc}), we specify \(\phi^s = 10^6\), \(\nu^s = 1\), and \(a_{\sigma^s} = b_{\sigma^s} = 10^{-6}\) for all \(s\in\mathcal{J}_0\), reflecting diffuse prior beliefs for both the USGS observation channel and the external product channels. Sensitivity analyses for \(\phi^s \in \{10^1, 10^3, 10^6\}\) and \(b_{\sigma^s} \in \{10^{-1}, 10^{-3}, 10^{-6}\}\) showed no noticeable impact on model fit.
 
@@ -304,39 +283,39 @@ The discount factors for the trend, seasonal, discrepancy, transfer, and covaria
 
 The transfer-persistence parameter \(\lambda\) was selected in a preliminary one-dimensional calibration step for the reference extended-likelihood multivariate specification with an active transfer component. We considered the grid \(\lambda \in \{0.60,0.61,\ldots,0.99\}\) and compared candidate values using CRPS for the median-quantile model over the pre-cutoff observational window at the representative December 25, 2022 origin, which has the longest pre-origin archive among the rolling-origin cases. The selected value was \(\lambda=0.97\), which was then held fixed across the reported quantile levels and forecast origins. The resulting fixed persistence setting is used in the reported comparisons.
 
-For the forecast-window covariance prior, the parameter \(\epsilon\) controls the prior weight assigned to the covariance structure learned before the cutoff. Smaller values give a weaker anchor and allow greater adaptation during forecast propagation, while larger values retain more of the pre-cutoff covariance structure. For the representative December 25, 2022 selected specification, we set \(\epsilon=1\) and \(c=1\). These settings stabilize short-horizon forecast propagation while allowing the forecast-window state evolution to adapt during a winter origin with substantial rainfall-driven uncertainty.
+For the forecast-window covariance prior, the parameter \(\epsilon\) controls the prior weight assigned to the covariance structure learned before the cutoff. Smaller values give less prior weight to the pre-cutoff covariance and allow greater adaptation during forecast propagation, while larger values retain more of that covariance structure. For the representative December 25, 2022 selected specification, we set \(\epsilon=1\) and \(c=1\). These settings stabilize short-horizon forecast propagation while allowing the forecast-window state evolution to adapt during a winter origin with substantial rainfall-driven uncertainty.
 
 \subsection{Forecast Origins and Product Alignment}
 
-The evaluation uses five forecast origins spanning relatively low-flow conditions and winter high-flow episodes: January 23, November 12, and December 21, 2021, and May 11 and December 25, 2022. For each origin, a model-ready dataset aligns the observations, retrospective products, issued ensembles, and covariate paths. These five cases cover contrasting hydrological settings; they do not constitute a continuous daily hindcast. The separated origins also avoid repeatedly scoring strongly overlapping forecast windows from one episode. Extending the evaluation requires recovering and aligning the corresponding historical product versions, spatial extractions, members, and lead times.
+The evaluation uses five forecast origins spanning relatively low-flow conditions and winter high-flow episodes: January 23, November 12, and December 21, 2021, and May 11 and December 25, 2022. For each origin, the analysis dataset aligns the observations, retrospective products, issued ensembles, and covariate paths. These five cases cover contrasting hydrological settings; they do not constitute a continuous daily hindcast. The separated origins also avoid repeatedly scoring strongly overlapping forecast windows from one episode. Extending the evaluation requires recovering and aligning the corresponding historical product versions, spatial extractions, members, and lead times.
 
 The fitting window includes USGS observations and retrospective products through \(T\). Forecast inference uses the external ensembles for their available leads and the supplied transfer covariates. USGS values after \(T\) supply verification. GloFAS issues daily forecasts. For the hourly NWS product, the input construction retains the latest available issuance for each target time and member at the origin, then aggregates the retained hourly values to daily resolution. The comparison uses eight daily leads for the common NWS horizon and 28 leads for the GloFAS horizon, with each source entering only where its forecast members are available.
 
 \subsection{Comparison Specifications}
 \label{subsec:comparisonspecifications}
 
-We compare nine Bayesian variants of the common state-space framework. These variants differ only in three respects: the observation likelihood, whether the synthesis uses only the USGS observation channel or all source channels jointly, and whether the transfer component remains active during the forecast window. We summarize them with the label \(L\)-\(S\)-\(T\), where \(L\in\{\mathrm{N},\mathrm{AL},\mathrm{exAL}\}\) denotes a Gaussian, asymmetric Laplace, or extended asymmetric Laplace observation likelihood, \(S\in\{\mathrm{U},\mathrm{M}\}\) indicates whether the synthesis is univariate or multivariate, and \(T\in\{\mathrm{T0},\mathrm{T1}\}\) indicates whether the transfer component is suppressed or retained during the forecast window.
+We compare nine Bayesian variants of the state-space framework: each of three likelihood families is combined with the configurations U-T1, M-T0, and M-T1. We write the model label as \(L\)-\(S\)-\(T\), where \(L\in\{\mathrm{N},\mathrm{AL},\mathrm{exAL}\}\) denotes a Gaussian, asymmetric Laplace, or extended asymmetric Laplace likelihood. The source label U denotes a gauge-only model; M denotes a model containing the gauge and external-product channels. The terms univariate and multivariate refer to these observation sources: every configuration predicts discharge at the same single gauge. T1 retains the transfer component during forecasting, while T0 suppresses it during that window. Both multivariate configurations fit the transfer component in the historical period; U-T0 is not included in the comparison.
 
 For the AL and exAL variants, we fit the framework separately at seven target quantile levels: \(0.05\), \(0.20\), \(0.35\), \(0.50\), \(0.65\), \(0.80\), and \(0.95\). The Gaussian variants correspond to normal dynamic linear models. Forecast skill is evaluated from the resulting posterior predictive distributions by the mean CRPS. The comparisons use the VB procedure described in Subsection~\ref{subsec:postinf}.
 
-For the predictive illustration and component summaries, we use exAL-M-T1: the extended likelihood, all source channels, and the active transfer component. This is the reference specification selected from the 28-day comparison reported in Section~\ref{sec:forecastvalidation}. Its single-origin display is illustrative; the tables summarize performance across the five origins.
+For the predictive illustration and component summaries, we use exAL-M-T1: the extended likelihood, all source channels, and the active transfer component. This specification provides the reference fit for the summaries; Section~\ref{sec:forecastvalidation} reports the comparisons. Its single-origin display is illustrative; the tables summarize performance across the five origins.
 
-Table~\ref{tab:comparisonroles} relates the model comparisons to their questions. The nine variants are a selected set of configurations, not a fully crossed factorial experiment. A difference between two fitted configurations describes their performance under the reported fitting policies; it need not equal the benefit achievable after separately redesigning or retuning either configuration. The structural sensitivity analysis in Appendix~\ref{app:he3ablation} likewise retains the reference settings when components are removed.
+Table~\ref{tab:comparisonroles} relates the model comparisons to their questions. The nine variants are a selected set of configurations, not a fully crossed factorial experiment. A difference between two fitted configurations describes their performance under the reported fitting settings; it need not equal the benefit achievable after separately redesigning or retuning either configuration. The structural sensitivity analysis in Appendix~\ref{app:he3ablation} likewise retains the reference settings when components are removed.
 
-To assess the fitting explanation for poor scores, we audit the saved terminal criteria, iteration budgets, parameter updates, numerical guards, and sampling outcomes for the configurations in both comparisons. Completion messages alone do not establish convergence. The audit distinguishes recorded satisfaction of the stopping criteria, exhaustion of the iteration budget without established joint convergence, and unavailable joint-criterion evidence; Appendix~\ref{app:fitdiagnostics} reports the findings.
+We assess numerical fitting through the final stopping criteria, iteration limits, parameter updates and simulation outcomes for the configurations in both comparisons. Termination of the iteration sequence alone does not establish convergence. We distinguish satisfaction of the stopping criteria, reaching the iteration limit without established joint convergence, and unavailable evidence about the joint criteria; Appendix~\ref{app:fitdiagnostics} reports the findings.
 
 \begin{table}[htbp]
-\caption{Questions addressed by the internal comparisons.}
+\caption{Questions addressed by comparisons among Bayesian model specifications.}
 \label{tab:comparisonroles}
 \centering
-\begin{tabular}{p{0.22\linewidth}p{0.31\linewidth}p{0.39\linewidth}}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.22\linewidth}>{\raggedright\arraybackslash}p{0.31\linewidth}>{\raggedright\arraybackslash}p{0.39\linewidth}}
 \hline
 Modeling role & Reported comparison & Interpretation \\
 \hline
 Observation-distribution flexibility & N, AL, and exAL with matching source and transfer labels & Changes the likelihood family; gains may depend on the source and transfer configuration. \\
 External source information & U versus M within a likelihood and transfer setting & Compares gauge-only and source-inclusive configurations, including their discrepancy states. \\
 Forecast-window covariate contribution & T0 versus T1 within a multivariate likelihood & Suppresses or retains transfer during forecasting; the transfer component is fitted historically in both. \\
-Level, seasonal, and transfer structure & Full exAL-M-T1 versus one-component removals & Measures sensitivity to removing a structural block under inherited reference settings. \\
+Level, seasonal, and transfer structure & Full exAL-M-T1 versus one-component removals & Measures sensitivity to removing a structural block under the reference settings. \\
 \hline
 \end{tabular}
 \end{table}
@@ -344,7 +323,7 @@ Level, seasonal, and transfer structure & Full exAL-M-T1 versus one-component re
 \subsection{External Forecasting References}
 \label{subsec:externalreferences}
 
-We add three references with distinct practical roles. Seasonal climatology (CLIM-SEASONAL) is an empirical distribution of historical USGS flow on the transformed scale. For each forecast date, it uses observations from May 29, 1987 through the origin within \(\pm15\) calendar positions of the target month and day. Positions follow a circular calendar based on the leap year 2000, retaining a separate February 29 position. This provides a season-specific distribution without using a hydrological forecast product. Persistence (PERSISTENCE) is a point mass at the last observed transformed discharge, \(\log(1+x_T)\), repeated at every lead. Its CRPS is the absolute forecast error.
+We compare the proposed forecasts with three benchmark forecasts with distinct practical roles. Seasonal climatology (CLIM-SEASONAL) is an empirical distribution of historical USGS flow on the transformed scale. For each forecast date, it uses observations from May 29, 1987 through the origin within \(\pm15\) calendar positions of the target month and day. Positions follow a circular calendar based on the leap year 2000, retaining a separate February 29 position. This provides a season-specific distribution without using a hydrological forecast product. Persistence (PERSISTENCE) is a point mass at the last observed transformed discharge, \(\log(1+x_T)\), repeated at every lead. Its CRPS is the absolute forecast error.
 
 The third reference, EMOS-GLOFAS, is a truncated-normal EMOS correction of GloFAS \citep{gneiting2005emos, thorarinsdottir2010emos}. Hydrological use of EMOS motivates this established post-processing comparator \citep{hemri2015multivariate}. At each lead, its predictive distribution for transformed discharge is normal truncated below zero, with pre-truncation location and variance
 \[
@@ -352,12 +331,12 @@ The third reference, EMOS-GLOFAS, is a truncated-normal EMOS correction of GloFA
 \]
 where \(\bar g\) and \(s_g^2\) are the mean and unbiased sample variance of the 51 transformed GloFAS members. The parameters satisfy \(b,d\geq0\) and \(c>0\).
 
-We fit a separate parameter vector for each lead using up to 365 preceding daily issuances, retaining only cases issued before the origin and verified by that origin. Training is restricted to the compatible GloFAS version family, with the version 2 to version 3 transition on May 26, 2021, and requires at least 100 cases per lead. Four deterministic starts use bounded L-BFGS-B optimization to minimize the analytic truncated-normal training CRPS; we retain the converged solution with the lowest objective. The training cases, numerical scaling and bounds, fitted parameters, convergence results, and boundary checks are retained in the reproducibility outputs. This comparator corrects one product through ensemble location and spread; it does not use the quantile state-space or transfer construction.
+We fit a separate parameter vector for each lead using up to 365 preceding daily issuances, retaining only cases issued before the origin and verified by that origin. Training is restricted to the compatible GloFAS version family, with the version 2 to version 3 transition on May 26, 2021, and requires at least 100 cases per lead. We estimate the parameters by minimizing truncated-normal CRPS over the training cases. Appendix~\ref{app:emoscomputation} describes the numerical optimization. This comparator corrects one product through ensemble location and spread; it does not use the quantile state-space or transfer construction.
 
 \subsection{Predictive Scoring by CRPS}
 \label{subsec:modelselection}
 
-For predictive scoring, we use CRPS \citep{gneiting2007strictly} to compare forecast-window predictive distributions. It also supplies the preliminary persistence-calibration criterion in Subsection~\ref{subsec:specification}. The CRPS is negatively oriented, so smaller values are better, and it is a proper score for predictive distributions that rewards both calibration and sharpness.
+We use CRPS \citep{gneiting2007strictly} to compare forecast-window predictive distributions. The CRPS is negatively oriented, so smaller values are better, and it is a proper score for predictive distributions that rewards both calibration and sharpness.
 
 For a predictive distribution \(G\) with quantile function \(Q_G\) and an observation \(y\), the CRPS is defined as
 \[
@@ -365,13 +344,13 @@ For a predictive distribution \(G\) with quantile function \(Q_G\) and an observ
 \qquad
 \rho_u(v) = v\big(u - \mathbf{1}\{v<0\}\big),
 \]
-where \(\rho_u\) is the quantile score, or check loss. Thus, the CRPS is a natural score in the context of quantile estimation. For an empirical predictive distribution represented by sample values \(\widetilde Y_t^{(1)},\ldots,\widetilde Y_t^{(S)}\), we approximate the integral by evaluating the empirical quantile function on the grid \(u_s=s/(S+1)\), \(s=1,\ldots,S\). Let \(\widetilde Y_{t,(1)} \leq \cdots \leq \widetilde Y_{t,(S)}\) be the corresponding ordered sample values. Then
+where \(\rho_u\) is the quantile score, or check loss. Thus, the CRPS is a natural score in the context of quantile estimation. For predictive sample values \(\widetilde Y_t^{(1)},\ldots,\widetilde Y_t^{(S)}\), we use a quantile-grid approximation to the integral at probabilities \(u_s=s/(S+1)\), \(s=1,\ldots,S\). Let \(\widetilde Y_{t,(1)} \leq \cdots \leq \widetilde Y_{t,(S)}\) be the corresponding ordered sample values. Then
 \[
 \widehat{\mathrm{CRPS}}(y_t,G_t)
 = \frac{2}{S}\sum_{s=1}^S
 \rho_{u_s}\!\left(y_t-\widetilde Y_{t,(s)}\right).
 \]
-The same calculation is used for synthesized posterior predictive samples and for raw forecast ensembles, with \(S\) equal to the number of available sample draws or ensemble members at that lead. If the predictive distribution is a point mass at \(x\), the CRPS reduces to \(|y-x|\); averaging this quantity across forecast cases gives the mean absolute error. CRPS is also used in the preliminary pre-cutoff calibration of the transfer-persistence parameter \(\lambda\), as described in Subsection~\ref{subsec:specification}.
+The same calculation is used for synthesized posterior predictive samples and for raw forecast ensembles, with \(S\) equal to the number of available sample draws or ensemble members at that lead. If the predictive distribution is a point mass at \(x\), the CRPS reduces to \(|y-x|\); averaging this quantity across forecast cases gives the mean absolute error. The same score is used for the preliminary calibration of the transfer-persistence parameter \(\lambda\) in Subsection~\ref{subsec:specification}.
 
 
 Mean scores average the daily scores within each origin and horizon, on the \(\log(1+x)\) discharge scale used for fitting. We also report check loss \(\rho_\tau\) at the seven fitted quantile probabilities, using the corresponding synthesized predictive quantiles. These targeted scores describe performance at individual parts of the distribution alongside the distribution-wide CRPS comparison.
@@ -382,7 +361,7 @@ To give these scores a reference point, we also report the CRPS skill score (CRP
 \]
 The numerator and denominator average over the same forecast cases and horizon. Positive values improve on climatology, zero indicates equal mean scores, and negative values indicate poorer performance. The aggregate skill score is computed from the ratio of aggregate mean scores, not the average of origin-specific ratios.
 
-For the three added references, predictive quantiles at \(u_s=s/2001\), \(s=1,\ldots,2000\), enter the same numerical score calculation. Seasonal climatology uses the empirical inverse CDF without interpolation, persistence repeats its single value, and EMOS uses the fitted truncated-normal inverse CDF. Original model and raw-product scores are retained. The external comparison uses the same verification dates, eight-day and 28-day horizons, and transformed discharge scale.
+For the three benchmark forecasts, 2,000 predictive quantiles enter the same quantile-grid score calculation, with \(u_s=s/2001\), \(s=1,\ldots,2000\). Seasonal climatology uses the empirical inverse CDF without interpolation, persistence repeats its single value, and EMOS uses the fitted truncated-normal inverse CDF. Models and raw products use their predictive samples or ensemble members in this calculation. The external comparison uses the same verification dates, eight-day and 28-day horizons, and transformed discharge scale.
 
 \subsection{Distribution Scores and Predictive Calibration}
 \label{subsec:distributionchecks}
@@ -391,17 +370,17 @@ To distinguish numerical scoring from the finite predictive representation, we a
 \[
 \mathrm{CRPS}(G_m,y)=A-\frac{D}{m^2}.
 \]
-The quantile-grid approximation above equals this value plus \(D/[m^2(m+1)]\). Thus the two calculations score the same stored values using different finite-sample formulas \citep{zamo2018crps}. The new comparison uses the exact empirical-distribution score for all 14 methods, including the frozen 2,000-value climatology and EMOS quantile grids. Its CRPSS denominator is the exact score of that same climatology representation on matching cases and scale. Existing quantile-grid tables retain their original definition.
+The exact empirical-distribution score and the quantile-grid approximation evaluate the same predictive values using different formulas \citep{zamo2018crps}; Appendix~\ref{app:numericalprediction} gives their relationship. We report exact empirical-distribution scores for all 14 methods, including the discrete distributions with equal mass on the 2,000 climatology and EMOS quantiles. The corresponding CRPSS denominator uses the exact score of that same climatology distribution on matching cases and scale. We identify the quantile-grid and exact-score comparisons separately.
 
-Stored sample sizes differ: the AL/exAL syntheses contain 2,000 inverse-CDF draws, the Gaussian univariate model 64 draws, the Gaussian multivariate models 48 draws, and raw GloFAS and NWS 51 and seven members. As a separate finite-sample sensitivity, we report \(A-D/[m(m-1)]\), whose expectation equals the parent-distribution CRPS for independent identically distributed draws \citep{ferro2014fair}. Independence is an additional working assumption for physical ensemble members; this sensitivity does not establish ensemble exchangeability or posterior accuracy. It is inapplicable to deterministic grids and point masses, and no adjusted CRPSS is reported.
+Predictive sample sizes differ: the AL/exAL syntheses contain 2,000 inverse-CDF draws, the Gaussian univariate model 64 draws, the Gaussian multivariate models 48 draws, and raw GloFAS and NWS 51 and seven members. As a separate finite-sample sensitivity, we report \(A-D/[m(m-1)]\), whose expectation equals the parent-distribution CRPS for independent identically distributed draws \citep{ferro2014fair}. Independence is an additional working assumption for physical ensemble members; this sensitivity does not establish ensemble exchangeability or posterior accuracy. It is inapplicable to deterministic grids and point masses, and no adjusted CRPSS is reported.
 
-Quantile reliability records the frequencies of \(y<q_\tau\) and \(y\leq q_\tau\), with exact ties counted separately. For the four principal quantile competitors we retain the predictive quantiles used in the existing check-loss analysis. Newly derived stochastic-model quantiles use sample type 8; raw ensembles and deterministic grids use the empirical generalized inverse. The displayed model ribbons use type-8 limits, with the selected multivariate limits checked against their existing exports. Central 95\% predictive intervals are evaluated as closed intervals \([l,u]\), with lower misses, coverage and upper misses forming an exact partition. We report mean width and the proper interval score
+Quantile reliability compares the empirical frequency of observations below a predictive \(\tau\)-quantile with its nominal probability \(\tau\). We report both strict frequencies \(y<q_\tau\) and non-strict frequencies \(y\leq q_\tau\), counting ties separately. The four principal quantile competitors use the same predictive quantiles as the check-loss comparison. Appendix~\ref{app:numericalprediction} specifies the interpolation conventions for the remaining sample-based quantiles, raw ensembles and deterministic distributions, and for the displayed model intervals. Central 95\% predictive intervals are evaluated as closed intervals \([l,u]\), with lower misses, coverage and upper misses forming an exact partition. We report mean width and the proper interval score
 \[
 \mathrm{IS}_{0.05}(l,u;y)=(u-l)+40(l-y)\mathbf1\{y<l\}+40(y-u)\mathbf1\{y>u\}.
 \]
 This assesses observation prediction, separately from the approximate parameter-posterior intervals.
 
-We also evaluate discharge in m$^3$/s by applying \(\exp(x_i)-1\) to each stored predictive value before computing means and distribution scores. Targeted quantiles and interval endpoints are inverse-transformed from their declared log-scale values, preserving their forecast events. The stored predictive support is retained without truncation, so this analysis also reveals sensitivity to extreme tails. Comparisons use 140 verification cases over 28 days or 40 over eight days, always with complete matching dates. The five origins support descriptive calibration comparisons; successive daily cases are not treated as independent replicates for significance claims.
+We also evaluate discharge in m$^3$/s by applying \(\exp(x_i)-1\) to each predictive value before computing means and distribution scores. Targeted quantiles and interval endpoints are inverse-transformed from their declared log-scale values, preserving their forecast events. The predictive values are not truncated, so this analysis also reveals sensitivity to extreme tails. Comparisons use 140 verification cases over 28 days or 40 over eight days, always with complete matching dates. The five origins support descriptive calibration comparisons; successive daily cases are not treated as independent replicates for significance claims.
 
 \section{RESULTS}
 \label{sec:forecastvalidation}
@@ -424,52 +403,52 @@ The predictive mean and interval change across the forecast window as the source
 \subsection{Comparative Forecast Performance}
 \label{subsec:benchmarkresults}
 
-Table~\ref{tab:benchmark_crps_models} reports mean 28-day forecast-window CRPS. The multivariate rows use all available source channels, including NWS forecast information over the leads for which it is available, and the AL/exAL rows are posterior predictive syntheses assembled from the seven fitted quantile-specific models. The raw GloFAS product is included as the horizon-compatible 28-day raw reference; raw NWS is handled in the separate eight-day comparison because the archived NWS forecasts provide only eight valid daily leads for these origins.
+Table~\ref{tab:benchmark_crps_models} reports mean 28-day forecast-window CRPS. The multivariate rows use all available source channels, including NWS forecast information over the leads for which it is available, and the AL/exAL rows are posterior predictive syntheses assembled from the seven fitted quantile-specific models. The raw GloFAS product is included as the horizon-compatible 28-day raw reference; raw NWS is handled in the separate eight-day comparison because the NWS forecasts used here provide only eight valid daily leads for these origins.
 
-\input{tables/generated_tex/benchmark_crps_main_table.tex}
+\input{tables/editorial_revision/benchmark_crps_main_table.tex}
 
 Table~\ref{tab:benchmark_crps_models} compares the fitted configurations across the five origins. Within AL and exAL, multivariate source inclusion improves 28-day CRPS relative to the corresponding univariate transfer-active model at every origin; retaining forecast transfer also improves on the corresponding multivariate T0 model at every origin. The exAL-M-T1 specification has the lowest 28-day CRPS at all five origins, including lower scores than AL-M-T1, and supplies the reference fit for the remaining summaries. These patterns are conditional on likelihood and horizon. In particular, N-M-T1 performs worse than N-M-T0 at every origin over both horizons. The results therefore support the reported quantile-based configurations, not a general assertion that adding source or transfer components must improve forecasts.
 
-\input{tables/generated_tex/benchmark_crps_nws_horizon_table.tex}
+\input{tables/editorial_revision/benchmark_crps_nws_horizon_table.tex}
 
-The short-horizon comparison in Table~\ref{tab:benchmark_crps_models_nws_horizon} is the appropriate direct comparison to the raw NWS product. It preserves the same held-out USGS verification target and transformed scale as the 28-day table, but restricts all rows to the NWS-available forecast horizon. The comparison is more mixed than the 28-day table: raw NWS is strongest at the December 2021 and December 2022 cutoffs, AL-U-T1 is strongest in January 2021, and exAL-M-T1 is strongest in November 2021 and May 2022. Source inclusion improves the eight-day exAL comparison at four origins and the AL comparison at three; exAL-M-T1 improves on AL-M-T1 at four origins. This variation makes the intended forecast horizon an essential part of model comparison.
+The short-horizon comparison in Table~\ref{tab:benchmark_crps_models_nws_horizon} is the appropriate direct comparison to the raw NWS product. It preserves the same held-out USGS verification target and transformed scale as the 28-day table, but restricts all rows to the NWS-available forecast horizon. The comparison is more mixed than the 28-day table: raw NWS has the lowest CRPS at the December 2021 and December 2022 origins, AL-U-T1 in January 2021, and exAL-M-T1 in November 2021 and May 2022. Source inclusion improves the eight-day exAL comparison at four origins and the AL comparison at three; exAL-M-T1 improves on AL-M-T1 at four origins. This variation makes the intended forecast horizon an essential part of model comparison.
 
 \subsection{Comparison with External Forecasting References}
 \label{subsec:externalresults}
 
 Table~\ref{tab:comment2_external_comparison} places the selected quantile configurations alongside seasonal climatology, persistence, and the GloFAS EMOS correction. The exAL-M-T1 aggregate CRPSS is 0.686 over 28 days and 0.590 over eight days, corresponding to mean-score reductions of 68.6\% and 59.0\% relative to the seasonal reference. EMOS-GLOFAS also improves on climatology in aggregate, with skill scores of 0.288 and 0.391, respectively. Persistence has negative aggregate skill over both horizons. These reference scores make the magnitude of the reported improvements interpretable in addition to ranking configurations within the proposed framework.
 
-\input{tables/generated_tex/comment2_external_comparison_table.tex}
+\input{tables/editorial_revision/comment2_external_comparison_table.tex}
 
-The aggregate ordering is not uniform across origins (Appendix Table~\ref{tab:comment2_external_by_origin}). EMOS-GLOFAS outperforms exAL-M-T1 in May 2022 over both horizons: its 28-day CRPS is 0.01763 versus 0.02273, and its eight-day CRPS is 0.02381 versus 0.02567. The selected quantile model improves on all three added references at the other four origins. Seasonal climatology itself outperforms EMOS-GLOFAS in November 2021, including 28-day scores of 0.09588 versus 0.24060. Thus an established single-product correction can be preferable for a particular origin, and a calibrated product still needs comparison to a simple seasonal reference. All 140 lead-specific EMOS fits meet the optimizer convergence criterion; their retained training sets contain 143--364 cases. The fitting audit below distinguishes the evidence available for the original Bayesian configurations.
+The aggregate ordering is not uniform across origins (Appendix Table~\ref{tab:comment2_external_by_origin}). EMOS-GLOFAS outperforms exAL-M-T1 in May 2022 over both horizons: its 28-day CRPS is 0.01763 versus 0.02273, and its eight-day CRPS is 0.02381 versus 0.02567. The selected quantile model improves on all three benchmark forecasts at the other four origins. Seasonal climatology itself outperforms EMOS-GLOFAS in November 2021, including 28-day scores of 0.09588 versus 0.24060. Thus an established single-product correction can be preferable for a particular origin, and a calibrated product still needs comparison to a simple seasonal reference. All 140 lead-specific EMOS fits meet the optimizer convergence criterion; their retained training sets contain 143--364 cases. The fitting assessment below distinguishes the convergence evidence available for the Bayesian configurations.
 
 \subsection{Quantile-Specific Forecast Performance}
 \label{subsec:quantileresults}
 
-Table~\ref{tab:he4_quantile_check_loss} complements the CRPS comparisons with targeted quantile diagnostics based on check loss at the fitted quantile levels. We consider the four principal quantile-synthesis competitors: exAL-M-T1, AL-M-T1, exAL-U-T1, and AL-U-T1. These diagnostics use the same held-out USGS forecast-window observations and the same transformed discharge scale as Table~\ref{tab:benchmark_crps_models}. The multivariate synthesis models have lower check loss than the univariate references in most cutoff--quantile cells. The exAL-M-T1 row is strongest in most cells, while AL-M-T1 remains competitive in selected upper-tail cases.
+Table~\ref{tab:he4_quantile_check_loss} complements the CRPS comparisons with targeted quantile diagnostics based on check loss at the fitted quantile levels. We consider the four principal quantile-synthesis competitors: exAL-M-T1, AL-M-T1, exAL-U-T1, and AL-U-T1. These diagnostics use the same held-out USGS forecast-window observations and the same transformed discharge scale as Table~\ref{tab:benchmark_crps_models}. The multivariate synthesis models have lower check loss than the univariate references in most cutoff--quantile cells. The exAL-M-T1 model has the lowest check loss in most cells, while AL-M-T1 remains competitive in selected upper-tail cases.
 
-\input{tables/generated_tex/he4_quantile_check_loss_main_table.tex}
+\input{tables/editorial_revision/he4_quantile_check_loss_main_table.tex}
 
-For exAL-M-T1, the own-fit predictive anchors cross on 61 of the 140 forecast dates; neither their isotonic projection nor the final synthesized quantiles cross. The mean check loss averaged over the seven probabilities decreases from 0.10058 to 0.09803 after synthesis over 28 days, and from 0.15069 to 0.14622 over eight days. Improvement is not uniform across specifications: the eight-day exAL-U-T1 average increases slightly, from 0.17257 to 0.17259. The accompanying stage-specific records distinguish changes in ordering from changes in predictive calibration.
+For exAL-M-T1, the predictive quantiles from individual fits cross on 61 of the 140 forecast dates; neither their isotonic projection nor the final synthesized quantiles cross. The mean check loss averaged over the seven probabilities decreases from 0.10058 to 0.09803 after synthesis over 28 days, and from 0.15069 to 0.14622 over eight days. Improvement is not uniform across specifications: the eight-day exAL-U-T1 average increases slightly, from 0.17257 to 0.17259. The isotonic projection resolves crossings; the subsequent synthesis can additionally change check loss and predictive calibration.
 
 
 \subsection{Distribution-Score Sensitivity and Calibration}
 \label{subsec:calibrationresults}
 
-The exact empirical-distribution scores in Table~\ref{tab:no_refit_scores} retain the aggregate transformed-scale ordering of the principal competitors. For exAL-M-T1, mean CRPS is 0.20156 over 28 days and 0.29919 over eight days, corresponding to climatology-relative skill of 0.68602 and 0.58965. The separate sample-size adjustment is small for the 2,000-draw quantile syntheses and larger for the smaller Gaussian and raw ensembles (Appendix Table~\ref{tab:no_refit_sensitivity}). This distinction avoids attributing a numerical-score convention to a change in the fitted predictive distribution.
+The exact empirical-distribution scores in Appendix Table~\ref{tab:no_refit_scores} retain the aggregate transformed-scale ordering of the principal competitors. For exAL-M-T1, mean CRPS is 0.20156 over 28 days and 0.29919 over eight days, corresponding to climatology-relative skill of 0.68602 and 0.58965. The separate sample-size adjustment is small for the 2,000-draw quantile syntheses and larger for the smaller Gaussian and raw ensembles (Appendix Table~\ref{tab:no_refit_sensitivity}). This distinction avoids attributing a numerical-score convention to a change in the fitted predictive distribution.
 
-\input{tables/generated_tex/no_refit_score_comparison_table.tex}
+
 
 Calibration provides a different assessment. The selected model's central 95\% interval covers 123 of 140 cases (87.86\%) over 28 days and 29 of 40 (72.50\%) over eight days (Table~\ref{tab:no_refit_calibration}). The short-horizon misses are concentrated at the December 2021 and December 2022 origins, where coverage is 1/8 and 4/8; the other three origins have 8/8 coverage. At 28 days those December origins cover 21/28 and 19/28 cases (Appendix Table~\ref{tab:no_refit_origin_coverage}). AL-M-T1 has wider intervals and covers 132/140 and 35/40 cases, with lower mean interval scores over both horizons. Narrow intervals and favorable average CRPS therefore do not establish nominal predictive coverage.
 
-\input{tables/generated_tex/no_refit_calibration_summary_table.tex}
+\input{tables/editorial_revision/no_refit_calibration_summary_table.tex}
 
-Figure~\ref{fig:no_refit_reliability} shows reliability at the seven target probabilities. For exAL-M-T1 over 28 days, the strict empirical frequencies at probabilities 0.05, 0.50 and 0.95 are 6/140, 67/140 and 128/140. The upper value is below its nominal frequency, consistent with upper-tail misses. Full counts, ties and origin-specific diagnostics accompany the article.
+Figure~\ref{fig:no_refit_reliability} shows reliability at the seven target probabilities. For exAL-M-T1 over 28 days, the strict empirical frequencies at probabilities 0.05, 0.50 and 0.95 are 6/140, 67/140 and 128/140. The upper value is below its nominal frequency, consistent with upper-tail misses. The supplementary results give the full counts, ties and origin-specific diagnostics.
 
 \begin{figure}[!htbp]
 \centering
 \includegraphics[width=450pt]{no_refit_quantile_reliability.png}
-\caption{Empirical quantile reliability across the five forecast origins, separately for eight-day and 28-day horizons. Curves show the frequency of observations at or below each delivered predictive quantile for exAL-M-T1 and the raw-product, EMOS and seasonal references; the diagonal marks the nominal probability. Raw NWS is available over eight days. The companion records also retain strict frequencies and exact ties. These descriptive curves pool 40 and 140 cases, respectively.}
+\caption{Empirical quantile reliability across the five forecast origins, separately for eight-day and 28-day horizons. Curves show the frequency of observations at or below each predictive quantile for exAL-M-T1 and the raw-product, EMOS and seasonal references; the diagonal marks the nominal probability. Raw NWS is available over eight days. The legend labels RAW-GLOFAS and RAW-NWS identify the raw ensembles, EMOS-GLOFAS identifies the GloFAS EMOS correction, and CLIM-SEASONAL identifies seasonal climatology. Strict frequencies and exact ties are reported in the supplementary results. These descriptive curves pool 40 and 140 cases, respectively.}
 \label{fig:no_refit_reliability}
 \end{figure}
 
@@ -480,7 +459,7 @@ The scoring scale also matters (Appendix Table~\ref{tab:no_refit_original_scale}
 
 Appendix~\ref{app:he3ablation} reports a component-removal sensitivity analysis of the selected extended-likelihood multivariate model. Appendix Tables~\ref{tab:he3_ablation_crps} and \ref{tab:he3_ablation_crps_nws_horizon} give the corresponding 28-day and eight-day comparisons. Every reduced model has higher CRPS than both the full reference and raw GloFAS at every origin over both horizons. The size and consistency of these degradations require attention to fitting as well as to model structure. They establish sensitivity of the selected configuration under inherited settings; alone they do not show that each component is intrinsically necessary or that a separately optimized reduced model could not perform well.
 
-The saved criteria show that 174 of the 175 reduced-model quantile fits reached their iteration budgets without established joint convergence; so did all 35 quantile fits of the full exAL-M-T1 reference. This limitation is therefore not specific to the poorly performing reductions. One striking reduced-fit case is the May 2022 transfer-free (\texttt{noTF}) model: its fitted median locations lie between 10.53 and 10.81 while transformed verification values lie between 0.42 and 0.57. Conversely, the Gaussian fits satisfy their recorded criteria despite some poor forecast scores. The audit thus identifies both fitting limitations and substantial predictive mismatch, but cannot assign every performance difference to a numerical cause. Appendix~\ref{app:fitdiagnostics} provides the complete classification and its limits.
+The recorded stopping criteria show that 174 of the 175 reduced-model quantile fits reached their iteration limits without established joint convergence; so did all 35 quantile fits of the full exAL-M-T1 reference. This limitation is therefore not specific to the poorly performing reductions. One striking reduced-fit case is the May 2022 transfer-free model: its fitted median locations lie between 10.53 and 10.81 while transformed verification values lie between 0.42 and 0.57. Conversely, the Gaussian fits satisfy their recorded criteria despite some poor forecast scores. The fitting assessment thus identifies both fitting limitations and substantial predictive mismatch, but cannot assign every performance difference to a numerical cause. Appendix~\ref{app:fitdiagnostics} provides the complete classification and its limits.
 
 \subsection{Supporting Interpretation}
 \label{sec:interpretation}
@@ -491,58 +470,26 @@ Detailed source-specific summaries for the exAL shape and scale parameters are r
 
 \subsubsection{Covariate Effects}
 
-\input{tables/generated_tex/representative_covariate_effects_table.tex}
+\input{tables/editorial_revision/representative_covariate_effects_table.tex}
 
-Table~\ref{tab:components_23_31} reports means and central 95\% intervals of the fitted variational marginals for three base-input transfer loadings at the 5th, 50th, and 95th quantiles. These are coefficient states \(\boldsymbol\psi_T\) at the terminal historical date, December 25, 2022, expressed per historical-standard-deviation unit of the corresponding input. They are not averages over the historical record. In the transition equation, \(\boldsymbol\psi_T\) contributes to the next transfer update through \(\mathbf x_{T+1}'\boldsymbol\psi_T\).
+Table~\ref{tab:components_23_31} reports means and central 95\% intervals of the fitted variational marginals for three base-input transfer coefficients at the 5th, 50th, and 95th quantiles. These are coefficient states \(\boldsymbol\psi_T\) at the terminal historical date, December 25, 2022, expressed per historical-standard-deviation unit of the corresponding input. They are not averages over the historical record. In the transition equation, \(\boldsymbol\psi_T\) contributes to the next transfer update through \(\mathbf x_{T+1}'\boldsymbol\psi_T\).
 
-The coefficients describe conditional adjustments within a model that also contains source products, discrepancy states, seasonal structure, and nonlinear and lagged inputs. A negative linear precipitation loading does not imply that rainfall reduces total flow: the full feature vector and the autoregressive transfer state determine the adjustment. The isolated sign need not match an unconditional rainfall--flow relationship, and coefficient magnitudes do not measure physical importance across inputs. We interpret these quantities as dynamic transfer-feature loadings, without a causal interpretation. The companion feature dictionary identifies the complete state/feature layout.
+The coefficients describe conditional adjustments within a model that also contains source products, discrepancy states, seasonal structure, and nonlinear and lagged inputs. A negative linear precipitation coefficient does not imply that rainfall reduces total flow: the full covariate vector and the autoregressive transfer state determine the adjustment. The isolated sign need not match an unconditional rainfall--flow relationship, and coefficient magnitudes do not measure physical importance across inputs. These are conditional covariate coefficients, without a causal interpretation. Subsection~\ref{subsec:specification} defines all 12 covariates and the corresponding state vector.
 
-\subsubsection{Historical Dynamics Across Representative Regimes}
+\subsubsection{Historical Components}
 
-To illustrate how the model behaves across contrasting hydrological conditions, we show posterior quantile dynamics for the exAL-M-T1 specification at the December 25, 2022 origin. The displayed windows cover the 2012--2016 drought and the 2017--2019 wet period. These figures are interpretation diagnostics: they show how the selected model decomposes fitted historical quantile behavior across contrasting regimes.
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=450pt]{historical_summary_dry_period.png}
-\caption{
-Posterior mean and approximate 95\% VB credible intervals of river-flow quantiles during the dry period (2012--2016), estimated from the exAL-M-T1 model at the December 25, 2022 origin. Shown are the 5th (red), 50th (green), and 95th (blue) quantiles together with observed daily USGS flow (black). Horizontal dashed lines provide the lower and upper discharge references retained in this historical display.
-}
-\label{fig:dry_quantile}
-\end{figure}
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=450pt]{historical_summary_wet_period.png}
-\caption{
-Posterior mean and approximate 95\% VB credible intervals of river-flow quantiles during the wet period (2017--2019), estimated from the exAL-M-T1 model at the December 25, 2022 origin. Shown are the 5th (red), 50th (green), and 95th (blue) quantiles together with observed daily USGS flow (black). Horizontal dashed lines provide the lower and upper discharge references retained in this historical display.
-}
-\label{fig:rainy_quantile}
-\end{figure}
-
-Figures~\ref{fig:dry_quantile} and \ref{fig:rainy_quantile} compare the fitted posterior quantile dynamics during the drought and wet periods. During 2012--2016, the posterior bands remain comparatively narrow and the upper fitted quantile rarely approaches the current-rating NWS discharge-reference levels. During 2017--2019, winter peaks produce wider separation between the lower and upper fitted quantile curves, and the 95th quantile reaches levels comparable to the current-rating major-stage discharge reference in 2017 and 2019. This contrast indicates stronger upper-tail and cross-quantile variation during wetter regimes.
-
-A complementary diagnostic is the long-cycle seasonal state. Figure~\ref{fig:80_components} shows this component alone for the same three representative quantile levels. The retained slow rotation has period 2474.87 days, approximately 6.78 calendar years or 81.3 months, as defined in Subsection~\ref{subsec:specification}. The component is broadly aligned across the three quantiles and varies over multi-year dry and wet phases in the historical record, illustrating how the selected state-space model separates long-cycle behavior from trend, transfer effects, and source-specific corrections.
-
-\begin{figure}[!htbp]
-\centering
-\includegraphics[width=450pt]{historical_component_80month.png}
-\caption{
-Selected-model posterior medians and approximate 95\% VB credible intervals for the long-cycle seasonal component, with period approximately 2474.87 days (6.78 calendar years), estimated from the exAL-M-T1 model at the December 25, 2022 origin. Estimates are shown for the 5th (red), 50th (green), and 95th (blue) quantiles. Shaded regions mark the 2012--2016 dry period and the 2017--2019 wet period.
-}
-\label{fig:80_components}
-\end{figure}
-
+Appendix~\ref{app:historicalcomponents} illustrates the fitted conditional quantile dynamics during the 2012--2016 drought and the 2017--2019 wet period, together with the long-cycle seasonal component. The wetter period exhibits greater separation of the fitted quantile curves. These historical summaries describe the model's allocation of variation and approximate posterior uncertainty; they do not independently establish forecast improvement.
 
 \section{DISCUSSION AND CONCLUSIONS}
 \label{sec5}
 
 The proposed framework links gauge observations, retrospective products, and forecast ensembles through a dynamic quantile process with source-specific discrepancies. This supplies a common statistical representation while preserving the sources' different roles and horizons. A separate synthesis of the fitted quantile models produces the marginal predictive distributions used for forecast summaries and scoring. Laplace--Delta VB makes the extended-likelihood fits feasible for the multi-decade daily record.
 
-In the San Lorenzo application, exAL-M-T1 has the lowest 28-day CRPS among the original framework variants and raw products at all five reported origins. Within those comparisons, raw NWS is strongest at two winter origins over eight days, while Bayesian variants are strongest at the other three. The added references show aggregate skill beyond seasonal climatology for the selected quantile models and for EMOS-GLOFAS, while the EMOS comparator outperforms exAL-M-T1 in May 2022. For a practitioner, these findings favor checking a single-product correction and simple references alongside the fuller source-and-covariate construction, at the horizon relevant to the decision. An aggregate advantage across five cases does not imply the best forecast at every origin or establish performance in another basin.
+In the San Lorenzo application, exAL-M-T1 has the lowest 28-day CRPS among the framework variants and raw products at all five reported origins. Within those comparisons, raw NWS has the lowest eight-day CRPS at two winter origins, while Bayesian variants have the lowest scores at the other three. The benchmark comparisons show aggregate skill beyond seasonal climatology for the selected quantile models and for EMOS-GLOFAS, while the EMOS comparator outperforms exAL-M-T1 in May 2022. For a practitioner, these findings favor checking a single-product correction and simple references alongside the fuller source-and-covariate construction, at the horizon relevant to the decision. An aggregate advantage across five cases does not imply the best forecast at every origin or establish performance in another basin.
 
-The Gaussian transfer comparison and the component-removal results also show why predictive scores should be read alongside fitting diagnostics. The full reference and nearly all reductions reach their iteration budgets without established joint convergence, so the ablations support conditional sensitivity conclusions. They do not establish the independent necessity of each component. Historical component summaries describe how the reference model allocates fitted variation; they are not independent evidence of forecast improvement.
+The Gaussian transfer comparison and the component-removal results also show why predictive scores should be read alongside fitting diagnostics. The full reference and nearly all reductions reach their iteration limits without established joint convergence, so the ablations support conditional sensitivity conclusions. They do not establish the independent necessity of each component. Historical component summaries describe how the reference model allocates fitted variation; they are not independent evidence of forecast improvement.
 
-The distribution checks further qualify the selected model's advantage. Its favorable mean transformed-scale score coexists with predictive undercoverage at the two December origins, and raw NWS has the better aggregate eight-day score on the discharge scale. Calibration, sharpness, forecast horizon and scoring scale address different practical aspects of prediction. The member-level likelihood additionally assumes conditional residual independence and a shared source scale across leads; the raw-product error and spread diagnostics retained with the article describe its inputs without validating those assumptions. Approximate VB parameter intervals remain distinct from predictive coverage, and their accuracy against full-model posterior simulation is an open computational assessment.
+The distribution checks further qualify the selected model's advantage. Its favorable mean transformed-scale score coexists with predictive undercoverage at the two December origins, and raw NWS has the better aggregate eight-day score on the discharge scale. Calibration, sharpness, forecast horizon and scoring scale address different practical aspects of prediction. The member-level likelihood additionally assumes conditional residual independence and a shared source scale across leads; the supplementary raw-product error and spread summaries describe the forecast inputs without validating those assumptions. Approximate VB parameter intervals remain distinct from predictive coverage, and their accuracy against full-model posterior simulation is an open computational assessment.
 
 The framework depends on the external products, their alignment, and the supplied covariate paths. The five-origin evaluation samples contrasting conditions; a denser evaluation would require a larger version-consistent historical forecast archive. The present transfer inputs are deterministic summaries of uncertain hydrometeorological quantities. Future work could propagate their uncertainty jointly, fit dependent quantiles directly, enrich the discrepancy dynamics, and extend the model to multiple sites or basins.
 
@@ -560,11 +507,11 @@ The authors declare no conflict of interest.
 
 \section*{Data Availability Statement}
 
-The model-ready staged inputs, workflow code, manuscript-facing outputs, and provenance manifests for the quantile-model analysis are available in the public reproducibility repository \citep{deleon2026sanlorenzo_reproducibility}. The underlying source products are public data products from USGS, ECMWF/GloFAS, NOAA/NWS, PRISM, ERA5-Land, GEFS, and NOAA Physical Sciences Laboratory, as described in the manuscript and repository. The external-reference inputs, code, results, and saved fitting evidence accompany the manuscript in the reproducibility bundle \texttt{artifacts/comment2\_revision}. The additional verification inputs, derived scores, calibration summaries, and reproduction code are supplied in \texttt{artifacts/no\_refit\_revision}.
+The analysis data, statistical code, numerical results, and data-source documentation for the quantile-model analysis are available in the public reproducibility repository \citep{deleon2026sanlorenzo_reproducibility}. The underlying source products are public data products from USGS, ECMWF/GloFAS, NOAA/NWS, PRISM, ERA5-Land, GEFS, and NOAA Physical Sciences Laboratory, as described in the manuscript and repository. Inputs, code, results and fitting diagnostics for the benchmark comparisons accompany the manuscript, together with verification data, distribution scores and predictive-calibration summaries.
 
 \section*{Code availability}
 
-The reusable estimation routines for the extended dynamic quantile linear model are available through the CRAN R package \texttt{exdqlm}, version 1.1.0 (\url{https://CRAN.R-project.org/package=exdqlm}; package DOI \url{https://doi.org/10.32614/CRAN.package.exdqlm}), and are described in \citet{deleon2026exdqlm}. The reproducibility repository cited in the Data Availability Statement contains the curated fitting and post-processing workflow code needed to reproduce the fits, validation summaries, tables, and figures of the quantile-model analysis from the staged inputs. Applying the workflow to a new basin requires staging the corresponding observations, current forecast products, and covariates. Reproducing the retrospective validation design additionally requires a basin-specific, version-consistent archive that aligns historical observations, retrospective products, issued forecast products, forecast-window covariates, product versions, spatial extraction rules, and source-specific forecast horizons.
+The R package \texttt{exdqlm}, version 1.1.0, provides reusable estimation routines for the extended dynamic quantile linear model and is available from the Comprehensive R Archive Network (CRAN) (\url{https://CRAN.R-project.org/package=exdqlm}; package DOI \url{https://doi.org/10.32614/CRAN.package.exdqlm}). The package is described in \citet{deleon2026exdqlm}. The reproducibility repository cited in the Data Availability Statement contains the statistical code needed to reproduce the fits, validation summaries, tables and figures from the supplied analysis data. Applying the method to a new basin requires preparing the corresponding observations, current forecast products, and covariates. Reproducing the retrospective validation design additionally requires a basin-specific, version-consistent archive that aligns historical observations, retrospective products, issued forecast products, forecast-window covariates, product versions, spatial extraction rules, and source-specific forecast horizons.
 
 \clearpage
 
@@ -574,54 +521,115 @@ The reusable estimation routines for the extended dynamic quantile linear model 
 \renewcommand{\thetable}{\Alph{section}\arabic{table}}
 
 
-\section{Supplementary Parameter Summaries and Illustrations}
+\section{Supplementary Data, Results, and Interpretation}
 \label{app:extras}
+
+\subsection{Historical Covariates and Retrospective Products}
+\label{app:datahistories}
+
+Figures~\ref{fig:covariates} and \ref{fig:retrospectives} show the historical covariate series and retrospective discharge products described in Section~\ref{sec:data}.
+
+\begin{figure}[!htbp]
+\centering
+\centerline{\includegraphics[width=450pt]{covariate_context_precip_soil_gdpc.png}}
+\caption{
+Historical daily precipitation (mm), soil moisture (m$^3$/m$^3$), and first generalized dynamic principal component (GDPC) score over May 29, 1987 through December 25, 2022.}
+\label{fig:covariates}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\centerline{\includegraphics[width=450pt]{retrospective_products_context.png}}
+\caption{GloFAS and NWS retrospective discharge series over their available historical coverage for the December 25, 2022 origin, May 29, 1987 through December 25, 2022. Displayed flow values use the $\log(1+x)$ scale with $x$ in m$^3$/s.}
+\label{fig:retrospectives}
+\end{figure}
 
 \subsection{Component-Removal Sensitivity Analysis}
 \label{app:he3ablation}
 
-To assess how the selected specification depends on its main structural blocks, we refit \texttt{exAL-M-T1} after removing one component at a time. Each reduced model retains the reference forecast origins, input construction, likelihood, forecast horizons, and inherited scientific settings. The labels \texttt{noTrend}, \texttt{noH1}, \texttt{noH2}, and \texttt{noH3} remove, respectively, the local level or the first, second, or third seasonal pair from the shared and source-discrepancy structures. The third pair uses multiplier \(1/6.8068493\) and the 2474.87-day period defined in Subsection~\ref{subsec:specification}. The \texttt{noTF} configuration disables the covariate-transfer contribution in fitting and forecasting. It therefore differs from the main-table T0 comparison, which fits the historical transfer component and suppresses it only during the forecast window. These are fixed-policy structural sensitivity comparisons, not separate searches for each reduced model's best configuration.
+To assess how the selected specification depends on its main structural blocks, we refit \texttt{exAL-M-T1} after removing one component at a time. Each reduced model retains the reference forecast origins, input construction, likelihood, forecast horizons, and reference settings. The labels \texttt{noTrend}, \texttt{noH1}, \texttt{noH2}, and \texttt{noH3} remove, respectively, the local level or the first, second, or third seasonal pair from the shared and source-discrepancy structures. The third pair uses multiplier \(1/6.8068493\) and the 2474.87-day period defined in Appendix~\ref{app:seasonalconstruction}. The \texttt{noTF} configuration disables the covariate-transfer contribution in fitting and forecasting. It therefore differs from the main-table T0 comparison, which fits the historical transfer component and suppresses it only during the forecast window. These structural sensitivity comparisons retain the reference settings rather than optimizing them separately for each reduced model.
 
-\input{tables/generated_tex/he3_ablation_crps_main_table.tex}
+\input{tables/editorial_revision/he3_ablation_crps_main_table.tex}
 
-\input{tables/generated_tex/he3_ablation_crps_nws_horizon_table.tex}
+\input{tables/editorial_revision/he3_ablation_crps_nws_horizon_table.tex}
 
-The full reference model has lower CRPS than each reduced model at all five origins over both horizons. All reduced-model scores also exceed the raw GloFAS reference. This is evidence that the selected configuration is sensitive to structural removal under its inherited fitting policy. Because removing a block changes the allocation of variation among the remaining states and can affect numerical estimation, the differences do not by themselves measure each block's independent forecast value. The sensitivity results support reporting the full configuration as fitted, with the fitting evidence and limitations considered explicitly.
+The full reference model has lower CRPS than each reduced model at all five origins over both horizons. All reduced-model scores also exceed the raw GloFAS reference. This is evidence that the selected configuration is sensitive to structural removal under the reference fitting settings. Because removing a block changes the allocation of variation among the remaining states and can affect numerical estimation, the differences do not by themselves measure each block's independent forecast value. The sensitivity results support reporting the full configuration as fitted, with the fitting evidence and limitations considered explicitly.
 
-\subsection{Saved Fitting Evidence}
+\subsection{Numerical Convergence Assessment}
 \label{app:fitdiagnostics}
 
-The audit covers 70 selected runs and 400 fits underlying the original configuration and component-removal comparisons. It reads the evaluated stopping criteria and terminal state recorded in the saved logs, together with iteration budgets, update counts, and sampling outcomes. Some historical routines print a convergence message unconditionally when their iteration loop ends. We do not count that message as evidence that their joint stopping conditions were satisfied. Likewise, zero parameter change during a frozen update is not evidence of convergence, and an inactive guard flag is not an actual sampling failure.
+The numerical convergence assessment covers 70 model runs and 400 fits underlying the configuration and component-removal comparisons. It uses the final stopping criteria, parameter values, iteration limits, numbers of updates and simulation outcomes. We require evidence that the joint stopping criteria were satisfied rather than treating termination as convergence. A zero change for a parameter that was not updated does not establish its convergence, and an implemented safeguard is distinguished from an actual numerical or simulation failure.
 
-Table~\ref{tab:comment2_fit_diagnostics} summarizes the audit. Sixteen fits have evidence of satisfying their recorded criteria: 15 Gaussian dynamic linear model fits and the median fit for the January 2021 \texttt{noH1} reduction. Of the 315 multivariate quantile fits, the other 314 exhaust their recorded budgets without established joint convergence. This includes 174 of 175 component-removal fits and all 35 exAL-M-T1 reference fits. Three AL-M-T0 fits end with frozen updates, requiring particular caution in interpreting their terminal changes. The 70 univariate AL/exAL fits lack explicit joint-criterion records and are classified as unknown; this absence is not classified as failure.
+Table~\ref{tab:comment2_fit_diagnostics} summarizes the assessment. Sixteen fits have evidence of satisfying their recorded criteria: 15 Gaussian dynamic linear model fits and the median fit for the January 2021 \texttt{noH1} reduction. Of the 315 multivariate quantile fits, the other 314 reach their recorded iteration limits without established joint convergence. This includes 174 of 175 component-removal fits and all 35 exAL-M-T1 reference fits. Three AL-M-T0 fits end with some parameter updates held fixed, requiring particular caution in interpreting their terminal changes. The 70 univariate AL/exAL fits lack explicit joint-criterion records and are classified as unknown; this absence is not classified as failure.
 
-\input{tables/generated_tex/comment2_fit_diagnostic_table.tex}
+\input{tables/editorial_revision/comment2_fit_diagnostic_table.tex}
 
-These categories describe the available fitting evidence, not a test of forecast validity. In particular, completion and finite predictions do not establish convergence, whereas reaching an iteration limit does not by itself establish that a predictive distribution is unusable. The Gaussian criteria and the budget-limited full-reference fits show that the fitting categories do not separate good and poor forecast scores. Consequently, the tables document performance of the recorded fits, and the component-removal differences remain conditional sensitivities under the inherited settings. They do not resolve how independently retuned, more extensively converged reductions would perform.
+These categories describe the available fitting evidence, not a test of forecast validity. In particular, completion and finite predictions do not establish convergence, whereas reaching an iteration limit does not by itself establish that a predictive distribution is unusable. The Gaussian criteria and the iteration-limited full-reference fits show that the fitting categories do not separate good and poor forecast scores. Consequently, the tables document performance of the fitted configurations, and the component-removal differences remain conditional sensitivities under the reference settings. They do not resolve how independently retuned, more extensively converged reductions would perform.
 
 \subsection{External References by Forecast Origin}
 \label{app:externalreferences}
 
 Table~\ref{tab:comment2_external_by_origin} gives the origin-specific scores and climatology-relative skill underlying the aggregate comparison. It retains the eight-day and 28-day horizons separately, so the seasonal reference and forecast methods are compared over identical verification dates within each block.
 
-\input{tables/generated_tex/comment2_external_by_origin_table.tex}
+\input{tables/editorial_revision/comment2_external_by_origin_table.tex}
 
 \subsection{Additional Distribution Checks}
 \label{app:distributionchecks}
 
-Table~\ref{tab:no_refit_sensitivity} separates empirical-distribution scores from the iid-based finite-sample sensitivity; Tables~\ref{tab:no_refit_original_scale} and \ref{tab:no_refit_origin_coverage} provide the discharge-scale comparison and predictive-coverage counts by origin. The reproducibility records additionally retain quantile hit counts and losses, predictive means and median errors, interval scores, and raw-source error/spread summaries by lead.
+Table~\ref{tab:no_refit_scores} reports the exact empirical-distribution scores, and Table~\ref{tab:no_refit_sensitivity} gives the finite-sample sensitivity based on independent, identically distributed draws; Tables~\ref{tab:no_refit_original_scale} and \ref{tab:no_refit_origin_coverage} provide the discharge-scale comparison and predictive-coverage counts by origin. The reproducibility records additionally retain quantile hit counts and losses, predictive means and median errors, interval scores, and raw-source error/spread summaries by lead.
 
-\input{tables/generated_tex/no_refit_score_sensitivity_table.tex}
-\input{tables/generated_tex/no_refit_origin_diagnostics_table.tex}
+\input{tables/editorial_revision/no_refit_score_comparison_table.tex}
+
+\input{tables/editorial_revision/no_refit_score_sensitivity_table.tex}
+\input{tables/editorial_revision/no_refit_origin_diagnostics_table.tex}
 
 \subsection{Supplementary Source-Specific Shape and Scale Parameters}
 \label{app:sourceparams}
 
-\input{tables/generated_tex/appendix_gamma_summary_table.tex}
+\input{tables/editorial_revision/appendix_gamma_summary_table.tex}
 
-\input{tables/generated_tex/appendix_sigma_summary_table.tex}
+\input{tables/editorial_revision/appendix_sigma_summary_table.tex}
 
 Tables~\ref{tab:gamma_sigma_intervals1} and \ref{tab:gamma_sigma_intervals2} provide summaries of the source-specific skewness (\(\gamma\)) and scale (\(\sigma\)) parameters in the exAL observation model, reported for the December 25, 2022 origin. Centers are medians and the limits are central 95\% intervals of the fitted variational marginals. These are likelihood-parameter summaries, not synthesis weights; their approximate uncertainty has the scope described in Subsection~\ref{sec:interpretation}.
+
+\FloatBarrier
+
+\subsection{Historical Components Across Hydrological Regimes}
+\label{app:historicalcomponents}
+
+To illustrate how the model behaves across contrasting hydrological conditions, we show posterior quantile dynamics for the exAL-M-T1 specification at the December 25, 2022 origin. The displayed windows cover the 2012--2016 drought and the 2017--2019 wet period. The figures describe fitted historical quantile variation across these regimes.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=450pt]{historical_summary_dry_period.png}
+\caption{
+Posterior mean and approximate 95\% VB credible intervals of conditional river-flow quantiles on the $\log(1+x)$ scale, with $x$ in m$^3$/s, during the dry period (2012--2016), estimated from the exAL-M-T1 model at the December 25, 2022 origin. Shown are the 5th (red), 50th (green), and 95th (blue) quantiles together with observed daily USGS flow (black). Horizontal dashed lines indicate the discharge references described in Figure~\ref{fig:sanlorenzo}.
+}
+\label{fig:dry_quantile}
+\end{figure}
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=450pt]{historical_summary_wet_period.png}
+\caption{
+Posterior mean and approximate 95\% VB credible intervals of conditional river-flow quantiles on the $\log(1+x)$ scale, with $x$ in m$^3$/s, during the wet period (2017--2019), estimated from the exAL-M-T1 model at the December 25, 2022 origin. Shown are the 5th (red), 50th (green), and 95th (blue) quantiles together with observed daily USGS flow (black). Horizontal dashed lines indicate the discharge references described in Figure~\ref{fig:sanlorenzo}.
+}
+\label{fig:rainy_quantile}
+\end{figure}
+
+Figures~\ref{fig:dry_quantile} and \ref{fig:rainy_quantile} compare the fitted posterior quantile dynamics during the drought and wet periods. During 2012--2016, the posterior bands remain comparatively narrow and the upper fitted quantile rarely approaches the current-rating NWS discharge-reference levels. During 2017--2019, winter peaks produce wider separation between the lower and upper fitted quantile curves, and the 95th quantile reaches levels comparable to the current-rating major-stage discharge reference in 2017 and 2019. This contrast indicates stronger upper-tail and cross-quantile variation during wetter regimes.
+
+A complementary diagnostic is the long-cycle seasonal state. Figure~\ref{fig:80_components} shows this component alone for the same three representative quantile levels. The retained slow rotation has period 2474.87 days, approximately 6.78 calendar years or 81.3 months, as defined in Appendix~\ref{app:seasonalconstruction}. The component is broadly aligned across the three quantiles and varies over multi-year dry and wet phases in the historical record, illustrating how the selected state-space model separates long-cycle behavior from trend, transfer effects, and source-specific corrections.
+
+\begin{figure}[!htbp]
+\centering
+\includegraphics[width=450pt]{editorial_long_cycle_component.png}
+\caption{
+Posterior medians and approximate 95\% VB credible intervals for the long-cycle seasonal contribution to the transformed-discharge quantile, with period approximately 2474.87 days (6.78 calendar years), estimated from the exAL-M-T1 model at the December 25, 2022 origin. Estimates are shown for the 5th (red), 50th (green), and 95th (blue) quantiles. Shaded regions mark the 2012--2016 dry period and the 2017--2019 wet period.
+}
+\label{fig:80_components}
+\end{figure}
+
 
 \subsection{Univariate Transfer-Active Predictive Synthesis}
 \label{app:historicalsynth}
@@ -635,9 +643,9 @@ Univariate transfer-active predictive distribution for river flow on the $\log(1
 \label{fig:synth2}
 \end{figure}
 
-Figure~\ref{fig:synth2} provides a univariate transfer-active reference for the December 25, 2022 origin. It is included to contrast the multivariate operational synthesis in Figure~\ref{fig:synth1} with a simpler reference that excludes retrospective-product and forecast-product source channels while retaining the transfer/covariate component.
+Figure~\ref{fig:synth2} provides a univariate transfer-active reference for the December 25, 2022 origin. It is included to contrast the multivariate predictive synthesis in Figure~\ref{fig:synth1} with a simpler reference that excludes retrospective-product and forecast-product source channels while retaining the transfer/covariate component.
 
-\subsection{Additional Cutoff-Specific Predictive Synthesis Panels}
+\subsection{Predictive Synthesis at the Remaining Forecast Origins}
 \label{app:cutoffsynthpanels}
 
 The main text shows the December 25, 2022 synthesis as a representative selected-model illustration. For completeness, this appendix reports the corresponding multivariate synthesis panels for the other forecast origins. Each panel uses the same exAL-M-T1 synthesis specification as Figure~\ref{fig:synth1} and includes the retrospective and forecast-product references used at that cutoff.
@@ -646,7 +654,7 @@ The main text shows the December 25, 2022 synthesis as a representative selected
 \centering
 \includegraphics[width=450pt]{cutoff_2021_01_23_multivariate_synthesis_with_reference_ensembles.png}
 \caption{
-Predictive synthesis panel for the January 23, 2021 cutoff under the selected exAL-M-T1 specification. Observed USGS measurements before the origin are shown in green, and held-out USGS verification after the origin is shown in red. The pink ribbon is the pointwise central 95\% predictive interval (2.5th--97.5th percentiles), and the dark line is the predictive mean on the \(\log(1+x)\) scale. The ten thin traces connect synthesized predictive sample values. The origin line marks \(T\), and the first forecast lead is \(T+1\). Raw retrospective and forecast products are included as reference overlays. Horizontal guides use the same discharge references as Figure~\ref{fig:synth1}.
+Predictive synthesis panel for the January 23, 2021 cutoff under the selected exAL-M-T1 specification. Observed USGS measurements before the origin are shown in green, and held-out USGS verification after the origin is shown in red. The pink ribbon is the pointwise central 95\% predictive interval (2.5th--97.5th percentiles), and the dark line is the predictive mean on the \(\log(1+x)\) scale. The ten thin traces connect synthesized predictive sample values. The origin line marks \(T\), and the first forecast lead is \(T+1\). Raw retrospective and forecast products are included as reference series. Horizontal guides use the same discharge references as Figure~\ref{fig:synth1}.
 }
 \label{fig:synthsupport_20210123}
 \end{figure}
@@ -655,7 +663,7 @@ Predictive synthesis panel for the January 23, 2021 cutoff under the selected ex
 \centering
 \includegraphics[width=450pt]{cutoff_2021_11_12_multivariate_synthesis_with_reference_ensembles.png}
 \caption{
-Predictive synthesis panel for the November 12, 2021 cutoff under the selected exAL-M-T1 specification. Observed USGS measurements before the origin are shown in green, and held-out USGS verification after the origin is shown in red. The pink ribbon is the pointwise central 95\% predictive interval (2.5th--97.5th percentiles), and the dark line is the predictive mean on the \(\log(1+x)\) scale. The ten thin traces connect synthesized predictive sample values. The origin line marks \(T\), and the first forecast lead is \(T+1\). Raw retrospective and forecast products are included as reference overlays. Horizontal guides use the same discharge references as Figure~\ref{fig:synth1}.
+Predictive synthesis panel for the November 12, 2021 cutoff under the selected exAL-M-T1 specification. Observed USGS measurements before the origin are shown in green, and held-out USGS verification after the origin is shown in red. The pink ribbon is the pointwise central 95\% predictive interval (2.5th--97.5th percentiles), and the dark line is the predictive mean on the \(\log(1+x)\) scale. The ten thin traces connect synthesized predictive sample values. The origin line marks \(T\), and the first forecast lead is \(T+1\). Raw retrospective and forecast products are included as reference series. Horizontal guides use the same discharge references as Figure~\ref{fig:synth1}.
 }
 \label{fig:synthsupport_20211112}
 \end{figure}
@@ -664,7 +672,7 @@ Predictive synthesis panel for the November 12, 2021 cutoff under the selected e
 \centering
 \includegraphics[width=450pt]{cutoff_2021_12_21_multivariate_synthesis_with_reference_ensembles.png}
 \caption{
-Predictive synthesis panel for the December 21, 2021 cutoff under the selected exAL-M-T1 specification. Observed USGS measurements before the origin are shown in green, and held-out USGS verification after the origin is shown in red. The pink ribbon is the pointwise central 95\% predictive interval (2.5th--97.5th percentiles), and the dark line is the predictive mean on the \(\log(1+x)\) scale. The ten thin traces connect synthesized predictive sample values. The origin line marks \(T\), and the first forecast lead is \(T+1\). Raw retrospective and forecast products are included as reference overlays. Horizontal guides use the same discharge references as Figure~\ref{fig:synth1}.
+Predictive synthesis panel for the December 21, 2021 cutoff under the selected exAL-M-T1 specification. Observed USGS measurements before the origin are shown in green, and held-out USGS verification after the origin is shown in red. The pink ribbon is the pointwise central 95\% predictive interval (2.5th--97.5th percentiles), and the dark line is the predictive mean on the \(\log(1+x)\) scale. The ten thin traces connect synthesized predictive sample values. The origin line marks \(T\), and the first forecast lead is \(T+1\). Raw retrospective and forecast products are included as reference series. Horizontal guides use the same discharge references as Figure~\ref{fig:synth1}.
 }
 \label{fig:synthsupport_20211221}
 \end{figure}
@@ -673,13 +681,47 @@ Predictive synthesis panel for the December 21, 2021 cutoff under the selected e
 \centering
 \includegraphics[width=450pt]{cutoff_2022_05_11_multivariate_synthesis_with_reference_ensembles.png}
 \caption{
-Predictive synthesis panel for the May 11, 2022 cutoff under the selected exAL-M-T1 specification. Observed USGS measurements before the origin are shown in green, and held-out USGS verification after the origin is shown in red. The pink ribbon is the pointwise central 95\% predictive interval (2.5th--97.5th percentiles), and the dark line is the predictive mean on the \(\log(1+x)\) scale. The ten thin traces connect synthesized predictive sample values. The origin line marks \(T\), and the first forecast lead is \(T+1\). Raw retrospective and forecast products are included as reference overlays. Horizontal guides use the same discharge references as Figure~\ref{fig:synth1}.
+Predictive synthesis panel for the May 11, 2022 cutoff under the selected exAL-M-T1 specification. Observed USGS measurements before the origin are shown in green, and held-out USGS verification after the origin is shown in red. The pink ribbon is the pointwise central 95\% predictive interval (2.5th--97.5th percentiles), and the dark line is the predictive mean on the \(\log(1+x)\) scale. The ten thin traces connect synthesized predictive sample values. The origin line marks \(T\), and the first forecast lead is \(T+1\). Raw retrospective and forecast products are included as reference series. Horizontal guides use the same discharge references as Figure~\ref{fig:synth1}.
 }
 \label{fig:synthsupport_20220511}
 \end{figure}
 
 \section{State-Space Construction and Computational Details}
 \label{app:stateconstruction}
+
+\subsection{Computing Time}
+\label{app:computationtime}
+
+For the daily record in this application, fitting and forecasting at the seven target probabilities take approximately two hours on a Linux server with 64 cores and 503 GiB of memory, after preparation of the observation and covariate series. This is combined elapsed time for fitting and forecasting; the two stages were not timed separately. Computing time depends on the hardware, implementation, series length and state dimension.
+
+\subsection{Seasonal Rotations}
+\label{app:seasonalconstruction}
+
+For daily time steps, the seasonal specification uses a base period \(P=363.5854\) days and frequency multipliers \(h_1=1\), \(h_2=2\), and \(h_3=1/6.8068493\). The daily angular frequencies are \(\omega_a=2\pi h_a/P\), with rotation matrix
+\[
+\mathbf R(\omega)=
+\begin{bmatrix}\cos\omega&\sin\omega\\-\sin\omega&\cos\omega\end{bmatrix}.
+\]
+The corresponding periods are approximately 363.59, 181.79, and 2474.87 days; the last is about 6.78 calendar years, or 81.3 months. These are the periods of the fitted daily rotations. With \(\mathbf E_2=(1,0)'\), the observation loading and transition are
+\[
+\mathbf F_t=(1,\mathbf E_2',\mathbf E_2',\mathbf E_2')',\qquad
+\mathbf G_t=\operatorname{BlockDiag}\{1,\mathbf R(\omega_1),\mathbf R(\omega_2),\mathbf R(\omega_3)\},
+\]
+so \(p=7\), \(\mathbf F_t\in\mathbb R^7\), and \(\mathbf G_t\in\mathbb R^{7\times7}\).
+
+\subsection{Predictive Synthesis and Empirical Quantiles}
+\label{app:numericalprediction}
+
+The initial synthesized quantile curve in Subsection~\ref{subsec:quantilesynthesis} is evaluated at 1,001 internal probability-grid points. Its values are sorted for monotone rearrangement, and inverse-CDF sampling produces 2,000 draws per time. Linear interpolation is used between the grid values and constant interpolation beyond the two endpoints. Beyond the lowest and highest fitted probabilities, 0.05 and 0.95, the construction uses the corresponding outer fitted predictive distributions. Consequently, the limits of a central 95\% predictive interval are not separately fitted 0.025 and 0.975 model quantiles.
+
+For ordered predictive values \(x_{(1)}\leq\cdots\leq x_{(n)}\), an interpolated empirical quantile is \((1-g)x_{(j)}+g x_{(j+1)}\), where \(j=\lfloor h\rfloor\), \(g=h-j\), and the minimum and maximum are used beyond the corresponding endpoints. The predictive quantiles from individual fits used for isotonic projection and synthesis take \(h=1+(n-1)u\), conventionally called type 7. The additional stochastic-model quantiles used for the calibration assessment and the displayed model-interval limits take \(h=(n+1/3)u+1/3\), conventionally called type 8 \citep{hyndman1996sample}. The four principal quantile competitors use the same predictive quantiles in the check-loss and reliability comparisons. Raw ensembles and deterministic quantile grids use the empirical generalized inverse, \(x_{(\lceil nu\rceil)}\) for \(0<u\leq1\), with the minimum at \(u=0\). These conventions specify finite-sample calculations without changing the fitted models.
+
+For the equally weighted empirical distribution with \(m\) support values, the quantile-grid score in Subsection~\ref{subsec:modelselection} equals its exact CRPS plus \(D/[m^2(m+1)]\), where \(D=\sum_{i<j}|x_i-x_j|\). This identity accounts for the difference between the two score formulas on the same values. The independent-draw sensitivity instead uses \(A-D/[m(m-1)]\), where \(A=m^{-1}\sum_i|x_i-y|\); its interpretation requires independent, identically distributed draws.
+
+\subsection{EMOS Optimization}
+\label{app:emoscomputation}
+
+For each lead, the EMOS fit minimizes the analytic truncated-normal CRPS over the eligible training cases described in Subsection~\ref{subsec:externalreferences}. We use four deterministic initial values and bounded limited-memory Broyden--Fletcher--Goldfarb--Shanno optimization (L-BFGS-B), retaining the converged solution with the lowest objective. The constraints are \(b,d\geq0\) and \(c>0\) in the location and variance parameterization. Training cases, numerical scaling and bounds, fitted parameter values, convergence criteria and boundary assessments are included in the reproducibility materials.
 
 \subsection{Stacked States and Selectors}
 
@@ -734,7 +776,7 @@ with \(\mathbf{F}_t^{\text{trans}} \in \mathbb{R}^{m+1}\), \(\mathbf{h}_{t,0}, \
 \boldsymbol{D}_t = \text{BlockDiag}\!\left(\mathbf{G}_t,\ \underbrace{\mathbf{G}_t,\ldots,\mathbf{G}_t}_{J\ \text{discrepancy blocks}},\ \mathbf{G}^{\text{trans}}_t\right), \qquad
 \boldsymbol{\Lambda}_t = \text{BlockDiag}\!\left(\mathbf{W}^{\theta}_t,\ \underbrace{\mathbf{W}^{\delta^1}_t,\ldots,\mathbf{W}^{\delta^J}_t}_{J\ \text{source-specific discrepancy blocks}},\ \text{BlockDiag}\!\left(w_t^{\zeta}, \mathbf{W}^{\psi}_t\right)\right),
 \]
-where \(\boldsymbol{D}_t, \boldsymbol{\Lambda}_t \in \mathbb{R}^{q\times q}\) and \(\sigma^s \in \mathbb{R}_+\), \(\gamma^s \in \mathbb{R}\) denote the channel-specific scale and skewness parameters for \(s \in \mathcal{J}_0\). Thus, \(\mathbf{h}_{t,0}' \boldsymbol{\eta}_t = \mathbf{F}_t' \boldsymbol{\theta}_t + \zeta_t\) and \(\mathbf{h}_{t,j}' \boldsymbol{\eta}_t = \mathbf{F}_t'(\boldsymbol{\theta}_t + \boldsymbol{\delta}_t^j) + \zeta_t\). For the forecast window, \(\mathbf{e}_{T+k,j}\) is the analogue of \(\mathbf{h}_{t,j}\): it extracts the latent trend-and-seasonal block, the discrepancy block for source \(j\), and the transfer block. The matrices \(\boldsymbol{M}_{T+k}\) and \(\mathbf{W}_{T+k}\) preserve the same block ordering while propagating the active forecast-window state.
+where \(\boldsymbol{D}_t, \boldsymbol{\Lambda}_t \in \mathbb{R}^{q\times q}\) and \(\sigma^s \in \mathbb{R}_+\), \(\gamma^s \in \mathbb{R}\) denote the channel-specific scale and skewness parameters for \(s \in \mathcal{J}_0\). Thus, \(\mathbf{h}_{t,0}' \boldsymbol{\eta}_t = \mathbf{F}_t' \boldsymbol{\theta}_t + \zeta_t\) and \(\mathbf{h}_{t,j}' \boldsymbol{\eta}_t = \mathbf{F}_t'(\boldsymbol{\theta}_t + \boldsymbol{\delta}_t^j) + \zeta_t\). For the forecast window, \(\mathbf{e}_{T+k,j}\) is the analogue of \(\mathbf{h}_{t,j}\): it extracts the latent trend-and-seasonal block, the discrepancy block for source \(j\), and the transfer block. For \(t>T\), \(\boldsymbol M_t\) denotes the forecast transition constructed from the same blocks as \(\boldsymbol D_t\): the trend-and-seasonal block, the discrepancy blocks of active sources, and \(\mathbf G_t^{\mathrm{trans}}\) evaluated with \(\mathbf x_t\). At a change in source availability, the preceding state is first restricted to the retained coordinates. State vectors, selectors and covariance matrices are restricted consistently. The full dimension is \(q\); the active dimension is denoted by \(p_t\) in Appendix~\ref{app:forecastcovariance}.
 
 The augmentation in Appendix~\ref{app:augmentation} makes the observation equations conditionally Gaussian, while the state evolution remains Gaussian. The model can therefore be handled with standard state-space methods, including filtering, smoothing, and sampling recursions.
 
@@ -767,16 +809,16 @@ The algorithms use \(v=\sigma u\), so the conditional Gaussian variance is \(B(\
 
 During the forecast window ($t \in \{T+1, \ldots, T+K_{\max}\}$), we set the Inverse Wishart prior parameters as $\mathbf{S}_t = (\nu_t - p_t - 1)\, c\, \mathbf{W}_T$ and $\nu_t = (p_t + 1 + \epsilon)$, with $\epsilon, c > 0$, where \(p_t\) denotes the dimension of the active forecast-window state at time \(t\), \(\mathbf{S}_t \in \mathbb{R}^{p_t\times p_t}\), and \(\mathbf{W}_T \in \mathbb{R}^{p_t\times p_t}\) after restricting the full pre-cutoff covariance to the active forecast-window block. Under this specification, the posterior mean is
 \(
-\mathbb{E}[\mathbf{W}_t \mid \mathcal{D}_t] = \frac{\epsilon}{1 + \epsilon}(c\, \mathbf{W}_T) + \frac{1}{1 + \epsilon} \mathbb{E}\left[ (\boldsymbol{\eta}_t - \mathbf{M}_t \boldsymbol{\eta}_{t-1}) (\boldsymbol{\eta}_t - \mathbf{M}_t \boldsymbol{\eta}_{t-1})' \mid \mathcal{D}_t \right],
+\mathbb{E}[\mathbf{W}_t \mid \mathcal{D}_t] = \frac{\epsilon}{1 + \epsilon}(c\, \mathbf{W}_T) + \frac{1}{1 + \epsilon} \mathbb{E}\left[ (\boldsymbol{\eta}_t - \boldsymbol{M}_t \boldsymbol{\eta}_{t-1}) (\boldsymbol{\eta}_t - \boldsymbol{M}_t \boldsymbol{\eta}_{t-1})' \mid \mathcal{D}_t \right],
 \)
 where $\mathcal{D}_t$ denotes all data available up to and including time $t$.
 
-This posterior mean is a convex combination of two terms: the covariance learned before the cutoff, carried forward through \(c\mathbf{W}_T\), and the forecast-window residual covariance implied by the propagated state. The scalar \(c\) controls the scale of the carried-forward covariance anchor, while \(\epsilon\) controls how strongly that anchor is retained. In the reported analysis we use this prior as a short-horizon stabilization device: it prevents the forecast-window covariance from being driven entirely by a small number of forecast-product updates after the origin, while still allowing the forecast-window state evolution to adapt through the second term in the convex combination.
+This posterior mean is a convex combination of two terms: the covariance learned before the cutoff, carried forward through \(c\mathbf{W}_T\), and the forecast-window residual covariance implied by the propagated state. The scalar \(c\) rescales the pre-cutoff covariance, while \(\epsilon\) controls its prior weight. In the reported analysis we use this prior to stabilize short-horizon evolution-covariance estimation: it prevents the forecast-window covariance from being driven entirely by a small number of forecast-product updates after the origin, while still allowing the forecast-window state evolution to adapt through the second term in the convex combination.
 
 \subsection{Laplace--Delta Approximation}
 \label{app:vblad}
 
-Let \(\boldsymbol\alpha\) collect unconstrained scale and skewness parameters for one channel, and let \(\boldsymbol\beta\) denote the remaining variational factors. The non-conjugate coordinate update has log kernel
+Let \(\mathcal D\) denote the observation values entering the specified likelihood. Let \(\boldsymbol\alpha\) collect unconstrained scale and skewness parameters for one channel, and let \(\boldsymbol\beta\) collect the remaining unknown quantities, whose current variational density is \(r(\boldsymbol\beta)\). The non-conjugate coordinate update has log kernel
 \(\ell(\boldsymbol\alpha)=\mathbb E_{r(\boldsymbol\beta)}[\log p(\mathcal D,\boldsymbol\alpha,\boldsymbol\beta)]\).
 A Laplace approximation sets
 \[
@@ -789,7 +831,7 @@ For a nonlinear function \(g\), the second-order Delta approximation supplies
 \mathbb E_r[g(\boldsymbol\alpha)]\approx g(\widehat{\boldsymbol\alpha})+
 \tfrac12\operatorname{Tr}\{\nabla^2g(\widehat{\boldsymbol\alpha})\boldsymbol\Sigma\}.
 \]
-These moments feed the conditionally conjugate state and augmentation updates in Algorithms~\ref{alg:Alg3} and \ref{alg:Alg4}. The variational approximation factorizes between the latent-state trajectory, augmentation factors, and channel-specific non-conjugate parameter factors; it retains dependence between scale and skewness within each channel's Laplace factor.
+These moments enter the conditionally conjugate state and augmentation updates in Algorithms~\ref{alg:Alg3} and \ref{alg:Alg4}. The variational approximation factorizes between the latent-state trajectory, augmentation factors, and channel-specific non-conjugate parameter factors; it retains dependence between scale and skewness within each channel's Laplace factor.
 
 \section{Markov Chain Monte Carlo Algorithms}
 
@@ -829,10 +871,10 @@ A^j = A(\gamma^j;p_0), \quad B^j = B(\gamma^j;p_0), \quad C^j = C(\gamma^j;p_0),
         \EndFor
 
         \State \textbf{Step 4: Update $\sigma^j$}
-        \State Sample $(\sigma^j)^{(n)} \sim \mathcal{GIG}(a^j_t, b^j_t, c^j_t)$
-        \State $a^j_t = -(1.5T + a_{\sigma^j})$
-        \State $b^j_t = \sum_{t=1}^T \frac{1}{(B^j)^{(n-1)} (v^j_t)^{(n)}} \left((C^j)^{(n-1)} |(\gamma^j)^{(n-1)}| (s^j_t)^{(n)} \right)^2$
-        \State $c^j_t = \sum_{t=1}^T \frac{1}{(B^j)^{(n-1)} (v^j_t)^{(n)}}\big(y_t^j -\mathbf{h}_{t,j}' \boldsymbol{\eta}^{(n)}_t - (A^j)^{(n-1)} (v^j_t)^{(n)}\big)^2 + 2 \sum_{t=1}^T  (v^j_t)^{(n)} + 2 b_{\sigma^j}$
+        \State Sample $(\sigma^j)^{(n)} \sim \mathcal{GIG}(\kappa_{\sigma}^j, \psi_{\sigma}^j, \chi_{\sigma}^j)$
+        \State $\kappa_{\sigma}^j = -(1.5T + a_{\sigma^j})$
+        \State $\psi_{\sigma}^j = \sum_{t=1}^T \frac{1}{(B^j)^{(n-1)} (v^j_t)^{(n)}} \left((C^j)^{(n-1)} |(\gamma^j)^{(n-1)}| (s^j_t)^{(n)} \right)^2$
+        \State $\chi_{\sigma}^j = \sum_{t=1}^T \frac{1}{(B^j)^{(n-1)} (v^j_t)^{(n)}}\big(y_t^j -\mathbf{h}_{t,j}' \boldsymbol{\eta}^{(n)}_t - (A^j)^{(n-1)} (v^j_t)^{(n)}\big)^2 + 2 \sum_{t=1}^T  (v^j_t)^{(n)} + 2 b_{\sigma^j}$
 
         \State \textbf{Step 5: Update $\gamma^j$}
         \State Update \(\gamma^j\) with a Metropolis--Hastings (MH) step targeting its augmented conditional likelihood and truncated Student-\(t\) prior; recompute \(A^j,B^j,C^j\) for each proposal.
@@ -913,14 +955,14 @@ A^j = A(\gamma^j;p_0), \quad B^j = B(\gamma^j;p_0), \quad C^j = C(\gamma^j;p_0),
 
 \While{\(k < k_{\max}\) and convergence criteria are not met}
     \State \(k \leftarrow k+1\)
-    \State \textbf{Step 1: Update $r(\boldsymbol{\eta}_t)=\mathcal{N}(m^{(k)}_t,C^{(k)}_t)$}
+    \State \textbf{Step 1: Update $r(\boldsymbol{\eta}_t)=\mathcal{N}(\mathbf m^{(k)}_t,\mathbf C^{(k)}_t)$}
     \State Use Algorithm~\ref{alg:Alg4}
 
     \For{$j \in \mathcal{J}_0$}
         \State \textbf{Step 2: Update $r(v^j_t)=\mathcal{GIG}(a_t^{j,(k)},b_t^{j,(k)},c_t^{j,(k)})$}
         \For{$t = 1$ to $T$}
             \State $a_t^{j,(k)} = \frac{1}{2}$
-            \State $b_t^{j,(k)} = \left\langle \frac{A^2}{\sigma^j B^j} \right\rangle^{(k-1)} + 2 \left\langle \frac{1}{\sigma^j} \right\rangle^{(k-1)}$
+            \State $b_t^{j,(k)} = \left\langle \frac{(A^j)^2}{\sigma^j B^j} \right\rangle^{(k-1)} + 2 \left\langle \frac{1}{\sigma^j} \right\rangle^{(k-1)}$
             \State $c_t^{j,(k)} = \left\langle \frac{1}{\sigma^j B^j} \right\rangle^{(k-1)} \Big[ (y_t^j)^2 - 2y_t^j \left\langle  \mathbf{h}_{t,j}' \boldsymbol{\eta}_t \right\rangle^{(k)} + \left\langle (  \mathbf{h}_{t,j}' \boldsymbol{\eta}_t )^2 \right\rangle^{(k)} \Big]$
             \State $\quad \quad -2 \left\langle s^j_t \right\rangle^{(k-1)} \left\langle \frac{C^j|\gamma^j|}{B^j} \right\rangle^{(k-1)} \Big[ y_t^j - \left\langle  \mathbf{h}_{t,j}' \boldsymbol{\eta}_t \right\rangle^{(k)} \Big]$
             \State $\quad \quad + \left\langle (s^j_t)^2 \right\rangle^{(k-1)} \left\langle \frac{(C^j)^2\sigma^j|\gamma^j|^2}{B^j} \right\rangle^{(k-1)}$
@@ -957,7 +999,8 @@ A^j = A(\gamma^j;p_0), \quad B^j = B(\gamma^j;p_0), \quad C^j = C(\gamma^j;p_0),
 \State $\pi_t^j=\left\langle\frac{1}{B^j\sigma^jv_t^j}\right\rangle$
 \State $b_t^j=(\pi_t^j)^{-1}\left\langle\frac{C^j\sigma^j|\gamma^j|s_t^j+A^jv_t^j}{B^j\sigma^jv_t^j}\right\rangle$
 \State $\mathbf b_t=[b_t^j]_{j\in\mathcal J_0}$, \quad $\mathbf O_t=\operatorname{Diag}\big([(\pi_t^j)^{-1}]_{j\in\mathcal J_0}\big)$
-\State $\langle\cdot\rangle$ uses the current variational factors, with $A^j,B^j,C^j$ from Appendix~\ref{app:augmentation}.
+\State At outer iteration \(k\), augmentation and parameter moments are from iteration \(k-1\); the smoothed moments below define \(\mathbf m_t^{(k)},\mathbf C_t^{(k)}\).
+\State \(A^j,B^j,C^j\) are defined in Appendix~\ref{app:augmentation}.
 \State \textbf{Step 1: Forward Filtering}
 \For{$t = 1$ to $T$}
     \State Compute Prior moments:
@@ -976,12 +1019,12 @@ A^j = A(\gamma^j;p_0), \quad B^j = B(\gamma^j;p_0), \quad C^j = C(\gamma^j;p_0),
 \State \textbf{Step 2: Backward Smoothing}
 \For{$t = T$ down to $1$}
     \If{$t = T$}
-        \State Set $r^{(k+1)}(\boldsymbol{\eta}_T) := \mathcal{N}(\mathbf{m}_T^s, \mathbf{C}_T^s)$
+        \State Set $r^{(k)}(\boldsymbol{\eta}_T) := \mathcal{N}(\mathbf{m}_T^s, \mathbf{C}_T^s)$
         \State $\mathbf{m}_T^s = \mathbf{m}_T$
         \State $\mathbf{C}_T^s = \mathbf{C}_T$
     \Else
         \State Compute Smoothing moments:
-        \State $r^{(k+1)}(\boldsymbol{\eta}_t) := \mathcal{N}(\mathbf{m}_t^s, \mathbf{C}_t^s)$
+        \State $r^{(k)}(\boldsymbol{\eta}_t) := \mathcal{N}(\mathbf{m}_t^s, \mathbf{C}_t^s)$
         \State $\mathbf{B}_t = \mathbf{C}_t \mathbf{D}_{t+1}' \mathbf{R}_{t+1}^{-1}$
         \State $\mathbf{m}_t^s = \mathbf{m}_t + \mathbf{B}_t (\mathbf{m}_{t+1}^s - \mathbf{a}_{t+1})$
         \State $\mathbf{C}_t^s = \mathbf{C}_t + \mathbf{B}_t (\mathbf{C}_{t+1}^s - \mathbf{R}_{t+1}) \mathbf{B}_t'$

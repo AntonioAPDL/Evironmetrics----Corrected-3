@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "description": "Exact displayed subset of retained component-6 summary; no model objects loaded or inference performed.",
+  "source_inputs": [
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_selected_output_support_20260625_seasonal_only_current_components/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625/authoritative_component_summary.csv",
+      "sha256": "bbd3ebd81d7fda00fe32911d7cb9106a4d2a2f291db1630f59d3d8c445cf637f",
+      "bytes": 58174894
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_selected_output_support_20260625_seasonal_only_current_components/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625/authoritative_usgs_quantile_dynamics_summary.csv",
+      "sha256": "75fe11018b03dccb2390d0c936e6872e19290425cfcc56c28802db7a2aa011aa",
+      "bytes": 6600040
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd_runtime/multimodel_v8_he2_selected_output_support_20260625_seasonal_only_current_components/runs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625/post/outputs/multimodel_20221225_v8_he2partial20260623_exdqlm_multivar_keep_authoritative_support_seasonal_only_20260625/authoritative_selected_support_manifest.json",
+      "sha256": "32e0da2c6d3bf981222f97c55a67cc46ae3313593df11c1c480af816d98621a4",
+      "bytes": 3682
+    }
+  ],
+  "component": 6,
+  "component_contract": "raw_state_component",
+  "quantiles": [
+    "q05",
+    "q50",
+    "q95"
+  ],
+  "max_time_index": 12995,
+  "minimum_display_time_index": 1300,
+  "rows": 35088,
+  "fields": [
+    "date",
+    "time_index",
+    "quantile",
+    "probability",
+    "component",
+    "component_contract",
+    "lower_025",
+    "median_500",
+    "upper_975",
+    "source_object"
+  ],
+  "selection": "quantile in q05/q50/q95, component 6, raw_state_component, nonmissing date; time_index >= ceiling(max(time_index)/10)",
+  "compressed_sha256": "f132144f8677191dc24152282d2e4b3fda3e83e4a66672a7c5ba733f17198e88",
+  "csv_sha256": "b89a8314a8bd01dc94136fb47bea9525abe67b0375d77c772382734e83c1a610",
+  "source_renderer": {
+    "path": "scripts/render_authoritative_selected_model_support_figures.R",
+    "sha256": "d939f8ec0ab285a672815741ac443ec230abb83220e4aebe95608e236e2377d7"
+  },
+  "source_style": {
+    "path": "/data/muscat_data/jaguir26/project1_ucsc_phd/scripts/figure_style_contract.R",
+    "sha256": "63ce735a3345d02a97b87973221992c5056ab743ea17a0be2b16a45e92919aca"
+  },
+  "original_figure": {
+    "path": "Figures/manuscript/historical_component_80month.png",
+    "sha256": "276821de7836c9c4fe6b29dab781420fa24f02fdc1c11da33bf78360ba5d9774"
+  },
+  "long_cycle_period_days_expression": "363.5854 * 6.8068493",
+  "calendar_year_days": 365.2425,
+  "annotation_before": "State component (log1p_cms)",
+  "annotation_after": "Long-cycle component on log(1+discharge) scale"
+}

@@ -1,0 +1,87 @@
+{
+  "scope": "Read-only verification of bounded notation corrections; no inference or numerical analysis altered.",
+  "conditional_identity_checks": {
+    "article_data_used": false,
+    "checks": {
+      "augmentation_s_kernel_max_constant_difference_error": 4.440892098500626e-16,
+      "augmentation_v_kernel_max_constant_difference_error": 4.440892098500626e-16,
+      "ffbs_backward_conditional_covariance_error": 1.1102230246251565e-16,
+      "ffbs_backward_conditional_mean_error": 1.1102230246251565e-16,
+      "ffbs_terminal_covariance_error": 5.551115123125783e-17,
+      "ffbs_terminal_mean_error": 2.220446049250313e-16,
+      "gamma_kernel_max_constant_difference_error": 4.440892098500626e-16,
+      "scale_kernel_max_constant_difference_error": 8.881784197001252e-15,
+      "scale_zero_quadratic_coefficient_limit_max_constant_difference_error": 5.329070518200751e-15
+    },
+    "checks_count": 9,
+    "fitted_objects_read": 0,
+    "historical_or_forecast_results_modified": false,
+    "mcmc_accuracy_assessed": false,
+    "numpy_version": "2.0.2",
+    "random_values_drawn": 0,
+    "sampler_implemented": false,
+    "scope": "deterministic conditional identities for a historical submodel with specified covariance",
+    "script_sha256": "70cc9fa5c79fffa872e6df76846ef384cab31fd2ff0687af5e200c66377c3ec8",
+    "status": "PASS"
+  },
+  "recommendations": [
+    {
+      "id": "N1",
+      "location": "Historical-window VB coordinate updates, latent augmentation rate",
+      "finding": "A squared lacks its source superscript although B and sigma are channel specific.",
+      "correction": "Use (A^j)^2 in the b_t^{j,(k)} expression.",
+      "justification": "The same channel constant A(gamma^j;p0) enters the conditional Gaussian offset; the retained conditional verifier uses psi=(A*A/B+2)/sigma.",
+      "classification": "Supported notation correction"
+    },
+    {
+      "id": "N2",
+      "location": "VB filtering and smoothing outputs",
+      "finding": "Algorithm 3 increments k before calling the state update, but Algorithm 4 labels its outputs k+1.",
+      "correction": "Label both smoothing output factors r^(k); state that input augmentation and channel-parameter moments are from iteration k-1 and that the smoothed moments define the bold state mean and covariance at iteration k.",
+      "justification": "Algorithm 3 increments k before its state step, then uses the updated smoothed state moments in augmentation updates. The explicit input convention and moment alias remove the ambiguity without changing a recursion.",
+      "classification": "Supported index correction"
+    },
+    {
+      "id": "N3",
+      "location": "Historical sampling algorithm, channel scale step",
+      "finding": "Parameters of a channel-wide conditional use a time subscript outside the time loop.",
+      "correction": "Use kappa_sigma^j, psi_sigma^j, chi_sigma^j for the channel-wide GIG shape, linear, and reciprocal parameters; retain every right-hand side and the prior hyperparameters a_{sigma^j}, b_{sigma^j}.",
+      "justification": "Scale is constant across the T historical observations in a channel; the conditional verifier checks the summed scale kernel and its inverse-gamma limit. Distinct Greek labels avoid confusing conditional parameters with prior hyperparameters.",
+      "classification": "Supported notation correction"
+    },
+    {
+      "id": "N4",
+      "location": "Laplace\u2013Delta approximation",
+      "finding": "beta is called a set of variational factors but appears as an unknown inside p(D,alpha,beta).",
+      "correction": "Define beta as the remaining unknown quantities with variational distribution r(beta).",
+      "justification": "Separates the random quantities from their approximating density in the coordinate-update expectation.",
+      "classification": "Supported definition correction"
+    },
+    {
+      "id": "N5",
+      "location": "Full stacked state and active forecast covariance dimension",
+      "finding": "Full state dimension q and time-varying active forecast dimension p_t require an explicit relationship.",
+      "correction": "Define M_t for t>T by the same block construction as D_t, retaining the trend-and-seasonal block, active source-discrepancy blocks, and the transfer block evaluated with x_t. At a source-availability change, restrict the preceding state to these retained coordinates; restrict selectors and covariances consistently. Use the same bold M_t notation in the covariance residual.",
+      "justification": "The existing covariance paragraph defines active dimension p_t and covariance restriction; the keep-dimension helper computes p*(active_sources+1)+transfer_dim. The authoritative transition construction builds an active principal trend/discrepancy block and appends the covariate-dependent transfer block. Neither the covariance formula nor fitted calculations changes.",
+      "classification": "Supported explanatory clarification"
+    }
+  ],
+  "implementation_boundary": "No new posterior sampler, covariance prior, likelihood, state equations, convergence claims, or fitted results are introduced.",
+  "supporting_sources": [
+    {
+      "path": "artifacts/no_refit_revision/inference_scope/verify_conditional_identities.py",
+      "sha256": "70cc9fa5c79fffa872e6df76846ef384cab31fd2ff0687af5e200c66377c3ec8"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd/R/disc_w/11_latent_pseudodata_audit_helpers.R",
+      "sha256": "36a852ea0ebafe3518399c212baa5565a7fd0ec168eb0482f24955a37002aec9",
+      "function": "disc_w_audit_keep_dimension_table"
+    },
+    {
+      "path": "/data/muscat_data/jaguir26/project1_ucsc_phd/DISC_Optimal_Synth_Ranges_W_transfer_forecast.r",
+      "line_range": "1822-1873",
+      "use": "Read-only active transition construction; no fitted model object read.",
+      "sha256": "7aab638d631419c80f3e18a66138128555ac23659e66c9239cd58fb5fa56f9e1"
+    }
+  ]
+}

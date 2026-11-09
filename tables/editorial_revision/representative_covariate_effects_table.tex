@@ -1,0 +1,27 @@
+\begin{table*}[htbp]
+\centering
+\begin{threeparttable}
+\caption{Approximate variational posterior means and central 95\% credible intervals for transfer coefficients at December 25, 2022.}
+\label{tab:components_23_31}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} l c S[table-format=-1.5] l }
+\toprule
+\textbf{Covariate} & \textbf{Fitted quantile} & \textbf{Mean} & \textbf{95\% interval} \\
+\midrule
+\multirow{3}{*}{Precipitation}  & 5th & -0.10282 & $[-0.10724,\ -0.09853]$ \\
+& 50th & -0.06258 & $[-0.06830,\ -0.05698]$ \\
+& 95th & 0.08632 & $[0.08044,\ 0.09208]$ \\
+\midrule
+\multirow{3}{*}{Soil Moisture}  & 5th & -0.02695 & $[-0.03315,\ -0.02082]$ \\
+& 50th & -0.03325 & $[-0.04149,\ -0.02512]$ \\
+& 95th & 0.01462 & $[0.00546,\ 0.02384]$ \\
+\midrule
+\multirow{3}{*}{First GDPC score}  & 5th & -0.00198 & $[-0.00202,\ -0.00193]$ \\
+& 50th & -0.00132 & $[-0.00137,\ -0.00126]$ \\
+& 95th & -0.00116 & $[-0.00122,\ -0.00110]$ \\
+\bottomrule
+\end{tabular*}
+\begin{tablenotes}
+\item \textit{Note:} Summaries concern the coefficient states $\boldsymbol\psi_T$ at the terminal historical date, for fitted probabilities $p_0=0.05$, $0.50$ and $0.95$. Covariates are divided by their historical standard deviations without centering; each coefficient is therefore expressed on the $\log(1+x)$ discharge scale per historical-standard-deviation unit of its covariate, with discharge $x$ in m$^3$/s. Intervals are the 2.5th and 97.5th percentiles of the fitted variational marginals, without adjustment for approximation error. GDPC denotes the generalized dynamic principal component described in Section~\ref{sec:data}.
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}

@@ -72,13 +72,14 @@
     },
     {
       "label": "fig:80_components",
-      "manuscript_path": "Figures/manuscript/historical_component_80month.png",
+      "manuscript_path": "Figures/manuscript/editorial_long_cycle_component.png",
       "category": "Selected Model",
       "role": "Selected-model long-cycle seasonal component summary with dry/wet period overlays",
       "source_path": "artifacts/representative_selected_model_2022_12_25/authoritative_support/figures/selected_model_component_80month.png",
       "source_class": "current_selected_model_representative",
       "current_model_output_wired": true,
-      "note": "Rendered from the same 2022-12-25 selected exAL-M-T1 output authority using raw state component 6 only; plus/minus-trend variants are analysis-only diagnostics."
+      "note": "Rendered from the same 2022-12-25 selected exAL-M-T1 output authority using raw state component 6 only; plus/minus-trend variants are analysis-only diagnostics. The active presentation changes only the vertical-axis annotation; compact-source replay and numerical-layer equality are recorded in the presentation manifest.",
+      "presentation_manifest": "artifacts/editorial_revision/long_cycle_figure_manifest.json"
     },
     {
       "label": "fig:synth2",
@@ -105,7 +106,7 @@
     "tab:benchmark_crps_models": {
       "label": "tab:benchmark_crps_models",
       "role": "Five-cutoff 28-day benchmark table",
-      "table_tex_path": "tables/generated_tex/benchmark_crps_main_table.tex",
+      "table_tex_path": "tables/editorial_revision/benchmark_crps_main_table.tex",
       "source_class": "publication_manifest_plus_representative_raw_baselines",
       "sources": {
         "bayesian_manifest_csv": "artifacts/he2_publication_freeze/he2_bayesian_publication_manifest.csv",
@@ -116,7 +117,7 @@
     "tab:benchmark_crps_models_nws_horizon": {
       "label": "tab:benchmark_crps_models_nws_horizon",
       "role": "Five-cutoff common eight-day NWS-horizon benchmark table",
-      "table_tex_path": "tables/generated_tex/benchmark_crps_nws_horizon_table.tex",
+      "table_tex_path": "tables/editorial_revision/benchmark_crps_nws_horizon_table.tex",
       "source_class": "publication_manifest_plus_representative_raw_baselines",
       "sources": {
         "bayesian_manifest_csv": "artifacts/he2_publication_freeze/he2_bayesian_publication_manifest.csv",
@@ -127,7 +128,7 @@
     "tab:he4_quantile_check_loss": {
       "label": "tab:he4_quantile_check_loss",
       "role": "Forecast-window quantile check-loss table for the four principal synthesis competitors",
-      "table_tex_path": "tables/generated_tex/he4_quantile_check_loss_main_table.tex",
+      "table_tex_path": "tables/editorial_revision/he4_quantile_check_loss_main_table.tex",
       "source_class": "he4_current_he2_publication_manifest",
       "sources": {
         "he4_quantile_check_loss_wide_csv": "artifacts/he4_quantile_check_loss_current_publication/he4_quantile_check_loss_wide.csv",
@@ -139,7 +140,7 @@
     "tab:components_23_31": {
       "label": "tab:components_23_31",
       "role": "Representative covariate-effects table",
-      "table_tex_path": "tables/generated_tex/representative_covariate_effects_table.tex",
+      "table_tex_path": "tables/editorial_revision/representative_covariate_effects_table.tex",
       "source_class": "current_selected_model_representative",
       "sources": {
         "covariate_effects_csv": "artifacts/representative_selected_model_2022_12_25/covariate_effects_summary.csv"
@@ -149,7 +150,7 @@
     "tab:gamma_sigma_intervals1": {
       "label": "tab:gamma_sigma_intervals1",
       "role": "Appendix gamma summary",
-      "table_tex_path": "tables/generated_tex/appendix_gamma_summary_table.tex",
+      "table_tex_path": "tables/editorial_revision/appendix_gamma_summary_table.tex",
       "source_class": "current_selected_model_representative",
       "sources": {
         "gamma_summary_csv": "artifacts/representative_selected_model_2022_12_25/gamma_summary.csv"
@@ -159,7 +160,7 @@
     "tab:gamma_sigma_intervals2": {
       "label": "tab:gamma_sigma_intervals2",
       "role": "Appendix sigma summary",
-      "table_tex_path": "tables/generated_tex/appendix_sigma_summary_table.tex",
+      "table_tex_path": "tables/editorial_revision/appendix_sigma_summary_table.tex",
       "source_class": "current_selected_model_representative",
       "sources": {
         "sigma_summary_csv": "artifacts/representative_selected_model_2022_12_25/sigma_summary.csv"
@@ -169,7 +170,7 @@
     "tab:he3_ablation_crps": {
       "label": "tab:he3_ablation_crps",
       "role": "Selected-model 28-day component-removal sensitivity CRPS table",
-      "table_tex_path": "tables/generated_tex/he3_ablation_crps_main_table.tex",
+      "table_tex_path": "tables/editorial_revision/he3_ablation_crps_main_table.tex",
       "source_class": "he3_authoritative_ablation",
       "sources": {
         "he3_ablation_long_csv": "artifacts/he3_exdqlm_ablation_authoritative/he3_ablation_long.csv",
@@ -183,7 +184,7 @@
     "tab:he3_ablation_crps_nws_horizon": {
       "label": "tab:he3_ablation_crps_nws_horizon",
       "role": "Selected-model common eight-day NWS-horizon component-removal sensitivity CRPS table",
-      "table_tex_path": "tables/generated_tex/he3_ablation_crps_nws_horizon_table.tex",
+      "table_tex_path": "tables/editorial_revision/he3_ablation_crps_nws_horizon_table.tex",
       "source_class": "he3_authoritative_ablation",
       "sources": {
         "he3_ablation_long_csv": "artifacts/he3_exdqlm_ablation_authoritative/he3_ablation_long.csv",
@@ -197,7 +198,7 @@
     "tab:comment2_external_comparison": {
       "label": "tab:comment2_external_comparison",
       "role": "Five-origin external-reference scores and climatology-relative skill",
-      "table_tex_path": "tables/generated_tex/comment2_external_comparison_table.tex",
+      "table_tex_path": "tables/editorial_revision/comment2_external_comparison_table.tex",
       "source_class": "comment2_frozen_additive_evidence",
       "sources": {
         "revision_manifest_json": "artifacts/comment2_revision/manifest.json",
@@ -208,7 +209,7 @@
     "tab:comment2_external_by_origin": {
       "label": "tab:comment2_external_by_origin",
       "role": "Origin-specific external-reference scores and skill",
-      "table_tex_path": "tables/generated_tex/comment2_external_by_origin_table.tex",
+      "table_tex_path": "tables/editorial_revision/comment2_external_by_origin_table.tex",
       "source_class": "comment2_frozen_additive_evidence",
       "sources": {
         "revision_manifest_json": "artifacts/comment2_revision/manifest.json",
@@ -219,7 +220,7 @@
     "tab:comment2_fit_diagnostics": {
       "label": "tab:comment2_fit_diagnostics",
       "role": "Recorded stopping evidence for the existing benchmark and structural-removal fits",
-      "table_tex_path": "tables/generated_tex/comment2_fit_diagnostic_table.tex",
+      "table_tex_path": "tables/editorial_revision/comment2_fit_diagnostic_table.tex",
       "source_class": "comment2_frozen_additive_evidence",
       "sources": {
         "revision_manifest_json": "artifacts/comment2_revision/manifest.json",
@@ -230,7 +231,7 @@
     "tab:no_refit_scores": {
       "label": "tab:no_refit_scores",
       "role": "Exact empirical-distribution CRPS and matching skill",
-      "table_tex_path": "tables/generated_tex/no_refit_score_comparison_table.tex",
+      "table_tex_path": "tables/editorial_revision/no_refit_score_comparison_table.tex",
       "source_class": "saved_output_diagnostics",
       "sources": {
         "revision_manifest": "artifacts/no_refit_revision/manifest.json"
@@ -240,7 +241,7 @@
     "tab:no_refit_calibration": {
       "label": "tab:no_refit_calibration",
       "role": "Predictive interval coverage, width and interval score",
-      "table_tex_path": "tables/generated_tex/no_refit_calibration_summary_table.tex",
+      "table_tex_path": "tables/editorial_revision/no_refit_calibration_summary_table.tex",
       "source_class": "saved_output_diagnostics",
       "sources": {
         "revision_manifest": "artifacts/no_refit_revision/manifest.json"
@@ -250,7 +251,7 @@
     "tab:no_refit_sensitivity": {
       "label": "tab:no_refit_sensitivity",
       "role": "Qualified iid pairwise score sensitivity",
-      "table_tex_path": "tables/generated_tex/no_refit_score_sensitivity_table.tex",
+      "table_tex_path": "tables/editorial_revision/no_refit_score_sensitivity_table.tex",
       "source_class": "saved_output_diagnostics",
       "sources": {
         "revision_manifest": "artifacts/no_refit_revision/manifest.json"
@@ -260,7 +261,7 @@
     "tab:no_refit_original_scale": {
       "label": "tab:no_refit_original_scale",
       "role": "Original discharge-scale distribution scores",
-      "table_tex_path": "tables/generated_tex/no_refit_origin_diagnostics_table.tex",
+      "table_tex_path": "tables/editorial_revision/no_refit_origin_diagnostics_table.tex",
       "source_class": "saved_output_diagnostics",
       "sources": {
         "revision_manifest": "artifacts/no_refit_revision/manifest.json"
@@ -270,7 +271,7 @@
     "tab:no_refit_origin_coverage": {
       "label": "tab:no_refit_origin_coverage",
       "role": "Predictive coverage by origin",
-      "table_tex_path": "tables/generated_tex/no_refit_origin_diagnostics_table.tex",
+      "table_tex_path": "tables/editorial_revision/no_refit_origin_diagnostics_table.tex",
       "source_class": "saved_output_diagnostics",
       "sources": {
         "revision_manifest": "artifacts/no_refit_revision/manifest.json"

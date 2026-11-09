@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "source_contract_path": "artifacts/editorial_revision/table_source_contract.json",
+  "source_contract_sha256": "319de996831f8e8e3335dec85319cbd850240ea93f53132971044245c225d2fc",
+  "source_baseline_commit": "d60d7652a56d7f151f49087bf44c476315427f96",
+  "preserves_all_statistical_entries": true,
+  "table_files": [
+    {
+      "source_path": "tables/generated_tex/benchmark_crps_main_table.tex",
+      "source_sha256": "5e900a2d2f07acf18fdc0f1e9d8a98b37211671365a5c15c2c169f8aa45e458f",
+      "output_path": "tables/editorial_revision/benchmark_crps_main_table.tex",
+      "output_sha256": "cb2ff382001dea8bcef276b7ca62f48d1ae07297b466aa9f2af5ba0892b16ffc",
+      "table_count": 1,
+      "numeric_token_count": 76,
+      "numeric_payload_sha256": "c97d48aa3897296610904a946f6fe89c8d9e92e87f5c4ee6382d758f3a69e40d",
+      "labels": [
+        "tab:benchmark_crps_models"
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/benchmark_crps_nws_horizon_table.tex",
+      "source_sha256": "3ae0060696390bd1599aaf470fa6482d36c8601755ca6c8951d2001363287b1d",
+      "output_path": "tables/editorial_revision/benchmark_crps_nws_horizon_table.tex",
+      "output_sha256": "218a30eaa29bddd2c3439f864df5ccb5307ce873d14d174bd846a595ac21ef23",
+      "table_count": 1,
+      "numeric_token_count": 81,
+      "numeric_payload_sha256": "1a84fbf47708e693f1db9c724be92077bf861a332ea5757fd37017e48620b93e",
+      "labels": [
+        "tab:benchmark_crps_models_nws_horizon"
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/comment2_external_comparison_table.tex",
+      "source_sha256": "537d237ca84e103dd6a34e77086dac977755a3d15550fe6c42a6952e9dd302a4",
+      "output_path": "tables/editorial_revision/comment2_external_comparison_table.tex",
+      "output_sha256": "cc5639955bd01b7ef4906be15bffe0cd1a94178ec5f17043a2cae606b6b1b8ee",
+      "table_count": 1,
+      "numeric_token_count": 32,
+      "numeric_payload_sha256": "7b56f24e64b845e586ec575a7a9d50605209c01e8f95c41a8aeb0d456fd3e27a",
+      "labels": [
+        "tab:comment2_external_comparison"
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/he4_quantile_check_loss_main_table.tex",
+      "source_sha256": "ab36cc17f290ab6141ea2cc9a2620e1622cbed624cbdbc879de630b8e45fa222",
+      "output_path": "tables/editorial_revision/he4_quantile_check_loss_main_table.tex",
+      "output_sha256": "43272b5d294de1f163b41ac0966a46cd38ecfb5379486e38afc94ce8f6d88fa0",
+      "table_count": 1,
+      "numeric_token_count": 191,
+      "numeric_payload_sha256": "79802a80ba77f4b9e38a8c9307efe6bbb446e280923d2ada7723125293d50e06",
+      "labels": [
+        "tab:he4_quantile_check_loss"
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/no_refit_score_comparison_table.tex",
+      "source_sha256": "7acba1ba5c7a041ead76bdec3b5f67df91e48cd7f4200b2d955e939dd7a52066",
+      "output_path": "tables/editorial_revision/no_refit_score_comparison_table.tex",
+      "output_sha256": "c96885a059972d1c6b6de2c29e362b61b20ca4b9790a1a75db6784df1ec3066e",
+      "table_count": 1,
+      "numeric_token_count": 42,
+      "numeric_payload_sha256": "ce5283c15f2de3a09fcd1c64a00dd7c7e1afb21f1d8f5673e15ff1e4bab8c79b",
+      "labels": [
+        "tab:no_refit_scores"
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/no_refit_calibration_summary_table.tex",
+      "source_sha256": "c2b3d1ff94d23e3b5795d2644d62ae3c57ef09983dc04cdd493ad99a1a971619",
+      "output_path": "tables/editorial_revision/no_refit_calibration_summary_table.tex",
+      "output_sha256": "f323d52dd61b8defbfb96447a85967dcce20666554b9fda146e081c896896b8b",
+      "table_count": 1,
+      "numeric_token_count": 76,
+      "numeric_payload_sha256": "160b9fd90a66574bd2894129ce10b74cb4f8459a1818f609f6e1830f164afa3e",
+      "labels": [
+        "tab:no_refit_calibration"
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/representative_covariate_effects_table.tex",
+      "source_sha256": "39a85e0b27479cedf3189a95e8ce449b04728b4e6cbe9cf979b410ca9c641c17",
+      "output_path": "tables/editorial_revision/representative_covariate_effects_table.tex",
+      "output_sha256": "66e0bc3a113e8df763e7b5eab49f0a9e07d3ae4cc2b526a82380c830849c66e9",
+      "table_count": 1,
+      "numeric_token_count": 41,
+      "numeric_payload_sha256": "454b5aaf0c8b50e52953c999c333bc9259c1be4c1e2637e64abc5504f78b2465",
+      "labels": [
+        "tab:components_23_31"
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/he3_ablation_crps_main_table.tex",
+      "source_sha256": "7dc7849baac8e43d3f8b3690d28fa7efc9bdb8fc9e90a36e8ef43e55c2125f3c",
+      "output_path": "tables/editorial_revision/he3_ablation_crps_main_table.tex",
+      "output_sha256": "25c5a927056393c45d8ac45ff959e11041e4a89d30c5462ada1cee0a36da6376",
+      "table_count": 1,
+      "numeric_token_count": 60,
+      "numeric_payload_sha256": "1d8e26fab79be21dcffccf5c7282af695d12eed67941d3659a0490c1e9122f31",
+      "labels": [
+        "tab:he3_ablation_crps"
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/he3_ablation_crps_nws_horizon_table.tex",
+      "source_sha256": "69e6346034c677ef876c0a871b09badd7d79b254fab75f3f69ea690cd31fe4b1",
+      "output_path": "tables/editorial_revision/he3_ablation_crps_nws_horizon_table.tex",
+      "output_sha256": "4551e6fdcc84f548d9945ce3d918317595b28be178d98e5f19c97acecc56a2b8",
+      "table_count": 1,
+      "numeric_token_count": 65,
+      "numeric_payload_sha256": "902dd8a71d413e16bdd9a838a3a1ee122470ebca544fc921ec2f28803fef981f",
+      "labels": [
+        "tab:he3_ablation_crps_nws_horizon"
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/comment2_fit_diagnostic_table.tex",
+      "source_sha256": "77af8f2bc1b8a52a2654d690f282e9e8326c2c35e7ef030e98fc8a5204cb1f00",
+      "output_path": "tables/editorial_revision/comment2_fit_diagnostic_table.tex",
+      "output_sha256": "1820466c8d0d4c49920c458792fcbb05d8727d2befb0ba85a90df21131a77f70",
+      "table_count": 1,
+      "numeric_token_count": 86,
+      "numeric_payload_sha256": "8d86671750944e11f603be8412309c6b2ea48d7e854cf6b839a61d377ecc2251",
+      "labels": [
+        "tab:comment2_fit_diagnostics"
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/comment2_external_by_origin_table.tex",
+      "source_sha256": "19c0a284588b50b9fdd2d3cbafbdad576578ab510117fc7b80a442cc9d57c325",
+      "output_path": "tables/editorial_revision/comment2_external_by_origin_table.tex",
+      "output_sha256": "6597cb4b8c426792aee19797555ec8c9053eb479acaf002385636daf3b0cded4",
+      "table_count": 1,
+      "numeric_token_count": 143,
+      "numeric_payload_sha256": "58103c7d9eb761e84aa2ed80d29f984094d6171888981d1cbc0951c1d1b4e0d6",
+      "labels": [
+        "tab:comment2_external_by_origin"
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/no_refit_score_sensitivity_table.tex",
+      "source_sha256": "39d8775e1c553721f22d78b654527ac0ab0e8dd73bef831f9ddcd33ff150408b",
+      "output_path": "tables/editorial_revision/no_refit_score_sensitivity_table.tex",
+      "output_sha256": "63d15a2ec53c47b055946c5510a75f9a3ce7e4c6593576bc1e93135150ecba86",
+      "table_count": 1,
+      "numeric_token_count": 61,
+      "numeric_payload_sha256": "e2ab86d4d99956146fae379f3fc7f50b6f1960e98180ca62d659017885f6316b",
+      "labels": [
+        "tab:no_refit_sensitivity"
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/no_refit_origin_diagnostics_table.tex",
+      "source_sha256": "197e1eb94188e21506770ed446fb8f7353252b525e1fa202435db73733fbf687",
+      "output_path": "tables/editorial_revision/no_refit_origin_diagnostics_table.tex",
+      "output_sha256": "4e8ccf55d4db64029d8218f8abb92c85136a3ba594f58d631c4e34664380cc80",
+      "table_count": 2,
+      "numeric_token_count": 372,
+      "numeric_payload_sha256": "8b3603e316b670dbf11f2fe91321cbc48569dd81db9cbe8e6e1dc8686933a2c7",
+      "labels": [
+        "tab:no_refit_original_scale",
+        "tab:no_refit_origin_coverage"
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/appendix_gamma_summary_table.tex",
+      "source_sha256": "f2b5126ce287f345fcad65a7ee0ae0a8de0cbebf11f1e6d64a55ad5bc1f838ce",
+      "output_path": "tables/editorial_revision/appendix_gamma_summary_table.tex",
+      "output_sha256": "3e5ea8e6400607e9caa732353dee3b302b76d02476be6a7db521a23139bd95a0",
+      "table_count": 1,
+      "numeric_token_count": 85,
+      "numeric_payload_sha256": "df4774debba3bcec5c9fbf5e783e5cc0af665f7411c9b04a0f0ba80fa130ea6b",
+      "labels": [
+        "tab:gamma_sigma_intervals1"
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/appendix_sigma_summary_table.tex",
+      "source_sha256": "ef37607041715f5be344b7b1f10273a69a6b2af7ecb5ee1b5e077367383a0833",
+      "output_path": "tables/editorial_revision/appendix_sigma_summary_table.tex",
+      "output_sha256": "9ffec6000ec243a2d65f1147c46dd5cc1e252681310d4108cfefec12bc6c8178",
+      "table_count": 1,
+      "numeric_token_count": 85,
+      "numeric_payload_sha256": "80336c5c1558fb026dcb554b32eb4b39649ff77680b15232aa56958f2950e8ea",
+      "labels": [
+        "tab:gamma_sigma_intervals2"
+      ]
+    }
+  ]
+}

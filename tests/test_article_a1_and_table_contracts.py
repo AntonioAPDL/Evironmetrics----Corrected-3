@@ -19,6 +19,12 @@ def sha256(path: Path) -> str:
 
 
 class ArticleA1AndTableContractTests(unittest.TestCase):
+    def table_input(self, label: str) -> str:
+        manifest = json.loads((ROOT / 'MANUSCRIPT_ASSET_MANIFEST.json').read_text())
+        path = manifest['tables'][label]['table_tex_path']
+        self.assertTrue((ROOT / path).is_file(), path)
+        return r'\input{' + path + '}'
+
     def article_text(self) -> str:
         return active_tex((ROOT / "wileyNJD-APA.tex").read_text(encoding="utf-8"))
 
@@ -61,11 +67,11 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         )
         self.assertEqual(manifest.get("archive_status", {}).get("workflow_archive_doi"), "pending")
         article = (ROOT / "wileyNJD-APA.tex").read_text(encoding="utf-8")
-        self.assertIn(r"CRAN R package \texttt{exdqlm}", article)
+        self.assertConcepts(article, r'R package', r'exdqlm', r'CRAN')
         self.assertIn("https://CRAN.R-project.org/package=exdqlm", article)
         self.assertIn("https://doi.org/10.32614/CRAN.package.exdqlm", article)
         self.assertTrue(cited_url(article, (ROOT / "wileyNJD-APA.bib").read_text(encoding="utf-8"), "https://github.com/AntonioAPDL/san-lorenzo-exdqlm-reproducibility"))
-        self.assertConcepts(article, r'reproducibility repository', r'staged inputs', r'provenance manifests')
+        self.assertConcepts(article, r'reproducibility repository', r'analysis data', r'statistical code', r'data.source documentation')
         self.assertNotIn("workflow repository has been archived", article)
 
     def test_runtime_benchmark_manifest_and_text_are_wired(self) -> None:
@@ -88,7 +94,8 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         self.assertFalse(manifest.get("claims_policy", {}).get("report_fit_forecast_decomposition"))
 
         article = (ROOT / "wileyNJD-APA.tex").read_text(encoding="utf-8")
-        self.assertIn("about two hours end-to-end", article)
+        self.assertConcepts(article, r'(?:about|approximately) two hours',
+                            r'combined.{0,90}fitting and forecasting|fitting and forecasting.{0,90}combined')
         self.assertScientificChecks(article, ["runtime"])
         self.assertNotIn(r"\texttt{runtime\_sec", article)
         self.assertConcepts(article, r'hardware', r'implementation', r'depends|dependent')
@@ -224,8 +231,8 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         self.assertScientificChecks(article, ['origin_design', 'verification', 'scores'])
         for label in ['sec:forecastvalidation', 'subsec:synthillustration', 'sec:interpretation']:
             self.assertTrue(has_label(article, label), label)
-        for table in ['benchmark_crps_main_table.tex', 'benchmark_crps_nws_horizon_table.tex', 'he4_quantile_check_loss_main_table.tex']:
-            self.assertIn(r'\input{tables/generated_tex/' + table + '}', article)
+        for label in ['tab:benchmark_crps_models', 'tab:benchmark_crps_models_nws_horizon', 'tab:he4_quantile_check_loss']:
+            self.assertIn(self.table_input(label), article)
 
     def test_reviewer1_fair_forecast_assessment_is_wired(self) -> None:
         article = self.article_text()
@@ -443,7 +450,7 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
     def test_cutoff_appendix_uses_multivariate_synthesis_overlays(self) -> None:
         article = (ROOT / "wileyNJD-APA.tex").read_text(encoding="utf-8")
         self.assertIn("{Figures/multivariate_synthesis_by_cutoff/}", article)
-        self.assertIn("Additional Cutoff-Specific Predictive Synthesis Panels", article)
+        self.assertTrue(has_label(article, 'app:cutoffsynthpanels'))
         for name in [
             "cutoff_2021_01_23_multivariate_synthesis_with_reference_ensembles.png",
             "cutoff_2021_11_12_multivariate_synthesis_with_reference_ensembles.png",
@@ -561,14 +568,14 @@ class ArticleA1AndTableContractTests(unittest.TestCase):
         self.assertIn("1/6.8068493", article_text)
         self.assertLess(
             article_text.index(r"\appendix"),
-            article_text.index(r"\input{tables/generated_tex/he3_ablation_crps_main_table.tex}"),
+            article_text.index(self.table_input('tab:he3_ablation_crps')),
         )
         self.assertEqual(
-            article_text.count(r"\input{tables/generated_tex/he3_ablation_crps_main_table.tex}"),
+            article_text.count(self.table_input('tab:he3_ablation_crps')),
             1,
         )
         self.assertEqual(
-            article_text.count(r"\input{tables/generated_tex/he3_ablation_crps_nws_horizon_table.tex}"),
+            article_text.count(self.table_input('tab:he3_ablation_crps_nws_horizon')),
             1,
         )
 

@@ -1,0 +1,730 @@
+{
+  "schema_version": 1,
+  "baseline_commit": "d60d7652a56d7f151f49087bf44c476315427f96",
+  "purpose": "Presentation changes to validated existing tables; all statistical entries and source tables remain unchanged.",
+  "tables": [
+    {
+      "source_path": "tables/generated_tex/benchmark_crps_main_table.tex",
+      "source_sha256": "5e900a2d2f07acf18fdc0f1e9d8a98b37211671365a5c15c2c169f8aa45e458f",
+      "output_path": "tables/editorial_revision/benchmark_crps_main_table.tex",
+      "edits": [
+        {
+          "old": "\\caption{Mean 28-day forecast-window CRPS by model family and cutoff across the five rolling-origin evaluation folds, including normal dynamic linear model baselines. Lower values are better; bold indicates the lowest CRPS within each cutoff column.}",
+          "new": "\\caption{Mean continuous ranked probability score (CRPS) over leads 1--28 at each of five forecast origins. Bold identifies the lowest score in each origin column.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\end{tabular*}\n\\end{threeparttable}",
+          "new": "\\end{tabular*}\n\\begin{tablenotes}\n\\item \\textit{Note:} Daily CRPS is evaluated by quantile-grid integration and averaged over the stated leads for each origin. Scores use $\\log(1+x)$ discharge, with $x$ in m$^3$/s. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods. U and M denote one and multiple observation sources; T1 retains the transfer contribution at forecast leads and T0 omits it. GloFAS is the uncorrected ensemble reference; NWS has only eight available daily leads and is compared in Table~\\ref{tab:benchmark_crps_models_nws_horizon}. Column dates use month/day/year.\n\\end{tablenotes}\n\\end{threeparttable}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\nRAW-GLOFAS &",
+          "new": "\nGloFAS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "Model label &",
+          "new": "Model &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\\textit{Raw forecast products}",
+          "new": "\\textit{Uncorrected forecast products}",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\\textit{Bayesian benchmark variants}",
+          "new": "\\textit{Bayesian model variants}",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        }
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/benchmark_crps_nws_horizon_table.tex",
+      "source_sha256": "3ae0060696390bd1599aaf470fa6482d36c8601755ca6c8951d2001363287b1d",
+      "output_path": "tables/editorial_revision/benchmark_crps_nws_horizon_table.tex",
+      "edits": [
+        {
+          "old": "\\caption{Mean CRPS over the common eight-day NWS forecast horizon. Lower values are better; bold indicates the lowest CRPS within each cutoff column.}",
+          "new": "\\caption{Mean continuous ranked probability score (CRPS) over the common forecast leads 1--8. Bold identifies the lowest score in each origin column.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\item \\textit{Note:} This table restricts every row to forecast leads 1--8, the common daily horizon available for NWS, GloFAS, and the Bayesian predictive distributions. It is therefore the appropriate direct comparison to \\texttt{RAW-NWS}; Table~\\ref{tab:benchmark_crps_models} gives the complementary 28-day comparison and omits NWS.",
+          "new": "\\item \\textit{Note:} Daily CRPS is evaluated by quantile-grid integration and averaged over the stated leads for each origin. Scores use $\\log(1+x)$ discharge, with $x$ in m$^3$/s. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods. U and M denote one and multiple observation sources; T1 retains the transfer contribution at forecast leads and T0 omits it. Every row uses leads 1--8. GloFAS and NWS are the uncorrected ensemble references. Column dates use month/day/year.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\nRAW-GLOFAS &",
+          "new": "\nGloFAS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nRAW-NWS &",
+          "new": "\nNWS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "Model label &",
+          "new": "Model &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\\textit{Raw forecast products}",
+          "new": "\\textit{Uncorrected forecast products}",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\\textit{Bayesian benchmark variants}",
+          "new": "\\textit{Bayesian model variants}",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        }
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/comment2_external_comparison_table.tex",
+      "source_sha256": "537d237ca84e103dd6a34e77086dac977755a3d15550fe6c42a6952e9dd302a4",
+      "output_path": "tables/editorial_revision/comment2_external_comparison_table.tex",
+      "edits": [
+        {
+          "old": "\\caption{External-reference comparison and climatology-relative skill across five forecast origins.}",
+          "new": "\\caption{Mean forecast scores and skill relative to seasonal climatology across five origins.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\item \\textit{Note:} Scores use daily USGS verification on the $\\log(1+x)$ discharge scale. CRPS averages the five complete origin windows; CRPSS is one minus the ratio of the aggregated method and seasonal-climatology scores. Higher CRPSS is better. PERSISTENCE is a point forecast; EMOS-GLOFAS uses GloFAS alone. Raw NWS has eight available leads. Existing method scores are unchanged.",
+          "new": "\\item \\textit{Note:} Daily USGS discharge supplies verification. Scores use $\\log(1+x)$ discharge, with $x$ in m$^3$/s. CRPS denotes the continuous ranked probability score; lower values are better. CRPSS is one minus the ratio of mean CRPS to the seasonal-climatology mean on the same cases; higher values are better. Means include 140 cases over leads 1--28 and 40 over leads 1--8. Persistence is a point forecast; GloFAS EMOS is a single-product ensemble model output statistics correction. NWS is available through lead eight. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods. U and M denote one and multiple observation sources; T1 retains the transfer contribution at forecast leads and T0 omits it. CRPS uses quantile-grid integration as defined in Subsection~\\ref{subsec:modelselection}.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\nRAW-GLOFAS &",
+          "new": "\nGloFAS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nRAW-NWS &",
+          "new": "\nNWS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nCLIM-SEASONAL &",
+          "new": "\nSeasonal climatology &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nPERSISTENCE &",
+          "new": "\nPersistence &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nEMOS-GLOFAS &",
+          "new": "\nGloFAS EMOS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "% Generated by scripts/comment2_revision.py from checked frozen evidence.",
+          "new": "% Table presentation generated by scripts/editorial_revision.py.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        }
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/he4_quantile_check_loss_main_table.tex",
+      "source_sha256": "ab36cc17f290ab6141ea2cc9a2620e1622cbed624cbdbc879de630b8e45fa222",
+      "output_path": "tables/editorial_revision/he4_quantile_check_loss_main_table.tex",
+      "edits": [
+        {
+          "old": "\\caption{Mean forecast-window quantile check loss by synthesis model, cutoff, and target quantile. Lower values are better; bold indicates the lowest check loss within each cutoff and quantile column.}",
+          "new": "\\caption{Mean quantile check loss over forecast leads 1--28, by model, origin and evaluation probability $\\tau$. Bold identifies the lowest loss in each origin--probability column.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\item \\textit{Note:} Check loss is computed on forecast-window rows only, using held-out USGS observations as verification targets on the same $\\log(1+x)$ scale used for CRPS, with discharge $x$ measured in m$^3$/s.",
+          "new": "\\item \\textit{Note:} Each entry averages $\\rho_\\tau(y-q)=(y-q)\\{\\tau-I(y<q)\\}$ over 28 daily USGS verification cases, using the synthesized predictive $\\tau$-quantile $q$. Scores use $\\log(1+x)$ discharge, with $x$ in m$^3$/s. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods. U and M denote one and multiple observation sources; T1 retains the transfer contribution at forecast leads and T0 omits it. Origin dates use month/day/year.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "q0.05",
+          "new": "$0.05$",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "q0.20",
+          "new": "$0.20$",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "q0.35",
+          "new": "$0.35$",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "q0.50",
+          "new": "$0.50$",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "q0.65",
+          "new": "$0.65$",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "q0.80",
+          "new": "$0.80$",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "q0.95",
+          "new": "$0.95$",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\\textit{Cutoff ",
+          "new": "\\textit{Origin ",
+          "expected_occurrences": 5,
+          "scope": "tabular_presentation"
+        }
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/no_refit_score_comparison_table.tex",
+      "source_sha256": "7acba1ba5c7a041ead76bdec3b5f67df91e48cd7f4200b2d955e939dd7a52066",
+      "output_path": "tables/editorial_revision/no_refit_score_comparison_table.tex",
+      "edits": [
+        {
+          "old": "\\caption{Distribution scores of the saved predictive representations on the transformed scale.}",
+          "new": "\\caption{Exact empirical-distribution CRPS and skill relative to seasonal climatology.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\item \\textit{Note:} Exact ECDF CRPS scores the equally weighted saved representation. CRPSS uses the frozen seasonal-climatology representation on the same cases and scale. Means pool 140 cases at 28 days and 40 cases at eight days. Raw NWS is available only through lead eight. The earlier tables retain the quantile-grid approximation.",
+          "new": "\\item \\textit{Note:} The empirical distribution assigns equal weight to each predictive sample or deterministic-grid value. Scores use $\\log(1+x)$ discharge, with $x$ in m$^3$/s. CRPS denotes the continuous ranked probability score; lower values are better. CRPSS is one minus the ratio of mean CRPS to the seasonal-climatology mean on the same cases; higher values are better. Means pool 140 daily cases over leads 1--28 and 40 over leads 1--8. NWS is available through lead eight. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods. U and M denote one and multiple observation sources; T1 retains the transfer contribution at forecast leads and T0 omits it.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\nRAW-GLOFAS &",
+          "new": "\nGloFAS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nRAW-NWS &",
+          "new": "\nNWS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nCLIM-SEASONAL &",
+          "new": "\nSeasonal climatology &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nPERSISTENCE &",
+          "new": "\nPersistence &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nEMOS-GLOFAS &",
+          "new": "\nGloFAS EMOS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "% Generated by scripts/no_refit_revision.py; do not edit.",
+          "new": "% Table presentation generated by scripts/editorial_revision.py.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        }
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/no_refit_calibration_summary_table.tex",
+      "source_sha256": "c2b3d1ff94d23e3b5795d2644d62ae3c57ef09983dc04cdd493ad99a1a971619",
+      "output_path": "tables/editorial_revision/no_refit_calibration_summary_table.tex",
+      "edits": [
+        {
+          "old": "\\caption{Coverage, width and interval score of central 95\\% predictive intervals.}",
+          "new": "\\caption{Coverage, mean width and mean interval score of central 95\\% observation predictive intervals.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\item \\textit{Note:} Coverage is the count within the closed 2.5th--97.5th percentile interval divided by the complete case count. Width and proper interval score are on the $\\log(1+x)$ scale; lower interval score is better. Model limits use sample type-8 quantiles; raw ensembles and deterministic grids use the empirical inverse CDF. Persistence has zero width. Discharge-scale coverage is identical under the stated inverse-transformation convention.",
+          "new": "\\item \\textit{Note:} Covered is the number of USGS observations within the closed 2.5th--97.5th percentile interval divided by the case count. Width and interval score are averaged on the $\\log(1+x)$ scale, with discharge $x$ in m$^3$/s; lower interval score is better. Persistence has zero width. The numerical quantile conventions are specified in Appendix~\\ref{app:numericalprediction}. The monotone inverse transformation preserves the stated coverage events. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods. U and M denote one and multiple observation sources; T1 retains the transfer contribution at forecast leads and T0 omits it.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\nRAW-GLOFAS &",
+          "new": "\nGloFAS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nRAW-NWS &",
+          "new": "\nNWS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nCLIM-SEASONAL &",
+          "new": "\nSeasonal climatology &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nPERSISTENCE &",
+          "new": "\nPersistence &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nEMOS-GLOFAS &",
+          "new": "\nGloFAS EMOS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "% Generated by scripts/no_refit_revision.py; do not edit.",
+          "new": "% Table presentation generated by scripts/editorial_revision.py.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        }
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/representative_covariate_effects_table.tex",
+      "source_sha256": "39a85e0b27479cedf3189a95e8ce449b04728b4e6cbe9cf979b410ca9c641c17",
+      "output_path": "tables/editorial_revision/representative_covariate_effects_table.tex",
+      "edits": [
+        {
+          "old": "\\caption{Selected Posterior Means and 95\\% Credible Intervals for Transfer-Function Covariates}",
+          "new": "\\caption{Approximate variational posterior means and central 95\\% credible intervals for transfer coefficients at December 25, 2022.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\item \\textit{Note:} Posterior means and 95\\% credible intervals $[{\\rm Q2.5}, {\\rm Q97.5}]$ for selected transfer-function coefficients at the representative December 25, 2022 cutoff, for the 5th, 50th, and 95th quantile models. \\texttt{First GDPC factor} refers to the first generalized dynamic principal component introduced in Section~\\ref{sec:data}.",
+          "new": "\\item \\textit{Note:} Summaries concern the coefficient states $\\boldsymbol\\psi_T$ at the terminal historical date, for fitted probabilities $p_0=0.05$, $0.50$ and $0.95$. Covariates are divided by their historical standard deviations without centering; each coefficient is therefore expressed on the $\\log(1+x)$ discharge scale per historical-standard-deviation unit of its covariate, with discharge $x$ in m$^3$/s. Intervals are the 2.5th and 97.5th percentiles of the fitted variational marginals, without adjustment for approximation error. GDPC denotes the generalized dynamic principal component described in Section~\\ref{sec:data}.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\textbf{95\\% CI}",
+          "new": "\\textbf{95\\% interval}",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\\textbf{Quantile}",
+          "new": "\\textbf{Fitted quantile}",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "First GDPC factor",
+          "new": "First GDPC score",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        }
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/he3_ablation_crps_main_table.tex",
+      "source_sha256": "7dc7849baac8e43d3f8b3690d28fa7efc9bdb8fc9e90a36e8ef43e55c2125f3c",
+      "output_path": "tables/editorial_revision/he3_ablation_crps_main_table.tex",
+      "edits": [
+        {
+          "old": "\\caption{Component-removal sensitivity analysis for 28-day forecast-window CRPS under the selected \\texttt{exAL-M-T1} specification. Lower values are better, and bold marks the best value among the full reference and reduced models within each cutoff.}",
+          "new": "\\caption{Component-removal sensitivity of the exAL-M-T1 specification: mean CRPS over forecast leads 1--28. Bold identifies the lowest score among the full and reduced models in each origin column.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\item \\textit{Note:} The \\texttt{noH3} row removes the retained noninteger seasonal harmonic with frequency \\(1/6.8068493\\).",
+          "new": "\\item \\textit{Note:} The suffixes \\texttt{noTrend}, \\texttt{noTF}, \\texttt{noH1}, \\texttt{noH2} and \\texttt{noH3} remove the local level, transfer contribution, or first, second and third seasonal pairs, respectively. The \\texttt{noH3} pair has frequency multiplier \\(1/6.8068493\\). Reference and reduced models use the same fitting settings. Scores use $\\log(1+x)$ discharge, with $x$ in m$^3$/s. The GloFAS ensemble is a reference, excluded from the within-column bold comparison. Column dates use month/day/year.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\nRAW-GLOFAS &",
+          "new": "\nGloFAS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\\textit{Raw forecast products (reference only)}",
+          "new": "\\textit{Uncorrected forecast products (reference only)}",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        }
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/he3_ablation_crps_nws_horizon_table.tex",
+      "source_sha256": "69e6346034c677ef876c0a871b09badd7d79b254fab75f3f69ea690cd31fe4b1",
+      "output_path": "tables/editorial_revision/he3_ablation_crps_nws_horizon_table.tex",
+      "edits": [
+        {
+          "old": "\\caption{Component-removal sensitivity analysis over the common eight-day NWS forecast horizon. Lower values are better, and bold marks the best value among the full reference and reduced models within each cutoff.}",
+          "new": "\\caption{Component-removal sensitivity of the exAL-M-T1 specification: mean CRPS over common forecast leads 1--8. Bold identifies the lowest score among the full and reduced models in each origin column.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\item \\textit{Note:} This table restricts every row to forecast leads 1--8, the common daily horizon available for the NWS comparison.",
+          "new": "\\item \\textit{Note:} The suffixes \\texttt{noTrend}, \\texttt{noTF}, \\texttt{noH1}, \\texttt{noH2} and \\texttt{noH3} remove the local level, transfer contribution, or first, second and third seasonal pairs, respectively. The \\texttt{noH3} pair has frequency multiplier \\(1/6.8068493\\). Reference and reduced models use the same fitting settings. Scores use $\\log(1+x)$ discharge, with $x$ in m$^3$/s. Every row uses leads 1--8. GloFAS and NWS ensembles are references, excluded from the within-column bold comparison. Column dates use month/day/year.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\nRAW-GLOFAS &",
+          "new": "\nGloFAS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nRAW-NWS &",
+          "new": "\nNWS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\\textit{Raw forecast products (reference only)}",
+          "new": "\\textit{Uncorrected forecast products (reference only)}",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        }
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/comment2_fit_diagnostic_table.tex",
+      "source_sha256": "77af8f2bc1b8a52a2654d690f282e9e8326c2c35e7ef030e98fc8a5204cb1f00",
+      "output_path": "tables/editorial_revision/comment2_fit_diagnostic_table.tex",
+      "edits": [
+        {
+          "old": "\\caption{Recorded stopping evidence for the existing benchmark and component-removal fits.}",
+          "new": "\\caption{Stopping classifications for the model-comparison and component-removal fits.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\item \\textit{Note:} Counts refer to individual quantile fits, or one fit per Gaussian run. Converged means the saved criteria or explicit summary report convergence; it does not certify model validity. Budget limit means recorded criteria were unmet at the iteration limit. Other covers guards or criteria-unmet stops; unrecorded means sufficient stopping evidence is absent. Pipeline completion and a legacy terminal success phrase do not establish convergence.",
+          "new": "\\item \\textit{Note:} Each fit corresponds to one target quantile, or one fit per normal model and origin. Converged indicates satisfaction of the recorded stopping criteria; this classification does not establish model adequacy. Iteration limit indicates that these criteria were not jointly satisfied before the limit. Other includes numerical safeguards or other stops with unmet criteria. Unrecorded indicates insufficient stopping information, rather than demonstrated failure. The component suffixes are defined in Table~\\ref{tab:he3_ablation_crps}. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods. U and M denote one and multiple observation sources; T1 retains the transfer contribution at forecast leads and T0 omits it.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "Budget limit &",
+          "new": "Iteration limit &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "% Generated by scripts/comment2_revision.py from checked frozen evidence.",
+          "new": "% Table presentation generated by scripts/editorial_revision.py.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        }
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/comment2_external_by_origin_table.tex",
+      "source_sha256": "19c0a284588b50b9fdd2d3cbafbdad576578ab510117fc7b80a442cc9d57c325",
+      "output_path": "tables/editorial_revision/comment2_external_by_origin_table.tex",
+      "edits": [
+        {
+          "old": "\\caption{External-reference scores by forecast origin and horizon.}",
+          "new": "\\caption{Mean forecast CRPS and climatology-relative skill by origin and horizon.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\item \\textit{Note:} Each entry gives mean CRPS above climatology-relative CRPSS in parentheses. The exact origins are January 23, November 12 and December 21, 2021, and May 11 and December 25, 2022. Definitions match Table~\\ref{tab:comment2_external_comparison}.",
+          "new": "\\item \\textit{Note:} Each entry gives mean CRPS with climatology-relative CRPSS in parentheses. Scores use $\\log(1+x)$ discharge, with $x$ in m$^3$/s. CRPS denotes the continuous ranked probability score; lower values are better. CRPSS is one minus the ratio of mean CRPS to the seasonal-climatology mean on the same cases; higher values are better. Origins are January 23, November 12 and December 21, 2021, and May 11 and December 25, 2022. Means use leads 1--28 or 1--8 as indicated. Comparator definitions are given in Table~\\ref{tab:comment2_external_comparison}. CRPS uses quantile-grid integration as defined in Subsection~\\ref{subsec:modelselection}.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\nRAW-GLOFAS &",
+          "new": "\nGloFAS &",
+          "expected_occurrences": 2,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nRAW-NWS &",
+          "new": "\nNWS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nCLIM-SEASONAL &",
+          "new": "\nSeasonal climatology &",
+          "expected_occurrences": 2,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nPERSISTENCE &",
+          "new": "\nPersistence &",
+          "expected_occurrences": 2,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nEMOS-GLOFAS &",
+          "new": "\nGloFAS EMOS &",
+          "expected_occurrences": 2,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "% Generated by scripts/comment2_revision.py from checked frozen evidence.",
+          "new": "% Table presentation generated by scripts/editorial_revision.py.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        }
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/no_refit_score_sensitivity_table.tex",
+      "source_sha256": "39d8775e1c553721f22d78b654527ac0ab0e8dd73bef831f9ddcd33ff150408b",
+      "output_path": "tables/editorial_revision/no_refit_score_sensitivity_table.tex",
+      "edits": [
+        {
+          "old": "\\caption{Finite-sample score sensitivity for all saved predictive representations.}",
+          "new": "\\caption{Finite-sample sensitivity of predictive scores to an independent-draw adjustment.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\item \\textit{Note:} All scores use $\\log(1+x)$. The adjusted pairwise score assumes independent, identically distributed draws from a predictive distribution. For physical members this is only a sensitivity assumption. Model sample counts are 2,000 for AL/exAL, 64 for N-U-T1 and 48 for N-M-T0/T1; raw GloFAS and NWS contain 51 and seven members. The adjustment is not applicable to deterministic climatology/EMOS grids or the persistence point mass. No adjusted skill score is reported.",
+          "new": "\\item \\textit{Note:} Empirical CRPS scores the equally weighted empirical predictive distribution; adjusted denotes the pairwise correction under independent, identically distributed predictive draws. Scores use $\\log(1+x)$ discharge, with $x$ in m$^3$/s. For physical ensemble members, independence is a sensitivity assumption. Sample counts are 2,000 for AL/exAL, 64 for N-U-T1 and 48 for N-M-T0/T1; GloFAS and NWS contain 51 and seven members. The adjustment is inapplicable to deterministic climatology and EMOS grids and to the persistence point mass; adjusted skill is not reported. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods. U and M denote one and multiple observation sources; T1 retains the transfer contribution at forecast leads and T0 omits it.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\nRAW-GLOFAS &",
+          "new": "\nGloFAS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nRAW-NWS &",
+          "new": "\nNWS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nCLIM-SEASONAL &",
+          "new": "\nSeasonal climatology &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nPERSISTENCE &",
+          "new": "\nPersistence &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nEMOS-GLOFAS &",
+          "new": "\nGloFAS EMOS &",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": " 28-day ECDF",
+          "new": " 28-day empirical",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": " 8-day ECDF",
+          "new": " 8-day empirical",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "% Generated by scripts/no_refit_revision.py; do not edit.",
+          "new": "% Table presentation generated by scripts/editorial_revision.py.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        }
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/no_refit_origin_diagnostics_table.tex",
+      "source_sha256": "197e1eb94188e21506770ed446fb8f7353252b525e1fa202435db73733fbf687",
+      "output_path": "tables/editorial_revision/no_refit_origin_diagnostics_table.tex",
+      "edits": [
+        {
+          "old": "\\caption{Distribution scores on the original discharge scale, in m$^3$/s.}",
+          "new": "\\caption{Exact empirical-distribution forecast scores on the discharge scale.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\caption{Predictive 95\\% interval coverage by origin and horizon.}",
+          "new": "\\caption{Central 95\\% observation predictive interval coverage by origin and horizon.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\item \\textit{Note:} Each stored predictive value is inverse-transformed with $\\exp(y)-1$ before scoring; transformed-scale scores are not exponentiated. Exact ECDF CRPS scores the equally weighted saved representation. CRPSS uses the frozen seasonal-climatology representation on the same cases and scale. Means pool 140 cases at 28 days and 40 cases at eight days. Raw NWS is available only through lead eight. The earlier tables retain the quantile-grid approximation.",
+          "new": "\\item \\textit{Note:} Each predictive value is transformed by $\\exp(y)-1$ before scoring; transformed-scale scores are not exponentiated. CRPS is in m$^3$/s and CRPSS is dimensionless. The empirical distribution assigns equal weight to each predictive sample or grid value. CRPSS is one minus the ratio of mean CRPS to the seasonal-climatology mean on the same cases; higher values are better. Means pool 140 daily cases over leads 1--28 and 40 over leads 1--8. NWS is available through lead eight. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods. U and M denote one and multiple observation sources; T1 retains the transfer contribution at forecast leads and T0 omits it.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\item \\textit{Note:} Entries give covered observations divided by available cases using the same limits and closed-interval rule as Table~\\ref{tab:no_refit_calibration}. This descriptive check does not treat successive daily cases as independent replicates. Full per-origin distribution scores, targeted-quantile counts and interval scores accompany the article.",
+          "new": "\\item \\textit{Note:} Entries count USGS observations within the closed central 95\\% predictive interval, divided by the available cases. Interval limits and quantile conventions are those of Table~\\ref{tab:no_refit_calibration} and Appendix~\\ref{app:numericalprediction}. Successive daily cases are not treated as independent replicates. Origins are January 23, November 12 and December 21, 2021, and May 11 and December 25, 2022. N, AL and exAL denote normal, asymmetric Laplace and extended asymmetric Laplace likelihoods. U and M denote one and multiple observation sources; T1 retains the transfer contribution at forecast leads and T0 omits it.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\nRAW-GLOFAS &",
+          "new": "\nGloFAS &",
+          "expected_occurrences": 3,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nRAW-NWS &",
+          "new": "\nNWS &",
+          "expected_occurrences": 2,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nCLIM-SEASONAL &",
+          "new": "\nSeasonal climatology &",
+          "expected_occurrences": 3,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nPERSISTENCE &",
+          "new": "\nPersistence &",
+          "expected_occurrences": 3,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\nEMOS-GLOFAS &",
+          "new": "\nGloFAS EMOS &",
+          "expected_occurrences": 3,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "% Generated by scripts/no_refit_revision.py; do not edit.",
+          "new": "% Table presentation generated by scripts/editorial_revision.py.",
+          "expected_occurrences": 2,
+          "scope": "outside_tabular"
+        }
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/appendix_gamma_summary_table.tex",
+      "source_sha256": "f2b5126ce287f345fcad65a7ee0ae0a8de0cbebf11f1e6d64a55ad5bc1f838ce",
+      "output_path": "tables/editorial_revision/appendix_gamma_summary_table.tex",
+      "edits": [
+        {
+          "old": "\\caption{Posterior Medians and 95\\% Credible Intervals for the Source-Specific Skewness Parameters $\\gamma_j(\\tau)$ at the Representative December 25, 2022 Cutoff}",
+          "new": "\\caption{Approximate variational posterior medians and central 95\\% credible intervals for source-specific skewness $\\gamma^s(p_0)$ at December 25, 2022.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\item \\textit{Note:} Posterior medians and 95\\% credible intervals $[{\\rm Q2.5}, {\\rm Q97.5}]$ for the source-specific skewness parameters $\\gamma_j(\\tau)$ in the exAL observation model at the representative December 25, 2022 cutoff. The quantile labels 05th through 95th correspond to the seven fitted quantile models. These summaries are included as supplementary appendix support rather than as primary forecast-validation evidence.",
+          "new": "\\item \\textit{Note:} For each fitted target probability $p_0$, the table summarizes the variational marginal of $\\gamma^s(p_0)$ for source $s\\in\\mathcal J_0$: USGS, GloFAS and NWS. Intervals are its 2.5th and 97.5th percentiles, without adjustment for variational approximation error. The 05th--95th row labels identify the seven fitted quantile models.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\textbf{95\\% CI}",
+          "new": "\\textbf{95\\% interval}",
+          "expected_occurrences": 3,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\\textbf{GLOFAS}",
+          "new": "\\textbf{GloFAS}",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\\textbf{Quantile}",
+          "new": "\\textbf{\\shortstack{Fitted\\\\quantile}}",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        }
+      ]
+    },
+    {
+      "source_path": "tables/generated_tex/appendix_sigma_summary_table.tex",
+      "source_sha256": "ef37607041715f5be344b7b1f10273a69a6b2af7ecb5ee1b5e077367383a0833",
+      "output_path": "tables/editorial_revision/appendix_sigma_summary_table.tex",
+      "edits": [
+        {
+          "old": "\\caption{Posterior Medians and 95\\% Credible Intervals for the Source-Specific Scale Parameters $\\sigma_j(\\tau)$ at the Representative December 25, 2022 Cutoff}",
+          "new": "\\caption{Approximate variational posterior medians and central 95\\% credible intervals for source-specific scale $\\sigma^s(p_0)$ at December 25, 2022.}",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\item \\textit{Note:} Posterior medians and 95\\% credible intervals $[{\\rm Q2.5}, {\\rm Q97.5}]$ for the source-specific scale parameters $\\sigma_j(\\tau)$ at the representative December 25, 2022 cutoff. These summaries are included as supplementary appendix support rather than as primary forecast-validation evidence.",
+          "new": "\\item \\textit{Note:} For each fitted target probability $p_0$, the table summarizes the variational marginal of $\\sigma^s(p_0)$ for source $s\\in\\mathcal J_0$: USGS, GloFAS and NWS. Intervals are its 2.5th and 97.5th percentiles, without adjustment for variational approximation error. The 05th--95th row labels identify the seven fitted quantile models.",
+          "expected_occurrences": 1,
+          "scope": "outside_tabular"
+        },
+        {
+          "old": "\\textbf{95\\% CI}",
+          "new": "\\textbf{95\\% interval}",
+          "expected_occurrences": 3,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\\textbf{GLOFAS}",
+          "new": "\\textbf{GloFAS}",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        },
+        {
+          "old": "\\textbf{Quantile}",
+          "new": "\\textbf{\\shortstack{Fitted\\\\quantile}}",
+          "expected_occurrences": 1,
+          "scope": "tabular_presentation"
+        }
+      ]
+    }
+  ]
+}

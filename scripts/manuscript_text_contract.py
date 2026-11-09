@@ -6,11 +6,44 @@ writing quality or require a particular sentence; that requires a reading pass.
 from __future__ import annotations
 
 import re
+from pathlib import Path
 
 
 def active_tex(text: str) -> str:
     """Remove LaTeX comments so retired material cannot satisfy a check."""
     return '\n'.join(re.sub(r'(?<!\\)%.*$', '', line) for line in text.splitlines())
+
+
+def included_tex_paths(article_root: Path, entry: str = 'wileyNJD-APA.tex') -> list[Path]:
+    """Return actual manuscript dependencies, excluding unused companion fragments."""
+    root = Path(article_root).resolve()
+    found: list[Path] = []
+    seen: set[Path] = set()
+
+    def visit(path: Path) -> None:
+        path = path.resolve()
+        if not path.is_relative_to(root):
+            raise ValueError('Manuscript include escapes article root')
+        if path in seen:
+            return
+        if not path.is_file():
+            raise FileNotFoundError(f'Missing manuscript include: {path.relative_to(root)}')
+        seen.add(path)
+        found.append(path)
+        for name in re.findall(r'\\(?:input|include)\s*\{([^}]+)\}', active_tex(path.read_text())):
+            child = root / name
+            if not child.suffix:
+                child = child.with_suffix('.tex')
+            visit(child)
+
+    visit(root / entry)
+    return found
+
+
+def manuscript_with_includes(article_root: Path) -> str:
+    """Read the scientific text that is actually included in the current article."""
+    return '\n'.join(path.read_text(encoding='utf-8')
+                     for path in included_tex_paths(article_root))
 
 
 def normalized_text(text: str) -> str:
@@ -80,7 +113,7 @@ SCIENTIFIC_CONCEPTS = {
     'table_estimands': (r'posterior means', r'posterior medians', r'credible intervals', r'skewness', r'scale parameters'),
     'uncertainty_estimands': (r'fitted quantile|quantile.location', r'credible', r'predictive distribution', r'predictive interval|predictive envelope'),
     'runtime': (r'(?:about|approximately|roughly) two hours', r'64', r'503', r'parallel', r'stag', r'hardware', r'implementation'),
-    'prior_weighting': (r'epsilon', r'anchor', r'scale', r'covariance', r'carries|carried|carry'),
+    'prior_weighting': (r'epsilon', r'anchor|reference', r'scale', r'covariance', r'carries|carried|carry'),
 }
 
 

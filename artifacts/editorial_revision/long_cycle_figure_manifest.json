@@ -1,0 +1,50 @@
+{
+  "rows": 35088,
+  "rows_per_layer": [
+    2,
+    35088,
+    35088,
+    35088,
+    35088,
+    2
+  ],
+  "identical_plotted_layer_data": true,
+  "identical_panel_parameters": true,
+  "identical_style": true,
+  "identical_coordinate_limits": true,
+  "coordinate_ylim": [
+    -0.126926036297345,
+    0.1459423007740888
+  ],
+  "date_range": [
+    "1990-12-18",
+    "2022-12-25"
+  ],
+  "component": 6,
+  "component_contract": "raw_state_component",
+  "annotation_before": "State component (log1p_cms)",
+  "annotation_after": "Long-cycle component on log(1+discharge) scale",
+  "R_version": "R version 4.5.3 (2026-03-11)",
+  "ggplot2_version": "4.0.3",
+  "jsonlite_version": "2.0.0",
+  "image_dimensions": [
+    4200,
+    2100
+  ],
+  "changed_pixel_bounds": [
+    57,
+    153,
+    128,
+    1870
+  ],
+  "all_pixels_outside_y_axis_annotation_unchanged": true,
+  "description": "The axis annotation alone changes; original annotation replay is byte-identical to the retained figure.",
+  "original_figure_sha256": "276821de7836c9c4fe6b29dab781420fa24f02fdc1c11da33bf78360ba5d9774",
+  "original_replay_sha256": "276821de7836c9c4fe6b29dab781420fa24f02fdc1c11da33bf78360ba5d9774",
+  "revised_figure_sha256": "4ece63c1d23ab5913395e2d9b63098c8587cc5ba4d51d90bc39995866373b97d",
+  "summary_csv_sha256": "b89a8314a8bd01dc94136fb47bea9525abe67b0375d77c772382734e83c1a610",
+  "renderer_sha256": "1fe249c4b09170c319670e11bd58a715b23249592fb6646e1a554191d70b410c",
+  "source_metadata_sha256": "3a9425e64d4506a4c9c7ea3de2ebe815805a03c01dd7f154febabee6a14316a5",
+  "revised_figure": "Figures/manuscript/editorial_long_cycle_component.png",
+  "replay_command": "python3 -B scripts/editorial_long_cycle_figure.py --check"
+}
